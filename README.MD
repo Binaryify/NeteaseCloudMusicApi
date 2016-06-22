@@ -2,7 +2,7 @@
 ![](http://binaryify.github.io/images/api.jpg)
 # start
 ```
-npm install 
+npm install NeteaseCloudMusicApi
 ```
 # usage
 
@@ -31,3 +31,7 @@ api.lrc(id:Number, [lv:Number default:-1])
  ```js
 api.song(id:Number)
  ```
+
+[github](https://github.com/Binaryify/NeteaseCloudMusicApi)
+
+[npm](https://www.npmjs.com/package/NeteaseCloudMusicApi)
