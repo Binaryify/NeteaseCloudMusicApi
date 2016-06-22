@@ -27,7 +27,7 @@ api.search(name:String, [limit:Nnumber default:3, offset:Number default:0])
 api.lrc(id:Number, [lv:Number default:-1])
  ```
 
-
+## song
  ```js
 api.song(id:Number)
  ```
