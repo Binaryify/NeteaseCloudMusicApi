@@ -1,3 +1,5 @@
+一个调用网易云音乐API的node模块
+![](http://binaryify.github.io/images/api.jpg)
 # start
 ```
 npm install 
