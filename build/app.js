@@ -27,38 +27,50 @@ var globalOption = {
 var api = {
     search: function search() {
         var name = arguments.length <= 0 || arguments[0] === undefined ? null : arguments[0];
-        var limit = arguments.length <= 1 || arguments[1] === undefined ? 3 : arguments[1];
-        var offset = arguments.length <= 2 || arguments[2] === undefined ? 0 : arguments[2];
+        var callback = arguments.length <= 1 || arguments[1] === undefined ? null : arguments[1];
+        var limit = arguments.length <= 2 || arguments[2] === undefined ? 3 : arguments[2];
+        var offset = arguments.length <= 3 || arguments[3] === undefined ? 0 : arguments[3];
 
         var option = deepCopy(globalOption);
         var url = origin + '/api/search/suggest/web';
         var body = 's=' + name + '&limit=' + limit + '&type=1&offset=' + offset;
         var method = 'POST';
         Object.assign(option, { url: url, body: body, method: method });
-        (0, _request2.default)(option, callback);
+        (0, _request2.default)(option, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                var info = JSON.parse(body);
+                callback && callback(JSON.stringify(info, '', 2));
+            }
+        });
     },
     song: function song(id) {
+        var callback = arguments.length <= 1 || arguments[1] === undefined ? null : arguments[1];
+
         var option = deepCopy(globalOption);
         var url = origin + '/api/song/detail?ids=%5B' + id + '%5d';
         var method = 'GET';
         Object.assign(option, { url: url, method: method });
-        (0, _request2.default)(option, callback);
+        (0, _request2.default)(option, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                var info = JSON.parse(body);
+                callback && callback(JSON.stringify(info, '', 2));
+            }
+        });
     },
     lrc: function lrc(id) {
-        var lv = arguments.length <= 1 || arguments[1] === undefined ? -1 : arguments[1];
+        var callback = arguments.length <= 1 || arguments[1] === undefined ? null : arguments[1];
+        var lv = arguments.length <= 2 || arguments[2] === undefined ? -1 : arguments[2];
 
         var option = deepCopy(globalOption);
         var url = origin + '/api/song/lyric?lv=' + lv + '&id=' + id;
         var method = 'GET';
         Object.assign(option, { url: url, method: method });
-        (0, _request2.default)(option, callback);
+        (0, _request2.default)(option, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                var info = JSON.parse(body);
+                callback && callback(JSON.stringify(info, '', 2));
+            }
+        });
     }
 };
-function callback(error, response, body) {
-    // console.log('callback')
-    if (!error && response.statusCode == 200) {
-        var info = JSON.parse(body);
-        console.log(JSON.stringify(info, '', 2));
-    }
-}
 exports.api = api;

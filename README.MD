@@ -19,17 +19,17 @@ api.search('年度之歌')
 # api
 ## search
  ```js
-api.search(name:String, [limit:Nnumber default:3, offset:Number default:0])
+api.search(name:String, [callback:function,limit:Nnumber default:3, offset:Number default:0])
  ```
 
 ## lrc
  ```js
-api.lrc(id:Number, [lv:Number default:-1])
+api.lrc(id:Number, [callback:function,lv:Number default:-1])
  ```
 
 ## song
  ```js
-api.song(id:Number)
+api.song(id:Number,[callback:function])
  ```
 
 [github](https://github.com/Binaryify/NeteaseCloudMusicApi)

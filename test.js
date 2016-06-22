@@ -1,4 +1,10 @@
 import {api }from './app.js'
-api.search("远方")
-api.song('5243023')
-api.lrc('5243023')
+api.search("年度之歌",(data)=>{
+    console.log(data)
+})
+api.song('308169',(data)=>{
+    console.log(data)
+})
+api.lrc('5243023',(data)=>{
+    console.log(data)
+})
