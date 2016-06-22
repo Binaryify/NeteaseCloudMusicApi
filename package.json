@@ -1,0 +1,21 @@
+{
+  "name": "NeteaseCloudMusicApi",
+  "version": "1.0.1",
+  "description": "",
+  "main": "build/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel app.js -o build/app.js",
+    "check": "node build/test.js"
+  },
+  "keywords": [],
+  "author": "traveller",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.9.1",
+    "request": "^2.72.0"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.9.0"
+  }
+}
