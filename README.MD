@@ -19,15 +19,15 @@ api.search('年度之歌')
 # api
 ## search
  ```js
- api.search(name:String, [limit:Nnumber default:3, offset:Number default:0])
+api.search(name:String, [limit:Nnumber default:3, offset:Number default:0])
  ```
 
 ## lrc
  ```js
- api.lrc(id:Number, [lv:Number default:-1])
+api.lrc(id:Number, [lv:Number default:-1])
  ```
 
 
  ```js
-  api.song(id:Number)
+api.song(id:Number)
  ```
