@@ -1,12 +1,11 @@
 {
   "name": "NeteaseCloudMusicApi",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "网易云音乐nodejs版接口模块",
   "main": "build/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel app.js -o build/app.js",
-    "check": "node build/test.js"
+    "build": "babel app.js -o build/app.js"
   },
   "keywords": ["NeteaseCloudMusic","网易云音乐"],
   "author": "traveller",
