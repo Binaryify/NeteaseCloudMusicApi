@@ -1,9 +1,6 @@
 import request from 'request'
-function deepCopy(obj) {
-    return JSON.parse(JSON.stringify(obj));
-}
+const deepCopy=(obj)=>JSON.parse(JSON.stringify(obj))
 const origin = 'http://music.163.com'
-
 let globalOption = {
     headers: {
         'Origin': origin,
@@ -11,7 +8,6 @@ let globalOption = {
         'Content-Type': 'application/x-www-form-urlencoded'
     }
 }
-
 let api = {
     search: (name = null,callback=null, limit = 3, offset = 0) => {
         let option = deepCopy(globalOption);
