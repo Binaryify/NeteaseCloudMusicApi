@@ -11,11 +11,10 @@ var _request2 = _interopRequireDefault(_request);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function deepCopy(obj) {
+var deepCopy = function deepCopy(obj) {
     return JSON.parse(JSON.stringify(obj));
-}
+};
 var origin = 'http://music.163.com';
-
 var globalOption = {
     headers: {
         'Origin': origin,
@@ -23,7 +22,6 @@ var globalOption = {
         'Content-Type': 'application/x-www-form-urlencoded'
     }
 };
-
 var api = {
     search: function search() {
         var name = arguments.length <= 0 || arguments[0] === undefined ? null : arguments[0];
