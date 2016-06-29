@@ -31,9 +31,14 @@ var api = {
 
         var option = deepCopy(globalOption);
         var url = origin + '/api/search/suggest/web';
-        var body = 's=' + name + '&limit=' + limit + '&type=1&offset=' + offset;
+        var form = {
+            s: name,
+            limit: limit,
+            type: 1,
+            offset: offset
+        };
         var method = 'POST';
-        Object.assign(option, { url: url, body: body, method: method });
+        Object.assign(option, { url: url, form: form, method: method });
         (0, _request2.default)(option, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 var info = JSON.parse(body);
