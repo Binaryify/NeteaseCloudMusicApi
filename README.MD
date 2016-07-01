@@ -19,7 +19,7 @@ api.search('年度之歌',function(data){
 or
 ``` javascript
 import {api} from 'NeteaseCloudMusicApi'
-api.search('年度之歌',(data) => {
+api.search('年度之歌',data => {
     console.log(data)
 })
 ```
