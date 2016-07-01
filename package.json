@@ -9,7 +9,7 @@
   },
   "keywords": ["NeteaseCloudMusic","网易云音乐","网易云"],
   "author": "traveller",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "request": "^2.72.0"
   },
