@@ -1,0 +1,48 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'run',
+1 verbose cli   'test' ]
+2 info using npm@3.9.5
+3 info using node@v6.2.2
+4 verbose run-script [ 'pretest', 'test', 'posttest' ]
+5 info lifecycle NeteaseCloudMusicApi@1.2.2~pretest: NeteaseCloudMusicApi@1.2.2
+6 silly lifecycle NeteaseCloudMusicApi@1.2.2~pretest: no script for pretest, continuing
+7 info lifecycle NeteaseCloudMusicApi@1.2.2~test: NeteaseCloudMusicApi@1.2.2
+8 verbose lifecycle NeteaseCloudMusicApi@1.2.2~test: unsafe-perm in lifecycle true
+9 verbose lifecycle NeteaseCloudMusicApi@1.2.2~test: PATH: C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Users\ztf\Desktop\NeteaseCloudMusicApi\node_modules\.bin;C:\Program Files\nodejs;C:\Users\ztf\bin;C:\Program Files (x86)\Git\mingw32\bin;C:\Program Files (x86)\Git\usr\local\bin;C:\Program Files (x86)\Git\usr\bin;C:\Program Files (x86)\Git\usr\bin;C:\Program Files (x86)\Git\mingw32\bin;C:\Program Files (x86)\Git\usr\bin;C:\Users\ztf\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Users\ztf\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files\Java\jdk1.8.0_92\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\OpenVPN\bin;C:\Program Files\nodejs;C:\Program Files (x86)\Tesseract-OCR;C:\Users\ztf\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Users\ztf\AppData\Local\atom\bin;C:\ProgramData\chocolatey\bin;C:\Users\ztf\AppData\Local\Android\sdk\tools;C:\Users\ztf\AppData\Local\Android\sdk\platform-tools;C:\Users\ztf\AppData\Local\Microsoft\WindowsApps;C:\Python34;C:\Python34\Scripts;C:\Program Files (x86)\Git\cmd;D:\software\aria2\aria2c.exe;C:\Program Files (x86)\Git;C:\Users\ztf\AppData\Roaming\npm;C:\Program Files (x86)\WinRAR;C:\Program Files (x86)\Git\usr\bin\vendor_perl;C:\Program Files (x86)\Git\usr\bin\core_perl
+10 verbose lifecycle NeteaseCloudMusicApi@1.2.2~test: CWD: C:\Users\ztf\Desktop\NeteaseCloudMusicApi
+11 silly lifecycle NeteaseCloudMusicApi@1.2.2~test: Args: [ '/d /s /c', 'babel-node test/test.js' ]
+12 silly lifecycle NeteaseCloudMusicApi@1.2.2~test: Returned: code: 1  signal: null
+13 info lifecycle NeteaseCloudMusicApi@1.2.2~test: Failed to exec test script
+14 verbose stack Error: NeteaseCloudMusicApi@1.2.2 test: `babel-node test/test.js`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\lifecycle.js:245:16)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at EventEmitter.emit (events.js:191:7)
+14 verbose stack     at ChildProcess.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\spawn.js:24:14)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at ChildProcess.emit (events.js:191:7)
+14 verbose stack     at maybeClose (internal/child_process.js:852:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:215:5)
+15 verbose pkgid NeteaseCloudMusicApi@1.2.2
+16 verbose cwd C:\Users\ztf\Desktop\NeteaseCloudMusicApi
+17 error Windows_NT 10.0.14376
+18 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "run" "test"
+19 error node v6.2.2
+20 error npm  v3.9.5
+21 error code ELIFECYCLE
+22 error NeteaseCloudMusicApi@1.2.2 test: `babel-node test/test.js`
+22 error Exit status 1
+23 error Failed at the NeteaseCloudMusicApi@1.2.2 test script 'babel-node test/test.js'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the NeteaseCloudMusicApi package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     babel-node test/test.js
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs NeteaseCloudMusicApi
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls NeteaseCloudMusicApi
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]
