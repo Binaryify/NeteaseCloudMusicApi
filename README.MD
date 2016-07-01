@@ -1,7 +1,7 @@
 # NeteaseCloudMusicApi
+一个调用网易云音乐 API 的 node 模块
 <a href="https://www.npmjs.com/package/NeteaseCloudMusicApi"><img src="https://img.shields.io/npm/v/NeteaseCloudMusicApi.svg" alt="Version"></a>
 <a href="https://www.npmjs.com/package/NeteaseCloudMusicApi"><img src="https://img.shields.io/npm/l/NeteaseCloudMusicApi.svg" alt="License"></a>
-一个调用网易云音乐 API 的 node 模块
 
 ![](http://binaryify.github.io/images/api.jpg)
 
