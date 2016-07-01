@@ -1,4 +1,5 @@
 一个调用网易云音乐API的node模块
+[版本图片](https://www.npmjs.com/package/NeteaseCloudMusicApi)
 ![](http://binaryify.github.io/images/api.jpg)
 # start
 ```
