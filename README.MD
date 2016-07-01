@@ -29,21 +29,33 @@ api.search('年度之歌',data => {
 ## API
 
 ### search
- ``` javascript
-api.search(name:String,[callback:function,limit:Nnumber default:3, offset:Number default:0])
- ```
+``` javascript
+api.search(name:String,[callback:function,limit:Number default:3, offset:Number default:0])
+```
 
 ### lrc
- ``` javascript
+``` javascript
 api.lrc(id:Number,[callback:function,lv:Number default:-1])
- ```
+```
 
 ### song
- ``` javascript
+
+``` javascript
 api.song(id:Number,[callback:function])
- ```
-## Download
+```
 
-[github](https://github.com/Binaryify/NeteaseCloudMusicApi)
+### getArtistAlbums
 
-[npm](https://www.npmjs.com/package/NeteaseCloudMusicApi)
+``` javascript
+api.getArtistAlbums(id:Number,[callback:function,limit:Number default:3, offset:Number default:0])
+```
+
+## getAlbums
+
+``` javascript
+api.getAlbums(id:Number,[callback:function])
+```
+
+
+## License
+[The MIT License (MIT)]('./LICENSE')
