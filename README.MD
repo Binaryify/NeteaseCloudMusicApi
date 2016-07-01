@@ -58,4 +58,4 @@ api.getAlbums(id:Number,[callback:function])
 
 
 ## License
-[The MIT License (MIT)]('./LICENSE')
+[The MIT License (MIT)](LICENSE)
