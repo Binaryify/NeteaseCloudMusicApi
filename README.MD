@@ -59,6 +59,11 @@ api.getArtistAlbums(id:Number,[callback:function,limit:Number default:3, offset:
 api.getAlbums(id:Number,[callback:function])
 ```
 
+## getPlaylists
+
+``` javascript
+api.Playlists(id:Number,[callback:function])
+```
 
 ## License
 [The MIT License (MIT)](LICENSE)
