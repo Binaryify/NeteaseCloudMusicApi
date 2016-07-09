@@ -29,5 +29,5 @@ api.getAlbums('32311', data => {
 
 api.getPlaylists('311785002', data => {
   console.log("####################Playlists####################")
-console.log(data)
+  console.log(data)
 })
