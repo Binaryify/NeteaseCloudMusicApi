@@ -16,4 +16,4 @@ const getPlaylists = (id, callback) => {
     }
   })
 }
-export { Playlists }
+export { getPlaylists }
