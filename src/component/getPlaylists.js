@@ -5,7 +5,7 @@ import { deepCopy } from '../util'
 const getPlaylists = (id, callback) => {
   const option = deepCopy(globalOption)
   const url = `${origin}/api/playlist/detail?id=${id}`
-  const method = 'get'
+  const method = 'GET'
   Object.assign(option, {url, method})
   request(option, (err, res, body) => {
     if(!err && res.statusCode == 200) {
