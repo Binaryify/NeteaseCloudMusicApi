@@ -24,6 +24,5 @@ var api = {
   getArtistAlbums: _getArtistAlbums.getArtistAlbums,
   getAlbums: _getAlbums.getAlbums,
   getPlaylists: _getPlaylists.getPlaylists
-
 };
 exports.api = api;

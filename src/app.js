@@ -12,6 +12,5 @@ let api = {
   getArtistAlbums: getArtistAlbums,
   getAlbums: getAlbums,
   getPlaylists: getPlaylists
-
 }
 export {api}

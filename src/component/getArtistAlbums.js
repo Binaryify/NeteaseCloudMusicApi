@@ -12,7 +12,7 @@ const getArtistAlbums = (id, callback, limit = 3, offset = 0) => {
       let info = JSON.parse(body)
       callback && callback(JSON.stringify(info, '', 2))
     } else {
-      console.error(err);
+      console.error(err)
     }
   })
 }
