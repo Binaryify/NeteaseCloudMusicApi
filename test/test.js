@@ -1,5 +1,6 @@
 // import { api } from '../src/app.js'
-const {api}=require('../build/app.js')
+// const { api } =require('../src/app.js')
+var api=require('../build/app.js').api
 api.search("年度之歌",data => {
   console.log("################Search API#################")
   console.log(data)
