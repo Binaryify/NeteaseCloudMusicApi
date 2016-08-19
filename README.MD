@@ -35,8 +35,9 @@ api.search('年度之歌',data => {
 
 ### search
 ``` javascript
-api.search(name:String,[callback:function,limit:Number default:3, offset:Number default:0])
+api.search(name:String,[callback:function,onlySong:Boolean default:true,limit:Number default:3, offset:Number default:0])
 ```
+说明:onlySong默认为true,如果为false,则返回一个对象,包含songs和mvs,songs和mvs均为数组
 
 ### lrc
 ``` javascript

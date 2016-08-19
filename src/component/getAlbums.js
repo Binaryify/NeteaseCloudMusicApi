@@ -12,7 +12,7 @@ const getAlbums = (id, callback) => {
       let info = JSON.parse(body)
       callback && callback(JSON.stringify(info, '', 2))
     } else {
-      console.error(err);
+      console.error(err)
     }
   })
 }
