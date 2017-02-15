@@ -1,6 +1,6 @@
 {
   "name": "NeteaseCloudMusicApi",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "网易云音乐nodejs版接口模块",
   "main": "build/app.js",
   "scripts": {
