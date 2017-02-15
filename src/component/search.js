@@ -4,7 +4,7 @@ import { deepCopy } from '../util'
 
 const search = (name = null, callback = null,onlySong=true, limit = 3, offset = 0) => {
   const option = deepCopy(globalOption)
-  const url = `${origin}/api/search/suggest/web`
+  const url = `${origin}/api/search/get`
   const form = {
     s: name,
     limit,
