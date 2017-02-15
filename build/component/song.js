@@ -16,7 +16,7 @@ var _util = require('../util');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var song = function song(id) {
-  var callback = arguments.length <= 1 || arguments[1] === undefined ? null : arguments[1];
+  var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
   var option = (0, _util.deepCopy)(_config.globalOption);
   var url = _config.origin + '/api/song/detail?ids=%5B' + id + '%5d';

@@ -16,14 +16,14 @@ var _util = require('../util');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var search = function search() {
-  var name = arguments.length <= 0 || arguments[0] === undefined ? null : arguments[0];
-  var callback = arguments.length <= 1 || arguments[1] === undefined ? null : arguments[1];
-  var onlySong = arguments.length <= 2 || arguments[2] === undefined ? true : arguments[2];
-  var limit = arguments.length <= 3 || arguments[3] === undefined ? 3 : arguments[3];
-  var offset = arguments.length <= 4 || arguments[4] === undefined ? 0 : arguments[4];
+  var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  var onlySong = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+  var limit = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 3;
+  var offset = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0;
 
   var option = (0, _util.deepCopy)(_config.globalOption);
-  var url = _config.origin + '/api/search/suggest/web';
+  var url = _config.origin + '/api/search/get';
   var form = {
     s: name,
     limit: limit,

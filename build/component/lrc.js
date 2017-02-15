@@ -16,8 +16,8 @@ var _util = require('../util');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var lrc = function lrc(id) {
-  var callback = arguments.length <= 1 || arguments[1] === undefined ? null : arguments[1];
-  var lv = arguments.length <= 2 || arguments[2] === undefined ? -1 : arguments[2];
+  var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  var lv = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : -1;
 
   var option = (0, _util.deepCopy)(_config.globalOption);
   var url = _config.origin + '/api/song/lyric?lv=' + lv + '&id=' + id;
