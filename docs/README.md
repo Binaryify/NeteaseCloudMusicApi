@@ -7,17 +7,18 @@
 
 ## 安装  
 ``` shell
-npm install NeteaseCloudMusicApi
+$ git clone git@github.com:Binaryify/NeteaseCloudMusicApi.git
+$ npm install
 ```
-## 使用
+## 运行
 ``` shell
-node app.js 
+$ node app.js 
 ```
 
 服务器启动,默认端口为3000
 
 
-## 接口
+## 接口文档
 
 ### 登录
 登录有两个接口
@@ -89,6 +90,7 @@ node app.js
 `/recommend/resource`  
 返回数据如下图: 
 ![搜索音乐](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%8E%A8%E8%8D%90%E6%AD%8C%E5%8D%95.png)
+
 ### 获取每日推荐歌曲
 说明:调用此接口,可获得每日推荐歌曲(需要登录)
 接口地址:  

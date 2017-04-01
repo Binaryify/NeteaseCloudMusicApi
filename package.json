@@ -1,20 +1,21 @@
 {
   "name": "NeteaseCloudMusicApi",
-  "version": "1.5.2",
-  "description": "网易云音乐nodejs版接口模块",
-  "main": "build/app.js",
+  "version": "2.0.0",
+  "description": "",
   "scripts": {
-    "test": "node test/test.js",
-    "build": "babel src/ -d build/"
+    "start": "node app.js",
+    "test": "mocha -r intelli-espower-loader -t 20000 test"
   },
-  "keywords": ["NeteaseCloudMusic","网易云音乐","网易云"],
-  "author": "traveller",
-  "license": "MIT",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "request": "^2.72.0"
+    "big-integer": "^1.6.17",
+    "express": "^4.15.2"
   },
   "devDependencies": {
-    "babel-core": "^6.9.1",
-    "babel-preset-es2015": "^6.9.0"
+    "intelli-espower-loader": "^1.0.1",
+    "mocha": "^3.2.0",
+    "power-assert": "^1.4.2"
   }
 }
