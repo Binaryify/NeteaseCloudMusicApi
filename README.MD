@@ -1,5 +1,5 @@
 # NeteaseCloudMusicApi
-一个调用网易云音乐 API 的 node 模块
+网易云音乐 nodejs 接口
 <p>
 <a href="https://www.npmjs.com/package/NeteaseCloudMusicApi"><img src="https://img.shields.io/npm/v/NeteaseCloudMusicApi.svg" alt="Version"></a>
 <a href="https://www.npmjs.com/package/NeteaseCloudMusicApi"><img src="https://img.shields.io/npm/l/NeteaseCloudMusicApi.svg" alt="License"></a>
@@ -9,64 +9,35 @@
 <a href="https://travis-ci.org/Binaryify/NeteaseCloudMusicApi"><img src="https://api.travis-ci.org/Binaryify/NeteaseCloudMusicApi.svg?branch=master" /></a>
 </p>  
 
-![](http://binaryify.github.io/images/api.jpg)
 
-## Start
+## 版本新特性  
+增加使用文档,完成项目重构,增加更完善的单元测试,版本升级到2.0,升级 api 到 v2+,支持登录并获取用户信息和创建的歌单,可通过获取音乐 url 接口获取用户歌单里的的音乐,获取每日推荐歌单和每日推荐音乐
+
+## 环境要求
+需要 NodeJS 6.0+ 环境
+
+## 安装  
 ``` shell
-npm install NeteaseCloudMusicApi
+$ git clone git@github.com:Binaryify/NeteaseCloudMusicApi.git
+$ npm install
+```
+## 运行
+``` shell
+$ node app.js 
 ```
 
-## Usage
-``` javascript
-var api = require('NeteaseCloudMusicApi').api
-api.search('年度之歌',function(data){
-    console.log(data)
-})
-```
-or
-``` javascript
-import {api} from 'NeteaseCloudMusicApi'
-api.search('年度之歌',data => {
-    console.log(data)
-})
+## 使用文档
+
+[文档地址](https://binaryify.github.io/NeteaseCloudMusicApi)
+
+## 单元测试
+
+``` shell
+$ npm test
 ```
 
-## API
-
-### search
-``` javascript
-api.search(name:String,[callback:function,onlySong:Boolean default:true,limit:Number default:3, offset:Number default:0])
-```
-说明:onlySong默认为true,如果为false,则返回一个对象,包含songs和mvs,songs和mvs均为数组
-
-### lrc
-``` javascript
-api.lrc(id:Number,[callback:function,lv:Number default:-1])
-```
-
-### song
-
-``` javascript
-api.song(id:Number,[callback:function])
-```
-
-### getArtistAlbums
-
-``` javascript
-api.getArtistAlbums(id:Number,[callback:function,limit:Number default:3, offset:Number default:0])
-```
-
-## getAlbums
-
-``` javascript
-api.getAlbums(id:Number,[callback:function])
-```
-
-## getPlaylists
-
-``` javascript
-api.Playlists(id:Number,[callback:function])
-```
+![单元测试](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/screenshot1.png)
+![单元测试](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/screenshot2.png)
 
 ## License
 [The MIT License (MIT)](LICENSE)
