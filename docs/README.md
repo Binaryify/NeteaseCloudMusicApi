@@ -1,5 +1,6 @@
-# 网易云音乐 NodeJS 版 API
-NeteaseCloudMusicApi
+# NeteaseCloudMusicApi
+
+网易云音乐 NodeJS 版 API
 
 
 ## 版本新特性  
