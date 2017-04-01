@@ -1,5 +1,6 @@
-# NeteaseCloudMusicApi
-网易云音乐 NodeJS 版 API
+# 网易云音乐 NodeJS 版 API
+NeteaseCloudMusicApi
+
 
 ## 版本新特性  
 增加使用文档,完成项目重构,版本升级到2.0,升级 api 到 v2+,支持登录并获取用户信息和创建的歌单,可通过获取音乐 url 接口获取用户歌单里的的音乐,获取每日推荐歌单和每日推荐音乐
