@@ -55,7 +55,7 @@ $ node app.js
 ![歌单详情](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%AD%8C%E5%8D%95%E8%AF%A6%E6%83%85.png)
 
 ### 获取音乐 url
-说明:使用歌单详情接口后,能得到的音乐的 id, 但不能得到的音乐 url, 调用此接口,传入的音乐 id,可以获取对应的音乐的 url(不需要登录)
+说明:使用歌单详情接口后,能得到的音乐的 id, 但不能得到的音乐 url, 调用此接口,传入的音乐 id,可以获取对应的音乐的 url(不需要登录)  
 接口地址:  
 `playlist/detail`  
 调用例子:  
@@ -64,7 +64,7 @@ $ node app.js
 ![音乐 url](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E9%9F%B3%E4%B9%90%20url.png)
 
 ### 搜索音乐
-说明:调用此接口,传入搜索关键词可以搜索该音乐,关键词可以多个,以空格隔开,如"周杰伦 搁浅"(不需要登录)
+说明:调用此接口,传入搜索关键词可以搜索该音乐,关键词可以多个,以空格隔开,如"周杰伦 搁浅"(不需要登录)  
 接口地址:  
 `/search`  
 调用例子:  
@@ -73,7 +73,7 @@ $ node app.js
 ![搜索音乐](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%90%9C%E7%B4%A2.png)
 
 ### 获取歌词
-说明:调用此接口,传入音乐 id 可获得对应音乐的歌词(不需要登录)
+说明:调用此接口,传入音乐 id 可获得对应音乐的歌词(不需要登录)  
 接口地址:  
 `/lyric`  
 调用例子:  
