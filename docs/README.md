@@ -35,8 +35,10 @@ $ node app.js
 ![登录](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E7%99%BB%E5%BD%95.png)
 
 
+完成登录后,会在浏览器保存一个 cookie 用作登录凭证, 除了搜索的音乐和歌词,以及获取音乐 url 都需要用到这个 cookie  
 
-完成登录后,会在浏览器保存一个 cookie 用作登录凭证, 除了搜索的音乐和歌词,以及获取音乐 url 都需要用到这个 cookie
+#### 注意
+调用登录接口的速度比调用其他接口慢,因为登录过程调用了加密算法
 
 ### 获取用户歌单
 说明:登陆后调用此接口,传入用户 id, 可以获取用户歌单  
