@@ -24,13 +24,13 @@ $ node app.js
 ### 登录
 登录有两个接口
 1. 手机登录  
-接口地址:`'/login/cellphone'`  
+接口地址:`/login/cellphone`  
 调用例子:  
-`'/login/cellphone?phone=xxx&password=yyy'`
+`/login/cellphone?phone=xxx&password=yyy`
 2. 邮箱登录  
-接口地址:`'/login`  
+接口地址:`/login`  
 调用例子:  
-`'/login?email=xxx@163.com&password=yyy'`  
+`/login?email=xxx@163.com&password=yyy`  
 返回数据如下图:  
 ![登录](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E7%99%BB%E5%BD%95.png)
 
