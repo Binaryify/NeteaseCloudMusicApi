@@ -24,7 +24,8 @@ $ node app.js
 ### 登录
 登录有两个接口
 1. 手机登录  
-接口地址:`/login/cellphone`  
+接口地址:  
+`/login/cellphone`  
 调用例子:  
 `/login/cellphone?phone=xxx&password=yyy`
 2. 邮箱登录  
