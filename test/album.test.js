@@ -3,7 +3,7 @@ const crypto = require('crypto')
 const { createRequest } = require("../util/util")
 
 describe('测试获取歌手专辑列表是否正常', () => {
-  it('数据应该有 lrc 字段', done => {
+  it('数据的 code 应该为200', done => {
     const id = 32311
     createRequest(`/api/album/${id}`, 'GET', null)
       .then(result => {
