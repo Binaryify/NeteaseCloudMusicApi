@@ -128,7 +128,7 @@ type: 搜索类型；默认为1,取值意义:
 ![搜索音乐](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%8E%A8%E8%8D%90%E6%AD%8C%E6%9B%B2.png)
 
 ## 离线访问此文档
-此文档同时也是 Progressive Web Apps(PWA), 加入serviceWorker,可离线访问
+此文档同时也是 Progressive Web Apps(PWA), 加入了serviceWorker,可离线访问
 
 ## License
 [The MIT License (MIT)](LICENSE)
