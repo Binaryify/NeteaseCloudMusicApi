@@ -13,6 +13,9 @@ app.use('/recommend/resource', require('./router/recommendResource'))
 
 app.use('/lyric', require('./router/lyric'))
 
+app.use('/album', require('./router/album'))
+
+
 app.use('/user/playlist', require('./router/userPlaylist'))
 
 app.use('/playlist/detail', require('./router/playlistDetail'))

@@ -1,8 +1,6 @@
 const assert = require('assert')
 const crypto = require('crypto')
 const { createRequest } = require("../util/util")
-const phone = "换成你的账号"
-const password = "换成你的密码"
 
 describe('测试搜索是否正常', () => {
   it('获取到的数据的 name 应该和搜索关键词一致', done => {

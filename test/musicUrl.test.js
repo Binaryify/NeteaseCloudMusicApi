@@ -1,8 +1,6 @@
 const assert = require('assert')
 const crypto = require('crypto')
 const { createWebAPIRequest } = require("../util/util")
-const phone = "换成你的账号"
-const password = "换成你的密码"
 
 describe('测试获取歌曲是否正常', () => {
   it('歌曲的 url 不应该为空', done => {
