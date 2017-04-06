@@ -1,6 +1,6 @@
 {
   "name": "NeteaseCloudMusicApi",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "description": "",
   "scripts": {
     "start": "node app.js",
@@ -8,7 +8,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "big-integer": "^1.6.17",
     "express": "^4.15.2"
