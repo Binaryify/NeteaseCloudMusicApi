@@ -5,19 +5,26 @@ const app = express()
 //手机登录
 app.use('/login/cellphone', require('./router/loginCellphone'))
 
+//邮箱登录
 app.use('/login', require('./router/login'))
+//获取评论
+app.use('/comment', require('./router/comment'))
+
 // 获取每日推荐歌曲
 app.use('/recommend/songs', require('./router/recommendSongs'))
 // 获取每日推荐歌单
 app.use('/recommend/resource', require('./router/recommendResource'))
 
+// 获取歌词
 app.use('/lyric', require('./router/lyric'))
 
+// 获取专辑
 app.use('/album', require('./router/album'))
 
-
+// 获取歌单
 app.use('/user/playlist', require('./router/userPlaylist'))
 
+// 获取歌单内列表
 app.use('/playlist/detail', require('./router/playlistDetail'))
 
 app.use('/playlist/tracks', require('./router/playlistTracks'))

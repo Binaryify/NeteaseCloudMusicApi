@@ -22,16 +22,31 @@ $ node app.js
 ## 接口文档
 
 ### 登录
-登录有两个接口
-1. 手机登录  
-接口地址:  
+说明:登录有两个接口  
+#### 1. 手机登录  
+
+**必选参数:**  
+`phone`: 手机号码   
+`password`:  密码  
+
+**接口地址:**  
 `/login/cellphone`  
-调用例子:  
-`/login/cellphone?phone=xxx&password=yyy`
-2. 邮箱登录  
-接口地址:`/login`  
-调用例子:  
+
+**调用例子:**  
+`/login/cellphone?phone=xxx&password=yyy`  
+
+#### 2. 邮箱登录  
+
+**必选参数:**  
+`email`: 163网易邮箱   
+`password`:  密码  
+
+**接口地址:**  
+`/login`  
+
+**调用例子:**  
 `/login?email=xxx@163.com&password=yyy`  
+
 返回数据如下图:  
 ![登录](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E7%99%BB%E5%BD%95.png)
 
@@ -43,88 +58,147 @@ $ node app.js
 
 ### 获取用户歌单
 说明:登陆后调用此接口,传入用户 id, 可以获取用户歌单  
-接口地址:  
+
+**必选参数:**  
+`uid` : 用户 id  
+
+**接口地址:**  
 `/user/playlist`  
-调用例子:  
+
+**调用例子:**  
 `/user/playlist?uid=32953014`  
+
 返回数据如下图:  
 ![用户歌单](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E7%94%A8%E6%88%B7%E6%AD%8C%E5%8D%95.png)
 
 ### 获取歌单详情  
 说明:歌单能看到歌单名字,但看不到具体歌单内容,调用此接口,传入歌单 id,可以获取对应歌单内的所有的音乐  
-接口地址:  
+
+**必选参数:**  
+`id` : 歌单 id  
+
+**接口地址:**  
 `playlist/detail`  
-调用例子:  
+
+**调用例子:**  
 `/playlist/detail?id=24381616`  
+
 返回数据如下图:  
 ![歌单详情](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%AD%8C%E5%8D%95%E8%AF%A6%E6%83%85.png)
 
 ### 获取音乐 url
 说明:使用歌单详情接口后,能得到的音乐的 id, 但不能得到的音乐 url, 调用此接口,传入的音乐 id,可以获取对应的音乐的 url(不需要登录)  
-接口地址:  
+
+**必选参数:**  
+`id` : 音乐 id  
+
+**接口地址:**  
 `playlist/detail`  
-调用例子:  
+
+**调用例子:**  
 `/playlist/detail?id=24381616`  
+
 返回数据如下图:  
 ![音乐 url](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E9%9F%B3%E4%B9%90%20url.png)
 
 ### 搜索音乐
 说明:调用此接口,传入搜索关键词可以搜索该音乐,关键词可以多个,以空格隔开,如"周杰伦 搁浅"(不需要登录)  
-必选参数:
-keywords : 关键词
-可选参数:
-limit: 返回数量,默认为30 
-type: 搜索类型；默认为1,取值意义:  
+
+**必选参数:**  
+`keywords` : 关键词 
+
+**可选参数:** 
+`limit` : 返回数量,默认为30 
+`type`: 搜索类型；默认为1,取值意义:  
 1: 单曲  
 10: 专辑  
 100: 歌手  
 1000: 歌单  
 1002: 用户  
  
- offset: 偏移数量，用于分页  
+`offset` : 偏移数量，用于分页  
 
-接口地址:  
+**接口地址:**  
 `/search`  
-调用例子:  
+
+**调用例子:**  
 `/search?keywords=海阔天空`  
+
 返回数据如下图: 
 ![搜索音乐](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%90%9C%E7%B4%A2.png)
 
 ### 获取歌词
 说明:调用此接口,传入音乐 id 可获得对应音乐的歌词(不需要登录)  
-接口地址:  
+
+**必选参数:**  
+`id`: 音乐 id  
+
+**接口地址:**  
 `/lyric`  
-调用例子:  
+
+**调用例子:**  
 `/lyric?id=347230`  
+
 返回数据如下图: 
 ![搜索音乐](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%AD%8C%E8%AF%8D.png)
 
+### 获取评论
+说明:调用此接口,传入歌音乐 id和 limit 参数, 可获得该音乐的所有评论(不需要登录)  
+
+**必选参数:**  
+`id`: 音乐 id  
+
+**可选参数:**  
+`limit`: 取出评论数量,默认为20  
+
+**接口地址:**
+`/comment`  
+
+**调用例子:**  
+`/comment?id=186016&limit=1`  
+
+返回数据如下图: 
+![获取评论](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/comment.png)
+
 ### 获取歌手专辑列表
 说明:调用此接口,传入歌手 id,可获得歌手专辑列表  
-接口地址:  
+
+**必选参数:**  
+`id`: 歌手 id 
+
+**接口地址:**  
 `/album`  
-调用例子:  
+
+**调用例子:**  
 `album?id=32311`  
+
+返回数据如下图: 
 ![获取专辑](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E4%B8%93%E8%BE%91.png)
 
 
 
 
 ### 获取每日推荐歌单
-说明:调用此接口,可获得每日推荐歌单(需要登录)
-接口地址:  
+说明:调用此接口,可获得每日推荐歌单(需要登录)  
+
+**接口地址:**  
 `/recommend/resource`  
-调用例子:  
+
+**调用例子:**  
 `/recommend/resource`  
+
 返回数据如下图: 
 ![搜索音乐](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%8E%A8%E8%8D%90%E6%AD%8C%E5%8D%95.png)
 
 ### 获取每日推荐歌曲
-说明:调用此接口,可获得每日推荐歌曲(需要登录)
-接口地址:  
+说明:调用此接口,可获得每日推荐歌曲(需要登录)  
+
+**接口地址:**  
 `/recommend/songs`  
-调用例子:  
+
+**调用例子:**  
 `/recommend/songs`  
+
 返回数据如下图: 
 ![搜索音乐](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%8E%A8%E8%8D%90%E6%AD%8C%E6%9B%B2.png)
 
