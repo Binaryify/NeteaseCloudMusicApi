@@ -30,7 +30,7 @@ $ node app.js
 [文档地址](https://binaryify.github.io/NeteaseCloudMusicApi)
 
 ## 更新日志
-[看这里](https://github.com/Binaryify/NeteaseCloudMusicApi/blob/master/CHANGELOG.MD)
+[changelog](https://github.com/Binaryify/NeteaseCloudMusicApi/blob/master/CHANGELOG.MD)
 ## 单元测试
 
 ``` shell
