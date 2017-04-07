@@ -10,7 +10,12 @@
 
 
 ## 版本新特性  
+## 2.1.0 | 2017.4.6
+增加获取评论接口以及对应单元测试,增加更新日志
+
+## 2.0.0 | 2017.4.1
 版本升级到 2.0.增加使用文档,完成项目重构,增加更完善的单元测试,升级 api 到 v2+,支持登录并获取用户信息和创建的歌单,可通过获取音乐 url 接口获取用户歌单里的的音乐,获取每日推荐歌单和每日推荐音乐
+
 
 ## 环境要求
 需要 NodeJS 6.0+ 环境
@@ -30,7 +35,7 @@ $ node app.js
 [文档地址](https://binaryify.github.io/NeteaseCloudMusicApi)
 
 ## 更新日志
-[changelog](https://github.com/Binaryify/NeteaseCloudMusicApi/blob/master/CHANGELOG.MD)
+[changelog](https://github.com/Binaryify/NeteaseCloudMusicApi/blob/master/CHANGELOG.MD)  
 ## 单元测试
 
 ``` shell
