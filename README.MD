@@ -36,11 +36,12 @@ $ node app.js
 
 ## 更新日志
 [changelog](https://github.com/Binaryify/NeteaseCloudMusicApi/blob/master/CHANGELOG.MD)  
+
 ## 单元测试
 
 ``` shell
 $ npm test
-```
+```  
 
 ![单元测试](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/screenshot1.png)
 ![单元测试](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/screenshot2.png)
