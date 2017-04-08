@@ -6,7 +6,7 @@ router.get("/", (req, res) => {
   const rid=req.query.id
   const cookie = req.get('Cookie') ? req.get('Cookie') : ''
   const data = {
-    "offset": 0,
+    "offset": req.query.offset || 0,
     "rid": rid,
     "limit": req.query.limit || 20,
     "csrf_token": ""
