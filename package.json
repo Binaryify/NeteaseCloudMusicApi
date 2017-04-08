@@ -1,6 +1,6 @@
 {
   "name": "NeteaseCloudMusicApi",
-  "version": "2.1.3",
+  "version": "2.1.5",
   "description": "",
   "scripts": {
     "start": "node app.js",
