@@ -2,6 +2,7 @@ const assert = require('assert')
 const crypto = require('crypto')
 const { createWebAPIRequest } = require("../util/util")
 
+console.log("第一次登陆需要替换这里的账号密码")
 
 describe('测试登录是否正常', () => {
   it('手机登录 code 应该等于200', done => {
