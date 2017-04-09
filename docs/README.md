@@ -78,7 +78,7 @@ $ node app.js
 `id` : 歌单 id  
 
 **接口地址:**  
-`playlist/detail`  
+`/playlist/detail`  
 
 **调用例子:**  
 `/playlist/detail?id=24381616`  
@@ -93,10 +93,10 @@ $ node app.js
 `id` : 音乐 id  
 
 **接口地址:**  
-`playlist/detail`  
+`/music/url`  
 
 **调用例子:**  
-`/playlist/detail?id=24381616`  
+`/music/url?id=347230`  
 
 返回数据如下图:  
 ![音乐 url](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E9%9F%B3%E4%B9%90%20url.png)
