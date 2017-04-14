@@ -8,7 +8,7 @@
 [darknessomi/musicbox](https://github.com/darknessomi/musicbox)
 
 ## 工作原理
-跨站请求伪造 CSRF, 伪造请求头,调用官方 API
+跨站请求伪造 (CSRF), 伪造请求头,调用官方 API
 
 ## 版本新特性  
 Version 2.2.0  
