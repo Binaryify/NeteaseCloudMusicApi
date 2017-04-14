@@ -14,7 +14,7 @@
 [darknessomi/musicbox](https://github.com/darknessomi/musicbox)
 
 ## 版本新特性  
-### 2.2.0 |2017.4.14
+### 2.2.0 | 2017.4.14
 增加私人 FM, 喜欢歌曲,垃圾桶,每日签到等接口,更新文档
 
 ### 2.1.0 | 2017.4.6
