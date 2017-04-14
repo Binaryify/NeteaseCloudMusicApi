@@ -4,7 +4,24 @@
 
 
 ## 版本新特性  
-版本升级到 2.0 .增加使用文档,完成项目重构,增加更完善的单元测试,升级 api 到 v2+,支持登录并获取用户信息和创建的歌单,可通过获取音乐 url 接口获取用户歌单里的的音乐,获取每日推荐歌单和每日推荐音乐
+Version 2.2.0  
+新增喜欢歌曲,私人 FM, 垃圾桶,签到等接口
+
+## 功能特性
+1. 登录
+2. 获取用户歌单
+3. 获取歌曲详情
+4. 获取音乐 url
+5. 搜索音乐
+6. 获取歌词
+7. 获取评论
+8. 获取歌手专辑
+9. 获取每日推荐歌单
+10. 获取每日推荐歌曲
+11. 喜欢歌曲
+12. 私人FM
+13. 把私人 FM 的歌曲移动至垃圾桶
+14. 签到
 
 ## 安装  
 ``` shell
@@ -51,7 +68,7 @@ $ node app.js
 ![登录](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E7%99%BB%E5%BD%95.png)
 
 
-完成登录后,会在浏览器保存一个 cookie 用作登录凭证, 除了搜索的音乐和歌词,以及获取音乐 url 都需要用到这个 cookie  
+完成登录后,会在浏览器保存一个 Cookies 用作登录凭证,大部分 API 都需要用到这个 Cookies
 
 #### 注意
 调用登录接口的速度比调用其他接口慢,因为登录过程调用了加密算法
@@ -203,6 +220,78 @@ $ node app.js
 
 返回数据如下图: 
 ![搜索音乐](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%8E%A8%E8%8D%90%E6%AD%8C%E6%9B%B2.png)
+
+
+### 私人 FM
+说明:私人 FM( 需要登录)  
+
+**接口地址:**  
+`/personal_fm`  
+
+**调用例子:**  
+`/personal_fm`  
+
+返回数据如下图: 
+
+![私人 FM](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/personal_fm.png)
+
+### 签到
+说明:调用此接口,传入签到类型(可不传,默认安卓端签到),可签到(需要登录),其中安卓端签到可获得3点经验, web/PC 端签到可获得2点经验  
+**可选参数:**   
+`type`:  签到类型,默认 0, 其中 0 为安卓端签到,1为 web/PC 签到  
+
+**接口地址:**  
+`/daily_signin`  
+
+**调用例子:**  
+`/daily_signin`  
+
+返回数据如下图: 
+
+![签到成功](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/signinSuccess)
+
+![签到失败](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/signinError.png)
+
+
+### 喜欢音乐
+说明:调用此接口,传入音乐 id, 可喜欢该音乐 
+**必选参数:**   
+` id`:   歌曲 id  
+
+**可选参数:**   
+` like`:    布尔值,默认为 true 即喜欢,若传 false, 则取消喜欢  
+
+**接口地址:**  
+`/like`  
+
+**调用例子:**  
+`/like?id=347230`  
+
+返回数据如下图: 
+
+![喜欢成功](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/like.png)
+
+![喜欢成功截图](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/likeSuccess.png)
+
+喜欢成功则返回数据的 code 为200,其余为失败
+
+### 垃圾桶
+说明:调用此接口,传入音乐 id, 可把该音乐从私人 FM中移除至垃圾桶
+
+**必选参数:**   
+` id`:   歌曲 id 
+
+**接口地址:**  
+`/fm_trash`  
+
+**调用例子:**  
+`/fm_trash?id=347230`  
+
+返回数据如下图: 
+
+![移除成功](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/fm_trash.png)
+
+
 
 ## 离线访问此文档
 此文档同时也是 Progressive Web Apps(PWA), 加入了serviceWorker,可离线访问
