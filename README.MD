@@ -52,8 +52,9 @@ $ node app.js
 ```
 
 ## 使用文档
-
 [文档地址](https://binaryify.github.io/NeteaseCloudMusicApi)
+
+![文档](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/docs.png)
 
 ## 更新日志
 [changelog](https://github.com/Binaryify/NeteaseCloudMusicApi/blob/master/CHANGELOG.MD)  
