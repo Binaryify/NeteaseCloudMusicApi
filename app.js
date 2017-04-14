@@ -27,13 +27,28 @@ app.use('/user/playlist', require('./router/userPlaylist'))
 // 获取歌单内列表
 app.use('/playlist/detail', require('./router/playlistDetail'))
 
+//不明 api
 app.use('/playlist/tracks', require('./router/playlistTracks'))
+
 // 获取音乐 url
 app.use('/music/url', require('./router/musicUrl'))
+
 // 搜歌
 app.use('/search', require('.//router/search'))
 
 app.use('/log/web', require('./router/logWeb'))
+
+// 私人 FM
+app.use("/personal_fm",require("./router/personal_fm"))
+
+// 喜欢歌曲
+app.use("/like",require("./router/like"))
+
+//签到
+app.use("/daily_signin",require("./router/daily_signin"))
+
+//垃圾桶
+app.use("/fm_trash",require("./router/fm_trash"))
 
 process.on('SIGHUP', () => {
   console.log('server: bye bye')
