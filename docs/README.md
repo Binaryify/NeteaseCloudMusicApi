@@ -271,9 +271,11 @@ $ node app.js
 
 ![喜欢成功](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/like.png)
 
+喜欢成功则返回数据的 code 为200,其余为失败
+
 ![喜欢成功截图](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/likeSuccess.png)
 
-喜欢成功则返回数据的 code 为200,其余为失败
+
 
 ### 垃圾桶
 说明:调用此接口,传入音乐 id, 可把该音乐从私人 FM中移除至垃圾桶
