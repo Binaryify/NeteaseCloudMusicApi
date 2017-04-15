@@ -7,6 +7,7 @@ app.use('/login/cellphone', require('./router/loginCellphone'))
 
 //邮箱登录
 app.use('/login', require('./router/login'))
+
 //获取评论
 app.use('/comment', require('./router/comment'))
 
@@ -49,6 +50,9 @@ app.use("/daily_signin",require("./router/daily_signin"))
 
 //垃圾桶
 app.use("/fm_trash",require("./router/fm_trash"))
+
+//排行榜
+app.use("/top_list",require("./router/top_list"))
 
 process.on('SIGHUP', () => {
   console.log('server: bye bye')
