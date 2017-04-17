@@ -11,7 +11,7 @@
 跨站请求伪造 (CSRF), 伪造请求头,调用官方 API
 
 ## 版本新特性  
-version 2.3.0
+Version 2.3.0
 增加排行榜接口
 
 Version 2.2.0  
