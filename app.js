@@ -20,8 +20,15 @@ app.use('/recommend/resource', require('./router/recommendResource'))
 // 获取歌词
 app.use('/lyric', require('./router/lyric'))
 
-// 获取专辑
+// 获取专辑内容
 app.use('/album', require('./router/album'))
+
+// 获取歌手单曲
+app.use('/artists', require('./router/artists'))
+
+
+// 获取歌手专辑列表
+app.use('/artist_album', require('./router/artist_album'))
 
 // 歌单（网友精选碟） hot||new http://music.163.com/#/discover/playlist/
 app.use('/top_playlist', require('./router/top_playlist'))
@@ -70,9 +77,6 @@ app.use("/top_list",require("./router/top_list"))
 
 //mv
 app.use("/mv",require("./router/mv"))
-
-//播放mv
-app.use("/play_mv",require("./router/play_mv"))
 
 process.on('SIGHUP', () => {
   console.log('server: bye bye')
