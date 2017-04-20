@@ -68,6 +68,12 @@ app.use("/fm_trash",require("./router/fm_trash"))
 //排行榜
 app.use("/top_list",require("./router/top_list"))
 
+//mv
+app.use("/mv",require("./router/mv"))
+
+//播放mv
+app.use("/play_mv",require("./router/play_mv"))
+
 process.on('SIGHUP', () => {
   console.log('server: bye bye')
   process.exit()

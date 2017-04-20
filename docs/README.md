@@ -43,6 +43,7 @@ Version 2.2.0
 17. 歌单（网友精选碟)
 18. 新碟上架 
 19. 热门歌手
+20. mv
 
 ## 安装  
 ``` shell
@@ -228,11 +229,11 @@ $ set PORT=4000 && node app.js
 ![获取歌曲详情](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/songDetail.png)
 
 
-### 获取歌手专辑列表
-说明:调用此接口,传入歌手 id,可获得歌手专辑列表  
+### 获取专辑内容
+说明:调用此接口,传入id,可获得专辑内容
 
 **必选参数:**  
-`id`: 歌手 id 
+`id`: id 
 
 **接口地址:**  
 `/album`  
@@ -363,7 +364,7 @@ $ set PORT=4000 && node app.js
 ![精选碟](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/top_playlist.png)
 
 ### 新碟上架
-说明:调用此接口,可获取新碟上架数据   
+说明:调用此接口,可获取新碟上架列表,如需具体音乐信息需要调用获取专辑列表接口 `/album` ,然后传入 id, 如 `album?id=32311&limit=30`     
  
 **可选参数:**  
 `limit`: 取出数量,默认为50  
@@ -397,6 +398,22 @@ $ set PORT=4000 && node app.js
 返回数据如下图: 
 
 ![热门歌手](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/top_artists.png)
+
+### mv
+说明:调用此接口,传入 mvid ,可获取对应 MV 数据  
+ 
+**可选参数:**  
+`mvid`: mv 的 id
+
+**接口地址:**  
+`/mv`  
+
+**调用例子:**  
+`/mv?mvid=5436712`  
+
+返回数据如下图: 
+
+![热门歌手](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/mv.png)
 
 ### 排行榜
 说明:调用此接口,传入数字 idx, 可获取不同排行榜
