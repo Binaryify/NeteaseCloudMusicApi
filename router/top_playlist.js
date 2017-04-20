@@ -4,15 +4,17 @@ const { createWebAPIRequest } = require("../util/util")
 
 router.get("/", (req, res) => {
   const cookie = req.get('Cookie') ? req.get('Cookie') : ''
+  // order可为 'hot' 可为 'new'
   const data = {
-    "csrf_token": ""
+    cat: req.query.cat || "全部",
+    order: req.query.order || "hot",
+    offset: req.query.offset || 0,
+    total: req.query.offset ? 'true' : 'false',
+    limit: req.query.limit || 50
   }
-  const songid = req.query.id
-  const alg = "RT"
-  const time = req.query.time || 25
   createWebAPIRequest(
     'music.163.com',
-    `/api/radio/trash/add?alg=${alg}&songId=${songid}&time=${time}`,
+    '/api/playlist/list',
     'POST',
     data,
     cookie,
@@ -20,7 +22,5 @@ router.get("/", (req, res) => {
     err => res.status(502).send('fetch error')
   )
 })
-
-
 
 module.exports = router

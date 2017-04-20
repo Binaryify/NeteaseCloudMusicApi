@@ -3,8 +3,9 @@ const router = express()
 const { createRequest } = require("../util/util")
 
 router.get("/", (req, res) => {
-  const ids = req.query.ids
-  createRequest(`/api/song/detail?ids=%5B${ids}%5D`, 'GET', null)
+  const offset = req.query.offset || 0
+  const limit = req.query.limit || 50
+  createRequest(`/api/artist/top?offset=${offset}&total=false&limit=${limit}`, 'GET', null)
     .then(result => {
       res.setHeader("Content-Type", "application/json")
       res.send(result)
