@@ -11,6 +11,9 @@
 跨站请求伪造 (CSRF), 伪造请求头,调用官方 API
 
 ## 版本新特性  
+Version 2.4.0  
+增加歌单（网友精选碟),新碟上架,热门歌手等接口,更新文档  
+
 Version 2.3.4  
 增加歌曲详情接口,更新文档
 
@@ -37,6 +40,9 @@ Version 2.2.0
 14. 签到
 15. 各排行榜
 16. 歌曲详情
+17. 歌单（网友精选碟)
+18. 新碟上架 
+19. 热门歌手
 
 ## 安装  
 ``` shell
@@ -159,7 +165,7 @@ $ set PORT=4000 && node app.js
 1000: 歌单  
 1002: 用户  
  
-`offset` : 偏移数量，用于分页,如:  如:(评论页数-1)*30, 其中 30 为 limit 的值  
+`offset` : 偏移数量，用于分页,如:  如:(评论页数-1)*30, 其中 30 为 limit 的值,默认为0   
 
 **接口地址:**  
 `/search`  
@@ -299,10 +305,10 @@ $ set PORT=4000 && node app.js
 ### 喜欢音乐
 说明:调用此接口,传入音乐 id, 可喜欢该音乐 
 **必选参数:**   
-` id`:   歌曲 id  
+`id`:   歌曲 id  
 
 **可选参数:**   
-` like`:    布尔值,默认为 true 即喜欢,若传 false, 则取消喜欢  
+`like`: 布尔值,默认为 true 即喜欢,若传 false, 则取消喜欢  
 
 **接口地址:**  
 `/like`  
@@ -324,7 +330,7 @@ $ set PORT=4000 && node app.js
 说明:调用此接口,传入音乐 id, 可把该音乐从私人 FM中移除至垃圾桶
 
 **必选参数:**   
-` id`:   歌曲 id 
+`id`:   歌曲 id 
 
 **接口地址:**  
 `/fm_trash`  
@@ -336,11 +342,67 @@ $ set PORT=4000 && node app.js
 
 ![移除成功](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/fm_trash.png)
 
+### 歌单(网友精选碟)
+说明:调用此接口,可获取网友精选碟歌单  
+
+**可选参数:**  
+`limit`: 取出数量,默认为50  
+
+`offset`: 偏移数量,用于分页,如:(评论页数-1)*20, 其中 20 为 limit 的值,默认为0 
+
+`order`: 可选值为 'new' 和 'hot',分别对应最新和最热,默认为 'hot'
+
+**接口地址:**  
+`/top_playlist`  
+
+**调用例子:**  
+`/top_playlist?limit=10&order=new`  
+
+返回数据如下图: 
+
+![精选碟](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/top_playlist.png)
+
+### 新碟上架
+说明:调用此接口,可获取新碟上架数据   
+ 
+**可选参数:**  
+`limit`: 取出数量,默认为50  
+
+`offset`: 偏移数量,用于分页,如:(评论页数-1)*50, 其中 50 为 limit 的值,默认为0  
+
+**接口地址:**  
+`/new_albums`  
+
+**调用例子:**  
+`/new_albums?offset=0&limit=30`  
+
+返回数据如下图: 
+
+![新碟上架](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/new_albums.png)
+
+### 热门歌手
+说明:调用此接口,可获取热门歌手数据 
+ 
+**可选参数:**  
+`limit`: 取出数量,默认为50  
+
+`offset`: 偏移数量,用于分页,如:(评论页数-1)*50, 其中 50 为 limit 的值,默认为0  
+
+**接口地址:**  
+`/top_artists`  
+
+**调用例子:**  
+`/top_artists?offset=0&limit=30`  
+
+返回数据如下图: 
+
+![热门歌手](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/top_artists.png)
+
 ### 排行榜
 说明:调用此接口,传入数字 idx, 可获取不同排行榜
 
 **必选参数:**   
-` idx`:  对象 key, 对应以下排行榜  
+`idx`:  对象 key, 对应以下排行榜  
 
 ```
 "0": 云音乐新歌榜,   

@@ -23,7 +23,16 @@ app.use('/lyric', require('./router/lyric'))
 // 获取专辑
 app.use('/album', require('./router/album'))
 
-// 获取歌单
+// 歌单（网友精选碟） hot||new http://music.163.com/#/discover/playlist/
+app.use('/top_playlist', require('./router/top_playlist'))
+
+// 新碟上架 http://music.163.com/#/discover/album/
+app.use('/new_albums', require('./router/new_albums'))
+
+// 热门歌手 http://music.163.com/#/discover/artist/
+app.use('/top_artists', require('./router/top_artists'))
+
+// 获取用户歌单
 app.use('/user/playlist', require('./router/userPlaylist'))
 
 // 获取歌单内列表
