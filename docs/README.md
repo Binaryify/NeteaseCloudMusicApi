@@ -406,7 +406,7 @@ $ set PORT=4000 && node app.js
 ![精选碟](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/top_playlist.png)
 
 ### 新碟上架
-说明:调用此接口,可获取新碟上架列表,如需具体音乐信息需要调用获取专辑列表接口 `/album` ,然后传入 id, 如 `album?id=32311&limit=30`     
+说明:调用此接口,可获取新碟上架列表,如需具体音乐信息需要调用获取专辑列表接口 `/album` ,然后传入 id, 如 `/album?id=32311&limit=30`     
  
 **可选参数:**  
 `limit`: 取出数量,默认为50  
