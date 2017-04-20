@@ -31,7 +31,7 @@ Version 2.2.0
 5. 搜索音乐
 6. 获取歌词
 7. 获取评论
-8. 获取歌手专辑
+8. 获取专辑内容
 9. 获取每日推荐歌单
 10. 获取每日推荐歌曲
 11. 喜欢歌曲
@@ -43,7 +43,9 @@ Version 2.2.0
 17. 歌单（网友精选碟)
 18. 新碟上架 
 19. 热门歌手
-20. mv
+20. mv(可获得 mv 地址,不过暂时还没解决 mv 的防盗链问题)
+21. 获取歌手专辑
+22. 获取歌手单曲
 
 ## 安装  
 ``` shell
@@ -151,8 +153,8 @@ $ set PORT=4000 && node app.js
 返回数据如下图:  
 ![音乐 url](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E9%9F%B3%E4%B9%90%20url.png)
 
-### 搜索音乐
-说明:调用此接口,传入搜索关键词可以搜索该音乐,关键词可以多个,以空格隔开,如"周杰伦 搁浅"(不需要登录)  
+### 搜索
+说明:调用此接口,传入搜索关键词可以搜索该音乐/专辑/歌手/歌单/用户,关键词可以多个,以空格隔开,如"周杰伦 搁浅"(不需要登录)  
 
 **必选参数:**  
 `keywords` : 关键词  
@@ -190,7 +192,7 @@ $ set PORT=4000 && node app.js
 `/lyric?id=347230`  
 
 返回数据如下图: 
-![搜索音乐](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%AD%8C%E8%AF%8D.png)
+![获取歌词](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%AD%8C%E8%AF%8D.png)
 
 ### 获取评论
 说明:调用此接口,传入歌音乐 id和 limit 参数, 可获得该音乐的所有评论(不需要登录)  
@@ -239,13 +241,40 @@ $ set PORT=4000 && node app.js
 `/album`  
 
 **调用例子:**  
-`album?id=32311`  
+`/album?id=32311`  
 
 返回数据如下图: 
-![获取专辑](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E4%B8%93%E8%BE%91.png)
+![获取专辑内容](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E4%B8%93%E8%BE%91.png)
 
+### 获取歌手单曲
+说明:调用此接口,传入歌手id,可获得歌手单曲
 
+**必选参数:**  
+`id`: 歌手id,可由搜索接口获得 
 
+**接口地址:**  
+`/artists`  
+
+**调用例子:**  
+`/artists?id=6452`  
+
+返回数据如下图: 
+![获取歌手单曲](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/artists.png)
+
+### 获取歌手专辑
+说明:调用此接口,传入歌手 id,可获得歌手专辑内容
+
+**必选参数:**  
+`id`: 歌手id 
+
+**接口地址:**  
+`/artist_album`  
+
+**调用例子:**  
+`/artist_album?id=6452&limit=30`  
+
+返回数据如下图: 
+![获取专辑内容](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/artist_album.png)
 
 ### 获取每日推荐歌单
 说明:调用此接口,可获得每日推荐歌单(需要登录)  
@@ -257,7 +286,7 @@ $ set PORT=4000 && node app.js
 `/recommend/resource`  
 
 返回数据如下图: 
-![搜索音乐](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%8E%A8%E8%8D%90%E6%AD%8C%E5%8D%95.png)
+![每日推荐歌单](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%8E%A8%E8%8D%90%E6%AD%8C%E5%8D%95.png)
 
 ### 获取每日推荐歌曲
 说明:调用此接口,可获得每日推荐歌曲(需要登录)  
@@ -269,7 +298,7 @@ $ set PORT=4000 && node app.js
 `/recommend/songs`  
 
 返回数据如下图: 
-![搜索音乐](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%8E%A8%E8%8D%90%E6%AD%8C%E6%9B%B2.png)
+![每日推荐歌曲](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%8E%A8%E8%8D%90%E6%AD%8C%E6%9B%B2.png)
 
 
 ### 私人 FM
