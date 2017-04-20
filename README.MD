@@ -14,6 +14,9 @@
 [darknessomi/musicbox](https://github.com/darknessomi/musicbox)
 
 ## 版本新特性  
+### 2.4.5 | 2017.4.20
+增加歌手专辑,歌手单曲等接口,修复/album 接口描述错误,更新文档
+
 ### 2.4.0 | 2017.4.20
 增加歌单（网友精选碟),新碟上架,热门歌手等接口,更新文档
 
