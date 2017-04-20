@@ -13,6 +13,7 @@ app.use('/comment', require('./router/comment'))
 
 // 获取每日推荐歌曲
 app.use('/recommend/songs', require('./router/recommendSongs'))
+
 // 获取每日推荐歌单
 app.use('/recommend/resource', require('./router/recommendResource'))
 
@@ -37,6 +38,10 @@ app.use('/music/url', require('./router/musicUrl'))
 // 搜歌
 app.use('/search', require('.//router/search'))
 
+// 获取音乐详情
+app.use('/music/songDetail', require('./router/songDetail'))
+
+// 不明 api
 app.use('/log/web', require('./router/logWeb'))
 
 // 私人 FM

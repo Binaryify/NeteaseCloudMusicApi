@@ -33,6 +33,7 @@ Version 2.2.0
 13. 把私人 FM 的歌曲移动至垃圾桶
 14. 签到
 15. 各排行榜
+16. 歌曲详情
 
 ## 安装  
 ``` shell
@@ -200,6 +201,23 @@ $ set PORT=4000 && node app.js
 
 返回数据如下图: 
 ![获取评论](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/comment.png)
+
+
+### 获取歌曲详情
+说明:调用此接口,传入音乐 id, 可获得歌曲详情    
+
+**必选参数:**  
+`ids`: 音乐 id,可多个,如 `ids=347230` 或者 `ids=347230,347231`
+
+**接口地址:**  
+`/music/songDetail`  
+
+**调用例子:**  
+`/music/songDetail?ids=347230`  
+
+返回数据如下图: 
+![获取歌曲详情](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/songDetail.png)
+
 
 ### 获取歌手专辑列表
 说明:调用此接口,传入歌手 id,可获得歌手专辑列表  
