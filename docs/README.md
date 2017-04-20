@@ -259,7 +259,7 @@ $ set PORT=4000 && node app.js
 ![获取专辑内容](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E4%B8%93%E8%BE%91.png)
 
 ### 获取歌手单曲
-说明:调用此接口,传入歌手id,可获得歌手单曲
+说明:调用此接口,传入歌手 id,可获得歌手单曲
 
 **必选参数:**  
 `id`: 歌手id,可由搜索接口获得 
