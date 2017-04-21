@@ -11,8 +11,8 @@
 跨站请求伪造 (CSRF), 伪造请求头,调用官方 API
 
 ## 版本新特性  
-### 2.4.5 | 2017.4.20
-增加歌手专辑,歌手单曲等接口,修复/album 接口描述错误,更新文档
+### 2.4.6 | 2017.4.21
+增加播放 mv 接口,更新文档
 
 ## 功能特性
 1. 登录
@@ -34,9 +34,10 @@
 17. 歌单（网友精选碟)
 18. 新碟上架 
 19. 热门歌手
-20. mv(可获得 mv 地址,不过暂时还没解决 mv 的防盗链问题)
-21. 获取歌手专辑
-22. 获取歌手单曲
+20. 获取 mv 信息
+21. 播放 mv
+22. 获取歌手专辑
+23. 获取歌手单曲
 
 ## 安装  
 ``` shell
@@ -421,7 +422,7 @@ $ set PORT=4000 && node app.js
 ![热门歌手](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/top_artists.png)
 
 ### mv
-说明:调用此接口,传入 mvid ,可获取对应 MV 数据  
+说明:调用此接口,传入 mvid ,可获取对应 MV 数据,数据包含 mv 名字,歌手,发布时间, mv 视频地址等数据,其中 mv 视频网易做了防盗链处理,不能直接播放,需要播放的话需要调用'播放 mv' 接口  
  
 **可选参数:**  
 `mvid`: mv 的 id
@@ -435,6 +436,24 @@ $ set PORT=4000 && node app.js
 返回数据如下图: 
 
 ![热门歌手](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/mv.png)
+
+
+### 播放 mv
+说明:调用此接口,mv 地址,可播放 mv,由于使用了 'pipe',进度条无法通过拖动进度条控制进度,如有解决方案可提出 PR 或者自行改造  
+ 
+**可选参数:**  
+`/url`: mv 的 地址
+
+**接口地址:**  
+`/play_mv`  
+
+**调用例子:**  
+`/play_mv?url=http://v4.music.126.net/20170422034915/c98eab2f5e2c85fc8de2ab3f0f8ed1c6/web/cloudmusic/MjQ3NDQ3MjUw/89a6a279dc2acfcd068b45ce72b1f560/533e4183a709699d566180ed0cd9abe9.mp4`  
+
+如下图: 
+
+![播放视频](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/play_mv.png)
+
 
 ### 排行榜
 说明:调用此接口,传入数字 idx, 可获取不同排行榜
