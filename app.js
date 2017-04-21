@@ -26,7 +26,6 @@ app.use('/album', require('./router/album'))
 // 获取歌手单曲
 app.use('/artists', require('./router/artists'))
 
-
 // 获取歌手专辑列表
 app.use('/artist_album', require('./router/artist_album'))
 
@@ -51,8 +50,8 @@ app.use('/playlist/tracks', require('./router/playlistTracks'))
 // 获取音乐 url
 app.use('/music/url', require('./router/musicUrl'))
 
-// 搜歌
-app.use('/search', require('.//router/search'))
+// 搜索
+app.use('/search', require('./router/search'))
 
 // 获取音乐详情
 app.use('/music/songDetail', require('./router/songDetail'))
