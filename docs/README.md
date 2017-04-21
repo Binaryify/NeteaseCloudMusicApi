@@ -159,6 +159,7 @@ $ set PORT=4000 && node app.js
 100: 歌手  
 1000: 歌单  
 1002: 用户  
+1004: MV
  
 `offset` : 偏移数量，用于分页,如:  如:(评论页数-1)*30, 其中 30 为 limit 的值,默认为0   
 
@@ -422,7 +423,7 @@ $ set PORT=4000 && node app.js
 ![热门歌手](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/top_artists.png)
 
 ### mv
-说明:调用此接口,传入 mvid(在搜索音乐的时候获得,不一定有) ,可获取对应 MV 数据,数据包含 mv 名字,歌手,发布时间, mv 视频地址等数据,其中 mv 视频网易做了防盗链处理,不能直接播放,需要播放的话需要调用'播放 mv' 接口  
+说明:调用此接口,传入 mvid(在搜索音乐的时候传 type=1004获得) ,可获取对应 MV 数据,数据包含 mv 名字,歌手,发布时间, mv 视频地址等数据,其中 mv 视频网易做了防盗链处理,不能直接播放,需要播放的话需要调用'播放 mv' 接口  
  
 **可选参数:**  
 `mvid`: mv 的 id
