@@ -21,12 +21,12 @@ router.get("/", (req, res) => {
     'POST',
     data,
     cookie,
-     music_req=> {
+    music_req => {
       console.log(music_req)
       detail = music_req
       mergeRes()
     },
-     err =>{
+    err => {
       res.status(502).send('fetch error')
     }
   )
