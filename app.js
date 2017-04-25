@@ -2,6 +2,20 @@ const express = require('express')
 const http = require('http')
 const app = express()
 
+app.all('*', function(req, res, next) {
+    res.header("Access-Control-Allow-Credentials",true);
+    res.header("Access-Control-Allow-Origin", "http://localhost:8080");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+    res.header("X-Powered-By",'Express')
+    res.header("Connection","keep-alive")
+    res.header("Content-Type", "application/json;charset=utf-8");
+
+
+    next();
+});
+
+
 //手机登录
 app.use('/login/cellphone', require('./router/loginCellphone'))
 
@@ -53,6 +67,10 @@ app.use("/fm_trash",require("./router/fm_trash"))
 
 //排行榜
 app.use("/top_list",require("./router/top_list"))
+
+app.use('/weblog',require("./router/weblog"));
+
+app.use('/checkMusic',require("./router/checkMusic"));
 
 process.on('SIGHUP', () => {
   console.log('server: bye bye')
