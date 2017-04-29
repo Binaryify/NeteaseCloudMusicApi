@@ -1,3 +1,4 @@
+// 签到
 const express = require("express")
 const router = express()
 const { createWebAPIRequest } = require("../util/util")
@@ -12,7 +13,7 @@ router.get("/", (req, res) => {
   // 'android': {'code': 301}, 'web': {'code': 301}}
 
   let type = req.query.type || 0  //0为安卓端签到 3点经验,1为网页签到,2点经验
-  const action = `http://music.163.com/weapi/point/dailyTask?type=${type}`
+  const action = `/weapi/point/dailyTask?type=${type}`
   createWebAPIRequest(
     'music.163.com',
     action,

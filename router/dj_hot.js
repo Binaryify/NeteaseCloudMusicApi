@@ -1,26 +1,29 @@
-//分类歌单
 const express = require("express")
 const router = express()
 const { createWebAPIRequest } = require("../util/util")
 
 router.get("/", (req, res) => {
   const cookie = req.get('Cookie') ? req.get('Cookie') : ''
-  // order可为 'hot' 可为 'new'
   const data = {
-    cat: req.query.cat || "全部",
-    order: req.query.order || "hot",
-    offset: req.query.offset || 0,
-    total: req.query.total ? 'true' : 'false',
-    limit: req.query.limit || 50
+    'cat': req.query.type,
+    cateId: req.query.type,
+    type: req.query.type,
+    categoryId: req.query.type,
+    category: req.query.type,
+    limit: req.query.limit,
+    offset: req.query.offset,
+    "csrf_token": ""
   }
   createWebAPIRequest(
     'music.163.com',
-    '/weapi/playlist/list',
+    '/weapi/djradio/hot/v1',
     'POST',
     data,
     cookie,
     music_req => {
       res.send(music_req)
+      console.log(Object.keys(JSON.parse(music_req)))
+      console.log(JSON.parse(music_req).comments.length)//100
     },
     err => res.status(502).send('fetch error')
   )

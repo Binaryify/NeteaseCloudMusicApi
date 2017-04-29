@@ -3,21 +3,26 @@ const router = express()
 const { createWebAPIRequest } = require("../util/util")
 
 router.get("/", (req, res) => {
-  const cookie = req.get('Cookie') ? req.get('Cookie') : ''
   const data = {
-    "csrf_token": ""
+    "userId": req.query.uid,
+		"csrf_token": ""
   }
-  const id = req.query.id
+  console.log(data)
+  const cookie = req.get('Cookie') ? req.get('Cookie') : ''
+
   createWebAPIRequest(
     'music.163.com',
-    `/weapi/v1/album/${id}`,
+    '/weapi/djradio/get/byuser',
     'POST',
     data,
     cookie,
     music_req => {
+      res.setHeader("Content-Type", "application/json")
       res.send(music_req)
     },
-    err => res.status(502).send('fetch error')
+    err => {
+      res.status(502).send('fetch error')
+    }
   )
 })
 

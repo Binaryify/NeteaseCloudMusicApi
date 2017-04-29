@@ -3,9 +3,7 @@ const router = express()
 const { createRequest } = require("../util/util")
 
 router.get("/", (req, res) => {
-  const offset = req.query.offset || 0
-  const limit = req.query.limit || 50
-  createRequest(`/api/album/new?area=ALL&offset=${offset}&total=true&limit=${limit}`, 'GET', null)
+  createRequest('/api/v2/banner/get', 'GET', null)
     .then(result => {
       res.setHeader("Content-Type", "application/json")
       res.send(result)

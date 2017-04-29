@@ -4,13 +4,14 @@ const { createWebAPIRequest } = require("../util/util")
 
 router.get("/", (req, res) => {
   const cookie = req.get('Cookie') ? req.get('Cookie') : ''
+  const id = req.query.id
   const data = {
-    "csrf_token": "",
+   artistid:id,
+    "csrf_token": ""
   }
-
   createWebAPIRequest(
     'music.163.com',
-    '/weapi/feedback/weblog',
+    `/weapi/discovery/simiArtist`,
     'POST',
     data,
     cookie,
@@ -18,7 +19,6 @@ router.get("/", (req, res) => {
     err => res.status(502).send('fetch error')
   )
 })
-
 
 
 module.exports = router

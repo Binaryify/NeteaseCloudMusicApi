@@ -5,20 +5,22 @@ const { createWebAPIRequest } = require("../util/util")
 router.get("/", (req, res) => {
   const cookie = req.get('Cookie') ? req.get('Cookie') : ''
   const data = {
-    "csrf_token": "",
+    songid: req.query.id,
+    offset: req.query.offset || 0,
+    limit: req.query.limit || 50
   }
-
   createWebAPIRequest(
     'music.163.com',
-    '/weapi/feedback/weblog',
+    '/weapi/v1/discovery/simiSong',
     'POST',
     data,
     cookie,
-    music_req => res.send(music_req),
+    music_req => {
+      res.send(music_req)
+      // console.log(JSON.parse(music_req).playlists.length)
+    },
     err => res.status(502).send('fetch error')
   )
 })
-
-
 
 module.exports = router
