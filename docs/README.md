@@ -477,7 +477,7 @@ $ set PORT=4000 && node app.js
 说明:调用此接口,可获取 banner(轮播图)数据   
 注:因参数未知,只能获取比较旧的数据,如果有知道参数的小伙伴,可提交 PR
 
-**接口地址:**
+**接口地址:**  
 `/banner`  
 
 **调用例子:**  
@@ -740,10 +740,10 @@ $ set PORT=4000 && node app.js
 `order`: 可选值为 'new' 和 'hot',分别对应最新和最热,默认为 'hot'
 
 **接口地址:**  
-`/top_playlist`  
+`/top/playlist`  
 
 **调用例子:**  
-`/top_playlist?limit=10&order=new`  
+`/top/playlist?limit=10&order=new`  
 
 返回数据如下图: 
 
@@ -776,10 +776,10 @@ $ set PORT=4000 && node app.js
 `offset`: 偏移数量,用于分页,如:(页数-1)*50, 其中 50 为 limit 的值,默认为0  
 
 **接口地址:**  
-`/top_artists`  
+`/top/artists`  
 
 **调用例子:**  
-`/top_artists?offset=0&limit=30`  
+`/top/artists?offset=0&limit=30`  
 
 返回数据如下图: 
 
@@ -934,10 +934,10 @@ $ set PORT=4000 && node app.js
 ``` 
 
 **接口地址:**  
-`/top_list`  
+`/top/list`  
 
 **调用例子:**  
-`/top_list?idx=6`  
+`/top/list?idx=6`  
 
 返回数据如下图: 
 
