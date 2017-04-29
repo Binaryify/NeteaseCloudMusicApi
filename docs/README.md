@@ -346,6 +346,20 @@ $ set PORT=4000 && node app.js
 **调用例子:**  
 `/search/suggest?keywords=海阔天空`  
 
+### 收藏单曲到歌单
+说明:调用此接口,传入音乐 id和 limit 参数, 可获得该专辑的所有评论(需要登录)  
+
+**必选参数:**  
+`op`: 从歌单增加单曲为add,删除为 del
+`pid`: 歌单id
+`tracks`: 歌曲id
+
+**接口地址:**  
+`/playlist/tracks`  
+
+**调用例子:**  
+`/playlist/tracks?op=add&pid=24381616&tracks=347230` (对应把'海阔天空'添加到'我'的歌单,测试的时候请把这里的 pid换成你自己的)
+
 
 ### 获取歌词
 说明:调用此接口,传入音乐 id 可获得对应音乐的歌词(不需要登录)  
@@ -373,7 +387,7 @@ $ set PORT=4000 && node app.js
 
 `offset`: 偏移数量,用于分页,如:(评论页数-1)*20, 其中 20 为 limit 的值  
 
-**接口地址:**
+**接口地址:**  
 `/comment/music`  
 
 **调用例子:**  
@@ -382,19 +396,6 @@ $ set PORT=4000 && node app.js
 返回数据如下图: 
 ![获取评论](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/comment.png)
 
-### 收藏单曲到歌单
-说明:调用此接口,传入音乐 id和 limit 参数, 可获得该专辑的所有评论(需要登录)  
-
-**必选参数:**  
-`op`: 从歌单增加单曲为add,删除为 del
-`pid`: 歌单id
-`tracks`: 歌曲id
-
-**接口地址:**
-`/playlist/tracks`  
-
-**调用例子:**  
-`/playlist/tracks?op=add&pid=24381616&tracks=347230` (对应把'海阔天空'添加到'我'的歌单,测试的时候请把这里的 pid换成你自己的)
 
 ### 专辑评论
 说明:调用此接口,传入音乐 id和 limit 参数, 可获得该专辑的所有评论(不需要登录)  
@@ -407,7 +408,7 @@ $ set PORT=4000 && node app.js
 
 `offset`: 偏移数量,用于分页,如:(评论页数-1)*20, 其中 20 为 limit 的值  
 
-**接口地址:**
+**接口地址:**  
 `/comment/album`  
 
 **调用例子:**  
@@ -424,7 +425,7 @@ $ set PORT=4000 && node app.js
 
 `offset`: 偏移数量,用于分页,如:(评论页数-1)*20, 其中 20 为 limit 的值  
 
-**接口地址:**
+**接口地址:**  
 `/comment/playlist`  
 
 **调用例子:**  
@@ -436,12 +437,12 @@ $ set PORT=4000 && node app.js
 **必选参数:**  
 `id`: mv id  
 
-**可选参数:**  
+**可选参数:**   
 `limit`: 取出评论数量,默认为20  
 
 `offset`: 偏移数量,用于分页,如:(评论页数-1)*20, 其中 20 为 limit 的值  
 
-**接口地址:**
+**接口地址:**  
 `/comment/mv`  
 
 **调用例子:**  
@@ -458,7 +459,7 @@ $ set PORT=4000 && node app.js
 
 `offset`: 偏移数量,用于分页,如:(评论页数-1)*20, 其中 20 为 limit 的值  
 
-**接口地址:**
+**接口地址:**  
 `/comment/dj`  
 
 **调用例子:**  
