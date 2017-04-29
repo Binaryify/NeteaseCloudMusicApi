@@ -8,6 +8,7 @@
 [darknessomi/musicbox](https://github.com/darknessomi/musicbox)
 
 [sqaiyan/netmusic-node](https://github.com/sqaiyan/netmusic-node)
+
 ## 工作原理
 跨站请求伪造 (CSRF), 伪造请求头,调用官方 API
 
@@ -100,7 +101,9 @@ $ set PORT=4000 && node app.js
 
 ## 接口文档
 ### 调用前须知
-部分接口如登录接口不能调用太频繁,否则可能会触发503错误或者 ip 高频错误,若需频繁调用,需要准备 IP 代理池
+部分接口如登录接口不能调用太频繁,否则可能会触发503错误或者 ip 高频错误,若需频繁调用,需要准备 IP 代理池.  
+
+本项目仅供学习使用
 
 ### 登录
 说明:登录有两个接口  
