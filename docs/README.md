@@ -259,7 +259,7 @@ $ set PORT=4000 && node app.js
 `offset`: 偏移数量,用于分页,如:(评论页数-1)*20, 其中 20 为 limit 的值 
 
 **接口地址:**  
-`//top/playlist/highquality`  
+`/top/playlist/highquality`  
 
 **调用例子:**  
 `/playlist/detail?id=24381616` 
