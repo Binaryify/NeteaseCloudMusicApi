@@ -2,23 +2,18 @@ const express = require('express')
 const http = require('http')
 const app = express()
 
-//手机登录
-app.use('/login/cellphone', require('./router/loginCellphone'))
+// 跨域设置
+app.all('*', function (req, res, next) {
+  res.header("Access-Control-Allow-Credentials", true)
+  res.header("Access-Control-Allow-Origin", "http://localhost:8080")
+  res.header("Access-Control-Allow-Headers", "X-Requested-With")
+  res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS")
+  res.header("X-Powered-By", ' 3.2.1')
+  res.header("Content-Type", "application/json;charset=utf-8")
+  next()
+})
 
-//邮箱登录
-app.use('/login', require('./router/login'))
 
-//获取评论
-app.use('/comment', require('./router/comment'))
-
-// 获取每日推荐歌曲
-app.use('/recommend/songs', require('./router/recommendSongs'))
-
-// 获取每日推荐歌单
-app.use('/recommend/resource', require('./router/recommendResource'))
-
-// 获取歌词
-app.use('/lyric', require('./router/lyric'))
 
 // 获取专辑内容
 app.use('/album', require('./router/album'))
@@ -27,64 +22,230 @@ app.use('/album', require('./router/album'))
 app.use('/artists', require('./router/artists'))
 
 // 获取歌手专辑列表
-app.use('/artist_album', require('./router/artist_album'))
+app.use('/artist/album', require('./router/artist_album'))
 
-// 歌单（网友精选碟） hot||new http://music.163.com/#/discover/playlist/
-app.use('/top_playlist', require('./router/top_playlist'))
+//艺术家-信息
+app.use("/artist/desc", require("./router/artists_desc"))
 
-// 新碟上架 http://music.163.com/#/discover/album/
-app.use('/new_albums', require('./router/new_albums'))
+//艺术家-mv
+app.use("/artist/mv", require("./router/artists_mv"))
 
-// 热门歌手 http://music.163.com/#/discover/artist/
-app.use('/top_artists', require('./router/top_artists'))
 
-// 获取用户歌单
-app.use('/user/playlist', require('./router/userPlaylist'))
 
-// 获取歌单内列表
-app.use('/playlist/detail', require('./router/playlistDetail'))
+// 获取 banner
+app.use('/banner', require('./router/banner'))
 
-//不明 api
-app.use('/playlist/tracks', require('./router/playlistTracks'))
+app.use('/check/music', require('./router/check_music'))
 
-// 获取音乐 url
-app.use('/music/url', require('./router/musicUrl'))
 
-// 搜索
-app.use('/search', require('./router/search'))
+app.use('/comment/music', require('./router/comment_music'))
 
-// 获取音乐详情
-app.use('/music/songDetail', require('./router/songDetail'))
+app.use('/comment/mv', require('./router/comment_mv'))
+
+
+app.use('/comment/album', require('./router/comment_album'))
+
+app.use('/comment/playlist', require('./router/comment_playlist'))
+
+//未知 api
+app.use('/comment/like', require('./router/comment_like'))
+
+app.use('/comment/dj', require('./router/comment_dj'))
+
+//签到
+app.use("/daily_signin", require("./router/daily_signin"))
+
+//djradio detail
+app.use("/dj/detail", require("./router/dj_detail"))
+
+//dj主播 radio
+app.use("/dj/program", require("./router/dj_program"))
+
+app.use("/dj/program/detail", require("./router/dj_program_detail"))
+
+app.use("/dj/sub", require("./router/dj_sub"))
+
+
+app.use("/dj/catelist", require("./router/dj_catelist"))
+
+app.use("/dj/hot", require("./router/dj_hot"))
+
+// 精选电台
+app.use("/dj/recommend", require("./router/dj_recommend"))
+
+//精选电台-分类电台
+app.use("/dj/recommend/type", require("./router/dj_recommend_type"))
+
+
+
+//垃圾桶
+app.use("/fm_trash", require("./router/fm_trash"))
+
+app.use("/follow", require("./router/follow"))
+
+// 喜欢歌曲
+app.use("/like", require("./router/like"))
+
+app.use("/likelist", require("./router/likelist"))
+
+//手机登录
+app.use('/login/cellphone', require('./router/loginCellphone'))
+
+//邮箱登录
+app.use('/login', require('./router/login'))
+
+//登录刷新
+app.use('/login/refresh', require('./router/login_refresh'))
 
 // 不明 api
 app.use('/log/web', require('./router/logWeb'))
 
-// 私人 FM
-app.use("/personal_fm",require("./router/personal_fm"))
+// 获取歌词
+app.use('/lyric', require('./router/lyric'))
 
-// 喜欢歌曲
-app.use("/like",require("./router/like"))
+// 获取音乐 url
+app.use('/music/url', require('./router/musicUrl'))
 
-//签到
-app.use("/daily_signin",require("./router/daily_signin"))
+//最新 mv
+app.use("/mv/first", require("./router/mv_first"))
 
-//垃圾桶
-app.use("/fm_trash",require("./router/fm_trash"))
-
-//排行榜
-app.use("/top_list",require("./router/top_list"))
+//播放 mv
+app.use("/mv/url", require("./router/mv_url"))
 
 //mv
-app.use("/mv",require("./router/mv"))
+app.use("/mv", require("./router/mv"))
 
-//play_mv
-app.use("/play_mv",require("./router/play_mv"))
+// 私人 FM
+app.use("/personal_fm", require("./router/personal_fm"))
 
-process.on('SIGHUP', () => {
-  console.log('server: bye bye')
-  process.exit()
-})
+//推荐歌单
+app.use("/personalized", require("./router/personalized"))
 
+//推荐dj
+app.use("/personalized/djprogram", require("./router/personalized_djprogram"))
+
+//推荐新音乐
+app.use("/personalized/newsong", require("./router/personalized_newsong"))
+
+//独家放送
+app.use("/personalized/privatecontent", require("./router/personalized_privatecontent"))
+
+//推荐mv
+app.use("/personalized/mv", require("./router/personalized_mv"))
+
+
+
+// 获取歌单内列表
+app.use('/playlist/detail', require('./router/playlist_detail'))
+
+//收藏单曲到歌单,从歌单删除歌曲 op=del,add;pid=歌单id,tracks=歌曲id
+app.use('/playlist/tracks', require('./router/playlist_tracks'))
+
+app.use('/playlist/hot', require('./router/playlist_hot'))
+
+
+app.use('/playlist/catlist', require('./router/playlist_catlist'))
+
+//推荐节目
+app.use("/program/recommend", require("./router/program_recommend"))
+
+
+
+// 获取每日推荐歌曲
+app.use('/recommend/songs', require('./router/recommend_songs'))
+
+// 获取每日推荐歌单
+app.use('/recommend/resource', require('./router/recommend_resource'))
+
+//取消推荐
+app.use('/recommend/dislike', require('./router/recommend_dislike'))
+
+
+app.use('/resource/like', require('./router/resource_like'))
+
+// 搜索
+app.use('/search', require('./router/search'))
+
+// 搜索 hot
+app.use('/search/hot', require('./router/search_hot'))
+
+//搜索 multimatch
+app.use('/search/multimatch', require('./router/search_multimatch'))
+
+// 搜索 suggest,搜索结果包含单曲,歌手,歌单,mv信息
+app.use('/search/suggest', require('./router/search_suggest'))
+
+//simi ,相似歌单
+app.use("/simi/playlist", require("./router/simi_playlist"))
+
+//simi ,相似歌曲
+app.use("/simi/song", require("./router/simi_song"))
+
+//相似 mv
+app.use("/simi/mv", require("./router/simi_mv"))
+
+//simi ,相似关注的用户
+app.use("/simi/user", require("./router/simi_user"))
+
+//相似歌手
+app.use("/simi/artist", require("./router/simi_artists"))
+
+// 获取音乐详情
+app.use('/song/detail', require('./router/song_detail'))
+
+
+
+// 新碟上架 http://music.163.com/#/discover/album/
+app.use('/top/album', require('./router/top_album'))
+
+// 热门歌手 http://music.163.com/#/discover/artist/
+app.use('/top/artists', require('./router/top_artists'))
+
+app.use('/top/list', require('./router/top_list'))
+
+app.use('/top/mv', require('./router/top_mv'))
+
+//分类歌单
+app.use("/top/playlist", require("./router/top_playlist"))
+
+//精品歌单
+app.use("/top/playlist/highquality", require("./router/top_playlist_highquality"))
+
+app.use('/top/song', require('./router/top_songs'))
+
+
+
+app.use('/toplist', require('./router/toplist'))
+
+app.use('/toplist/artist', require('./router/toplist_artist'))
+
+app.use('/toplist/detail', require('./router/toplist_detail'))
+
+// 获取用户歌单
+app.use('/user/playlist', require('./router/user_playlist'))
+
+// 获取用户电台
+app.use('/user/audio', require('./router/user_audio'))
+
+//云盘数据
+app.use("/user/cloud", require("./router/user_cloud"))
+
+//云盘数据详情???不要使用
+app.use("/user/cloud/search", require("./router/user_cloud_search"))
+//用户动态
+app.use("/user/event", require("./router/user_event"))
+// 获取用户歌单
+app.use('/user/detail', require('./router/user_detail'))
+
+app.use('/user/dj', require('./router/user_dj'))
+
+app.use('/user/followeds', require('./router/user_followeds'))
+
+app.use('/user/follows', require('./router/user_follows'))
+
+app.use('/user/subcount', require('./router/user_subcount'))
+
+app.use("/user/record", require("./router/user_playrecord"))
 const port = process.env.PORT || 3000
 
 app.listen(port, () => {

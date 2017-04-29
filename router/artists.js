@@ -6,7 +6,7 @@ router.get("/", (req, res) => {
   const id = req.query.id
   const offset = req.query.offset || 0
   const limit = req.query.limit || 50
-  createRequest(`/api/artist/${id}?offset=${offset}&limit=${limit}`, 'GET', null)
+  createRequest(`/weapi/v1/artist/${id}?offset=${offset}&limit=${limit}`, 'GET', null)
     .then(result => {
       res.setHeader("Content-Type", "application/json")
       res.send(result)

@@ -9,11 +9,12 @@ router.get("/", (req, res) => {
   }
   const trackId = req.query.id
   const like = req.query.like || true
-  const alg = "itembased"
+  const alg = req.query.alg || "itembased"
   const time = req.query.time || 25
+  console.log(alg)
   createWebAPIRequest(
     'music.163.com',
-    `/api/radio/like?alg=${alg}&trackId=${trackId}&like=${like}&time=${time}`,
+    `/weapi/radio/like?alg=${alg}&trackId=${trackId}&like=${like}&time=${time}`,
     'POST',
     data,
     cookie,

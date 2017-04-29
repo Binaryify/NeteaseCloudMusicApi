@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
   const time = req.query.time || 25
   createWebAPIRequest(
     'music.163.com',
-    `/api/radio/trash/add?alg=${alg}&songId=${songid}&time=${time}`,
+    `/weapi/radio/trash/add?alg=${alg}&songId=${songid}&time=${time}`,
     'POST',
     data,
     cookie,

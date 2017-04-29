@@ -3,28 +3,25 @@ const router = express()
 const { createWebAPIRequest } = require("../util/util")
 
 router.get("/", (req, res) => {
-  const op = req.query.op
-  const pid = req.query.pid
-  const tracks = req.query.tracks
   const cookie = req.get('Cookie') ? req.get('Cookie') : ''
-  // console.log('COOKIESS', cookie)
   const data = {
-    "op": op,
-    "pid": pid,
-    "tracks": tracks,
-    "trackIds": JSON.stringify([tracks]),
-    "csrf_token": "",
+    uid: req.query.uid,
+		"csrf_token": ""
   }
   createWebAPIRequest(
     'music.163.com',
-    '/weapi/playlist/manipulate/tracks',
+    `/weapi/song/like/get`,
     'POST',
     data,
     cookie,
-    music_req => res.send(music_req),
+    music_req => {
+      res.send(music_req)
+      console.log(JSON.parse(music_req).ids.length)
+    },
     err => res.status(502).send('fetch error')
-
   )
 })
+
+
 
 module.exports = router

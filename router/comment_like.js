@@ -1,16 +1,22 @@
+//comment like 
 const express = require("express")
 const router = express()
 const { createWebAPIRequest } = require("../util/util")
 
 router.get("/", (req, res) => {
   const cookie = req.get('Cookie') ? req.get('Cookie') : ''
+  const id = req.query.id
   const data = {
-    "csrf_token": "",
+    "threadId": req.query.origin,
+		commentId:id,
+		"csrf_token": ""
   }
-
+  const action=(req.query.t==1?'like':'unlike')
+  
+  const url = `/weapi/v1/comment/${action}`
   createWebAPIRequest(
     'music.163.com',
-    '/weapi/feedback/weblog',
+    url,
     'POST',
     data,
     cookie,
