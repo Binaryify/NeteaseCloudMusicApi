@@ -3,15 +3,15 @@ const http = require('http')
 const app = express()
 
 // 跨域设置
-app.all('*', function (req, res, next) {
-  res.header("Access-Control-Allow-Credentials", true)
-  res.header("Access-Control-Allow-Origin", "*")
-  res.header("Access-Control-Allow-Headers", "X-Requested-With")
-  res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS")
-  res.header("X-Powered-By", ' 3.2.1')
-  res.header("Content-Type", "application/json;charset=utf-8")
-  next()
-})
+// app.all('*', function (req, res, next) {
+//   res.header("Access-Control-Allow-Credentials", true)
+//   res.header("Access-Control-Allow-Origin", "*")
+//   res.header("Access-Control-Allow-Headers", "X-Requested-With")
+//   res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS")
+//   res.header("X-Powered-By", ' 3.2.1')
+//   res.header("Content-Type", "application/json;charset=utf-8")
+//   next()
+// })
 
 
 
@@ -65,7 +65,6 @@ app.use("/dj/program/detail", require("./router/dj_program_detail"))
 
 app.use("/dj/sub", require("./router/dj_sub"))
 
-
 app.use("/dj/catelist", require("./router/dj_catelist"))
 
 app.use("/dj/hot", require("./router/dj_hot"))
@@ -75,8 +74,6 @@ app.use("/dj/recommend", require("./router/dj_recommend"))
 
 //精选电台-分类电台
 app.use("/dj/recommend/type", require("./router/dj_recommend_type"))
-
-
 
 //垃圾桶
 app.use("/fm_trash", require("./router/fm_trash"))
@@ -133,8 +130,6 @@ app.use("/personalized/privatecontent", require("./router/personalized_privateco
 //推荐mv
 app.use("/personalized/mv", require("./router/personalized_mv"))
 
-
-
 // 获取歌单内列表
 app.use('/playlist/detail', require('./router/playlist_detail'))
 
@@ -143,13 +138,10 @@ app.use('/playlist/tracks', require('./router/playlist_tracks'))
 
 app.use('/playlist/hot', require('./router/playlist_hot'))
 
-
 app.use('/playlist/catlist', require('./router/playlist_catlist'))
 
 //推荐节目
 app.use("/program/recommend", require("./router/program_recommend"))
-
-
 
 // 获取每日推荐歌曲
 app.use('/recommend/songs', require('./router/recommend_songs'))
@@ -193,8 +185,6 @@ app.use("/simi/artist", require("./router/simi_artists"))
 // 获取音乐详情
 app.use('/song/detail', require('./router/song_detail'))
 
-
-
 // 新碟上架 http://music.163.com/#/discover/album/
 app.use('/top/album', require('./router/top_album'))
 
@@ -212,8 +202,6 @@ app.use("/top/playlist", require("./router/top_playlist"))
 app.use("/top/playlist/highquality", require("./router/top_playlist_highquality"))
 
 app.use('/top/song', require('./router/top_songs'))
-
-
 
 app.use('/toplist', require('./router/toplist'))
 
