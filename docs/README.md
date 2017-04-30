@@ -759,10 +759,10 @@ $ set PORT=4000 && node app.js
 `offset`: 偏移数量,用于分页,如:(页数-1)*50, 其中 50 为 limit 的值,默认为0  
 
 **接口地址:**  
-`/top/albums`  
+`/top/album`  
 
 **调用例子:**  
-`/top/albums?offset=0&limit=30`  
+`/top/album?offset=0&limit=30`  
 
 返回数据如下图: 
 
