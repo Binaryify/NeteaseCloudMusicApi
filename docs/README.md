@@ -108,8 +108,8 @@ $ set PORT=4000 && node app.js
 
 - 2.5.0 版本对部分原有 api 做了微调,不过只是调整了下地址,参数和返回结果不受影响
 
-- 由于网易限制,此项目在国外服务器上使用会受到限制,如需解决,可使用大陆服务器或者使用代理
-
+- 由于网易限制,此项目在国外服务器上使用会受到限制,如需解决,可使用大陆服务器或者使用代理,感谢 [@hiyangguo](https://github.com/hiyangguo)提出的[解决方法](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/29#issuecomment-298358438),在 'util.js' 的 'headers'处增加 
+`X-Real-IP':'211.161.244.70' //任意国内IP` 即可解决
 
 ### 登录
 说明:登录有两个接口  
