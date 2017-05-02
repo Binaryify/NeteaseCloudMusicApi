@@ -491,10 +491,10 @@ $ set PORT=4000 && node app.js
 `ids`: 音乐 id,可多个,如 `ids=347230` 或者 `ids=347230,347231`
 
 **接口地址:**  
-`/music/song/detail`  
+`/song/detail`  
 
 **调用例子:**  
-`/music/song/detail?ids=347230`  
+`/song/detail?ids=347230`  
 
 返回数据如下图: 
 ![获取歌曲详情](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/songDetail.png)
