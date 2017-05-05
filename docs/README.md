@@ -76,6 +76,7 @@
 57. 电台-订阅
 58. 电台-详情
 59. 电台-节目
+60. 给评论点赞
 
 
 ## 安装  
@@ -257,7 +258,7 @@ $ set PORT=4000 && node app.js
 **可选参数:**  
 `limit`: 取出评论数量,默认为20  
 
-`offset`: 偏移数量,用于分页,如:(评论页数-1)*20, 其中 20 为 limit 的值 
+`offset`: 偏移数量,用于分页,如:(页数-1)*20, 其中 20 为 limit 的值 
 
 **接口地址:**  
 `/top/playlist/highquality`  
@@ -400,7 +401,7 @@ $ set PORT=4000 && node app.js
 `/comment/music`  
 
 **调用例子:**  
-`/comment/music?id=186016&limit=1`  
+`/comment/music?id=186016&limit=1` 对应晴天评论 
 
 返回数据如下图: 
 ![获取评论](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/comment.png)
@@ -473,6 +474,31 @@ $ set PORT=4000 && node app.js
 
 **调用例子:**  
 `/comment/dj?id=794062371` 
+
+### 给评论点赞
+说明:调用此接口,传入 type, 资源 id, 和评论id cid和 是否点赞参数 t 即可给对应评论点赞(需要登录)
+
+**必选参数:**  
+`id` :  资源 id, 如歌曲 id,mv id  
+`cid` : 评论 id  
+
+**可选参数:**  
+`tpye`: 数字,资源类型,对应歌曲, mv, 专辑,歌单,电台,默认为0
+对应以下类型
+
+```
+0: 歌曲
+1: mv
+2: 歌单
+3: 专辑 
+4: 电台
+```  
+  
+**接口地址:**  
+`comment/like`  
+
+**调用例子:**  
+`/comment/like?id=186016&cid=4956438&t=1&type=0` 对应给晴天最热门的那条评论点赞
 
 ### banner
 说明:调用此接口,可获取 banner(轮播图)数据   
