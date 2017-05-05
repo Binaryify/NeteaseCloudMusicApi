@@ -222,7 +222,7 @@ app.use("/user/cloud", require("./router/user_cloud"))
 app.use("/user/cloud/search", require("./router/user_cloud_search"))
 //用户动态
 app.use("/user/event", require("./router/user_event"))
-// 获取用户歌单
+
 app.use('/user/detail', require('./router/user_detail'))
 
 app.use('/user/dj', require('./router/user_dj'))
