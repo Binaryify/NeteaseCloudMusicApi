@@ -20,7 +20,6 @@ router.get("/", (req, res) => {
     music_req => {
       res.setHeader("Content-Type", "application/json")
       res.send(music_req)
-      console.log(Object.keys(JSON.parse(music_req).result))
     },
     err => res.status(502).send('fetch error')
   )
