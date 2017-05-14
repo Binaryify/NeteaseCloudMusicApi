@@ -74,6 +74,9 @@ app.use("/dj/recommend", require("./router/dj_recommend"))
 //精选电台-分类电台
 app.use("/dj/recommend/type", require("./router/dj_recommend_type"))
 
+//获取动态
+app.use("/event", require("./router/event"))
+
 //垃圾桶
 app.use("/fm_trash", require("./router/fm_trash"))
 
@@ -234,8 +237,7 @@ app.use('/user/subcount', require('./router/user_subcount'))
 
 app.use("/user/record", require("./router/user_playrecord"))
 
-//获取动态
-app.use("/event", require("./router/event"))
+
 
 const port = process.env.PORT || 3000
 
