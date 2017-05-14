@@ -233,6 +233,10 @@ app.use('/user/follows', require('./router/user_follows'))
 app.use('/user/subcount', require('./router/user_subcount'))
 
 app.use("/user/record", require("./router/user_playrecord"))
+
+//获取动态
+app.use("/event", require("./router/event"))
+
 const port = process.env.PORT || 3000
 
 app.listen(port, () => {
