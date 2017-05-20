@@ -276,7 +276,7 @@ $ set PORT=4000 && node app.js
 `/top/playlist/highquality`  
 
 **调用例子:**  
-`/playlist/detail?id=24381616` 
+`/top/playlist/highquality?limit=30` 
 
 
 ### 获取歌单详情  

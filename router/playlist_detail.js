@@ -23,8 +23,9 @@ router.get("/", (req, res) => {
     cookie,
     music_req => {
       console.log(music_req)
-      detail = music_req
-      mergeRes()
+      // detail = music_req
+      res.send(music_req)
+      // mergeRes()
     },
     err => {
       res.status(502).send('fetch error')
@@ -33,34 +34,34 @@ router.get("/", (req, res) => {
 
   // FIXME:i dont know the api to get coverimgurl
   // so i get it by parsing html
-  const http_client = http.get({
-    hostname: 'music.163.com',
-    path: '/playlist?id=' + req.query.id,
-    headers: {
-      'Referer': 'http://music.163.com',
-    },
-  }, function (res) {
-    res.setEncoding('utf8')
-    let html = ''
-    res.on('data', function (chunk) {
-      html += chunk
-    })
-    res.on('end', function () {
-      console.log('end', html)
-      const regImgCover = /\<img src=\"(.*)\" class="j-img"/ig
-      imgurl = regImgCover.exec(html)[1]
-      mergeRes()
+  // const http_client = http.get({
+  //   hostname: 'music.163.com',
+  //   path: '/playlist?id=' + req.query.id,
+  //   headers: {
+  //     'Referer': 'http://music.163.com',
+  //   },
+  // }, function (res) {
+  //   res.setEncoding('utf8')
+  //   let html = ''
+  //   res.on('data', function (chunk) {
+  //     html += chunk
+  //   })
+  //   res.on('end', function () {
+  //     console.log('end', html)
+  //     const regImgCover = /\<img src=\"(.*)\" class="j-img"/ig
+  //     imgurl = regImgCover.exec(html)[1]
+  //     mergeRes()
 
-    })
-  })
+  //   })
+  // })
 
-  function mergeRes() {
-    if (imgurl != undefined && detail != undefined) {
-      detail = JSON.parse(detail)
-      detail.playlist.picUrl = imgurl
-      res.send(detail)
-    }
-  }
+  // function mergeRes() {
+  //   if (imgurl != undefined && detail != undefined) {
+  //     detail = JSON.parse(detail)
+  //     detail.playlist.picUrl = imgurl
+  //     res.send(detail)
+  //   }
+  // }
 })
 
 
