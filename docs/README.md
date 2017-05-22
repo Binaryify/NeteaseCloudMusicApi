@@ -296,7 +296,7 @@ $ set PORT=4000 && node app.js
 ![歌单详情](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%AD%8C%E5%8D%95%E8%AF%A6%E6%83%85.png)
 
 ### 获取音乐 url
-说明:使用歌单详情接口后,能得到的音乐的 id, 但不能得到的音乐 url, 调用此接口,传入的音乐 id,可以获取对应的音乐的 url(不需要登录)  
+说明:使用歌单详情接口后,能得到的音乐的 id, 但不能得到的音乐 url, 调用此接口,传入的音乐 id(可多个,用逗号隔开),可以获取对应的音乐的 url(不需要登录)  
 
 **必选参数:**  
 `id` : 音乐 id  
@@ -306,6 +306,7 @@ $ set PORT=4000 && node app.js
 
 **调用例子:**  
 `/music/url?id=347230`  
+`/music/url?id=347230,347231` 
 
 返回数据如下图:  
 ![音乐 url](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E9%9F%B3%E4%B9%90%20url.png)
