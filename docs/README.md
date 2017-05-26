@@ -77,7 +77,7 @@
 58. 电台-详情
 59. 电台-节目
 60. 给评论点赞
-
+61. 获取动态
 
 ## 安装  
 ``` shell
@@ -127,6 +127,7 @@ $ set PORT=4000 && node app.js
 `/login/cellphone?phone=xxx&password=yyy`  
 
 #### 2. 邮箱登录  
+注意:此接口被网易和谐了,待修复,暂时使用手机登录(2017.05.20)  
 
 **必选参数:**  
 `email`: 163网易邮箱   
@@ -252,6 +253,18 @@ $ set PORT=4000 && node app.js
 **调用例子:**  
 `/user/record?uid=32953014&type=1` 
 
+### 获取动态消息
+说明:调用此接口,可获取各种动态,对应网页版网易云，朋友界面里的各种动态消息，如分享的视频，音乐，照片等！ 
+
+**必选参数:**  
+未知
+
+**接口地址:**  
+`/event`  
+
+**调用例子:**  
+`/event` 
+
 ### 获取精品歌单  
 说明:调用此接口,可获取精品歌单 
 
@@ -264,7 +277,7 @@ $ set PORT=4000 && node app.js
 `/top/playlist/highquality`  
 
 **调用例子:**  
-`/playlist/detail?id=24381616` 
+`/top/playlist/highquality?limit=30` 
 
 
 ### 获取歌单详情  
@@ -283,7 +296,7 @@ $ set PORT=4000 && node app.js
 ![歌单详情](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%AD%8C%E5%8D%95%E8%AF%A6%E6%83%85.png)
 
 ### 获取音乐 url
-说明:使用歌单详情接口后,能得到的音乐的 id, 但不能得到的音乐 url, 调用此接口,传入的音乐 id,可以获取对应的音乐的 url(不需要登录)  
+说明:使用歌单详情接口后,能得到的音乐的 id, 但不能得到的音乐 url, 调用此接口,传入的音乐 id(可多个,用逗号隔开),可以获取对应的音乐的 url(不需要登录)  
 
 **必选参数:**  
 `id` : 音乐 id  
@@ -293,6 +306,7 @@ $ set PORT=4000 && node app.js
 
 **调用例子:**  
 `/music/url?id=347230`  
+`/music/url?id=347230,347231` 
 
 返回数据如下图:  
 ![音乐 url](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E9%9F%B3%E4%B9%90%20url.png)
@@ -516,7 +530,7 @@ $ set PORT=4000 && node app.js
 说明:调用此接口,传入音乐 id, 可获得歌曲详情    
 
 **必选参数:**  
-`ids`: 音乐 id,可多个,如 `ids=347230` 或者 `ids=347230,347231`
+`ids`: 音乐 id,如 `ids=347230` 
 
 **接口地址:**  
 `/song/detail`  

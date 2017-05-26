@@ -13,10 +13,11 @@ router.get("/", (req, res) => {
     'password': md5sum.digest('hex'),
     'rememberLogin': 'true'
   }
-
+  console.log(email,req.query.password);
+  
   createWebAPIRequest(
     'music.163.com',
-    '/weapi/login',
+    '/weapi/login?csrf_token=',
     'POST',
     data,
     cookie,
