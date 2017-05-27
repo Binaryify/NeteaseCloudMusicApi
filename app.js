@@ -1,6 +1,7 @@
 const express = require('express')
 const http = require('http')
 const app = express()
+var AV = require('leanengine');
 
 // 跨域设置
 // app.all('*', function (req, res, next) {
@@ -237,7 +238,13 @@ app.use('/user/subcount', require('./router/user_subcount'))
 
 app.use("/user/record", require("./router/user_playrecord"))
 
+AV.init({
+  appId: process.env.LEANCLOUD_APP_ID,
+  appKey: process.env.LEANCLOUD_APP_KEY,
+  masterKey: process.env.LEANCLOUD_APP_MASTER_KEY
+});
 
+app.use(AV.express());
 
 const port = process.env.PORT || 3000
 

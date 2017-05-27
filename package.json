@@ -14,9 +14,13 @@
   ],
   "author": "",
   "license": "MIT",
+  "engines": {
+    "node": "6.x"
+  },
   "dependencies": {
     "big-integer": "^1.6.17",
     "express": "^4.15.2",
+    "leanengine": "^2.0.3",
     "request": "^2.81.0"
   },
   "devDependencies": {
