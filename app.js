@@ -13,6 +13,7 @@ const app = express()
 //   next()
 // })
 
+app.use(express.static('public'));
 
 // 获取专辑内容
 app.use('/album', require('./router/album'))
