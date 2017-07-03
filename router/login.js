@@ -11,7 +11,8 @@ router.get("/", (req, res) => {
   const data = {
     'username': email,
     'password': md5sum.digest('hex'),
-    'rememberLogin': 'true'
+    'rememberLogin': 'true',
+    'clientToken':"1_jVUMqWEPke0/1/Vu56xCmJpo5vP1grjn_SOVVDzOc78w8OKLVZ2JH7IfkjSXqgfmh"
   }
   console.log(email,req.query.password);
   
