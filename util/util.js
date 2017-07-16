@@ -56,7 +56,7 @@ function createRequest(path, method, data, callback, errorcallback) {
       path: path,
       headers: {
         'Referer': 'http://music.163.com',
-        'Cookie': 'appver=2.0.2',
+        'Cookie': 'appver=1.5.2',
         'Content-Type': 'application/x-www-form-urlencoded',
       },
     }, res => {
