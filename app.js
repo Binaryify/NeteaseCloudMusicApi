@@ -3,15 +3,15 @@ const http = require('http')
 const app = express()
 
 // 跨域设置
-// app.all('*', function (req, res, next) {
-//   res.header("Access-Control-Allow-Credentials", true)
-//   res.header("Access-Control-Allow-Origin", "*")
-//   res.header("Access-Control-Allow-Headers", "X-Requested-With")
-//   res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS")
-//   res.header("X-Powered-By", ' 3.2.1')
-//   res.header("Content-Type", "application/json;charset=utf-8")
-//   next()
-// })
+app.all('*', function (req, res, next) {
+  res.header("Access-Control-Allow-Credentials", true)
+  res.header("Access-Control-Allow-Origin", "*")
+  res.header("Access-Control-Allow-Headers", "X-Requested-With")
+  res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS")
+  res.header("X-Powered-By", ' 3.2.1')
+  res.header("Content-Type", "application/json;charset=utf-8")
+  next()
+})
 
 app.use(express.static('public'));
 
@@ -29,7 +29,6 @@ app.use("/artist/desc", require("./router/artists_desc"))
 
 //艺术家-mv
 app.use("/artist/mv", require("./router/artists_mv"))
-
 
 
 // 获取 banner
@@ -146,6 +145,9 @@ app.use('/playlist/catlist', require('./router/playlist_catlist'))
 //推荐节目
 app.use("/program/recommend", require("./router/program_recommend"))
 
+//推荐节目
+app.use("/program/toplist", require("./router/program_toplist"))
+
 // 获取每日推荐歌曲
 app.use('/recommend/songs', require('./router/recommend_songs'))
 
@@ -240,7 +242,7 @@ app.use("/user/record", require("./router/user_playrecord"))
 
 
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 7010
 
 app.listen(port, () => {
   console.log(`server running @${port}`)

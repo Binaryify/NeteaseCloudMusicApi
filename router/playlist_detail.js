@@ -22,7 +22,7 @@ router.get("/", (req, res) => {
     data,
     cookie,
     music_req => {
-      console.log(music_req)
+      // console.log(music_req)
       // detail = music_req
       res.send(music_req)
       // mergeRes()
