@@ -3,9 +3,11 @@ const router = express()
 const { createRequest } = require("../util/util")
 
 router.get("/", (req, res) => {
+    const cat = req.query.cat || 2001
     const offset = req.query.offset || 0
     const limit = req.query.limit || 50
-    createRequest(`/api/artist/top?offset=${offset}&total=false&limit=${limit}`, 'GET', null)
+    const initial = req.query.initial
+    createRequest(`/api/artist/list?categoryCode=${cat}&offset=${offset}&total=false&limit=${limit}&initial=${initial}`, 'GET', null)
         .then(result => {
             res.setHeader("Content-Type", "application/json")
             res.send(result)

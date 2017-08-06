@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
     'offset': req.query.offset,
 		'total': true,
 		'limit': req.query.limit,
-		'area': req.query.type,
+		'area': req.query.area,
 		"csrf_token": ""
   }
   createWebAPIRequest(

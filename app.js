@@ -21,6 +21,9 @@ app.use('/album', require('./router/album'))
 // 获取歌手单曲
 app.use('/artists', require('./router/artists'))
 
+//歌手列表
+app.use('/artists/list', require('./router/artists_list'))
+
 // 获取歌手专辑列表
 app.use('/artist/album', require('./router/artist_album'))
 
@@ -192,6 +195,9 @@ app.use('/song/detail', require('./router/song_detail'))
 
 // 新碟上架 http://music.163.com/#/discover/album/
 app.use('/top/album', require('./router/top_album'))
+
+//热门新碟
+app.use('/hot/album', require('./router/hot_album'))
 
 // 热门歌手 http://music.163.com/#/discover/artist/
 app.use('/top/artists', require('./router/top_artists'))
