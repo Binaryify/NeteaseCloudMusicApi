@@ -8,6 +8,7 @@ router.get("/", (req, res) => {
     'userId': req.query.uid,
     offset: req.query.offset || '0',
     limit: req.query.limit || 30,
+    order: true,
 		"csrf_token": ""
   }
   createWebAPIRequest(

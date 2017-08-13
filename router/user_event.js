@@ -7,6 +7,8 @@ router.get("/", (req, res) => {
   const id = req.query.uid
   const data = {
     'time': -1,
+    'offset':req.query.offset,
+    'limit':req.query.limit,
     'getcounts': true,
     "csrf_token": ""
   }

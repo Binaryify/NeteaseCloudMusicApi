@@ -5,18 +5,15 @@ const { createWebAPIRequest } = require("../util/util")
 router.get("/", (req, res) => {
   const cookie = req.get('Cookie') ? req.get('Cookie') : ''
   const data = {
-    'cat': req.query.type,
-    cateId: req.query.type,
-    type: req.query.type,
-    categoryId: req.query.type,
-    category: req.query.type,
+    cateId:req.query.cat,
+    type:req.query.order,
     limit: req.query.limit,
     offset: req.query.offset,
     "csrf_token": ""
   }
   createWebAPIRequest(
     'music.163.com',
-    '/weapi/djradio/hot/v1',
+    '/weapi/djradio/hot',
     'POST',
     data,
     cookie,

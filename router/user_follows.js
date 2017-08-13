@@ -8,7 +8,8 @@ router.get("/", (req, res) => {
   const data = {
     offset: req.query.offset || '0',
     limit: req.query.limit || 30,
-    order: true
+    order: false,
+    'getcounts': true,
   }
   createWebAPIRequest(
     'music.163.com',
