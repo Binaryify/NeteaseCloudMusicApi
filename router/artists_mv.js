@@ -7,7 +7,6 @@ router.get("/", (req, res) => {
   const id = req.query.id
   const data = {
     artistId: id,
-		"total": true,
 		"offset": req.query.offset,
 		"limit": req.query.limit,
 		"csrf_token": ""

@@ -7,8 +7,8 @@ router.get("/", (req, res) => {
   const id = req.query.id
   const data = {
     'offset': req.query.offset || 0,
-    'total': true,
-    'limit': req.query.limit || 30,
+    getcounts:true,
+    'limit': req.query.limit || 999,
     "csrf_token": ""
   }
   createWebAPIRequest(

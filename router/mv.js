@@ -3,7 +3,7 @@ const router = express()
 const { createRequest } = require("../util/util")
 const request=require("request")
 router.get("/", (req, res) => {
-  const mvid = req.query.mvid
+  const mvid = req.query.id
   createRequest(`/api/mv/detail/?id=${mvid}&type=mp4`, 'GET', null)
     .then(result => {
       res.setHeader("Content-Type", "application/json")
