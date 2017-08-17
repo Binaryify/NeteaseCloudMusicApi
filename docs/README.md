@@ -13,6 +13,15 @@
 跨站请求伪造 (CSRF), 伪造请求头,调用官方 API
 
 ## 版本新特性  
+### 2.6.5 | 2017.7.16
+优化 CORS 设置
+
+### 2.6.4 | 2017.7.16
+添加缓存机制和随机 UA 机制 感谢[@u3u](https://github.com/u3u) 
+[issue:77](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/77)
+优化请求 感谢 [@huhuime](https://github.com/huhuime) 
+[issue:83](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/83)
+
 ### 2.5.0 | 2017.4.29
 增加 mv/专辑/歌单评论接口,增加云盘相关接口,增加获取用户动态/信息接口,增加关注/粉丝列表接口,增加收藏歌单接口,增加相似 mv/歌曲/用户接口,增加 banner 接口,增加刷新登录接口,增加电台相关接口,补充评论接口,更新文档
 
