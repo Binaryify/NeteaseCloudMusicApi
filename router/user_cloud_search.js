@@ -1,12 +1,12 @@
-const express = require("express")
+const express = require('express')
 const router = express()
-const { createWebAPIRequest } = require("../util/util")
+const { createWebAPIRequest } = require('../util/util')
 
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
   const data = {
     byids: req.query.id,
-		id: req.query.id,
-		"csrf_token": ""
+    id: req.query.id,
+    csrf_token: ''
   }
   const cookie = req.get('Cookie') ? req.get('Cookie') : ''
   createWebAPIRequest(
@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
     data,
     cookie,
     music_req => {
-      res.setHeader("Content-Type", "application/json")
+      res.setHeader('Content-Type', 'application/json')
       res.send(music_req)
     },
     err => {
@@ -24,6 +24,5 @@ router.get("/", (req, res) => {
     }
   )
 })
-
 
 module.exports = router

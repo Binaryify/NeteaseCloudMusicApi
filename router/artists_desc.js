@@ -1,13 +1,13 @@
-const express = require("express")
+const express = require('express')
 const router = express()
-const { createWebAPIRequest } = require("../util/util")
+const { createWebAPIRequest } = require('../util/util')
 
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
   const cookie = req.get('Cookie') ? req.get('Cookie') : ''
   const id = req.query.id
   const data = {
-   id,
-    "csrf_token": ""
+    id,
+    csrf_token: ''
   }
   createWebAPIRequest(
     'music.163.com',
@@ -19,6 +19,5 @@ router.get("/", (req, res) => {
     err => res.status(502).send('fetch error')
   )
 })
-
 
 module.exports = router

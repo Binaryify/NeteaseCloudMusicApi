@@ -1,11 +1,11 @@
-const express = require("express")
+const express = require('express')
 const router = express()
-const { createWebAPIRequest } = require("../util/util")
+const { createWebAPIRequest } = require('../util/util')
 
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
   const cookie = req.get('Cookie') ? req.get('Cookie') : ''
   const data = {
-    "csrf_token": ""
+    csrf_token: ''
   }
 
   createWebAPIRequest(
@@ -18,7 +18,5 @@ router.get("/", (req, res) => {
     err => res.status(502).send('fetch error')
   )
 })
-
-
 
 module.exports = router

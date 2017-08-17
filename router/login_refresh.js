@@ -1,8 +1,8 @@
-const express = require("express")
+const express = require('express')
 const router = express()
-const { createWebAPIRequest } = require("../util/util")
+const { createWebAPIRequest } = require('../util/util')
 
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
   const cookie = req.get('Cookie') ? req.get('Cookie') : ''
   let csrf = req.query.t || ''
   for (let i in cookie) {
@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
     }
   }
   const data = {
-    "csrf_token": csrf
+    csrf_token: csrf
   }
   createWebAPIRequest(
     'music.163.com',

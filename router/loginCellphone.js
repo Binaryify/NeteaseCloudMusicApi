@@ -1,17 +1,17 @@
-const express = require("express")
+const express = require('express')
 const crypto = require('crypto')
 const router = express()
-const { createWebAPIRequest } = require("../util/util")
+const { createWebAPIRequest } = require('../util/util')
 
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
   const phone = req.query.phone
   const cookie = req.get('Cookie') ? req.get('Cookie') : ''
   const md5sum = crypto.createHash('md5')
   md5sum.update(req.query.password)
   const data = {
-    'phone': phone,
-    'password': md5sum.digest('hex'),
-    'rememberLogin': 'true'
+    phone: phone,
+    password: md5sum.digest('hex'),
+    rememberLogin: 'true'
   }
 
   createWebAPIRequest(
@@ -23,7 +23,7 @@ router.get("/", (req, res) => {
     (music_req, cookie) => {
       console.log(music_req)
       res.set({
-        'Set-Cookie': cookie,
+        'Set-Cookie': cookie
       })
       res.send(music_req)
     },
