@@ -1,6 +1,9 @@
 const express = require('express')
 const http = require('http')
+const apicache = require('apicache')
+
 const app = express()
+let cache = apicache.middleware
 
 // 跨域设置
 // app.all('*', function (req, res, next) {
@@ -13,7 +16,9 @@ const app = express()
 //   next()
 // })
 
-app.use(express.static('public'));
+app.use(cache('5 minutes'))
+
+app.use(express.static('public'))
 
 // 获取专辑内容
 app.use('/album', require('./router/album'))
@@ -25,23 +30,19 @@ app.use('/artists', require('./router/artists'))
 app.use('/artist/album', require('./router/artist_album'))
 
 //艺术家-信息
-app.use("/artist/desc", require("./router/artists_desc"))
+app.use('/artist/desc', require('./router/artists_desc'))
 
 //艺术家-mv
-app.use("/artist/mv", require("./router/artists_mv"))
-
-
+app.use('/artist/mv', require('./router/artists_mv'))
 
 // 获取 banner
 app.use('/banner', require('./router/banner'))
 
 app.use('/check/music', require('./router/check_music'))
 
-
 app.use('/comment/music', require('./router/comment_music'))
 
 app.use('/comment/mv', require('./router/comment_mv'))
-
 
 app.use('/comment/album', require('./router/comment_album'))
 
@@ -53,40 +54,40 @@ app.use('/comment/like', require('./router/comment_like'))
 app.use('/comment/dj', require('./router/comment_dj'))
 
 //签到
-app.use("/daily_signin", require("./router/daily_signin"))
+app.use('/daily_signin', require('./router/daily_signin'))
 
 //djradio detail
-app.use("/dj/detail", require("./router/dj_detail"))
+app.use('/dj/detail', require('./router/dj_detail'))
 
 //dj主播 radio
-app.use("/dj/program", require("./router/dj_program"))
+app.use('/dj/program', require('./router/dj_program'))
 
-app.use("/dj/program/detail", require("./router/dj_program_detail"))
+app.use('/dj/program/detail', require('./router/dj_program_detail'))
 
-app.use("/dj/sub", require("./router/dj_sub"))
+app.use('/dj/sub', require('./router/dj_sub'))
 
-app.use("/dj/catelist", require("./router/dj_catelist"))
+app.use('/dj/catelist', require('./router/dj_catelist'))
 
-app.use("/dj/hot", require("./router/dj_hot"))
+app.use('/dj/hot', require('./router/dj_hot'))
 
 // 精选电台
-app.use("/dj/recommend", require("./router/dj_recommend"))
+app.use('/dj/recommend', require('./router/dj_recommend'))
 
 //精选电台-分类电台
-app.use("/dj/recommend/type", require("./router/dj_recommend_type"))
+app.use('/dj/recommend/type', require('./router/dj_recommend_type'))
 
 //获取动态
-app.use("/event", require("./router/event"))
+app.use('/event', require('./router/event'))
 
 //垃圾桶
-app.use("/fm_trash", require("./router/fm_trash"))
+app.use('/fm_trash', require('./router/fm_trash'))
 
-app.use("/follow", require("./router/follow"))
+app.use('/follow', require('./router/follow'))
 
 // 喜欢歌曲
-app.use("/like", require("./router/like"))
+app.use('/like', require('./router/like'))
 
-app.use("/likelist", require("./router/likelist"))
+app.use('/likelist', require('./router/likelist'))
 
 //手机登录
 app.use('/login/cellphone', require('./router/loginCellphone'))
@@ -107,31 +108,34 @@ app.use('/lyric', require('./router/lyric'))
 app.use('/music/url', require('./router/musicUrl'))
 
 //最新 mv
-app.use("/mv/first", require("./router/mv_first"))
+app.use('/mv/first', require('./router/mv_first'))
 
 //播放 mv
-app.use("/mv/url", require("./router/mv_url"))
+app.use('/mv/url', require('./router/mv_url'))
 
 //mv
-app.use("/mv", require("./router/mv"))
+app.use('/mv', require('./router/mv'))
 
 // 私人 FM
-app.use("/personal_fm", require("./router/personal_fm"))
+app.use('/personal_fm', require('./router/personal_fm'))
 
 //推荐歌单
-app.use("/personalized", require("./router/personalized"))
+app.use('/personalized', require('./router/personalized'))
 
 //推荐dj
-app.use("/personalized/djprogram", require("./router/personalized_djprogram"))
+app.use('/personalized/djprogram', require('./router/personalized_djprogram'))
 
 //推荐新音乐
-app.use("/personalized/newsong", require("./router/personalized_newsong"))
+app.use('/personalized/newsong', require('./router/personalized_newsong'))
 
 //独家放送
-app.use("/personalized/privatecontent", require("./router/personalized_privatecontent"))
+app.use(
+  '/personalized/privatecontent',
+  require('./router/personalized_privatecontent')
+)
 
 //推荐mv
-app.use("/personalized/mv", require("./router/personalized_mv"))
+app.use('/personalized/mv', require('./router/personalized_mv'))
 
 // 获取歌单内列表
 app.use('/playlist/detail', require('./router/playlist_detail'))
@@ -144,7 +148,7 @@ app.use('/playlist/hot', require('./router/playlist_hot'))
 app.use('/playlist/catlist', require('./router/playlist_catlist'))
 
 //推荐节目
-app.use("/program/recommend", require("./router/program_recommend"))
+app.use('/program/recommend', require('./router/program_recommend'))
 
 // 获取每日推荐歌曲
 app.use('/recommend/songs', require('./router/recommend_songs'))
@@ -154,7 +158,6 @@ app.use('/recommend/resource', require('./router/recommend_resource'))
 
 //取消推荐
 app.use('/recommend/dislike', require('./router/recommend_dislike'))
-
 
 app.use('/resource/like', require('./router/resource_like'))
 
@@ -171,19 +174,19 @@ app.use('/search/multimatch', require('./router/search_multimatch'))
 app.use('/search/suggest', require('./router/search_suggest'))
 
 //simi ,相似歌单
-app.use("/simi/playlist", require("./router/simi_playlist"))
+app.use('/simi/playlist', require('./router/simi_playlist'))
 
 //simi ,相似歌曲
-app.use("/simi/song", require("./router/simi_song"))
+app.use('/simi/song', require('./router/simi_song'))
 
 //相似 mv
-app.use("/simi/mv", require("./router/simi_mv"))
+app.use('/simi/mv', require('./router/simi_mv'))
 
 //simi ,相似关注的用户
-app.use("/simi/user", require("./router/simi_user"))
+app.use('/simi/user', require('./router/simi_user'))
 
 //相似歌手
-app.use("/simi/artist", require("./router/simi_artists"))
+app.use('/simi/artist', require('./router/simi_artists'))
 
 // 获取音乐详情
 app.use('/song/detail', require('./router/song_detail'))
@@ -199,10 +202,13 @@ app.use('/top/list', require('./router/top_list'))
 app.use('/top/mv', require('./router/top_mv'))
 
 //分类歌单
-app.use("/top/playlist", require("./router/top_playlist"))
+app.use('/top/playlist', require('./router/top_playlist'))
 
 //精品歌单
-app.use("/top/playlist/highquality", require("./router/top_playlist_highquality"))
+app.use(
+  '/top/playlist/highquality',
+  require('./router/top_playlist_highquality')
+)
 
 app.use('/top/song', require('./router/top_songs'))
 
@@ -219,12 +225,12 @@ app.use('/user/playlist', require('./router/user_playlist'))
 app.use('/user/audio', require('./router/user_audio'))
 
 //云盘数据
-app.use("/user/cloud", require("./router/user_cloud"))
+app.use('/user/cloud', require('./router/user_cloud'))
 
 //云盘数据详情? 暂时不要使用
-app.use("/user/cloud/search", require("./router/user_cloud_search"))
+app.use('/user/cloud/search', require('./router/user_cloud_search'))
 //用户动态
-app.use("/user/event", require("./router/user_event"))
+app.use('/user/event', require('./router/user_event'))
 
 app.use('/user/detail', require('./router/user_detail'))
 
@@ -236,9 +242,7 @@ app.use('/user/follows', require('./router/user_follows'))
 
 app.use('/user/subcount', require('./router/user_subcount'))
 
-app.use("/user/record", require("./router/user_playrecord"))
-
-
+app.use('/user/record', require('./router/user_playrecord'))
 
 const port = process.env.PORT || 3000
 
