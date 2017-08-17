@@ -7,9 +7,9 @@ const { createWebAPIRequest } = require('../util/util')
 router.get('/', (req, res) => {
   const cookie = req.get('Cookie') ? req.get('Cookie') : ''
   const data = {
-    offset: req.query.offset,
+    offset: req.query.offset || 0,
     total: true,
-    limit: req.query.limit,
+    limit: req.query.limit || 50,
     area: req.query.type,
     csrf_token: ''
   }
