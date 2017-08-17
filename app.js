@@ -18,7 +18,7 @@ let cache = apicache.middleware
 //   next()
 // })
 
-app.use(cache('5 minutes'))
+// app.use(cache('2 minutes'))
 
 app.use(express.static('public'))
 
@@ -165,9 +165,6 @@ app.use('/resource/like', require('./router/resource_like'))
 
 // 搜索
 app.use('/search', require('./router/search'))
-
-// 搜索 hot
-app.use('/search/hot', require('./router/search_hot'))
 
 //搜索 multimatch
 app.use('/search/multimatch', require('./router/search_multimatch'))

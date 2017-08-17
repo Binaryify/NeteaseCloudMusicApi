@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
   }
   createWebAPIRequest(
     'music.163.com',
-    '/api/personalized/newsong',
+    '/weapi/personalized/newsong',
     'POST',
     data,
     cookie,

@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
   const cookie = req.get('Cookie') ? req.get('Cookie') : ''
   const data = {
     csrf_token: '',
-    s: req.query.keywords || req.query.keywords || ''
+    s: req.query.keywords || ''
   }
 
   createWebAPIRequest(

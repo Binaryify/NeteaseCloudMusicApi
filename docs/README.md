@@ -163,6 +163,19 @@ $ set PORT=4000 && node app.js
 **调用例子:**  
 `/login/refresh` 
 
+### 获取用户详情
+说明:登陆后调用此接口,传入用户 id, 可以获取用户详情
+
+**必选参数:**  
+`uid` : 用户 id  
+
+**接口地址:**  
+`/user/detail`  
+
+**调用例子:**  
+`/user/detail?uid=32953014`  
+
+
 ### 获取用户信息,歌单，收藏，mv, dj 数量
 说明:登陆后调用此接口,传入用户 id, 可以获取用户信息  
 
@@ -173,7 +186,7 @@ $ set PORT=4000 && node app.js
 `/user/subcount`  
 
 **调用例子:**  
-`/user/subcount`  
+`/user/subcount?uid=32953014`  
 
 
 ### 获取用户歌单
@@ -352,7 +365,7 @@ $ set PORT=4000 && node app.js
 ![搜索音乐](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%90%9C%E7%B4%A2.png)
 
 ### 搜索建议
-说明:调用此接口,传入搜索关键词可获得搜索建议,搜索结果同时包含单曲,歌手,歌单,mv信息 
+说明:调用此接口,传入搜索关键词可获得搜索建议,搜索结果同时包含单曲,歌手,歌单,mv 信息 
 
 **必选参数:**  
 `keywords` : 关键词  
@@ -378,6 +391,18 @@ $ set PORT=4000 && node app.js
 
 **调用例子:**  
 `/search/suggest?keywords=海阔天空`  
+
+### 搜索多重匹配
+说明:调用此接口,传入搜索关键词可获得搜索结果  
+
+**必选参数:**  
+`keywords` : 关键词   
+ 
+**接口地址:**  
+`/search/multimatch`  
+
+**调用例子:**  
+`/search/multimatch?keywords=海阔天空`    
 
 ### 收藏单曲到歌单
 说明:调用此接口,传入音乐 id和 limit 参数, 可获得该专辑的所有评论(需要登录)  

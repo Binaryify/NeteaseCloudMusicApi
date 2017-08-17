@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
   const data = {}
   createWebAPIRequest(
     'music.163.com',
-    '/api/personalized/djprogram',
+    '/weapi/personalized/djprogram',
     'POST',
     data,
     cookie,
