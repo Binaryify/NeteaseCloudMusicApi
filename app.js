@@ -17,8 +17,9 @@ let cache = apicache.middleware
 //   }
 //   next()
 // })
+const onlyStatus200 = (req, res) => res.statusCode === 200
 
-app.use(cache('2 minutes'))
+app.use(cache('2 minutes', onlyStatus200))
 
 app.use(express.static('public'))
 
