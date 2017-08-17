@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
   const data = {
     csrf_token: '',
     type: req.query.type || 1,
-    s: req.query.keywords || req.query.keywords || ''
+    s: req.query.keywords || ''
   }
 
   createWebAPIRequest(
@@ -18,7 +18,6 @@ router.get('/', (req, res) => {
     cookie,
     music_req => {
       res.send(music_req)
-      console.log(Object.keys(JSON.parse(music_req).result))
     },
     err => res.status(502).send('fetch error')
   )

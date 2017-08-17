@@ -1,15 +1,15 @@
 const assert = require('assert')
 const crypto = require('crypto')
-const { createWebAPIRequest } = require("../util/util")
+const { createWebAPIRequest } = require('../util/util')
 
 describe('测试获取歌曲是否正常', () => {
   it('歌曲的 url 不应该为空', done => {
     const id = 347230
     const br = 999000
     const data = {
-      "ids": [id],
-      "br": br,
-      "csrf_token": ""
+      ids: [id],
+      br: br,
+      csrf_token: ''
     }
     const cookie = ''
 
