@@ -5,7 +5,7 @@
 ### 2.6.4 | 2017.7.16
 添加缓存机制和随机 UA 机制 感谢[@u3u](https://github.com/u3u) 
 [issue:77](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/77)
-优化请求 感谢 [@huhuime](https://github.com/huhuime) 
+优化请求代码 感谢 [@huhuime](https://github.com/huhuime) 
 [issue:83](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/83)
 
 ### 2.6.2 | 2017.7.16
