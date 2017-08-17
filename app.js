@@ -18,7 +18,7 @@ let cache = apicache.middleware
 //   next()
 // })
 
-// app.use(cache('2 minutes'))
+app.use(cache('2 minutes'))
 
 app.use(express.static('public'))
 
