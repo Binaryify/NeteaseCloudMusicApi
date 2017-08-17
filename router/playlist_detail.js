@@ -1,18 +1,18 @@
 const http = require('http')
-const express = require("express")
+const express = require('express')
 const router = express()
-const { createWebAPIRequest } = require("../util/util")
+const { createWebAPIRequest } = require('../util/util')
 
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
   const cookie = req.get('Cookie') ? req.get('Cookie') : ''
   let detail, imgurl
   const data = {
-    "id": req.query.id,
-    "offset": 0,
-    "total": true,
-    "limit": 1000,
-    "n": 1000,
-    "csrf_token": ""
+    id: req.query.id,
+    offset: 0,
+    total: true,
+    limit: 1000,
+    n: 1000,
+    csrf_token: ''
   }
 
   createWebAPIRequest(
@@ -63,7 +63,5 @@ router.get("/", (req, res) => {
   //   }
   // }
 })
-
-
 
 module.exports = router
