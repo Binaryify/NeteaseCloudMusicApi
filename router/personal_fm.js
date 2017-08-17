@@ -7,7 +7,6 @@ router.get('/', (req, res) => {
   const data = {
     csrf_token: ''
   }
-
   createWebAPIRequest(
     'music.163.com',
     '/weapi/v1/radio/get',
