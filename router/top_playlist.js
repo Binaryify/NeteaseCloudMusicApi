@@ -1,14 +1,14 @@
 //分类歌单
-const express = require("express")
+const express = require('express')
 const router = express()
-const { createWebAPIRequest } = require("../util/util")
+const { createWebAPIRequest } = require('../util/util')
 
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
   const cookie = req.get('Cookie') ? req.get('Cookie') : ''
   // order可为 'hot' 可为 'new'
   const data = {
-    cat: req.query.cat || "全部",
-    order: req.query.order || "hot",
+    cat: req.query.cat || '全部',
+    order: req.query.order || 'hot',
     offset: req.query.offset || 0,
     total: req.query.total ? 'true' : 'false',
     limit: req.query.limit || 50

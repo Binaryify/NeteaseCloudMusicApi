@@ -1,11 +1,11 @@
-const express = require("express")
+const express = require('express')
 const router = express()
-const { createWebAPIRequest } = require("../util/util")
+const { createWebAPIRequest } = require('../util/util')
 
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
   const cookie = req.get('Cookie') ? req.get('Cookie') : ''
   const data = {
-    cat: req.query.cat || "全部",
+    cat: req.query.cat || '全部',
     offset: req.query.offset || 0,
     limit: req.query.limit || 20
   }

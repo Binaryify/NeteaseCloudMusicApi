@@ -1,5 +1,7 @@
 const Encrypt = require('./crypto.js')
 const http = require('http')
+const querystring = require('querystring')
+
 function randomUserAgent() {
   const userAgentList = [
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
@@ -79,7 +81,10 @@ function createWebAPIRequest(
     }
   )
   http_client.write(
-    'params=' + cryptoreq.params + '&encSecKey=' + cryptoreq.encSecKey
+    querystring.stringify({
+      params: cryptoreq.params,
+      encSecKey: cryptoreq.encSecKey
+    })
   )
   http_client.end()
 }
