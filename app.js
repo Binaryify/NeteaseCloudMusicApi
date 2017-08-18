@@ -15,7 +15,6 @@ app.all('*', function (req, res, next) {
 
 app.use(express.static('public'));
 
-app.use('/test',require('./router/test'))
 
 // 获取专辑内容
 app.use('/album', require('./router/album'))
