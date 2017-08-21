@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
     data,
     cookie,
     (music_req, cookie) => {
-      console.log(music_req)
+      // console.log(music_req)
       res.set({
         'Set-Cookie': cookie
       })
