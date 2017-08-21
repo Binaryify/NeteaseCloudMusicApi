@@ -1094,7 +1094,7 @@ $ set PORT=4000 && node app.js
 `rid`: 电台 的 id
 
 **接口地址:**  
-`/dj/sub`  
+`/dj/program`  
 
 **调用例子:**  
 `/dj/program?rid=336355127` (对应'代码时间'的节目列表)  
