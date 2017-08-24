@@ -6,7 +6,7 @@ const { createWebAPIRequest } = require('../util/util')
 router.get('/', (req, res) => {
   const cookie = req.get('Cookie') ? req.get('Cookie') : ''
   const data = {
-    type: request.query.type,
+    type: req.query.type,
     csrf_token: ''
   }
   createWebAPIRequest(
