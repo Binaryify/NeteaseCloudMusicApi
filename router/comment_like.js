@@ -18,7 +18,6 @@ router.get("/", (req, res) => {
   const data = {
     "threadId": `${type}${id}`,
 		commentId:cid,
-    type:'like',
 		"csrf_token": ""
   }
   const action=(req.query.t==1?'like':'unlike')
