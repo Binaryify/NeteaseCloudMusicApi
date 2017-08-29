@@ -1,4 +1,4 @@
-//comment like 
+//comment delete 
 const express = require("express")
 const router = express()
 const { createWebAPIRequest } = require("../util/util")
@@ -18,15 +18,11 @@ router.get("/", (req, res) => {
   const data = {
     "threadId": `${type}${id}`,
 		commentId:cid,
-    type:'like',
 		"csrf_token": ""
   }
-  const action=(req.query.t==1?'like':'unlike')
-  
-  const url = `/weapi/v1/comment/${action}`
   createWebAPIRequest(
     'music.163.com',
-    url,
+    '/weapi/resource/comments/delete',
     'POST',
     data,
     cookie,

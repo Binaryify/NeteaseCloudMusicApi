@@ -1,12 +1,12 @@
-//comment like 
+//comment add 
 const express = require("express")
 const router = express()
 const { createWebAPIRequest } = require("../util/util")
 
 router.get("/", (req, res) => {
   const cookie = req.get('Cookie') ? req.get('Cookie') : ''
-  const cid = req.query.cid  //评论 id
   const id=req.query.id//  歌曲 id
+  const content = req.query.content;
   const typeMap={
     0:"R_SO_4_",//歌曲
     1:"R_MV_5_",//mv
@@ -17,16 +17,13 @@ router.get("/", (req, res) => {
   const type=typeMap[req.query.type]
   const data = {
     "threadId": `${type}${id}`,
-		commentId:cid,
-    type:'like',
+    "content":content,
 		"csrf_token": ""
   }
-  const action=(req.query.t==1?'like':'unlike')
   
-  const url = `/weapi/v1/comment/${action}`
   createWebAPIRequest(
     'music.163.com',
-    url,
+    '/weapi/resource/comments/add',
     'POST',
     data,
     cookie,

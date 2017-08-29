@@ -5,7 +5,7 @@ const app = express()
 // 跨域设置
 app.all('*', function (req, res, next) {
   res.header("Access-Control-Allow-Credentials", true)
-  res.header("Access-Control-Allow-Origin", "*")
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000")
   res.header("Access-Control-Allow-Headers", "X-Requested-With")
   res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS")
   res.header("X-Powered-By", ' 3.2.1')
@@ -52,6 +52,10 @@ app.use('/comment/playlist', require('./router/comment_playlist'))
 
 //未知 api
 app.use('/comment/like', require('./router/comment_like'))
+
+app.use('/comment/add', require('./router/comment_add'))
+
+app.use('/comment/delete', require('./router/comment_delete'))
 
 app.use('/comment/dj', require('./router/comment_dj'))
 
