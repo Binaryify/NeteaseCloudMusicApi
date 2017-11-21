@@ -321,6 +321,8 @@ $ set PORT=4000 && node app.js
 ### 获取音乐 url
 说明:使用歌单详情接口后,能得到的音乐的 id, 但不能得到的音乐 url, 调用此接口,传入的音乐 id(可多个,用逗号隔开),可以获取对应的音乐的 url(不需要登录)  
 
+>注:部分用户反馈获取的 url 会 403,[hwaphon](https://github.com/hwaphon)找到的解决方案是当获取到音乐的 id 后，将 http://music.163.com/song/media/outer/url?id=id.mp3 以src 赋予 Audio即可播放
+
 **必选参数:**  
 `id` : 音乐 id  
 
