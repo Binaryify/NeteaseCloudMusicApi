@@ -24,7 +24,7 @@ const top_list_all = {
 };
 const express = require("express");
 const router = express();
-const { createRequest, createWebAPIRequest } = require("../util/util");
+const { createWebAPIRequest } = require("../util/util");
 
 router.get("/", (req, res) => {
   const idx = req.query.idx;
