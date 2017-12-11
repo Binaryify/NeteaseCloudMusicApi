@@ -17,9 +17,9 @@
 优化 CORS 设置
 
 ### 2.6.4 | 2017.7.16
-添加缓存机制和随机 UA 机制 感谢[@u3u](https://github.com/u3u) 
+添加缓存机制和随机 UA 机制 感谢[@u3u](https://github.com/u3u)
 [issue:77](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/77)
-优化请求代码 感谢 [@huhuime](https://github.com/huhuime) 
+优化请求代码 感谢 [@huhuime](https://github.com/huhuime)
 [issue:83](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/83)
 
 ### 2.5.0 | 2017.4.29
@@ -96,7 +96,7 @@ $ npm install
 ```
 ## 运行
 ``` shell
-$ node app.js 
+$ node app.js
 ```
 
 服务器启动默认端口为3000,若不想使用3000端口,可使用以下命令:  
@@ -123,7 +123,7 @@ $ set PORT=4000 && node app.js
 
 - 2.5.0 版本对部分原有 api 做了微调,不过只是调整了下地址,参数和返回结果不受影响
 
-- 由于网易限制,此项目在国外服务器上使用会受到限制,如需解决,可使用大陆服务器或者使用代理,感谢 [@hiyangguo](https://github.com/hiyangguo)提出的[解决方法](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/29#issuecomment-298358438),在 'util.js' 的 'headers'处增加 
+- 由于网易限制,此项目在国外服务器上使用会受到限制,如需解决,可使用大陆服务器或者使用代理,感谢 [@hiyangguo](https://github.com/hiyangguo)提出的[解决方法](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/29#issuecomment-298358438),在 'util.js' 的 'headers'处增加
 `X-Real-IP':'211.161.244.70' //任意国内IP` 即可解决
 
 ### 登录
@@ -163,10 +163,10 @@ $ set PORT=4000 && node app.js
 调用登录接口的速度比调用其他接口慢,因为登录过程调用了加密算法
 
 ### 刷新登录
-说明:调用此接口,可刷新登录状态 
- 
+说明:调用此接口,可刷新登录状态
+
 **调用例子:**  
-`/login/refresh` 
+`/login/refresh`
 
 ### 获取用户详情
 说明:登陆后调用此接口,传入用户 id, 可以获取用户详情
@@ -223,22 +223,22 @@ $ set PORT=4000 && node app.js
 
 **必选参数:**  
 `uid` : 用户 id
-  
+
 **可选参数:**  
 `limit` : 返回数量,默认为30  
-`offset` : 偏移数量，用于分页,如:  如:(页数-1)*30, 其中 30 为 limit 的值,默认为0 
+`offset` : 偏移数量，用于分页,如:  如:(页数-1)*30, 其中 30 为 limit 的值,默认为0
 
 **接口地址:**  
 `/user/follows`  
 
 **调用例子:**  
-`/user/follows?uid=32953014` 
+`/user/follows?uid=32953014`
 
 ### 获取用户粉丝列表  
 说明:登陆后调用此接口,传入用户 id, 可以获取用户粉丝列表  
 
 **必选参数:**  
-`uid` : 用户 id 
+`uid` : 用户 id
 
 **可选参数:**  
 `limit` : 返回数量,默认为30  
@@ -248,25 +248,25 @@ $ set PORT=4000 && node app.js
 `/user/followeds`  
 
 **调用例子:**  
-`/user/followeds?uid=32953014` 
+`/user/followeds?uid=32953014`
 
 ### 获取用户动态
 说明:登陆后调用此接口,传入用户 id, 可以获取用户动态
 
 **必选参数:**  
-`uid` : 用户 id 
+`uid` : 用户 id
 
 **接口地址:**  
 `/user/event`  
 
 **调用例子:**  
-`/user/event?uid=32953014` 
+`/user/event?uid=32953014`
 
 ### 获取用户播放记录
 说明:登陆后调用此接口,传入用户 id,可获取用户播放记录
 
 **必选参数:**  
-`uid` : 用户 id 
+`uid` : 用户 id
 
 **可选参数:**  
 `type` : type=1时只返回weekData, type=0时返回allData
@@ -275,10 +275,10 @@ $ set PORT=4000 && node app.js
 `/user/record`  
 
 **调用例子:**  
-`/user/record?uid=32953014&type=1` 
+`/user/record?uid=32953014&type=1`
 
 ### 获取动态消息
-说明:调用此接口,可获取各种动态,对应网页版网易云，朋友界面里的各种动态消息，如分享的视频，音乐，照片等！ 
+说明:调用此接口,可获取各种动态,对应网页版网易云，朋友界面里的各种动态消息，如分享的视频，音乐，照片等！
 
 **必选参数:**  
 未知
@@ -287,10 +287,10 @@ $ set PORT=4000 && node app.js
 `/event`  
 
 **调用例子:**  
-`/event` 
+`/event`
 
 ### 获取精品歌单  
-说明:调用此接口,可获取精品歌单 
+说明:调用此接口,可获取精品歌单
 
 **可选参数:**  
 `cat`: tag, 比如 "华语"、"古风" 、"欧美"、"流行",默认为"全部"  
@@ -301,7 +301,7 @@ $ set PORT=4000 && node app.js
 `/top/playlist/highquality`  
 
 **调用例子:**  
-`/top/playlist/highquality?limit=30` 
+`/top/playlist/highquality?limit=30`
 
 
 ### 获取歌单详情  
@@ -332,7 +332,7 @@ $ set PORT=4000 && node app.js
 
 **调用例子:**  
 `/music/url?id=347230`  
-`/music/url?id=347230,347231` 
+`/music/url?id=347230,347231`
 
 返回数据如下图:  
 ![音乐 url](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E9%9F%B3%E4%B9%90%20url.png)
@@ -356,8 +356,8 @@ $ set PORT=4000 && node app.js
 1004: MV  
 1006: 歌词  
 1009: 电台  
- 
- 
+
+
 
 **接口地址:**  
 `/search`  
@@ -365,11 +365,11 @@ $ set PORT=4000 && node app.js
 **调用例子:**  
 `/search?keywords=海阔天空`  
 
-返回数据如下图: 
+返回数据如下图:
 ![搜索音乐](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%90%9C%E7%B4%A2.png)
 
 ### 搜索建议
-说明:调用此接口,传入搜索关键词可获得搜索建议,搜索结果同时包含单曲,歌手,歌单,mv 信息 
+说明:调用此接口,传入搜索关键词可获得搜索建议,搜索结果同时包含单曲,歌手,歌单,mv 信息
 
 **必选参数:**  
 `keywords` : 关键词  
@@ -387,8 +387,8 @@ $ set PORT=4000 && node app.js
 1004: MV  
 1006: 歌词  
 1009: 电台  
- 
- 
+
+
 
 **接口地址:**  
 `/search/suggest`  
@@ -401,7 +401,7 @@ $ set PORT=4000 && node app.js
 
 **必选参数:**  
 `keywords` : 关键词   
- 
+
 **接口地址:**  
 `/search/multimatch`  
 
@@ -435,7 +435,7 @@ $ set PORT=4000 && node app.js
 **调用例子:**  
 `/lyric?id=347230`  
 
-返回数据如下图: 
+返回数据如下图:
 ![获取歌词](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%AD%8C%E8%AF%8D.png)
 
 ### 歌曲评论
@@ -453,9 +453,9 @@ $ set PORT=4000 && node app.js
 `/comment/music`  
 
 **调用例子:**  
-`/comment/music?id=186016&limit=1` 对应晴天评论 
+`/comment/music?id=186016&limit=1` 对应晴天评论
 
-返回数据如下图: 
+返回数据如下图:
 ![获取评论](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/comment.png)
 
 
@@ -474,7 +474,7 @@ $ set PORT=4000 && node app.js
 `/comment/album`  
 
 **调用例子:**  
-`/comment/album?id=32311` 
+`/comment/album?id=32311`
 
 ### 歌单评论
 说明:调用此接口,传入音乐 id和 limit 参数, 可获得该歌单的所有评论(不需要登录)  
@@ -491,7 +491,7 @@ $ set PORT=4000 && node app.js
 `/comment/playlist`  
 
 **调用例子:**  
-`/comment/playlist?id=705123491` 
+`/comment/playlist?id=705123491`
 
 ### mv 评论
 说明:调用此接口,传入音乐 id和 limit 参数, 可获得该 mv 的所有评论(不需要登录)  
@@ -508,7 +508,7 @@ $ set PORT=4000 && node app.js
 `/comment/mv`  
 
 **调用例子:**  
-`/comment/mv?id=5436712` 
+`/comment/mv?id=5436712`
 
 ### 电台节目评论
 说明:调用此接口,传入音乐 id和 limit 参数, 可获得该 电台节目 的所有评论(不需要登录)  
@@ -525,7 +525,7 @@ $ set PORT=4000 && node app.js
 `/comment/dj`  
 
 **调用例子:**  
-`/comment/dj?id=794062371` 
+`/comment/dj?id=794062371`
 
 ### 给评论点赞
 说明:调用此接口,传入 type, 资源 id, 和评论id cid和 是否点赞参数 t 即可给对应评论点赞(需要登录)
@@ -544,10 +544,10 @@ $ set PORT=4000 && node app.js
 0: 歌曲
 1: mv
 2: 歌单
-3: 专辑 
+3: 专辑
 4: 电台
 ```  
-  
+
 **接口地址:**  
 `comment/like`  
 
@@ -562,13 +562,13 @@ $ set PORT=4000 && node app.js
 `/banner`  
 
 **调用例子:**  
-`/banner` 
+`/banner`
 
 ### 获取歌曲详情
 说明:调用此接口,传入音乐 id, 可获得歌曲详情    
 
 **必选参数:**  
-`ids`: 音乐 id,如 `ids=347230` 
+`ids`: 音乐 id,如 `ids=347230`
 
 **接口地址:**  
 `/song/detail`  
@@ -576,7 +576,7 @@ $ set PORT=4000 && node app.js
 **调用例子:**  
 `/song/detail?ids=347230`  
 
-返回数据如下图: 
+返回数据如下图:
 ![获取歌曲详情](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/songDetail.png)
 
 
@@ -584,7 +584,7 @@ $ set PORT=4000 && node app.js
 说明:调用此接口,传入专辑 id,可获得专辑内容
 
 **必选参数:**  
-`id`: 专辑 id 
+`id`: 专辑 id
 
 **接口地址:**  
 `/album`  
@@ -592,14 +592,14 @@ $ set PORT=4000 && node app.js
 **调用例子:**  
 `/album?id=32311`  
 
-返回数据如下图: 
+返回数据如下图:
 ![获取专辑内容](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E4%B8%93%E8%BE%91.png)
 
 ### 获取歌手单曲
 说明:调用此接口,传入歌手 id,可获得歌手单曲
 
 **必选参数:**  
-`id`: 歌手 id,可由搜索接口获得 
+`id`: 歌手 id,可由搜索接口获得
 
 **接口地址:**  
 `/artists`  
@@ -607,7 +607,7 @@ $ set PORT=4000 && node app.js
 **调用例子:**  
 `/artists?id=6452`  
 
-返回数据如下图: 
+返回数据如下图:
 ![获取歌手单曲](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/artists.png)
 
 ### 获取歌手 mv
@@ -615,7 +615,7 @@ $ set PORT=4000 && node app.js
 `/artist/mv?id=6452`,`/mv?mvid=5461064`
 
 **必选参数:**  
-`id`: 歌手 id,可由搜索接口获得 
+`id`: 歌手 id,可由搜索接口获得
 
 **接口地址:**  
 `/artist/mv`  
@@ -627,7 +627,7 @@ $ set PORT=4000 && node app.js
 说明:调用此接口,传入歌手 id,可获得歌手专辑内容
 
 **必选参数:**  
-`id`: 歌手 id 
+`id`: 歌手 id
 
 **可选参数:**  
 `limit`: 取出数量,默认为50  
@@ -640,14 +640,14 @@ $ set PORT=4000 && node app.js
 **调用例子:**  
 `/artist/album?id=6452&limit=30` (周杰伦)
 
-返回数据如下图: 
+返回数据如下图:
 ![获取专辑内容](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/artist_album.png)
 
 ### 获取歌手描述
 说明:调用此接口,传入歌手 id,可获得歌手描述
 
 **必选参数:**  
-`id`: 歌手 id 
+`id`: 歌手 id
 
 **接口地址:**  
 `/artist/desc`  
@@ -659,7 +659,7 @@ $ set PORT=4000 && node app.js
 说明:调用此接口,传入歌手 id,可获得相似歌手
 
 **必选参数:**  
-`id`: 歌手 id 
+`id`: 歌手 id
 
 **接口地址:**  
 `/simi/artist`  
@@ -671,7 +671,7 @@ $ set PORT=4000 && node app.js
 说明:调用此接口,传入歌曲 id,可获得相似歌单
 
 **必选参数:**  
-`id`: 歌曲 id 
+`id`: 歌曲 id
 
 **接口地址:**  
 `/simi/playlist`  
@@ -682,8 +682,8 @@ $ set PORT=4000 && node app.js
 
 ### 相似 mv
 说明:调用此接口,传入 `mvid` 可获取相似 mv
-**必选参数:** 
-`mvid`: mv id 
+**必选参数:**
+`mvid`: mv id
 
 **接口地址:**  
 `/simi/mv`  
@@ -696,7 +696,7 @@ $ set PORT=4000 && node app.js
 说明:调用此接口,传入歌曲 id,可获得相似歌曲
 
 **必选参数:**  
-`id`: 歌曲 id 
+`id`: 歌曲 id
 
 **接口地址:**  
 `/simi/song`  
@@ -708,7 +708,7 @@ $ set PORT=4000 && node app.js
 说明:调用此接口,传入歌曲 id,最近5个听了这首歌的用户
 
 **必选参数:**  
-`id`: 歌曲 id 
+`id`: 歌曲 id
 
 **接口地址:**  
 `/simi/user`  
@@ -726,7 +726,7 @@ $ set PORT=4000 && node app.js
 **调用例子:**  
 `/recommend/resource`  
 
-返回数据如下图: 
+返回数据如下图:
 ![每日推荐歌单](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%8E%A8%E8%8D%90%E6%AD%8C%E5%8D%95.png)
 
 ### 获取每日推荐歌曲
@@ -738,7 +738,7 @@ $ set PORT=4000 && node app.js
 **调用例子:**  
 `/recommend/songs`  
 
-返回数据如下图: 
+返回数据如下图:
 ![每日推荐歌曲](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%8E%A8%E8%8D%90%E6%AD%8C%E6%9B%B2.png)
 
 
@@ -751,7 +751,7 @@ $ set PORT=4000 && node app.js
 **调用例子:**  
 `/personal_fm`  
 
-返回数据如下图: 
+返回数据如下图:
 
 ![私人 FM](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/personal_fm.png)
 
@@ -766,7 +766,7 @@ $ set PORT=4000 && node app.js
 **调用例子:**  
 `/daily_signin`  
 
-返回数据如下图: 
+返回数据如下图:
 
 ![签到成功](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/signinSuccess.png)
 
@@ -788,7 +788,7 @@ $ set PORT=4000 && node app.js
 **调用例子:**  
 `/like?id=347230`  
 
-返回数据如下图: 
+返回数据如下图:
 
 ![喜欢成功](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/like.png)
 
@@ -802,7 +802,7 @@ $ set PORT=4000 && node app.js
 说明:调用此接口,传入音乐 id, 可把该音乐从私人 FM中移除至垃圾桶
 
 **必选参数:**   
-`id`:   歌曲 id 
+`id`:   歌曲 id
 
 **接口地址:**  
 `/fm_trash`  
@@ -810,7 +810,7 @@ $ set PORT=4000 && node app.js
 **调用例子:**  
 `/fm_trash?id=347230`  
 
-返回数据如下图: 
+返回数据如下图:
 
 ![移除成功](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/fm_trash.png)
 
@@ -826,13 +826,13 @@ $ set PORT=4000 && node app.js
 **调用例子:**  
 `/top/playlist?limit=10&order=new`  
 
-返回数据如下图: 
+返回数据如下图:
 
 ![精选碟](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/top_playlist.png)
 
 ### 新碟上架
 说明:调用此接口,可获取新碟上架列表,如需具体音乐信息需要调用获取专辑列表接口 `/album` ,然后传入 id, 如 `/album?id=32311&limit=30`     
- 
+
 **可选参数:**  
 `limit`: 取出数量,默认为50  
 
@@ -844,13 +844,13 @@ $ set PORT=4000 && node app.js
 **调用例子:**  
 `/top/album?offset=0&limit=30`  
 
-返回数据如下图: 
+返回数据如下图:
 
 ![新碟上架](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/new_albums.png)
 
 ### 热门歌手
-说明:调用此接口,可获取热门歌手数据 
- 
+说明:调用此接口,可获取热门歌手数据
+
 **可选参数:**  
 `limit`: 取出数量,默认为50  
 
@@ -862,13 +862,13 @@ $ set PORT=4000 && node app.js
 **调用例子:**  
 `/top/artists?offset=0&limit=30`  
 
-返回数据如下图: 
+返回数据如下图:
 
 ![热门歌手](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/top_artists.png)
 
 ### 最新 mv
 说明:调用此接口,可获取最新 mv
- 
+
 **可选参数:**  
 `limit`: 取出数量,默认为 30  
 
@@ -880,7 +880,7 @@ $ set PORT=4000 && node app.js
 
 ### 推荐 mv
 说明:调用此接口,可获取推荐 mv
- 
+
 **接口地址:**  
 `/personalized/mv`  
 
@@ -889,7 +889,7 @@ $ set PORT=4000 && node app.js
 
 ### 推荐歌单
 说明:调用此接口,可获取推荐歌单
- 
+
 **接口地址:**  
 `/personalized`  
 
@@ -898,16 +898,16 @@ $ set PORT=4000 && node app.js
 
 ### 推荐新音乐
 说明:调用此接口,可获取推荐新音乐
- 
+
 **接口地址:**  
 `/personalized/newsong`  
 
 **调用例子:**  
-`/personalized/newsong` 
+`/personalized/newsong`
 
 ### 推荐电台
 说明:调用此接口,可获取推荐电台
- 
+
 **接口地址:**  
 `/personalized/djprogram`  
 
@@ -916,7 +916,7 @@ $ set PORT=4000 && node app.js
 
 ### 推荐节目
 说明:调用此接口,可获取推荐电台
- 
+
 **接口地址:**  
 `/program/recommend`  
 
@@ -925,17 +925,17 @@ $ set PORT=4000 && node app.js
 
 ### 独家放送
 说明:调用此接口,可获取独家放送
- 
+
 **接口地址:**  
 `/personalized/privatecontent`  
 
 **调用例子:**  
-`/personalized/privatecontent` 
+`/personalized/privatecontent`
 
 
 ### mv 排行
 说明:调用此接口,可获取 mv 排行
- 
+
 **可选参数:**  
 `limit`: 取出数量,默认为 30  
 
@@ -945,11 +945,11 @@ $ set PORT=4000 && node app.js
 `top/mv`  
 
 **调用例子:**  
-`top/mv?limit=10` 
+`top/mv?limit=10`
 
 ### 获取 mv 数据
 说明:调用此接口,传入 mvid (在搜索音乐的时候传 type=1004获得) ,可获取对应 MV 数据,数据包含 mv 名字,歌手,发布时间, mv 视频地址等数据,其中 mv 视频网易做了防盗链处理,不能直接播放,需要播放的话需要调用'播放 mv' 接口  
- 
+
 **必选参数:**  
 `mvid`: mv 的 id
 
@@ -959,14 +959,14 @@ $ set PORT=4000 && node app.js
 **调用例子:**  
 `/mv?mvid=5436712`  
 
-返回数据如下图: 
+返回数据如下图:
 
 ![热门歌手](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/mv.png)
 
 
 ### 播放 mv
 说明:调用此接口,传入 mv 地址,可播放 mv,也可将接口嵌入 video 标签使用,由于使用了 'pipe',进度条无法通过拖动进度条控制进度,如有解决方案可提出 PR 或者自行改造  
- 
+
 **可选参数:**  
 `url`: mv 的 地址
 
@@ -976,7 +976,7 @@ $ set PORT=4000 && node app.js
 **调用例子:**  
 `/mv/url?url=http://v4.music.126.net/20170422034915/c98eab2f5e2c85fc8de2ab3f0f8ed1c6/web/cloudmusic/MjQ3NDQ3MjUw/89a6a279dc2acfcd068b45ce72b1f560/533e4183a709699d566180ed0cd9abe9.mp4`  
 
-如下图: 
+如下图:
 
 ![播放视频](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/play_mv.png)
 
@@ -1009,8 +1009,10 @@ $ set PORT=4000 && node app.js
 "18": 中国嘻哈榜,  
 "19": 法国 NRJ EuroHot 30周榜,  
 "20": 台湾Hito排行榜,  
-"21": Beatport全球电子舞曲榜 
-``` 
+"21": Beatport全球电子舞曲榜,
+"22": 云音乐ACG音乐榜,
+"23": 云音乐嘻哈榜
+```
 
 **接口地址:**  
 `/top/list`  
@@ -1018,7 +1020,7 @@ $ set PORT=4000 && node app.js
 **调用例子:**  
 `/top/list?idx=6`  
 
-返回数据如下图: 
+返回数据如下图:
 
 ![排行榜](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/top_list.png)
 
@@ -1029,7 +1031,7 @@ $ set PORT=4000 && node app.js
 `/toplist/artist`  
 
 **调用例子:**  
-`/toplist/artist` 
+`/toplist/artist`
 
 ### 云盘
 说明:登陆后调用此接口,可获取云盘数据,获取的数据没有对应 url,需要再调用一次 `/music/url` 获取 url
@@ -1038,7 +1040,7 @@ $ set PORT=4000 && node app.js
 `/user/cloud`  
 
 **调用例子:**  
-`/user/cloud` 
+`/user/cloud`
 
 ### 电台-推荐
 说明:登陆后调用此接口,可获得推荐电台
