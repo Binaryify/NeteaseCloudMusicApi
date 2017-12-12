@@ -295,7 +295,7 @@ $ set PORT=4000 && node app.js
 **可选参数:**  
 `cat`: tag, 比如 "华语"、"古风" 、"欧美"、"流行",默认为"全部"  
 
-`limit`: 取出评论数量,默认为20  
+`limit`: 取出歌单数量,默认为20  
 
 **接口地址:**  
 `/top/playlist/highquality`  
