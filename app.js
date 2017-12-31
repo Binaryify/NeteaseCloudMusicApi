@@ -248,7 +248,7 @@ app.use("/user/record", require("./router/user_playrecord"));
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
-  console.log(`server running @${port}`);
+  console.log(`server running @ http://localhost:${port}`);
 });
 
 module.exports = app;
