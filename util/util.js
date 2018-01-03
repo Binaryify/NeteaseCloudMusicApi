@@ -2,6 +2,8 @@ const Encrypt = require("./crypto.js");
 const request = require("request");
 const querystring = require("querystring");
 
+request.debug = true;
+
 function randomUserAgent() {
   const userAgentList = [
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36",
@@ -37,6 +39,9 @@ function createWebAPIRequest(
   callback,
   errorcallback
 ) {
+  console.log(cookie);
+  const proxy = cookie.split("__proxy__")[1];
+  cookie = cookie.split("__proxy__")[0];
   const cryptoreq = Encrypt(data);
   const options = {
     url: `http://${host}${path}`,
@@ -54,7 +59,8 @@ function createWebAPIRequest(
     body: querystring.stringify({
       params: cryptoreq.params,
       encSecKey: cryptoreq.encSecKey
-    })
+    }),
+    proxy: proxy
   };
 
   request(options, function(error, res, body) {
