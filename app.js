@@ -1,5 +1,4 @@
 const express = require("express");
-const http = require("http");
 const apicache = require("apicache");
 const path = require("path");
 

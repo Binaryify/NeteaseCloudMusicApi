@@ -1,7 +1,5 @@
 const Encrypt = require("./crypto.js");
 const request = require("request");
-request.debug = true;
-const http = require("http");
 const querystring = require("querystring");
 
 function randomUserAgent() {
