@@ -23,6 +23,14 @@ app.use(cache("2 minutes", onlyStatus200));
 
 app.use(express.static(path.resolve(__dirname, "public")));
 
+app.use(function(req, res, next) {
+  const proxy = req.query.proxy;
+  if (proxy) {
+    req.headers.cookie = req.headers.cookie + `__proxy__${proxy}`;
+  }
+  next();
+});
+
 // 获取专辑内容
 app.use("/album", require("./router/album"));
 
