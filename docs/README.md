@@ -12,7 +12,27 @@
 ## 工作原理
 跨站请求伪造 (CSRF), 伪造请求头,调用官方 API
 
+## 可以使用代理
+在query参数中加上proxy=your-proxy即可让这一次的请求使用proxy
+
+```javascript
+// 例子
+const url = `http://localhost:3000/music/url?id=33894312&proxy=http://121.196.226.246:84`
+fetch(url)
+.then(function()
+{
+    // do what you want
+})
+
+// 结果
+// {"data":[{"id":33894312,"url":"http://m10.music.126.net/20180104125640/930a968b3fb04908b733506b3833e60b/ymusic/0fd6/4f65/43ed/a8772889f38dfcb91c04da915b301617.mp3","br":320000,"size":10691439,"md5":"a8772889f38dfcb91c04da915b301617","code":200,"expi":1200,"type":"mp3","gain":-2.0E-4,"fee":0,"uf":null,"payed":0,"flag":0,"canExtend":false}],"code": 200}
+```
+
 ## 版本新特性
+
+### ? ? ? | 2018.01.04
+添加了proxy功能
+
 ### 2.8.0 | 2018.01.04
 用 'request' 重写了请求函数
 
@@ -333,9 +353,9 @@ $ set PORT=4000 && node app.js
 **接口地址:**
 `/music/url`
 
-**调用例子:**
-`/music/url?id=347230`
-`/music/url?id=347230,347231`
+**调用例子:**  
+`/music/url?id=33894312`  
+`/music/url?id=405998841,33894312`
 
 返回数据如下图:
 ![音乐 url](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E9%9F%B3%E4%B9%90%20url.png)
@@ -411,8 +431,8 @@ $ set PORT=4000 && node app.js
 **调用例子:**
 `/search/multimatch?keywords=海阔天空`
 
-### 收藏单曲到歌单
-说明:调用此接口,传入音乐 id和 limit 参数, 可获得该专辑的所有评论(需要登录)
+### 对歌单添加或删除歌曲
+说明:调用此接口,可以添加歌曲到歌单或者从歌单删除某首歌曲(需要登录) 
 
 **必选参数:**
 `op`: 从歌单增加单曲为add,删除为 del
@@ -435,8 +455,8 @@ $ set PORT=4000 && node app.js
 **接口地址:**
 `/lyric`
 
-**调用例子:**
-`/lyric?id=347230`
+**调用例子:**  
+`/lyric?id=33894312`  
 
 返回数据如下图:
 ![获取歌词](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%AD%8C%E8%AF%8D.png)
