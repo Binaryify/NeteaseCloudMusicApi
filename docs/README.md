@@ -12,7 +12,27 @@
 ## 工作原理
 跨站请求伪造 (CSRF), 伪造请求头,调用官方 API
 
+## 可以使用代理
+在query参数中加上proxy=your-proxy即可让这一次的请求使用proxy
+
+```javascript
+// 例子
+const url = `http://localhost:3000/music/url?id=33894312&proxy=http://121.196.226.246:84`
+fetch(url)
+.then(function()
+{
+    // do what you want
+})
+
+// 结果
+// {"data":[{"id":33894312,"url":"http://m10.music.126.net/20180104125640/930a968b3fb04908b733506b3833e60b/ymusic/0fd6/4f65/43ed/a8772889f38dfcb91c04da915b301617.mp3","br":320000,"size":10691439,"md5":"a8772889f38dfcb91c04da915b301617","code":200,"expi":1200,"type":"mp3","gain":-2.0E-4,"fee":0,"uf":null,"payed":0,"flag":0,"canExtend":false}],"code": 200}
+```
+
 ## 版本新特性
+
+### ? ? ? | 2018.01.04
+添加了proxy功能
+
 ### 2.8.0 | 2018.01.04
 用 'request' 重写了请求函数
 
