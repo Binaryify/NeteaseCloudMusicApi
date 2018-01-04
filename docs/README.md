@@ -30,7 +30,7 @@ fetch(url)
 
 ## 版本新特性
 
-### ? ? ? | 2018.01.04
+### 2.8.1 | 2018.01.04
 添加了proxy功能
 
 ### 2.8.0 | 2018.01.04
@@ -353,8 +353,8 @@ $ set PORT=4000 && node app.js
 **接口地址:**
 `/music/url`
 
-**调用例子:**  
-`/music/url?id=33894312`  
+**调用例子:**
+`/music/url?id=33894312`
 `/music/url?id=405998841,33894312`
 
 返回数据如下图:
@@ -432,7 +432,7 @@ $ set PORT=4000 && node app.js
 `/search/multimatch?keywords=海阔天空`
 
 ### 对歌单添加或删除歌曲
-说明:调用此接口,可以添加歌曲到歌单或者从歌单删除某首歌曲(需要登录) 
+说明:调用此接口,可以添加歌曲到歌单或者从歌单删除某首歌曲(需要登录)
 
 **必选参数:**
 `op`: 从歌单增加单曲为add,删除为 del
@@ -455,8 +455,8 @@ $ set PORT=4000 && node app.js
 **接口地址:**
 `/lyric`
 
-**调用例子:**  
-`/lyric?id=33894312`  
+**调用例子:**
+`/lyric?id=33894312`
 
 返回数据如下图:
 ![获取歌词](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%AD%8C%E8%AF%8D.png)
