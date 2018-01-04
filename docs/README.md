@@ -331,8 +331,8 @@ $ set PORT=4000 && node app.js
 `/music/url`  
 
 **调用例子:**  
-`/music/url?id=347230`  
-`/music/url?id=347230,347231`
+`/music/url?id=33894312`  
+`/music/url?id=405998841,33894312`
 
 返回数据如下图:  
 ![音乐 url](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E9%9F%B3%E4%B9%90%20url.png)
@@ -408,8 +408,8 @@ $ set PORT=4000 && node app.js
 **调用例子:**  
 `/search/multimatch?keywords=海阔天空`    
 
-### 收藏单曲到歌单
-说明:调用此接口,传入音乐 id和 limit 参数, 可获得该专辑的所有评论(需要登录)  
+### 对歌单添加或删除歌曲
+说明:调用此接口,可以添加歌曲到歌单或者从歌单删除某首歌曲(需要登录) 
 
 **必选参数:**  
 `op`: 从歌单增加单曲为add,删除为 del
@@ -433,7 +433,7 @@ $ set PORT=4000 && node app.js
 `/lyric`  
 
 **调用例子:**  
-`/lyric?id=347230`  
+`/lyric?id=33894312`  
 
 返回数据如下图:
 ![获取歌词](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%AD%8C%E8%AF%8D.png)
@@ -453,7 +453,7 @@ $ set PORT=4000 && node app.js
 `/comment/music`  
 
 **调用例子:**  
-`/comment/music?id=186016&limit=1` 对应晴天评论
+`/comment/music?id=33894312&limit=1` 对应晴天评论
 
 返回数据如下图:
 ![获取评论](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/comment.png)
