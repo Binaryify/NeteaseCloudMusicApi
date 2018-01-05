@@ -29,6 +29,8 @@ fetch(url)
 ```
 
 ## 版本新特性
+### 2.8.2 | 2018.01.05
+增加Dockerfile，支持以Docker容器模式运行
 
 ### 2.8.1 | 2018.01.04
 添加了proxy功能
@@ -133,6 +135,11 @@ windows 下使用 git-bash 或者 cmder 等终端执行以下命令:
 $ set PORT=4000 && node app.js
 ```
 
+## Docker容器运行
+```shell
+docker pull pengxiao/netease-music-api
+docker run -d -p 3000:3000 pengxiao/netease-music-api
+```
 
 ## 接口文档
 ### 调用前须知
