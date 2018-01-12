@@ -1,36 +1,29 @@
-const http = require('http')
-const express = require('express')
-const router = express()
-const { createWebAPIRequest } = require('../util/util')
+const http = require("http");
+const express = require("express");
+const router = express();
+const { createWebAPIRequest } = require("../util/util");
 
-router.get('/', (req, res) => {
-  const cookie = req.get('Cookie') ? req.get('Cookie') : ''
-  let detail, imgurl
+router.get("/", (req, res) => {
+  const cookie = req.get("Cookie") ? req.get("Cookie") : "";
   const data = {
     id: req.query.id,
-    offset: 0,
-    total: true,
-    limit: 1000,
-    n: 1000,
-    csrf_token: ''
-  }
+    csrf_token: ""
+  };
 
   createWebAPIRequest(
-    'music.163.com',
-    '/weapi/v3/playlist/detail',
-    'POST',
+    "music.163.com",
+    "/weapi/v3/playlist/detail",
+    "POST",
     data,
     cookie,
     music_req => {
-      console.log(music_req)
-      // detail = music_req
-      res.send(music_req)
-      // mergeRes()
+      // console.log(music_req)
+      res.send(music_req);
     },
     err => {
-      res.status(502).send('fetch error')
+      res.status(502).send("fetch error");
     }
-  )
+  );
 
   // FIXME:i dont know the api to get coverimgurl
   // so i get it by parsing html
@@ -62,6 +55,6 @@ router.get('/', (req, res) => {
   //     res.send(detail)
   //   }
   // }
-})
+});
 
-module.exports = router
+module.exports = router;
