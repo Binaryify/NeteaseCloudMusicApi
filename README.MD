@@ -1,12 +1,12 @@
 # 网易云音乐 API
-网易云音乐 Node.js 版 API
+网易云音乐 Node.js API service
 <p>
 <a href="https://www.npmjs.com/package/NeteaseCloudMusicApi"><img src="https://img.shields.io/npm/v/NeteaseCloudMusicApi.svg" alt="Version"></a>
 <a href="https://www.npmjs.com/package/NeteaseCloudMusicApi"><img src="https://img.shields.io/npm/l/NeteaseCloudMusicApi.svg" alt="License"></a>
 <a href="https://www.npmjs.com/package/NeteaseCloudMusicApi"><img src="https://img.shields.io/david/dev/binaryify/NeteaseCloudMusicApi.svg" alt="devDependencies" ></a>
 <a href="https://www.npmjs.com/package/NeteaseCloudMusicApi"><img src="https://img.shields.io/david/binaryify/NeteaseCloudMusicApi.svg" alt="devDependencies" ></a>
 <a href="https://codeclimate.com/github/Binaryify/NeteaseCloudMusicApi"><img src="https://codeclimate.com/github/Binaryify/NeteaseCloudMusicApi/badges/gpa.svg" /></a>
-</p>  
+</p>
 
 ## 灵感来自
 [disoul/electron-cloud-music](https://github.com/disoul/electron-cloud-music)
@@ -17,13 +17,22 @@
 
 
 ## 版本新特性
+### 2.8.2 | 2018.01.05
+增加Dockerfile，支持以Docker容器模式运行
+
+### 2.8.1 | 2018.01.04
+添加了proxy功能
+
+### 2.8.0 | 2018.01.04
+用 'request' 重写了请求函数
+
 ### 2.6.5 | 2017.7.16
 优化 CORS 设置
 
 ### 2.6.4 | 2017.7.16
-添加缓存机制和随机 UA 机制 感谢[@u3u](https://github.com/u3u) 
+添加缓存机制和随机 UA 机制 感谢[@u3u](https://github.com/u3u)
 [issue:77](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/77)
-优化请求代码 感谢 [@huhuime](https://github.com/huhuime) 
+优化请求代码 感谢 [@huhuime](https://github.com/huhuime)
 [issue:83](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/83)
 
 ### 2.6.2 | 2017.7.16
@@ -153,24 +162,30 @@
 ## 环境要求
 需要 NodeJS 6.0+ 环境
 
-## 安装  
+## 安装
 ``` shell
 $ git clone git@github.com:Binaryify/NeteaseCloudMusicApi.git
 $ npm install
 ```
 ## 运行
 ``` shell
-$ node app.js 
+$ node app.js
 ```
-服务器启动默认端口为3000,若不想使用3000端口,可使用以下命令:  
+服务器启动默认端口为3000,若不想使用3000端口,可使用以下命令:
 Mac/Linux
 ```shell
 $ PORT=4000 node app.js
 ```
 
-windows 下使用 git-bash 或者 cmder 等终端执行以下命令:  
+windows 下使用 git-bash 或者 cmder 等终端执行以下命令:
 ```shell
 $ set PORT=4000 && node app.js
+```
+
+## Docker容器运行
+```shell
+docker pull pengxiao/netease-music-api
+docker run -d -p 3000:3000 pengxiao/netease-music-api
 ```
 
 ## 使用文档
@@ -179,13 +194,13 @@ $ set PORT=4000 && node app.js
 ![文档](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/docs.png)
 
 ## 更新日志
-[changelog](https://github.com/Binaryify/NeteaseCloudMusicApi/blob/master/CHANGELOG.MD)  
+[changelog](https://github.com/Binaryify/NeteaseCloudMusicApi/blob/master/CHANGELOG.MD)
 
 ## 单元测试
 
 ``` shell
 $ npm test
-```  
+```
 
 ![单元测试](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/screenshot1.png)
 ![单元测试](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/screenshot2.png)
