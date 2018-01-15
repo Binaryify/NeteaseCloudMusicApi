@@ -67,7 +67,13 @@ function createWebAPIRequest(
     if (error) {
       errorcallback(error);
     } else {
-      callback(body, res.headers["set-cookie"]);
+      //解决 网易云 cookie 添加 .music.163.com 域设置。
+      //如： Domain=.music.163.com
+      let cookie = res.headers["set-cookie"];
+      if (Array.isArray(cookie)) {
+        cookie = cookie.map(x => x.replace(/.music.163.com/g, "")).sort((a, b) => a.length - b.length)
+      }
+      callback(body, cookie);
     }
   });
 }

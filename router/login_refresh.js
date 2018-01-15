@@ -7,7 +7,6 @@ router.get('/', (req, res) => {
   const data = {
     csrf_token: ''
   }
-  console.log({ cookie })
   createWebAPIRequest(
     'music.163.com',
     `/weapi/login/token/refresh`,
@@ -15,8 +14,6 @@ router.get('/', (req, res) => {
     data,
     cookie,
     (music_req, cookie) => {
-      console.log({ cookie })
-      cookie = cookie&&cookie.map(x => x.replace("Domain=.music.163.com", ""))
       res.set({
         'Set-Cookie': cookie
       })
