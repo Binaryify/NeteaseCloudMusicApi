@@ -1,9 +1,7 @@
 const express = require("express");
 const crypto = require("crypto");
 const router = express();
-const {
-  createWebAPIRequest
-} = require("../util/util");
+const { createWebAPIRequest } = require("../util/util");
 
 router.get("/", (req, res) => {
   const phone = req.query.phone;
@@ -22,6 +20,11 @@ router.get("/", (req, res) => {
     data,
     cookie,
     (music_req, cookie) => {
+      const cookieStr =
+        "appver=1.5.9;os=osx; channel=netease;osver=%E7%89%88%E6%9C%AC%2010.13.2%EF%BC%88%E7%89%88%E5%8F%B7%2017C88%EF%BC%89";
+      cookieStr.split(";").forEach(item => {
+        cookie.push(item + ";Path=/");
+      });
       res.set({
         "Set-Cookie": cookie
       });
