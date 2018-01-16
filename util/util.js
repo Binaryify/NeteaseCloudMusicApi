@@ -39,7 +39,7 @@ function createWebAPIRequest(
   callback,
   errorcallback
 ) {
-  console.log(cookie);
+  // console.log(cookie);
   const proxy = cookie.split("__proxy__")[1];
   cookie = cookie.split("__proxy__")[0];
   const cryptoreq = Encrypt(data);
@@ -71,7 +71,9 @@ function createWebAPIRequest(
       //如： Domain=.music.163.com
       let cookie = res.headers["set-cookie"];
       if (Array.isArray(cookie)) {
-        cookie = cookie.map(x => x.replace(/.music.163.com/g, "")).sort((a, b) => a.length - b.length)
+        cookie = cookie
+          .map(x => x.replace(/.music.163.com/g, ""))
+          .sort((a, b) => a.length - b.length);
       }
       callback(body, cookie);
     }
