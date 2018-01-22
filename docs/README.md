@@ -14,21 +14,6 @@
 
 跨站请求伪造 (CSRF), 伪造请求头 , 调用官方 API
 
-## 可以使用代理
-
-在 query 参数中加上 proxy=your-proxy 即可让这一次的请求使用 proxy
-
-```javascript
-// 例子
-const url = `http://localhost:3000/music/url?id=33894312&proxy=http://121.196.226.246:84`
-fetch(url).then(function() {
-  // do what you want
-})
-
-// 结果
-// {"data":[{"id":33894312,"url":"http://m10.music.126.net/20180104125640/930a968b3fb04908b733506b3833e60b/ymusic/0fd6/4f65/43ed/a8772889f38dfcb91c04da915b301617.mp3","br":320000,"size":10691439,"md5":"a8772889f38dfcb91c04da915b301617","code":200,"expi":1200,"type":"mp3","gain":-2.0E-4,"fee":0,"uf":null,"payed":0,"flag":0,"canExtend":false}],"code": 200}
-```
-
 ## 版本新特性
 
 ### 2.8.3 | 2018.01.12
@@ -164,14 +149,18 @@ docker run -d -p 3000:3000 pengxiao/netease-music-api
 ## 接口文档
 
 ### 调用前须知
-* 为使用方便,降低门槛,登录接口直接使用了 get 明文请求,请按实际需求对源码修改
+
+* 为使用方便 , 降低门槛 , 登录接口直接使用了 get 明文请求 , 请按实际需求对源码修
+  改
 
 * 由于接口做了缓存处理 ( 缓存 2 分钟 , 可在 app.js 设置 , 可能会导致登陆后获取不
   到 cookie), 相同的 url 会在两分钟内只向网易服务器发一次请求 , 如果遇到不需要缓
   存结果的接口 , 可在请求 url 后面加一个时间戳参数使 url 不同 , 例子 :
   `/simi/playlist?id=347230&timestamp=1503019930000`
 
-* 如果是跨域请求 , 请在所有请求带上 `xhrFields: { withCredentials: true }` 否则可能会因为没带上 cookie 导致 301, 具体例子可看 `public/test.html`, 例子使用 jquery, axios 版本也类似
+* 如果是跨域请求 , 请在所有请求带上 `xhrFields: { withCredentials: true }` 否则
+  可能会因为没带上 cookie 导致 301, 具体例子可看 `public/test.html`, 例子使用
+  jquery, axios 版本也类似
 
 * 301 错误基本都是没登录就调用了需要登录的接口 , 如果登陆了还是提示 301, 基本都
   是缓存把数据缓存起来了 , 解决方法是等待 2 分钟或者重启服务重新登录后再调用接口
@@ -182,13 +171,29 @@ docker run -d -p 3000:3000 pengxiao/netease-music-api
 * 本项目仅供学习使用 , 文档可能会有缓存 , 如果文档版本和 github 上的版本不一致 ,
   请清除缓存再查看
 
-* 2.5.0 版本对部分原有 api 做了微调 , 不过只是调整了下地址 , 参数和返回结果不受影响
+* 2.5.0 版本对部分原有 api 做了微调 , 不过只是调整了下地址 , 参数和返回结果不受
+  影响
 
 * 由于网易限制 , 此项目在国外服务器上使用会受到限制 , 如需解决 , 可使用大陆服务
   器或者使用代理 , 感谢 [@hiyangguo](https://github.com/hiyangguo)提出
   的[解决方法](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/29#issuecomment-298358438),
   在 'util.js' 的 'headers' 处增加 `X-Real-IP':'211.161.244.70' // 任意国内 IP`
   即可解决
+
+## 可以使用代理
+
+在 query 参数中加上 proxy=your-proxy 即可让这一次的请求使用 proxy
+
+```javascript
+// 例子
+const url = `http://localhost:3000/music/url?id=33894312&proxy=http://121.196.226.246:84`
+fetch(url).then(function() {
+  // do what you want
+})
+
+// 结果
+// {"data":[{"id":33894312,"url":"http://m10.music.126.net/20180104125640/930a968b3fb04908b733506b3833e60b/ymusic/0fd6/4f65/43ed/a8772889f38dfcb91c04da915b301617.mp3","br":320000,"size":10691439,"md5":"a8772889f38dfcb91c04da915b301617","code":200,"expi":1200,"type":"mp3","gain":-2.0E-4,"fee":0,"uf":null,"payed":0,"flag":0,"canExtend":false}],"code": 200}
+```
 
 ### 登录
 
@@ -343,7 +348,7 @@ Cookies
 
 ### 获取歌单详情
 
-说明 : 歌单能看到歌单名字,但看不到具体歌单内容 , 调用此接口 , 传入歌单 id, 可
+说明 : 歌单能看到歌单名字 , 但看不到具体歌单内容 , 调用此接口 , 传入歌单 id, 可
 以获取对应歌单内的所有的音乐
 
 **必选参数 :** `id` : 歌单 id
@@ -396,7 +401,7 @@ mp3url 不能直接用 , 可通过 `/music/url` 接口传入歌曲 id 获取具�
 
 ### 搜索建议
 
-说明 : 调用此接口,传入搜索关键词可获得搜索建议 , 搜索结果同时包含单曲 , 歌手 ,
+说明 : 调用此接口 , 传入搜索关键词可获得搜索建议 , 搜索结果同时包含单曲 , 歌手 ,
 歌单 ,mv 信息
 
 **必选参数 :** `keywords` : 关键词
@@ -587,7 +592,7 @@ mp3url 不能直接用 , 可通过 `/music/url` 接口传入歌曲 id 获取具�
 
 ### 获取歌手单曲
 
-说明 : 调用此接口 , 传入歌手 id, 可获得歌手单曲
+说明 : 调用此接口 , 传入歌手 id, 可获得歌手部分信息和热门歌曲
 
 **必选参数 :** `id`: 歌手 id, 可由搜索接口获得
 
@@ -725,8 +730,7 @@ mp3url 不能直接用 , 可通过 `/music/url` 接口传入歌曲 id 获取具�
 说明 : 调用此接口 , 传入签到类型 ( 可不传 , 默认安卓端签到 ), 可签到 ( 需要登录
 ), 其中安卓端签到可获得 3 点经验 , web/PC 端签到可获得 2 点经验
 
-**可选参数 :**
-`type`: 签到类型 , 默认 0, 其中 0 为安卓端签到 ,1 为 web/PC 签到
+**可选参数 :** `type`: 签到类型 , 默认 0, 其中 0 为安卓端签到 ,1 为 web/PC 签到
 
 **接口地址 :** `/daily_signin`
 

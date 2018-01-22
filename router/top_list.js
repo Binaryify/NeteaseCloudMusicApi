@@ -35,10 +35,7 @@ router.get("/", (req, res) => {
   const action = "/weapi/v3/playlist/detail";
   const data = {
     id,
-    limit: req.query.limit || 30,
-    offset: req.query.limit || 0,
-    total: true,
-    n: 1000,
+    n: 10000,
     csrf_token: ""
   };
   createWebAPIRequest(
@@ -49,6 +46,8 @@ router.get("/", (req, res) => {
     cookie,
     music_req => {
       res.setHeader("Content-Type", "application/json");
+      // console.log(JSON.parse(music_req).playlist.tracks.length)
+      // console.log(JSON.parse(music_req).playlist.trackIds.length)
       res.send(music_req);
     },
     err => res.status(502).send("fetch error")
