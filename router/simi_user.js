@@ -1,25 +1,23 @@
-const express = require('express')
-const router = express()
-const { createWebAPIRequest } = require('../util/util')
+const express = require("express");
+const router = express();
+const { createWebAPIRequest } = require("../util/util");
 
-router.get('/', (req, res) => {
-  const cookie = req.get('Cookie') ? req.get('Cookie') : ''
+router.get("/", (req, res) => {
+  const cookie = req.get("Cookie") ? req.get("Cookie") : "";
   const data = {
-    songid: req.query.id,
-    offset: req.query.offset || 0,
-    limit: req.query.limit || 50
-  }
+    songid: req.query.id
+  };
   createWebAPIRequest(
-    'music.163.com',
-    '/weapi/discovery/simiUser',
-    'POST',
+    "music.163.com",
+    "/weapi/discovery/simiUser",
+    "POST",
     data,
     cookie,
     music_req => {
-      res.send(music_req)
+      res.send(music_req);
     },
-    err => res.status(502).send('fetch error')
-  )
-})
+    err => res.status(502).send("fetch error")
+  );
+});
 
-module.exports = router
+module.exports = router;
