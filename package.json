@@ -8,23 +8,31 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": ["prettier --write", "git add"]
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
   },
-  "keywords": ["网易云音乐", "网易云", "音乐", "网易云音乐nodejs"],
+  "keywords": [
+    "网易云音乐",
+    "网易云",
+    "音乐",
+    "网易云音乐nodejs"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "apicache": "^0.9.0",
-    "big-integer": "^1.6.17",
-    "express": "^4.15.2",
-    "request": "^2.81.0"
+    "apicache": "^1.2.0",
+    "big-integer": "^1.6.26",
+    "express": "^4.16.2",
+    "request": "^2.83.0"
   },
   "devDependencies": {
     "husky": "^0.14.3",
     "intelli-espower-loader": "^1.0.1",
-    "lint-staged": "^4.0.3",
-    "mocha": "^3.2.0",
-    "power-assert": "^1.4.2",
-    "prettier": "^1.5.3"
+    "lint-staged": "^6.0.1",
+    "mocha": "^5.0.0",
+    "power-assert": "^1.4.4",
+    "prettier": "^1.10.2"
   }
 }
