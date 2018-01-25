@@ -5,6 +5,7 @@ COPY . /app
 
 RUN    rm -rf node_modules \
     && rm package-lock.json \
+    && npm config set registry "https://registry.npm.taobao.org/" \
     && npm install
 
 EXPOSE 3000

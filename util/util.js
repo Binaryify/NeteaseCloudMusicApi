@@ -2,7 +2,7 @@ const Encrypt = require("./crypto.js");
 const request = require("request");
 const querystring = require("querystring");
 
-// request.debug = true;
+request.debug = true;
 
 function randomUserAgent() {
   const userAgentList = [
@@ -62,9 +62,13 @@ function createWebAPIRequest(
     }),
     proxy: proxy
   };
+  console.log(
+    `[request] ${options.method} ${options.url} proxy:${options.proxy}`
+  );
 
   request(options, function(error, res, body) {
     if (error) {
+      console.error(error);
       errorcallback(error);
     } else {
       //解决 网易云 cookie 添加 .music.163.com 域设置。
