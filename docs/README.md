@@ -177,11 +177,11 @@ request 相关的环境变量
 6. NO_PROXY
 
 ```shell
-docker pull twesix/netease-cloud-music:2.8.9
+docker pull twesix/netease-cloud-music
 docker run -d -p 3000:3000 --name netease-cloud-music twesix/netease-music-api
 
 // 去掉或者设置相关的环境变量
-docker run -d -p 3000:3000 --name netease-cloud-music -e http_proxy= -e https_proxy= -e no_proxy= -e HTTP_PROXY= -e HTTPS_PROXY= -e NO_PROXY= netease-cloud-music:2.8.9
+docker run -d -p 3000:3000 --name netease-cloud-music -e http_proxy= -e https_proxy= -e no_proxy= -e HTTP_PROXY= -e HTTPS_PROXY= -e NO_PROXY= netease-cloud-music
 ```
 
 ## 接口文档
