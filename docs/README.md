@@ -16,6 +16,10 @@
 
 ## 版本新特性
 
+### 2.9.0 | 2018.01.26
+
+docker 构建文件的一些增强以及增加访问日志和调试输出
+
 ### 2.8.9 | 2018.01.24
 
 修复歌单详情数据不完整的问题,更新依赖
@@ -156,12 +160,15 @@ fetch(url).then(function() {
 
 ## Docker 容器运行
 
-> 注意: 在docker中运行的时候, 由于使用了request来发请求, 所以会检查几个proxy相关的环境变量(如下所列), 这些环境变量
-  会影响到request的代理, 详情请参考[request的文档](https://github.com/request/request#proxies), 如果这些环境变量
-  指向的代理不可用, 那么就会造成错误, 所以在使用docker的时候一定要注意这些环境变量. 不过, 要是你在query中加上了proxy参数, 
-  那么环境变量会被覆盖, 就会用你通过proxy参数提供的代理了.
-  
-request相关的环境变量
+> 注意: 在 docker 中运行的时候, 由于使用了 request 来发请求, 所以会检查几个
+> proxy 相关的环境变量(如下所列), 这些环境变量 会影响到 request 的代理, 详情请参
+> 考[request 的文档](https://github.com/request/request#proxies), 如果这些环境变
+> 量 指向的代理不可用, 那么就会造成错误, 所以在使用 docker 的时候一定要注意这些
+> 环境变量. 不过, 要是你在 query 中加上了 proxy 参数, 那么环境变量会被覆盖, 就会
+> 用你通过 proxy 参数提供的代理了.
+
+request 相关的环境变量
+
 1. http_proxy
 2. https_proxy
 3. HTTP_PROXY
