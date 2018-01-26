@@ -139,11 +139,42 @@ windows 下使用 git-bash 或者 cmder 等终端执行以下命令 :
 $ set PORT=4000 && node app.js
 ```
 
+## 可以使用代理
+
+在 query 参数中加上 proxy=your-proxy 即可让这一次的请求使用 proxy
+
+```javascript
+// 例子
+const url = `http://localhost:3000/music/url?id=33894312&proxy=http://121.196.226.246:84`
+fetch(url).then(function() {
+  // do what you want
+})
+
+// 结果
+// {"data":[{"id":33894312,"url":"http://m10.music.126.net/20180104125640/930a968b3fb04908b733506b3833e60b/ymusic/0fd6/4f65/43ed/a8772889f38dfcb91c04da915b301617.mp3","br":320000,"size":10691439,"md5":"a8772889f38dfcb91c04da915b301617","code":200,"expi":1200,"type":"mp3","gain":-2.0E-4,"fee":0,"uf":null,"payed":0,"flag":0,"canExtend":false}],"code": 200}
+```
+
 ## Docker 容器运行
 
+> 注意: 在docker中运行的时候, 由于使用了request来发请求, 所以会检查几个proxy相关的环境变量(如下所列), 这些环境变量
+  会影响到request的代理, 详情请参考[request的文档](https://github.com/request/request#proxies), 如果这些环境变量
+  指向的代理不可用, 那么就会造成错误, 所以在使用docker的时候一定要注意这些环境变量. 不过, 要是你在query中加上了proxy参数, 
+  那么环境变量会被覆盖, 就会用你通过proxy参数提供的代理了.
+  
+request相关的环境变量
+1. http_proxy
+2. https_proxy
+3. HTTP_PROXY
+4. HTTPS_PROXY
+5. no_proxy
+6. NO_PROXY
+
 ```shell
-docker pull pengxiao/netease-music-api
-docker run -d -p 3000:3000 pengxiao/netease-music-api
+docker pull twesix/netease-cloud-music:2.8.9
+docker run -d -p 3000:3000 --name netease-cloud-music twesix/netease-music-api
+
+// 去掉或者设置相关的环境变量
+docker run -d -p 3000:3000 --name netease-cloud-music -e http_proxy= -e https_proxy= -e no_proxy= -e HTTP_PROXY= -e HTTPS_PROXY= -e NO_PROXY= netease-cloud-music:2.8.9
 ```
 
 ## 接口文档
@@ -179,21 +210,6 @@ docker run -d -p 3000:3000 pengxiao/netease-music-api
   的[解决方法](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/29#issuecomment-298358438),
   在 'util.js' 的 'headers' 处增加 `X-Real-IP':'211.161.244.70' // 任意国内 IP`
   即可解决
-
-## 可以使用代理
-
-在 query 参数中加上 proxy=your-proxy 即可让这一次的请求使用 proxy
-
-```javascript
-// 例子
-const url = `http://localhost:3000/music/url?id=33894312&proxy=http://121.196.226.246:84`
-fetch(url).then(function() {
-  // do what you want
-})
-
-// 结果
-// {"data":[{"id":33894312,"url":"http://m10.music.126.net/20180104125640/930a968b3fb04908b733506b3833e60b/ymusic/0fd6/4f65/43ed/a8772889f38dfcb91c04da915b301617.mp3","br":320000,"size":10691439,"md5":"a8772889f38dfcb91c04da915b301617","code":200,"expi":1200,"type":"mp3","gain":-2.0E-4,"fee":0,"uf":null,"payed":0,"flag":0,"canExtend":false}],"code": 200}
-```
 
 ### 登录
 
