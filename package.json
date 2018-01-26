@@ -1,6 +1,6 @@
 {
   "name": "NeteaseCloudMusicApi",
-  "version": "2.9.0",
+  "version": "2.9.1",
   "description": "网易云音乐 NodeJS 版 API",
   "scripts": {
     "start": "node app.js",
@@ -8,17 +8,9 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.js": ["prettier --write", "git add"]
   },
-  "keywords": [
-    "网易云音乐",
-    "网易云",
-    "音乐",
-    "网易云音乐nodejs"
-  ],
+  "keywords": ["网易云音乐", "网易云", "音乐", "网易云音乐nodejs"],
   "author": "",
   "license": "MIT",
   "dependencies": {
