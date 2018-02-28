@@ -19,7 +19,7 @@ router.get("/", (req, res) => {
     "POST",
     data,
     cookie,
-    (music_req, cookie) => {
+    (music_req, cookie = []) => {
       const cookieStr =
         "appver=1.5.9;os=osx; channel=netease;osver=%E7%89%88%E6%9C%AC%2010.13.2%EF%BC%88%E7%89%88%E5%8F%B7%2017C88%EF%BC%89";
       cookieStr.split(";").forEach(item => {
