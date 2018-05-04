@@ -176,6 +176,9 @@ app.use("/resource/like", require("./router/resource_like"));
 // 搜索
 app.use("/search", require("./router/search"));
 
+// 热搜
+app.use("/search/hot", require("./router/search_hot.js"));
+
 //搜索 multimatch
 app.use("/search/multimatch", require("./router/search_multimatch"));
 
