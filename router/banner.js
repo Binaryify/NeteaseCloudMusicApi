@@ -19,7 +19,7 @@ router.get("/", (req, res) => {
       try {
         const pattern = /<script[^>]*>\s*window\.Gbanners\s*=\s*([^;]+?);\s*<\/script>/g;
         const banners = pattern.exec(body)[1];
-        res.send(JSON.stringify(eval(banners)));
+        res.send(JSON.stringify(eval(`({code:200,banners:${banners}})`)));
       } catch (error) {
         res.status(502).send("fetch error");
       }
