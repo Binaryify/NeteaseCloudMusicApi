@@ -256,6 +256,10 @@ app.use("/user/subcount", require("./router/user_subcount"));
 
 app.use("/user/record", require("./router/user_playrecord"));
 
+app.use("/send/text", require("./router/send_text"));
+
+app.use("/send/playlist", require("./router/send_playlist"));
+
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
