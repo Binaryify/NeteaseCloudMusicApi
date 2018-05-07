@@ -260,6 +260,10 @@ app.use("/send/text", require("./router/send_text"));
 
 app.use("/send/playlist", require("./router/send_playlist"));
 
+app.use("/playlist/create", require("./router/playlist_create"));
+
+app.use("/playlist/subscribe", require("./router/playlist_subscribe"));
+
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
