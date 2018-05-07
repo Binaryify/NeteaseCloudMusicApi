@@ -6,7 +6,7 @@ router.get("/", (req, res) => {
   const cookie = req.get("Cookie") ? req.get("Cookie") : "";
   const user_ids = req.query.user_ids;
   const data = {
-    id: req.query.playlist,
+    id: req.query.id,
     type: "playlist",
     msg: req.query.msg,
     userIds: user_ids,

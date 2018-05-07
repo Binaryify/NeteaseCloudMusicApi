@@ -5,12 +5,13 @@ const { createWebAPIRequest } = require("../util/util");
 router.get("/", (req, res) => {
   const cookie = req.get("Cookie") ? req.get("Cookie") : "";
   const data = {
-    id: req.query.playlist,
+    id: req.query.id,
     csrf_token: ""
   };
+  const action = req.query.t == 1 ? "subscribe" : "unsubscribe";
   createWebAPIRequest(
     "music.163.com",
-    "/weapi/playlist/subscribe",
+    `/weapi/playlist/${action}`,
     "POST",
     data,
     cookie,
