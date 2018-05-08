@@ -155,10 +155,10 @@ app.use("/playlist/detail", require("./router/playlist_detail"));
 //收藏单曲到歌单,从歌单删除歌曲 op=del,add;pid=歌单id,tracks=歌曲id
 app.use("/playlist/tracks", require("./router/playlist_tracks"));
 
-// 热门歌单
+// 热门歌单分类
 app.use("/playlist/hot", require("./router/playlist_hot"));
 
-// 全部歌单
+// 全部歌单分类
 app.use("/playlist/catlist", require("./router/playlist_catlist"));
 
 // 新建歌单
