@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
     id: req.query.playlist,
     type: "playlist",
     msg: req.query.msg,
-    userIds: user_ids,
+    userIds: "[" + user_ids + "]",
     csrf_token: ""
   };
   createWebAPIRequest(
