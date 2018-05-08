@@ -9,9 +9,10 @@ router.get("/", (req, res) => {
   const data = {
     type: "text",
     msg: req.query.msg,
-    userIds: user_ids,
+    userIds: "[" + user_ids + "]",
     csrf_token: ""
   };
+  console.log(data);
   createWebAPIRequest(
     "music.163.com",
     `/weapi/msg/private/send`,
