@@ -155,9 +155,17 @@ app.use("/playlist/detail", require("./router/playlist_detail"));
 //收藏单曲到歌单,从歌单删除歌曲 op=del,add;pid=歌单id,tracks=歌曲id
 app.use("/playlist/tracks", require("./router/playlist_tracks"));
 
+// 热门歌单分类
 app.use("/playlist/hot", require("./router/playlist_hot"));
 
+// 全部歌单分类
 app.use("/playlist/catlist", require("./router/playlist_catlist"));
+
+// 新建歌单
+app.use("/playlist/create", require("./router/playlist_create"));
+
+// 收藏/取消收藏歌单
+app.use("/playlist/subscribe", require("./router/playlist_subscribe"));
 
 //推荐节目
 app.use("/program/recommend", require("./router/program_recommend"));
@@ -184,6 +192,10 @@ app.use("/search/multimatch", require("./router/search_multimatch"));
 
 // 搜索 suggest,搜索结果包含单曲,歌手,歌单,mv信息
 app.use("/search/suggest", require("./router/search_suggest"));
+
+app.use("/send/text", require("./router/send_text"));
+
+app.use("/send/playlist", require("./router/send_playlist"));
 
 //simi ,相似歌单
 app.use("/simi/playlist", require("./router/simi_playlist"));
