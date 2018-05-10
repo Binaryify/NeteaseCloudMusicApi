@@ -15,8 +15,8 @@
 跨站请求伪造 (CSRF), 伪造请求头 , 调用官方 API
 
 ## 版本新特性
-### 2.9.7 | 2018.05.10
-新增歌手分类列表,收藏/取消收藏歌手接口
+### 2.9.8 | 2018.05.10
+新增歌手分类列表,收藏/取消收藏歌手接口,新增更新用户信息,更新歌单接口
 
 ### 2.9.6 | 2018.05.08
 新增发送私信相关接口,新增新建歌单,收藏/取消收藏歌单接口
@@ -278,6 +278,24 @@ Cookies
 
 **调用例子 :** `/user/subcount`
 
+### 更新用户信息
+
+说明 : 登陆后调用此接口 , 传入相关信息,可以更新用户信息
+
+**必选参数 :**
+```
+gender: 性别 0:保密 1:男性 2:女性
+birthday: 出生日期,时间戳 unix timestamp
+nickname: 用户昵称
+province: 省份id
+city: 城市id
+signature：用户签名
+```
+
+**接口地址 :** `/user/subcount`
+
+**调用例子 :** `/user/update/?gender=0&signature=测试签名&city=440300&nickname=binary&birthday=1525918298004&province=440000`
+
 ### 获取用户歌单
 
 说明 : 登陆后调用此接口 , 传入用户 id, 可以获取用户歌单
@@ -290,6 +308,20 @@ Cookies
 
 返回数据如下图 :
 ![用户歌单](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E7%94%A8%E6%88%B7%E6%AD%8C%E5%8D%95.png)
+
+### 更新歌单
+
+说明 : 登陆后调用此接口,可以更新用户歌单
+参数:
+```
+id:歌单id
+name:歌单名字
+desc:歌单描述
+tags:歌单tag
+```
+**接口地址 :** `/playlist/update`
+
+**调用例子 :** `/playlist/update/?id=24381616&name=新歌单&desc=描述&tags=学习`
 
 ### 发送私信
 
