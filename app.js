@@ -202,10 +202,6 @@ app.use("/search/multimatch", require("./router/search_multimatch"));
 // 搜索 suggest,搜索结果包含单曲,歌手,歌单,mv信息
 app.use("/search/suggest", require("./router/search_suggest"));
 
-app.use("/send/text", require("./router/send_text"));
-
-app.use("/send/playlist", require("./router/send_playlist"));
-
 //simi ,相似歌单
 app.use("/simi/playlist", require("./router/simi_playlist"));
 
@@ -276,6 +272,19 @@ app.use("/user/follows", require("./router/user_follows"));
 app.use("/user/subcount", require("./router/user_subcount"));
 
 app.use("/user/record", require("./router/user_playrecord"));
+
+
+app.use("/user/update", require("./router/user_update"));
+
+app.use("/send/text", require("./router/send_text"));
+
+app.use("/send/playlist", require("./router/send_playlist"));
+
+app.use("/playlist/create", require("./router/playlist_create"));
+
+app.use("/playlist/subscribe", require("./router/playlist_subscribe"));
+
+app.use("/playlist/update", require("./router/playlist_update"));
 
 const port = process.env.PORT || 3000;
 
