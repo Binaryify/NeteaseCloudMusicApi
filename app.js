@@ -47,6 +47,15 @@ app.use("/artist/desc", require("./router/artists_desc"));
 //艺术家-mv
 app.use("/artist/mv", require("./router/artists_mv"));
 
+// 收藏歌手
+app.use("/artist/sub", require("./router/artist_sub"));
+
+// 取消收藏歌手
+app.use("/artist/unsub", require("./router/artist_unsub"));
+
+// 歌手分类
+app.use("/artist/list", require("./router/artist_list"));
+
 // 获取 banner
 app.use("/banner", require("./router/banner"));
 
@@ -155,9 +164,17 @@ app.use("/playlist/detail", require("./router/playlist_detail"));
 //收藏单曲到歌单,从歌单删除歌曲 op=del,add;pid=歌单id,tracks=歌曲id
 app.use("/playlist/tracks", require("./router/playlist_tracks"));
 
+// 热门歌单分类
 app.use("/playlist/hot", require("./router/playlist_hot"));
 
+// 全部歌单分类
 app.use("/playlist/catlist", require("./router/playlist_catlist"));
+
+// 新建歌单
+app.use("/playlist/create", require("./router/playlist_create"));
+
+// 收藏/取消收藏歌单
+app.use("/playlist/subscribe", require("./router/playlist_subscribe"));
 
 //推荐节目
 app.use("/program/recommend", require("./router/program_recommend"));
@@ -255,6 +272,7 @@ app.use("/user/follows", require("./router/user_follows"));
 app.use("/user/subcount", require("./router/user_subcount"));
 
 app.use("/user/record", require("./router/user_playrecord"));
+
 
 app.use("/user/update", require("./router/user_update"));
 
