@@ -47,6 +47,15 @@ app.use("/artist/desc", require("./router/artists_desc"));
 //艺术家-mv
 app.use("/artist/mv", require("./router/artists_mv"));
 
+// 收藏歌手
+app.use("/artist/sub", require("./router/artist_sub"));
+
+// 取消收藏歌手
+app.use("/artist/unsub", require("./router/artist_unsub"));
+
+// 歌手分类
+app.use("/artist/list", require("./router/artist_list"));
+
 // 获取 banner
 app.use("/banner", require("./router/banner"));
 
