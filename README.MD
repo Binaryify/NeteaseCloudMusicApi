@@ -19,6 +19,8 @@
 [sqaiyan/netmusic-node](https://github.com/sqaiyan/netmusic-node)
 
 ## 版本新特性
+### 2.9.8 | 2018.05.10
+新增歌手分类列表,收藏/取消收藏歌手接口,新增更新用户信息,更新歌单接口
 
 ### 2.9.0 | 2018.01.26
 
