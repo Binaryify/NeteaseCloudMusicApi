@@ -29,7 +29,7 @@ router.get("/", (req, res) => {
     categoryCode: req.query.cat || "1001",
     offset: req.query.offset || 0,
     total: req.query.total ? "true" : "false",
-    limit: req.query.limit || 50
+    limit: req.query.limit || 30
   };
   createWebAPIRequest(
     "music.163.com",
