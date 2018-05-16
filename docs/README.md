@@ -210,7 +210,7 @@ docker run -d -p 3000:3000 --name netease-cloud-music -e http_proxy= -e https_pr
   `/simi/playlist?id=347230&timestamp=1503019930000`
 
 !> 如果是跨域请求 , 请在所有请求带上 `xhrFields: { withCredentials: true }` 否则
-  可能会因为没带上 cookie 导致 301, 具体例子可看 `public/test.html`, 例子使用 jquery, axios 版本也类似
+  可能会因为没带上 cookie 导致 301, 具体例子可看 `public/test.html`, 例子使用 jQuery, axios 版本也类似
 
 !> 301 错误基本都是没登录就调用了需要登录的接口,如果登陆了还是提示 301, 基本都是缓存把数据缓存起来了,解决方法是等待 2 分钟或者重启服务重新登录后再调用接口
 
@@ -658,8 +658,7 @@ mp3url 不能直接用 , 可通过 `/music/url` 接口传入歌曲 id 获取具�
 
 **接口地址 :** `/playlist/tracks`
 
-**调用例子 :** `/playlist/tracks?op=add&pid=24381616&tracks=347230` ( 对应把 '
-海阔天空 ' 添加到 ' 我 ' 的歌单 , 测试的时候请把这里的 pid 换成你自己的 )
+**调用例子 :** `/playlist/tracks?op=add&pid=24381616&tracks=347231` ( 对应把歌曲添加到 ' 我 ' 的歌单 , 测试的时候请把这里的 pid 换成你自己的,  id 和 tracks 不对可能会报502错误)
 
 ### 获取歌词
 
