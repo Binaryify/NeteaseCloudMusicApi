@@ -19,28 +19,26 @@
 [sqaiyan/netmusic-node](https://github.com/sqaiyan/netmusic-node)
 
 ## 版本新特性
+
+### 2.10.0 | 2018.05.17
+歌单操作调整为批量操作
+
 ### 2.9.8 | 2018.05.10
 新增歌手分类列表,收藏/取消收藏歌手接口,新增更新用户信息,更新歌单接口
+
+### 2.9.6 | 2018.05.08
+新增发送私信相关接口,新增新建歌单,收藏/取消收藏歌单接口
+
+### 2.9.4 | 2018.05.04
+新增热搜接口,更新 banner 接口
 
 ### 2.9.0 | 2018.01.26
 
 docker 构建文件的一些增强以及增加访问日志和调试输出
 
-### 2.8.2 | 2018.01.05
-
-增加 Dockerfile，支持以 Docker 容器模式运行
-
 ### 2.8.1 | 2018.01.04
 
 添加了 proxy 功能
-
-### 2.8.0 | 2018.01.04
-
-用 'request' 重写了请求函数
-
-### 2.6.5 | 2017.7.16
-
-优化 CORS 设置
 
 ### 2.6.4 | 2017.7.16
 
@@ -49,89 +47,11 @@ docker 构建文件的一些增强以及增加访问日志和调试输出
 代码 感谢 [@huhuime](https://github.com/huhuime)
 [issue:83](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/83)
 
-### 2.6.2 | 2017.7.16
-
-修复垃圾桶接口
-
-### 2.6.1 | 2017.7.16
-
-修复红心接口
-
-### 2.6.0 | 2017.6.25
-
-修复签到接口
-
-### 2.5.9 | 2017.6.14
-
-增加启动说明页
-
-### 2.5.8 | 2017.6.1
-
-修复若干细节问题
-
-### 2.5.7 | 2017.5.22
-
-修复若干问题
-
-### 2.5.6 | 2017.5.14
-
-增加动态消息接口
-
-### 2.5.5 | 2017.5.10
-
-修复 mv 排行榜接口崩溃问题
-
-### 2.5.4 | 2017.5.5
-
-新增点赞接口,更新文档
-
-### 2.5.3 | 2017.5.2
-
-修复歌手单曲数据空白问题和文档获取歌手单曲 url 描述问题,更新文档
-
 ### 2.5.0 | 2017.4.29
 
-增加 mv/专辑/歌单评论接口,增加云盘相关接口,增加获取用户动态/信息接口,增加关注/粉
-丝列表接口,增加收藏歌单接口,增加相似 mv/歌曲/用户接口,增加 banner 接口,增加刷新
-登录接口,增加电台相关接口,补充评论接口,更新文档
-
-### 2.4.6 | 2017.4.21
-
-增加播放 mv 接口,更新文档
-
-### 2.4.5 | 2017.4.20
-
-增加歌手专辑,歌手单曲等接口,修复/album 接口描述错误,更新文档
-
-### 2.4.0 | 2017.4.20
-
-增加歌单（网友精选碟),新碟上架,热门歌手等接口,更新文档
-
-### 2.3.4 | 2017.4.20
-
-增加歌曲详情接口,更新文档
-
-### 2.3.0 | 2017.4.15
-
-增加排行榜接口,更新文档
-
-### 2.2.0 |2017.4.14
-
-增加私人 FM, 喜欢歌曲,垃圾桶,每日签到等接口,更新文档
-
-### 2.1.3 | 2017.4.6
-
-改善文档
-
-### 2.1.0 | 2017.4.6
-
-增加获取评论接口以及对应单元测试,增加更新日志
-
-### 2.0.0 | 2017.4.1
-
-版本升级到 2.0.增加使用文档,完成项目重构,增加更完善的单元测试,升级 api 到 v2+,支
-持登录并获取用户信息和创建的歌单,可通过获取音乐 url 接口获取用户歌单里的的音乐,
-获取每日推荐歌单和每日推荐音乐
+增加 mv/ 专辑 / 歌单评论接口 , 增加云盘相关接口 , 增加获取用户动态 / 信息接口 ,
+增加关注 / 粉丝列表接口 , 增加收藏歌单接口 , 增加相似 mv/ 歌曲 / 用户接口 , 增加
+banner 接口 , 增加刷新登录接口 , 增加电台相关接口 , 补充评论接口 , 更新文档
 
 ## 功能特性
 
@@ -242,6 +162,14 @@ docker run -d -p 3000:3000 pengxiao/netease-music-api
 
 [changelog](https://github.com/Binaryify/NeteaseCloudMusicApi/blob/master/CHANGELOG.MD)
 
+## 贡献者
+
+[<img alt="nujhong" src="https://avatars1.githubusercontent.com/u/23186058?v=4&s=117" width="117">](https://github.com/nujhong)[<img alt="zhangzhengyi12" src="https://avatars1.githubusercontent.com/u/23502338?v=4&s=117" width="117">](https://github.com/zhangzhengyi12)[<img alt="mchome" src="https://avatars1.githubusercontent.com/u/7392658?v=4&s=117" width="117">](https://github.com/mchome)[<img alt="pengx17" src="https://avatars1.githubusercontent.com/u/584378?v=4&s=117" width="117">](https://github.com/pengx17)[<img alt="LengYXin" src="https://avatars1.githubusercontent.com/u/19631404?v=4&s=117" width="117">](https://github.com/LengYXin)[<img alt="rccoder" src="https://avatars3.githubusercontent.com/u/7554325?v=4&s=117" width="117">](https://github.com/rccoder)
+
+[<img alt="zhixuanziben" src="https://avatars0.githubusercontent.com/u/18346513?v=4&s=117" width="117">](https://github.com/zhixuanziben)[<img alt="LightStrawberry" src="https://avatars3.githubusercontent.com/u/5920513?v=4&s=117" width="117">](https://github.com/LightStrawberry)[<img alt="CeBkCn" src="https://avatars3.githubusercontent.com/u/14861605?v=4&s=117" width="117">](https://github.com/CeBkCn)[<img alt="nondanee" src="https://avatars0.githubusercontent.com/u/26399680?v=4&s=117" width="117">](https://github.com/nondanee)[<img alt="twesix" src="https://avatars1.githubusercontent.com/u/16174733?v=4&s=117" width="117">](https://github.com/twesix)
+
+
+
 ## 单元测试
 
 ```shell
@@ -254,3 +182,5 @@ $ npm test
 ## License
 
 [The MIT License (MIT)](https://github.com/Binaryify/NeteaseCloudMusicApi/blob/master/LICENSE)
+
+
