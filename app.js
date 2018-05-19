@@ -53,6 +53,9 @@ app.use("/artist/sub", require("./router/artist_sub"));
 // 取消收藏歌手
 app.use("/artist/unsub", require("./router/artist_unsub"));
 
+// 已关注歌手
+app.use("/artist/sublist", require("./router/artist_sublist"));
+
 // 歌手分类
 app.use("/artist/list", require("./router/artist_list"));
 
@@ -90,6 +93,8 @@ app.use("/dj/sub", require("./router/dj_sub"));
 app.use("/dj/catelist", require("./router/dj_catelist"));
 
 app.use("/dj/hot", require("./router/dj_hot"));
+
+app.use("/dj/sublist", require("./router/dj_sublist"));
 
 // 精选电台
 app.use("/dj/recommend", require("./router/dj_recommend"));
@@ -272,7 +277,6 @@ app.use("/user/follows", require("./router/user_follows"));
 app.use("/user/subcount", require("./router/user_subcount"));
 
 app.use("/user/record", require("./router/user_playrecord"));
-
 
 app.use("/user/update", require("./router/user_update"));
 
