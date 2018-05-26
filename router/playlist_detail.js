@@ -8,12 +8,13 @@ router.get("/", (req, res) => {
   const data = {
     id: req.query.id,
     n: 100000,
+    s: req.query.s || 8,
     csrf_token: ""
   };
 
   createWebAPIRequest(
     "music.163.com",
-    `/api/playlist/detail?id=${req.query.id}`,
+    `/weapi/v3/playlist/detail`,
     "POST",
     data,
     cookie,
