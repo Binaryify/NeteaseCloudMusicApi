@@ -5,18 +5,28 @@
   "scripts": {
     "start": "node app.js",
     "test": "mocha -r intelli-espower-loader -t 20000 test",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "postinstall": "opencollective postinstall"
   },
   "lint-staged": {
-    "*.js": ["prettier --write", "git add"]
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
   },
-  "keywords": ["网易云音乐", "网易云", "音乐", "网易云音乐nodejs"],
+  "keywords": [
+    "网易云音乐",
+    "网易云",
+    "音乐",
+    "网易云音乐nodejs"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {
     "apicache": "^1.2.1",
     "big-integer": "^1.6.28",
     "express": "^4.16.3",
+    "opencollective": "^1.0.3",
     "request": "^2.85.0"
   },
   "devDependencies": {
@@ -26,5 +36,9 @@
     "mocha": "^5.1.1",
     "power-assert": "^1.5.0",
     "prettier": "^1.12.1"
+  },
+  "collective": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/NeteaseCloudMusicApi"
   }
 }
