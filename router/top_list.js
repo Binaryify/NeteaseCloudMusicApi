@@ -24,11 +24,7 @@ const top_list_all = {
   "22": ["云音乐ACG音乐榜", "71385702"],
   "23": ["云音乐嘻哈榜", "991319590"]
 };
-const express = require("express");
-const router = express();
-const { createWebAPIRequest } = require("../util/util");
-
-router.get("/", (req, res) => {
+module.exports = (req, res, createWebAPIRequest, request) => {
   const idx = req.query.idx;
   const id = top_list_all[idx][1];
   const cookie = req.get("Cookie") ? req.get("Cookie") : "";
@@ -52,6 +48,4 @@ router.get("/", (req, res) => {
     },
     err => res.status(502).send("fetch error")
   );
-});
-
-module.exports = router;
+};

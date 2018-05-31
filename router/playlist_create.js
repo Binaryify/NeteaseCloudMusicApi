@@ -1,8 +1,4 @@
-const express = require("express");
-const router = express();
-const { createWebAPIRequest } = require("../util/util");
-
-router.get("/", (req, res) => {
+module.exports = (req, res, createWebAPIRequest, request) => {
   const cookie = req.get("Cookie") ? req.get("Cookie") : "";
   const data = {
     name: req.query.name,
@@ -19,6 +15,4 @@ router.get("/", (req, res) => {
     },
     err => res.status(502).send("fetch error")
   );
-});
-
-module.exports = router;
+};

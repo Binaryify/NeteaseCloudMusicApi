@@ -1,8 +1,5 @@
-const express = require("express");
-const router = express();
-const { createWebAPIRequest } = require("../util/util");
-
-router.get("/", (req, res) => {
+// 取消收藏歌手
+module.exports = (req, res, createWebAPIRequest, request) => {
   const cookie = req.get("Cookie") ? req.get("Cookie") : "";
   const data = {
     artistId: `${req.query.id}`,
@@ -19,6 +16,4 @@ router.get("/", (req, res) => {
     },
     err => res.status(502).send("fetch error")
   );
-});
-
-module.exports = router;
+};
