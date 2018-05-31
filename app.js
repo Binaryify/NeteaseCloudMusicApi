@@ -40,6 +40,10 @@ const UnusualRouteFileMap = {
   "personal_fm.js": "/personal_fm"
 };
 
+// 简化 路由 导出方式, 由这里统一对 router 目录中导出的路由做包装, 路由实际对应的文件只专注做它该做的事情, 不用重复写样板代码
+const { createWebAPIRequest, request } = require("./util/util");
+const Wrap = fn => (req, res) => fn(req, res, createWebAPIRequest, request);
+
 // 同步读取 router 目录中的js文件, 根据命名规则, 自动注册路由
 fs.readdirSync("./router/").forEach(file => {
   if (/\.js$/i.test(file) === false) {
@@ -61,7 +65,7 @@ fs.readdirSync("./router/").forEach(file => {
         });
   }
 
-  app.use(route, require("./router/" + file));
+  app.use(route, Wrap(require("./router/" + file)));
 });
 
 const port = process.env.PORT || 3000;
