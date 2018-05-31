@@ -114,6 +114,7 @@ function createRequest(path, method, data) {
   });
 }
 module.exports = {
+  request,
   createWebAPIRequest,
   createRequest
 };
