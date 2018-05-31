@@ -42,10 +42,10 @@ app.use("/artists", require("./router/artists"));
 app.use("/artist/album", require("./router/artist_album"));
 
 //艺术家-信息
-app.use("/artist/desc", require("./router/artists_desc"));
+app.use("/artist/desc", require("./router/artist_desc"));
 
 //艺术家-mv
-app.use("/artist/mv", require("./router/artists_mv"));
+app.use("/artist/mv", require("./router/artist_mv"));
 
 // 收藏歌手
 app.use("/artist/sub", require("./router/artist_sub"));
@@ -220,7 +220,7 @@ app.use("/simi/mv", require("./router/simi_mv"));
 app.use("/simi/user", require("./router/simi_user"));
 
 //相似歌手
-app.use("/simi/artist", require("./router/simi_artists"));
+app.use("/simi/artist", require("./router/simi_artist"));
 
 // 获取音乐详情
 app.use("/song/detail", require("./router/song_detail"));
@@ -244,7 +244,7 @@ app.use(
   require("./router/top_playlist_highquality")
 );
 
-app.use("/top/song", require("./router/top_songs"));
+app.use("/top/song", require("./router/top_song"));
 
 app.use("/toplist", require("./router/toplist"));
 
@@ -276,7 +276,7 @@ app.use("/user/follows", require("./router/user_follows"));
 
 app.use("/user/subcount", require("./router/user_subcount"));
 
-app.use("/user/record", require("./router/user_playrecord"));
+app.use("/user/record", require("./router/user_record"));
 
 app.use("/user/update", require("./router/user_update"));
 
