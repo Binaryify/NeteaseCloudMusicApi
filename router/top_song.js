@@ -1,9 +1,5 @@
 //暂时废弃
-const express = require("express");
-const router = express();
-const { createWebAPIRequest } = require("../util/util");
-
-router.get("/", (req, res) => {
+module.exports = (req, res, createWebAPIRequest, request) => {
   const cookie = req.get("Cookie") ? req.get("Cookie") : "";
   const data = {
     csrf_token: ""
@@ -19,6 +15,4 @@ router.get("/", (req, res) => {
     },
     err => res.status(502).send("fetch error")
   );
-});
-
-module.exports = router;
+};

@@ -1,9 +1,5 @@
-const http = require("http");
-const express = require("express");
-const router = express();
-const { createWebAPIRequest } = require("../util/util");
-
-router.get("/", (req, res) => {
+// 获取歌单内列表
+module.exports = (req, res, createWebAPIRequest, request) => {
   const cookie = req.get("Cookie") ? req.get("Cookie") : "";
   const data = {
     id: req.query.id,
@@ -27,6 +23,4 @@ router.get("/", (req, res) => {
       res.status(502).send("fetch error");
     }
   );
-});
-
-module.exports = router;
+};

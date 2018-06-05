@@ -1,8 +1,5 @@
-const express = require("express");
-const router = express();
-const { createWebAPIRequest } = require("../util/util");
-
-router.get("/", (req, res) => {
+//dj主播 radio
+module.exports = (req, res, createWebAPIRequest, request) => {
   const rid = req.query.rid;
   const cookie = req.get("Cookie") ? req.get("Cookie") : "";
   const data = {
@@ -23,6 +20,4 @@ router.get("/", (req, res) => {
     },
     err => res.status(502).send("fetch error")
   );
-});
-
-module.exports = router;
+};

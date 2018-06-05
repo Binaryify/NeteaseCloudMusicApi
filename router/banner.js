@@ -1,8 +1,4 @@
-const express = require("express");
-const router = express();
-const request = require("request");
-
-router.get("/", (req, res) => {
+module.exports = (req, res, createWebAPIRequest, request) => {
   const options = {
     url: "http://music.163.com/discover",
     method: "GET",
@@ -25,6 +21,4 @@ router.get("/", (req, res) => {
       }
     }
   });
-});
-
-module.exports = router;
+};

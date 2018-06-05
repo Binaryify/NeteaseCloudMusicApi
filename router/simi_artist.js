@@ -1,17 +1,13 @@
-//最新mv
-
-// type ALL, ZH,EA,KR,JP
 module.exports = (req, res, createWebAPIRequest, request) => {
   const cookie = req.get("Cookie") ? req.get("Cookie") : "";
+  const id = req.query.id;
   const data = {
-    // 'offset': req.query.offset || 0,
-    total: true,
-    limit: req.query.limit || 30,
+    artistid: id,
     csrf_token: ""
   };
   createWebAPIRequest(
     "music.163.com",
-    "/weapi/mv/first",
+    `/weapi/discovery/simiArtist`,
     "POST",
     data,
     cookie,
