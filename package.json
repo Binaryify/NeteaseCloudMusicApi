@@ -4,13 +4,14 @@
   "description": "网易云音乐 NodeJS 版 API",
   "scripts": {
     "start": "node app.js",
-    "test": "mocha -r intelli-espower-loader -t 20000 test",
-    "precommit": "lint-staged"
+    "test": "mocha -r intelli-espower-loader -t 20000 test"
   },
-  "lint-staged": {
-    "*.js": ["prettier --write", "git add"]
-  },
-  "keywords": ["网易云音乐", "网易云", "音乐", "网易云音乐nodejs"],
+  "keywords": [
+    "网易云音乐",
+    "网易云",
+    "音乐",
+    "网易云音乐nodejs"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {
@@ -20,11 +21,8 @@
     "request": "^2.85.0"
   },
   "devDependencies": {
-    "husky": "^0.14.3",
     "intelli-espower-loader": "^1.0.1",
-    "lint-staged": "^7.1.0",
     "mocha": "^5.1.1",
-    "power-assert": "^1.5.0",
-    "prettier": "^1.12.1"
+    "power-assert": "^1.5.0"
   }
 }
