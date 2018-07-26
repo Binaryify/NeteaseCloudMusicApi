@@ -1,8 +1,5 @@
-const express = require("express");
-const router = express();
-const { createWebAPIRequest } = require("../util/util");
-
-router.get("/", (req, res) => {
+// 搜索
+module.exports = (req, res, createWebAPIRequest, request) => {
   const cookie = req.get("Cookie") ? req.get("Cookie") : "";
   const keywords = req.query.keywords;
   const type = req.query.type || 1;
@@ -26,6 +23,4 @@ router.get("/", (req, res) => {
     music_req => res.send(music_req),
     err => res.status(502).send("fetch error")
   );
-});
-
-module.exports = router;
+};

@@ -1,9 +1,7 @@
-const express = require("express");
 const crypto = require("crypto");
-const router = express();
-const { createWebAPIRequest } = require("../util/util");
 
-router.get("/", (req, res) => {
+//手机登录
+module.exports = (req, res, createWebAPIRequest, request) => {
   const phone = req.query.phone;
   const cookie = req.get("Cookie") ? req.get("Cookie") : "";
   const md5sum = crypto.createHash("md5");
@@ -32,6 +30,4 @@ router.get("/", (req, res) => {
     },
     err => res.status(502).send("fetch error")
   );
-});
-
-module.exports = router;
+};

@@ -1,8 +1,4 @@
-const express = require("express");
-const router = express();
-const { createWebAPIRequest } = require("../util/util");
-
-router.get("/", (req, res) => {
+module.exports = (req, res, createWebAPIRequest, request) => {
   const cookie = req.get("Cookie") ? req.get("Cookie") : "";
   // user_id must be [id]
   const user_ids = req.query.user_ids;
@@ -22,6 +18,4 @@ router.get("/", (req, res) => {
     music_req => res.send(music_req),
     err => res.status(502).send("fetch error")
   );
-});
-
-module.exports = router;
+};
