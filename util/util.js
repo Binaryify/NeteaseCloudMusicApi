@@ -40,7 +40,7 @@ function createWebAPIRequest(
   errorcallback
 ) {
   // console.log(cookie);
-  if (cookie.match(/_csrf=[^(;|$)]+;/g))
+  if (cookie.match(/_csrf=[^(;|$)]+/g))
     data.csrf_token = cookie.match(/_csrf=[^(;|$)]+/g)[0].slice(6);
   else data.csrf_token = "";
   const proxy = cookie.split("__proxy__")[1];
