@@ -22,11 +22,14 @@ module.exports = (req, res, createWebAPIRequest, request) => {
   // 其他女歌手 4002
   // 其他组合/乐队 4003
 
+  // initial 取值A为65,B为66...以此类推
+
   const data = {
     categoryCode: req.query.cat || "1001",
     offset: req.query.offset || 0,
     total: req.query.total ? "true" : "false",
-    limit: req.query.limit || 30
+    limit: req.query.limit || 30,
+    initial: req.query.initial || ""
   };
   createWebAPIRequest(
     "music.163.com",
