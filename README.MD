@@ -90,6 +90,8 @@
 68. 歌单分类
 69. 收藏的歌手列表
 70. 订阅的电台列表
+71. 相关歌单推荐
+72. 付费精选接口
 
 ## 环境要求
 
@@ -145,7 +147,7 @@ $ npm test
 
 [<img alt="nujhong" src="https://avatars1.githubusercontent.com/u/23186058?v=4&s=117" width="117">](https://github.com/nujhong)[<img alt="zhangzhengyi12" src="https://avatars1.githubusercontent.com/u/23502338?v=4&s=117" width="117">](https://github.com/zhangzhengyi12)[<img alt="mchome" src="https://avatars1.githubusercontent.com/u/7392658?v=4&s=117" width="117">](https://github.com/mchome)[<img alt="pengx17" src="https://avatars1.githubusercontent.com/u/584378?v=4&s=117" width="117">](https://github.com/pengx17)[<img alt="LengYXin" src="https://avatars1.githubusercontent.com/u/19631404?v=4&s=117" width="117">](https://github.com/LengYXin)[<img alt="rccoder" src="https://avatars3.githubusercontent.com/u/7554325?v=4&s=117" width="117">](https://github.com/rccoder)
 
-[<img alt="zhixuanziben" src="https://avatars0.githubusercontent.com/u/18346513?v=4&s=117" width="117">](https://github.com/zhixuanziben)[<img alt="LightStrawberry" src="https://avatars3.githubusercontent.com/u/5920513?v=4&s=117" width="117">](https://github.com/LightStrawberry)[<img alt="CeBkCn" src="https://avatars3.githubusercontent.com/u/14861605?v=4&s=117" width="117">](https://github.com/CeBkCn)[<img alt="nondanee" src="https://avatars0.githubusercontent.com/u/26399680?v=4&s=117" width="117">](https://github.com/nondanee)[<img alt="twesix" src="https://avatars1.githubusercontent.com/u/16174733?v=4&s=117" width="117">](https://github.com/twesix)
+[<img alt="zhixuanziben" src="https://avatars0.githubusercontent.com/u/18346513?v=4&s=117" width="117">](https://github.com/zhixuanziben)[<img alt="LightStrawberry" src="https://avatars3.githubusercontent.com/u/5920513?v=4&s=117" width="117">](https://github.com/LightStrawberry)[<img alt="CeBkCn" src="https://avatars3.githubusercontent.com/u/14861605?v=4&s=117" width="117">](https://github.com/CeBkCn)[<img alt="nondanee" src="https://avatars0.githubusercontent.com/u/26399680?v=4&s=117" width="117">](https://github.com/nondanee)[<img alt="twesix" src="https://avatars1.githubusercontent.com/u/16174733?v=4&s=117" width="117">](https://github.com/twesix)[<img alt="Means88" src="https://avatars1.githubusercontent.com/u/5810331?s=460&v=47" width="117">](https://github.com/Means88)
 
 
 ## License
