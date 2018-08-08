@@ -1,6 +1,7 @@
 const Encrypt = require("./crypto.js");
 const request = require("request");
 const querystring = require("querystring");
+const baseCookie = require("./init.js");
 
 request.debug = true;
 
@@ -56,7 +57,7 @@ function createWebAPIRequest(
       "Content-Type": "application/x-www-form-urlencoded",
       Referer: "http://music.163.com",
       Host: "music.163.com",
-      Cookie: cookie,
+      Cookie: baseCookie + (cookie ? "; " : "") +  cookie,
       "User-Agent": randomUserAgent()
     },
     body: querystring.stringify({
