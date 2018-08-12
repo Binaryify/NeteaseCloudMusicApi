@@ -15,6 +15,15 @@
 跨站请求伪造 (CSRF), 伪造请求头 , 调用官方 API
 
 ## 版本新特性
+### 2.15.0 | 2018.07.30
+新增相关歌单推荐和付费精选接口,增加歌手列表接口按首字母索引查找参数
+
+### 2.14.0 | 2018.07.03
+修复无法使用邮箱问题
+
+### 2.11.0 | 2018.05.21
+增加收藏歌手列表&订阅电台列表
+
 ### 2.10.0 | 2018.05.17
 歌单操作调整为批量操作
 
@@ -118,6 +127,11 @@ banner 接口 , 增加刷新登录接口 , 增加电台相关接口 , 补充评�
 66. 新建歌单
 67. 收藏/取消收藏歌单
 68. 歌单分类
+69. 收藏的歌手列表
+70. 订阅的电台列表
+71. 相关歌单推荐
+72. 付费精选接口
+
 
 ## 安装
 
@@ -185,6 +199,13 @@ docker run -d -p 3000:3000 --name netease-cloud-music twesix/netease-music-api
 docker run -d -p 3000:3000 --name netease-cloud-music -e http_proxy= -e https_proxy= -e no_proxy= -e HTTP_PROXY= -e HTTPS_PROXY= -e NO_PROXY= netease-cloud-music
 ```
 
+> 由于 docker 镜像更新不是很及时,推荐自己 build, 以下为 build 镜像的方式
+
+```
+$ git clone https://github.com/Binaryify/NeteaseCloudMusicApi && cd NeteaseCloudMusicApi
+$ sudo docker build . -t netease-music-api
+$ sudo docker run -d -p 3000:3000 netease-music-api
+```
 ## 接口文档
 
 ### 调用前须知
@@ -223,7 +244,10 @@ docker run -d -p 3000:3000 --name netease-cloud-music -e http_proxy= -e https_pr
 
 #### 2. 邮箱登录
 
-> 注意 : 此接口被网易和谐了 , 待修复 , 暂时使用手机登录 (2017.05.20)
+~~ 注意 : 此接口被网易和谐了 , 待修复 , 暂时使用手机登录 (2017.05.20)~~
+
+
+> 更新 : 此接口已经可以正常使用(2018.07.03)
 
 **必选参数 :** `email`: 163 网易邮箱 `password`: 密码
 
@@ -360,7 +384,10 @@ tags:歌单tag
 
 **必选参数 :** `uid` : 用户 id
 
-**可选参数 :** `limit` : 返回数量 , 默认为 30 `offset` : 偏移数量，用于分页 , 如
+**可选参数 :**
+`limit` : 返回数量 , 默认为 30
+
+`offset` : 偏移数量，用于分页 , 如
 : 如 :( 页数 -1)\*30, 其中 30 为 limit 的值 , 默认为 0
 
 **接口地址 :** `/user/follows`
@@ -421,6 +448,8 @@ tags:歌单tag
 
 `offset` : 偏移数量，用于分页 , 如
 : 如 :( 页数 -1)\*30, 其中 30 为 limit 的值 , 默认为 0
+`initial`: 按首字母索引查找参数,如 `/artist/list?cat=1001&initial=b` 返回内容将以 name 字段开头为b或者拼音开头为b为顺序排列
+
 category Code 取值:
 ```
 入驻歌手 5001
@@ -465,6 +494,14 @@ category Code 取值:
 
 
 **调用例子 :** `/artist/unsub?id=6452`
+
+### 收藏的歌手列表
+说明 : 调用此接口,可获取收藏的歌手列表
+
+**接口地址 :** `/artist/sublist`
+
+
+**调用例子 :** `/artist/sublist`
 
 ### 歌单分类
 说明 : 调用此接口,可获取歌单分类,包含 category 信息
@@ -521,6 +558,8 @@ category Code 取值:
 以获取对应歌单内的所有的音乐
 
 **必选参数 :** `id` : 歌单 id
+
+**可选参数 :** `s` : 歌单最近的s个收藏者
 
 **接口地址 :** `/playlist/detail`
 
@@ -1226,6 +1265,23 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 **调用例子 :** `/dj/sub?rid=336355127&t=1` ( 对应关注 ' 代码时间 ')
 `/dj/sub?rid=336355127&t=0` ( 对应取消关注 ' 代码时间 ')
 
+### 电台的订阅列表
+
+说明 : 登陆后调用此接口 , 可获取订阅的电台列表
+
+
+**接口地址 :** `/dj/sublist`
+
+**调用例子 :** `/dj/sublist`
+
+### 电台 - 付费精选
+
+说明 : 可以获取付费精选的电台列表 , 传入 `limit` 和 `offset` 可以进行分页
+
+**接口地址 :** `/dj/paygift`
+
+**调用例子 :** `/dj/paygift?limit=10&offset=20`
+
 ### 电台 - 详情
 
 说明 : 登陆后调用此接口 , 传入`rid`, 可获得对应电台的详情介绍
@@ -1245,9 +1301,15 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 
 **必选参数 :** `rid`: 电台 的 id
 
+**可选参数 :**
+`limit` : 返回数量 , 默认为 30
+
+`offset` : 偏移数量，用于分页 , 如
+: 如 :( 页数 -1)\*30, 其中 30 为 limit 的值 , 默认为 0
+
 **接口地址 :** `/dj/program`
 
-**调用例子 :** `/dj/program?rid=336355127` ( 对应 ' 代码时间 ' 的节目列表 )
+**调用例子 :** `/dj/program?rid=336355127&limit=40` ( 对应 ' 代码时间 ' 的节目列表 )
 
 ## 离线访问此文档
 

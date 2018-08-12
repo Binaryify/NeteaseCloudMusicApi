@@ -1,8 +1,4 @@
-const express = require("express");
-const router = express();
-const { createWebAPIRequest } = require("../util/util");
-
-router.get("/", (req, res) => {
+module.exports = (req, res, createWebAPIRequest, request) => {
   const cookie = req.get("Cookie") ? req.get("Cookie") : "";
   // 暂时不提供更换头像接口
   // gender为0表示保密，1为男性，2为女性
@@ -28,6 +24,4 @@ router.get("/", (req, res) => {
     music_req => res.send(music_req),
     err => res.status(502).send("fetch error")
   );
-});
-
-module.exports = router;
+};

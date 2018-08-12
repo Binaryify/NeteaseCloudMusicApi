@@ -18,46 +18,11 @@
 
 [sqaiyan/netmusic-node](https://github.com/sqaiyan/netmusic-node)
 
-## 版本新特性
-
-### 2.10.0 | 2018.05.17
-歌单操作调整为批量操作
-
-### 2.9.8 | 2018.05.10
-新增歌手分类列表,收藏/取消收藏歌手接口,新增更新用户信息,更新歌单接口
-
-### 2.9.6 | 2018.05.08
-新增发送私信相关接口,新增新建歌单,收藏/取消收藏歌单接口
-
-### 2.9.4 | 2018.05.04
-新增热搜接口,更新 banner 接口
-
-### 2.9.0 | 2018.01.26
-
-docker 构建文件的一些增强以及增加访问日志和调试输出
-
-### 2.8.1 | 2018.01.04
-
-添加了 proxy 功能
-
-### 2.6.4 | 2017.7.16
-
-添加缓存机制和随机 UA 机制 感谢[@u3u](https://github.com/u3u)
-[issue:77](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/77) 优化请求
-代码 感谢 [@huhuime](https://github.com/huhuime)
-[issue:83](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/83)
-
-### 2.5.0 | 2017.4.29
-
-增加 mv/ 专辑 / 歌单评论接口 , 增加云盘相关接口 , 增加获取用户动态 / 信息接口 ,
-增加关注 / 粉丝列表接口 , 增加收藏歌单接口 , 增加相似 mv/ 歌曲 / 用户接口 , 增加
-banner 接口 , 增加刷新登录接口 , 增加电台相关接口 , 补充评论接口 , 更新文档
-
 ## 功能特性
 
 1. 登录
 2. 刷新登录
-3. 获取用户信息,歌单，收藏，mv, dj 数量
+3. 获取用户信息 , 歌单，收藏，mv, dj 数量
 4. 获取用户歌单
 5. 获取用户电台
 6. 获取用户关注列表
@@ -86,14 +51,14 @@ banner 接口 , 增加刷新登录接口 , 增加电台相关接口 , 补充评�
 29. 获取相似歌单
 30. 相似 mv
 31. 获取相似音乐
-32. 获取相似用户
+32. 获取最近 5 个听了这首歌的用户
 33. 获取每日推荐歌单
 34. 获取每日推荐歌曲
 35. 私人 FM
 36. 签到
 37. 喜欢音乐
 38. 垃圾桶
-39. 歌单(网友精选碟)
+39. 歌单 ( 网友精选碟 )
 40. 新碟上架
 41. 热门歌手
 42. 最新 mv
@@ -107,14 +72,26 @@ banner 接口 , 增加刷新登录接口 , 增加电台相关接口 , 补充评�
 50. 获取 mv 数据
 51. 播放 mv
 52. 排行榜
-53. 云盘
-54. 电台-推荐
-55. 电台-分类
-56. 电台-分类推荐
-57. 电台-订阅
-58. 电台-详情
-59. 电台-节目
-60. 给评论点赞
+53. 歌手榜
+54. 云盘
+55. 电台 - 推荐
+56. 电台 - 分类
+57. 电台 - 分类推荐
+58. 电台 - 订阅
+59. 电台 - 详情
+60. 电台 - 节目
+61. 给评论点赞
+62. 获取动态
+63. 获取热搜
+64. 发送私信
+65. 发送私信歌单
+66. 新建歌单
+67. 收藏/取消收藏歌单
+68. 歌单分类
+69. 收藏的歌手列表
+70. 订阅的电台列表
+71. 相关歌单推荐
+72. 付费精选接口
 
 ## 环境要求
 
@@ -145,12 +122,6 @@ windows 下使用 git-bash 或者 cmder 等终端执行以下命令:
 $ set PORT=4000 && node app.js
 ```
 
-## Docker 容器运行
-
-```shell
-docker pull pengxiao/netease-music-api
-docker run -d -p 3000:3000 pengxiao/netease-music-api
-```
 
 ## 使用文档
 
@@ -176,7 +147,7 @@ $ npm test
 
 [<img alt="nujhong" src="https://avatars1.githubusercontent.com/u/23186058?v=4&s=117" width="117">](https://github.com/nujhong)[<img alt="zhangzhengyi12" src="https://avatars1.githubusercontent.com/u/23502338?v=4&s=117" width="117">](https://github.com/zhangzhengyi12)[<img alt="mchome" src="https://avatars1.githubusercontent.com/u/7392658?v=4&s=117" width="117">](https://github.com/mchome)[<img alt="pengx17" src="https://avatars1.githubusercontent.com/u/584378?v=4&s=117" width="117">](https://github.com/pengx17)[<img alt="LengYXin" src="https://avatars1.githubusercontent.com/u/19631404?v=4&s=117" width="117">](https://github.com/LengYXin)[<img alt="rccoder" src="https://avatars3.githubusercontent.com/u/7554325?v=4&s=117" width="117">](https://github.com/rccoder)
 
-[<img alt="zhixuanziben" src="https://avatars0.githubusercontent.com/u/18346513?v=4&s=117" width="117">](https://github.com/zhixuanziben)[<img alt="LightStrawberry" src="https://avatars3.githubusercontent.com/u/5920513?v=4&s=117" width="117">](https://github.com/LightStrawberry)[<img alt="CeBkCn" src="https://avatars3.githubusercontent.com/u/14861605?v=4&s=117" width="117">](https://github.com/CeBkCn)[<img alt="nondanee" src="https://avatars0.githubusercontent.com/u/26399680?v=4&s=117" width="117">](https://github.com/nondanee)[<img alt="twesix" src="https://avatars1.githubusercontent.com/u/16174733?v=4&s=117" width="117">](https://github.com/twesix)
+[<img alt="zhixuanziben" src="https://avatars0.githubusercontent.com/u/18346513?v=4&s=117" width="117">](https://github.com/zhixuanziben)[<img alt="LightStrawberry" src="https://avatars3.githubusercontent.com/u/5920513?v=4&s=117" width="117">](https://github.com/LightStrawberry)[<img alt="CeBkCn" src="https://avatars3.githubusercontent.com/u/14861605?v=4&s=117" width="117">](https://github.com/CeBkCn)[<img alt="nondanee" src="https://avatars0.githubusercontent.com/u/26399680?v=4&s=117" width="117">](https://github.com/nondanee)[<img alt="twesix" src="https://avatars1.githubusercontent.com/u/16174733?v=4&s=117" width="117">](https://github.com/twesix)[<img alt="Means88" src="https://avatars1.githubusercontent.com/u/5810331?s=460&v=47" width="117">](https://github.com/Means88)
 
 
 ## License
