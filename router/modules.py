@@ -33,5 +33,5 @@ if __name__ == '__main__':
         with open('module.js', 'a') as file:
             file.write(data + '\n')
     with open('module.js', 'a') as file:
-        file.write('}\n')
-        file.write('module.exports = modulesExpot')
+        file.write('};\n')
+        file.write('module.exports = modulesExpot;')

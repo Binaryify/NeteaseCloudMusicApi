@@ -1921,5 +1921,5 @@ var modulesExpot = {
     err => res.status(502).send("fetch error")
   );
 },
-}
-module.exports = modulesExpot
+};
+module.exports = modulesExpot;
