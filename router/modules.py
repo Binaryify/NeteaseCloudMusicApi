@@ -1,6 +1,6 @@
 #!/usr/bin/pyhon3
 # -*- coding:utf-8 -*-
-import os, shutil
+import os
 
 
 def isJS(files):
