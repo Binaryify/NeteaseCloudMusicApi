@@ -46,7 +46,7 @@ const Wrap = fn => (req, res) => fn(req, res, createWebAPIRequest, request);
 
 // 同步读取 router 目录中的js文件, 根据命名规则, 自动注册路由
 fs.readdirSync("./router/").reverse().forEach(file => {
-  if (/\.js$/i.test(file) === false) {
+  if (/\.js$/i.test(file) === false || file === "module.js") {
     return;
   }
 

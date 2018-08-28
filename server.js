@@ -3,6 +3,7 @@ const apicache = require("apicache");
 const path = require("path");
 const fs = require("fs");
 const server = express();
+// 得先在 router 文件夹下运行 modules.py ，命令 python3 modules.py
 const modules = require("./router/module");
 let cache = apicache.middleware;
 
