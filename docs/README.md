@@ -15,31 +15,41 @@
 跨站请求伪造 (CSRF), 伪造请求头 , 调用官方 API
 
 ## 版本新特性
-### 2.18.0 | 2018.08.29
-新增获取视频数据接口
+
+### 2.19.0 | 2018.08.29
+
+新增获取视频数据接口,新增评论发送/删除接口
 
 ### 2.17.0 | 2018.08.28
+
 新增登录状态查询接口
 
 ### 2.15.0 | 2018.07.30
+
 新增相关歌单推荐和付费精选接口,增加歌手列表接口按首字母索引查找参数
 
 ### 2.14.0 | 2018.07.03
+
 修复无法使用邮箱问题
 
 ### 2.11.0 | 2018.05.21
+
 增加收藏歌手列表&订阅电台列表
 
 ### 2.10.0 | 2018.05.17
+
 歌单操作调整为批量操作
 
 ### 2.9.8 | 2018.05.10
+
 新增歌手分类列表,收藏/取消收藏歌手接口,新增更新用户信息,更新歌单接口
 
 ### 2.9.6 | 2018.05.08
+
 新增发送私信相关接口,新增新建歌单,收藏/取消收藏歌单接口
 
 ### 2.9.4 | 2018.05.04
+
 新增热搜接口,更新 banner 接口
 
 ### 2.9.0 | 2018.01.26
@@ -140,6 +150,7 @@ banner 接口 , 增加刷新登录接口 , 增加电台相关接口 , 补充评�
 73. 音乐是否可用检查接口
 74. 登录状态
 75. 获取视频数据
+76. 发送/删除评论
 
 ## 安装
 
@@ -214,6 +225,7 @@ $ git clone https://github.com/Binaryify/NeteaseCloudMusicApi && cd NeteaseCloud
 $ sudo docker build . -t netease-music-api
 $ sudo docker run -d -p 3000:3000 netease-music-api
 ```
+
 ## 接口文档
 
 ### 调用前须知
@@ -221,12 +233,12 @@ $ sudo docker run -d -p 3000:3000 netease-music-api
 !> 为使用方便,降低门槛,登录接口直接使用了 get 明文请求,请按实际需求对源码修改
 
 !> 由于接口做了缓存处理 ( 缓存 2 分钟 , 可在 app.js 设置 , 可能会导致登陆后获取不
-  到 cookie), 相同的 url 会在两分钟内只向网易服务器发一次请求 , 如果遇到不需要缓
-  存结果的接口 , 可在请求 url 后面加一个时间戳参数使 url 不同 , 例子 :
-  `/simi/playlist?id=347230&timestamp=1503019930000`
+到 cookie), 相同的 url 会在两分钟内只向网易服务器发一次请求 , 如果遇到不需要缓
+存结果的接口 , 可在请求 url 后面加一个时间戳参数使 url 不同 , 例子 :
+`/simi/playlist?id=347230&timestamp=1503019930000`
 
 !> 如果是跨域请求 , 请在所有请求带上 `xhrFields: { withCredentials: true }` 否则
-  可能会因为没带上 cookie 导致 301, 具体例子可看 `public/test.html`, 例子使用 jQuery, axios 版本也类似
+可能会因为没带上 cookie 导致 301, 具体例子可看 `public/test.html`, 例子使用 jQuery, axios 版本也类似
 
 !> 301 错误基本都是没登录就调用了需要登录的接口,如果登陆了还是提示 301, 基本都是缓存把数据缓存起来了,解决方法是等待 2 分钟或者重启服务重新登录后再调用接口
 
@@ -235,8 +247,8 @@ $ sudo docker run -d -p 3000:3000 netease-music-api
 !> 本项目仅供学习使用 , 文档可能会有缓存 , 如果文档版本和 github 上的版本不一致,请清除缓存再查看
 
 !> 由于网易限制,此项目在国外服务器上使用会受到限制,如需解决 , 可使用大陆服务器或者使用代理 , 感谢 [@hiyangguo](https://github.com/hiyangguo)提出的[解决方法](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/29#issuecomment-298358438):
-  在 'util.js' 的 'headers' 处增加 `X-Real-IP':'211.161.244.70' // 任意国内 IP`
-  即可解决
+在 'util.js' 的 'headers' 处增加 `X-Real-IP':'211.161.244.70' // 任意国内 IP`
+即可解决
 
 ### 登录
 
@@ -253,7 +265,6 @@ $ sudo docker run -d -p 3000:3000 netease-music-api
 #### 2. 邮箱登录
 
 ~~ 注意 : 此接口被网易和谐了 , 待修复 , 暂时使用手机登录 (2017.05.20)~~
-
 
 > 更新 : 此接口已经可以正常使用(2018.07.03)
 
@@ -277,11 +288,10 @@ Cookies
 
 说明 : 调用此接口 , 可刷新登录状态
 
-
 **调用例子 :** `/login/refresh`
 
-
 ### 登录状态
+
 说明 : 调用此接口,可获取登录状态
 
 **接口地址 :** `/login/status`
@@ -311,6 +321,7 @@ Cookies
 说明 : 登陆后调用此接口 , 传入相关信息,可以更新用户信息
 
 **必选参数 :**
+
 ```
 gender: 性别 0:保密 1:男性 2:女性
 birthday: 出生日期,时间戳 unix timestamp
@@ -341,12 +352,14 @@ signature：用户签名
 
 说明 : 登陆后调用此接口,可以更新用户歌单
 参数:
+
 ```
 id:歌单id
 name:歌单名字
 desc:歌单描述
 tags:歌单tag
 ```
+
 **接口地址 :** `/playlist/update`
 
 **调用例子 :** `/playlist/update/?id=24381616&name=新歌单&desc=描述&tags=学习`
@@ -360,7 +373,6 @@ tags:歌单tag
 `user_ids` : 用户 id,多个需用逗号隔开
 
 `msg` : 要发送的信息
-
 
 **接口地址 :** `/send/text`
 
@@ -377,7 +389,6 @@ tags:歌单tag
 `user_ids` : 用户 id,多个需用逗号隔开
 
 `msg` : 要发送的信息
-
 
 **接口地址 :** `/send/playlist`
 
@@ -458,6 +469,7 @@ tags:歌单tag
 **调用例子 :** `/event`
 
 ### 歌手分类列表
+
 说明 : 调用此接口,可获取歌手分类列表
 **必选参数 :** `cat` : 即 category Code,歌手类型,默认 1001,返回华语男歌手数据
 **可选参数 :**
@@ -465,9 +477,10 @@ tags:歌单tag
 
 `offset` : 偏移数量，用于分页 , 如
 : 如 :( 页数 -1)\*30, 其中 30 为 limit 的值 , 默认为 0
-`initial`: 按首字母索引查找参数,如 `/artist/list?cat=1001&initial=b` 返回内容将以 name 字段开头为b或者拼音开头为b为顺序排列
+`initial`: 按首字母索引查找参数,如 `/artist/list?cat=1001&initial=b` 返回内容将以 name 字段开头为 b 或者拼音开头为 b 为顺序排列
 
 category Code 取值:
+
 ```
 入驻歌手 5001
 华语男歌手 1001
@@ -489,13 +502,13 @@ category Code 取值:
 
 **接口地址 :** `/artist/list`
 
-
 **调用例子 :** `/artist/list?cat=1001`
 
 返回数据如下图:
 ![数据](https://ws1.sinaimg.cn/large/006tKfTcgy1fr60g9zps9j31kw1bpk4n.jpg)
 
 ### 收藏歌手
+
 说明 : 调用此接口,可收藏歌手
 **必选参数 :** `artistId` : 歌手 id
 
@@ -504,35 +517,35 @@ category Code 取值:
 **调用例子 :** `/artist/sub?id=6452`
 
 ### 取消收藏歌手
+
 说明 : 调用此接口,可取消收藏歌手
 **必选参数 :** `artistId` : 歌手 id
 
 **接口地址 :** `/artist/unsub`
 
-
 **调用例子 :** `/artist/unsub?id=6452`
 
 ### 收藏的歌手列表
+
 说明 : 调用此接口,可获取收藏的歌手列表
 
 **接口地址 :** `/artist/sublist`
 
-
 **调用例子 :** `/artist/sublist`
 
 ### 歌单分类
+
 说明 : 调用此接口,可获取歌单分类,包含 category 信息
 
 **接口地址 :** `/playlist/catlist`
 
-
 **调用例子 :** `/playlist/catlist`
 
 ### 热门歌单分类
+
 说明 : 调用此接口,可获取歌单分类,包含 category 信息
 
 **接口地址 :** `/playlist/hot`
-
 
 **调用例子 :** `/playlist/hot`
 
@@ -576,7 +589,7 @@ category Code 取值:
 
 **必选参数 :** `id` : 歌单 id
 
-**可选参数 :** `s` : 歌单最近的s个收藏者
+**可选参数 :** `s` : 歌单最近的 s 个收藏者
 
 **接口地址 :** `/playlist/detail`
 
@@ -596,7 +609,7 @@ category Code 取值:
 
 **必选参数 :** `id` : 音乐 id
 
-**可选参数 :** `br`: 码率,默认设置了999000即最大码率,如果要 320k 则可设置为 320000,其他类推
+**可选参数 :** `br`: 码率,默认设置了 999000 即最大码率,如果要 320k 则可设置为 320000,其他类推
 
 **接口地址 :** `/music/url`
 
@@ -606,11 +619,12 @@ category Code 取值:
 ![音乐 url](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E9%9F%B3%E4%B9%90%20url.png)
 
 ### 音乐是否可用
+
 说明: 调用此接口,传入歌曲 id, 可获取音乐是否可用,返回 `{ success: true, message: 'ok' }` 或者 `{ success: false, message: '亲爱的,暂无版权' }`
 
 **必选参数 :** `id` : 歌曲 id
 
-**可选参数** : `br`: 码率,默认设置了999000即最大码率,如果要 320k 则可设置为 320000,其他类推
+**可选参数** : `br`: 码率,默认设置了 999000 即最大码率,如果要 320k 则可设置为 320000,其他类推
 
 **接口地址 :** `/check/music`
 
@@ -638,6 +652,7 @@ mp3url 不能直接用 , 可通过 `/music/url` 接口传入歌曲 id 获取具�
 ![搜索音乐](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%90%9C%E7%B4%A2.png)
 
 ### 热搜
+
 说明 : 调用此接口,可获取热门搜索列表
 
 **接口地址 :** `/search/hot`
@@ -678,7 +693,7 @@ mp3url 不能直接用 , 可通过 `/music/url` 接口传入歌曲 id 获取具�
 
 说明 : 调用此接口 , 传入歌单名字可新建歌单
 
-**必选参数 :** `name` :  歌单名
+**必选参数 :** `name` : 歌单名
 
 **接口地址 :** `/playlist/create`
 
@@ -692,7 +707,7 @@ mp3url 不能直接用 , 可通过 `/music/url` 接口传入歌曲 id 获取具�
 说明 : 调用此接口 , 传入类型和歌单 id 可收藏歌单或者取消收藏歌单
 
 **必选参数 :**
-`t` :  类型,1:收藏,2:取消收藏
+`t` : 类型,1:收藏,2:取消收藏
 `id` : 歌单 id
 
 **接口地址 :** `/playlist/subscribe`
@@ -701,7 +716,6 @@ mp3url 不能直接用 , 可通过 `/music/url` 接口传入歌曲 id 获取具�
 
 返回数据如下图:
 ![数据](https://ws1.sinaimg.cn/large/006tKfTcgy1fr3vdwx0hvj30s405u74b.jpg)
-
 
 ### 对歌单添加或删除歌曲
 
@@ -715,7 +729,7 @@ mp3url 不能直接用 , 可通过 `/music/url` 接口传入歌曲 id 获取具�
 
 **接口地址 :** `/playlist/tracks`
 
-**调用例子 :** `/playlist/tracks?op=add&pid=24381616&tracks=347231` ( 对应把歌曲添加到 ' 我 ' 的歌单 , 测试的时候请把这里的 pid 换成你自己的,  id 和 tracks 不对可能会报502错误)
+**调用例子 :** `/playlist/tracks?op=add&pid=24381616&tracks=347231` ( 对应把歌曲添加到 ' 我 ' 的歌单 , 测试的时候请把这里的 pid 换成你自己的, id 和 tracks 不对可能会报 502 错误)
 
 ### 获取歌词
 
@@ -833,6 +847,51 @@ mp3url 不能直接用 , 可通过 `/music/url` 接口传入歌曲 id 获取具�
 
 **调用例子 :** `/comment/like?id=186016&cid=4956438&t=1&type=0` 对应给晴天最热门
 的那条评论点赞
+
+### 发送/删除评论
+
+说明 : 调用此接口,可发送评论或者删除评论
+
+**接口地址 :** `/comment`
+
+1. 发送评论
+
+   **必选参数**  
+   `action`:1 发送
+
+   `tpye`: 数字 , 资源类型 , 对应歌曲 , mv, 专辑 , 歌单 , 电台对应以下类型
+
+   ```
+   0: 歌曲
+   1: mv
+   2: 歌单
+   3: 专辑
+   4: 电台
+   ```
+
+   `id`:对应资源 id
+
+   `content` :要发送的内容
+
+   **调用例子** : `/comment?action=1&type=1&id=5436712&content=test` (往广岛之恋 mv 发送评论: test)
+
+2. 删除评论
+   **必选参数**  
+    `action`:0 删除
+
+   `tpye`: 数字 , 资源类型 , 对应歌曲 , mv, 专辑 , 歌单 , 电台对应以下类型
+
+   ```
+   0: 歌曲
+   1: mv
+   2: 歌单
+   3: 专辑
+   4: 电台
+   ```
+
+   `id`:对应资源 id
+   `content` :内容 id,可通过 `/comment/mv` 等接口获取
+   **调用例子** : `/comment?action=0&type=1&id=5436712&commentId=1535550516319` (在广岛之恋 mv 删除评论)
 
 ### banner
 
@@ -1184,7 +1243,7 @@ MV 数据 , 数据包含 mv 名字 , 歌手 , 发布时间 , mv 视频地址等�
 说明 : 调用此接口 , 传入视频的 id ( 在搜索音乐的时候传 type=1014 获得 ) , 可获取对应
 视频数据,其中视频网易做了防盗链处理 , 可能不能直接播放 , 需要播放的话需要调用 ' 播放 mv/视频' 接口
 
-**必选参数 :** ` id`: 视频 的 id
+**必选参数 :** `id`: 视频 的 id
 
 **接口地址 :** `/video`
 
@@ -1311,7 +1370,6 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 ### 电台的订阅列表
 
 说明 : 登陆后调用此接口 , 可获取订阅的电台列表
-
 
 **接口地址 :** `/dj/sublist`
 

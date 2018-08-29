@@ -95,6 +95,7 @@
 73. 音乐是否可用检查接口
 74. 登录状态
 75. 获取视频数据
+76. 发送/删除评论
 
 ## 环境要求
 
@@ -125,7 +126,6 @@ windows 下使用 git-bash 或者 cmder 等终端执行以下命令:
 $ set PORT=4000 && node app.js
 ```
 
-
 ## 使用文档
 
 [文档地址](https://binaryify.github.io/NeteaseCloudMusicApi)
@@ -145,16 +145,12 @@ $ npm test
 ![单元测试](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/screenshot1.png)
 ![单元测试](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/screenshot2.png)
 
-
 ## 贡献者
 
 [<img alt="nujhong" src="https://avatars1.githubusercontent.com/u/23186058?v=4&s=117" width="117">](https://github.com/nujhong)[<img alt="zhangzhengyi12" src="https://avatars1.githubusercontent.com/u/23502338?v=4&s=117" width="117">](https://github.com/zhangzhengyi12)[<img alt="mchome" src="https://avatars1.githubusercontent.com/u/7392658?v=4&s=117" width="117">](https://github.com/mchome)[<img alt="pengx17" src="https://avatars1.githubusercontent.com/u/584378?v=4&s=117" width="117">](https://github.com/pengx17)[<img alt="LengYXin" src="https://avatars1.githubusercontent.com/u/19631404?v=4&s=117" width="117">](https://github.com/LengYXin)[<img alt="rccoder" src="https://avatars3.githubusercontent.com/u/7554325?v=4&s=117" width="117">](https://github.com/rccoder)
 
 [<img alt="zhixuanziben" src="https://avatars0.githubusercontent.com/u/18346513?v=4&s=117" width="117">](https://github.com/zhixuanziben)[<img alt="LightStrawberry" src="https://avatars3.githubusercontent.com/u/5920513?v=4&s=117" width="117">](https://github.com/LightStrawberry)[<img alt="CeBkCn" src="https://avatars3.githubusercontent.com/u/14861605?v=4&s=117" width="117">](https://github.com/CeBkCn)[<img alt="nondanee" src="https://avatars0.githubusercontent.com/u/26399680?v=4&s=117" width="117">](https://github.com/nondanee)[<img alt="twesix" src="https://avatars1.githubusercontent.com/u/16174733?v=4&s=117" width="117">](https://github.com/twesix)[<img alt="Means88" src="https://avatars1.githubusercontent.com/u/5810331?s=460&v=47" width="117">](https://github.com/Means88)
 
-
 ## License
 
 [The MIT License (MIT)](https://github.com/Binaryify/NeteaseCloudMusicApi/blob/master/LICENSE)
-
-
