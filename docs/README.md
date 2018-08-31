@@ -856,7 +856,7 @@ mp3url 不能直接用 , 可通过 `/music/url` 接口传入歌曲 id 获取具�
 
 1. 发送评论
 
-   **必选参数**  
+   **必选参数**
    `action`:1 发送
 
    `tpye`: 数字 , 资源类型 , 对应歌曲 , mv, 专辑 , 歌单 , 电台对应以下类型
@@ -876,7 +876,8 @@ mp3url 不能直接用 , 可通过 `/music/url` 接口传入歌曲 id 获取具�
    **调用例子** : `/comment?action=1&type=1&id=5436712&content=test` (往广岛之恋 mv 发送评论: test)
 
 2. 删除评论
-   **必选参数**  
+
+   **必选参数**
     `action`:0 删除
 
    `tpye`: 数字 , 资源类型 , 对应歌曲 , mv, 专辑 , 歌单 , 电台对应以下类型
@@ -891,6 +892,7 @@ mp3url 不能直接用 , 可通过 `/music/url` 接口传入歌曲 id 获取具�
 
    `id`:对应资源 id
    `content` :内容 id,可通过 `/comment/mv` 等接口获取
+
    **调用例子** : `/comment?action=0&type=1&id=5436712&commentId=1535550516319` (在广岛之恋 mv 删除评论)
 
 ### banner
