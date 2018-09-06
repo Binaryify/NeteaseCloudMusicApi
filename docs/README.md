@@ -607,6 +607,9 @@ category Code 取值:
 > 解决方案是当获取到音乐的 id 后，将
 > http://music.163.com/song/media/outer/url?id=id.mp3 以 src 赋予 Audio 即可播放
 
+> 方案2:
+> 调用api: `https://api.imjad.cn/cloudmusic/?type=song&id=${歌曲id}`
+
 **必选参数 :** `id` : 音乐 id
 
 **可选参数 :** `br`: 码率,默认设置了 999000 即最大码率,如果要 320k 则可设置为 320000,其他类推
