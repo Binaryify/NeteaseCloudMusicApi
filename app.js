@@ -4,23 +4,25 @@ const path = require('path')
 const fs = require('fs')
 const app = express()
 let cache = apicache.middleware
-var npmview = require('npmview')
-npmview('NeteaseCloudMusicApi', function(err, version, moduleInfo) {
+const { exec } = require('child_process');
+exec('npm info NeteaseCloudMusicApi version', (err, stdout, stderr) => {
   if (err) {
-    console.error(err)
-    return
+    console.error(err);
+    return;
   }
+  const onlinePackageVersion = stdout.trim();
   const package = require('./package.json')
-  if (package.version < version) {
+  if (package.version < onlinePackageVersion) {
     console.log(
       '最新版:Version:' +
-        version +
+      onlinePackageVersion +
         ',当前版本:' +
         package.version +
         ',请及时更新'
     )
   }
 })
+
 // 跨域设置
 app.all('*', function(req, res, next) {
   if (req.path !== '/' && !req.path.includes('.')) {
