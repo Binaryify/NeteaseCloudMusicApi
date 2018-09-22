@@ -7,7 +7,8 @@ module.exports = (req, res, createWebAPIRequest, request) => {
     1: 'R_MV_5_', //mv
     2: 'A_PL_0_', //歌单
     3: 'R_AL_3_', //专辑
-    4: 'A_DJ_1_' //电台
+    4: 'A_DJ_1_', //电台
+    5: 'R_VI_62_' //  视频
   }
   const type = typeMap[req.query.type]
 
