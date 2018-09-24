@@ -1,7 +1,7 @@
 const Encrypt = require("./crypto.js");
 const request = require("request");
-const querystring = require("querystring");
-const baseCookie = require("./init.js");
+const queryString = require("querystring");
+const randomCookie = require("./init.js");
 
 request.debug = true;
 
@@ -38,31 +38,43 @@ function createWebAPIRequest(
   data,
   cookie,
   callback,
-  errorcallback
+  errorCallback
 ) {
-  // console.log(cookie);
-  if (cookie.match(/_csrf=[^(;|$)]+/g))
-    data.csrf_token = cookie.match(/_csrf=[^(;|$)]+/g)[0].slice(6);
-  else data.csrf_token = "";
+  const csrfToken = cookie.match(/_csrf=([^(;|$)]+)/);
+  if (csrfToken)
+    data.csrf_token = csrfToken[1];
+  else
+    data.csrf_token = "";
+
   const proxy = cookie.split("__proxy__")[1];
   cookie = cookie.split("__proxy__")[0];
-  const cryptoreq = Encrypt(data);
+  
+  const jsCookie = randomCookie();
+  const missingCookie = [];
+  for (let key in jsCookie){
+    if (cookie.indexOf(key) == -1){
+      missingCookie.push(`${key}=${jsCookie[key]}`);
+    }
+  }
+  cookie = cookie.split(/;\s*/).concat(missingCookie).join("; ");
+
+  const encryptedData = Encrypt(data);
   const options = {
     url: `http://${host}${path}`,
     method: method,
     headers: {
-      Accept: "*/*",
+      "Accept": "*/*",
       "Accept-Language": "zh-CN,zh;q=0.8,gl;q=0.6,zh-TW;q=0.4",
-      Connection: "keep-alive",
+      "Connection": "keep-alive",
       "Content-Type": "application/x-www-form-urlencoded",
-      Referer: "http://music.163.com",
-      Host: "music.163.com",
-      Cookie: baseCookie + (cookie ? "; " : "") +  cookie,
+      "Referer": "http://music.163.com",
+      "Host": "music.163.com",
+      "Cookie": cookie,
       "User-Agent": randomUserAgent()
     },
-    body: querystring.stringify({
-      params: cryptoreq.params,
-      encSecKey: cryptoreq.encSecKey
+    body: queryString.stringify({
+      params: encryptedData.params,
+      encSecKey: encryptedData.encSecKey
     }),
     proxy: proxy
   };
@@ -73,7 +85,7 @@ function createWebAPIRequest(
   request(options, function(error, res, body) {
     if (error) {
       console.error(error);
-      errorcallback(error);
+      errorCallback(error);
     } else {
       //解决 网易云 cookie 添加 .music.163.com 域设置。
       //如： Domain=.music.163.com
@@ -82,6 +94,7 @@ function createWebAPIRequest(
         cookie = cookie
           .map(x => x.replace(/.music.163.com/g, ""))
           .sort((a, b) => a.length - b.length);
+        cookie = cookie.concat(missingCookie.map(x => x + '; Expires=' + (new Date((new Date).getTime() + 157680000000)).toGMTString()));
       }
       callback(body, cookie);
     }
@@ -94,8 +107,8 @@ function createRequest(path, method, data) {
       url: `http://music.163.com${path}`,
       method: method,
       headers: {
-        Referer: "http://music.163.com",
-        Cookie: "appver=1.5.2",
+        "Referer": "http://music.163.com",
+        "Cookie": "appver=1.5.2",
         "Content-Type": "application/x-www-form-urlencoded",
         "User-Agent": randomUserAgent()
       }
