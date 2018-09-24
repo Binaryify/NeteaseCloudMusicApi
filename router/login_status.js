@@ -9,12 +9,11 @@ module.exports = (req, res, createWebAPIRequest, request) => {
     cookie,
     (music_req, cookie) => {
       try {
-        var userInfo = (/var GUser=([^;]+);/g).exec(music_req)[1];
-        var bindInfo = (/var GBinds=([^;]+);/g).exec(music_req)[1];
-        userInfo = eval(`(${userInfo})`);
-        userInfo.userBind = eval(`(${bindInfo})`);
-        userInfo.userBind.forEach((item) => {item.tokenJsonStr = JSON.parse(item.tokenJsonStr)});
-        res.send(userInfo);
+        var profile = (/var GUser=([^;]+);/g).exec(music_req)[1];
+        var bindings = (/var GBinds=([^;]+);/g).exec(music_req)[1];
+        profile = eval(`(${profile})`);
+        bindings = eval(`(${bindings})`);
+        res.send({code: 200,profile: profile, bindings: bindings});
       } catch (error) {
         res.status(502).send("fetch error");
       }
