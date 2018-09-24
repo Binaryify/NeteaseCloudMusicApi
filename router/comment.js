@@ -1,8 +1,7 @@
-//comment like
 module.exports = (req, res, createWebAPIRequest, request) => {
   const cookie = req.get('Cookie') ? req.get('Cookie') : ''
-  const cid = req.query.cid //评论 id
   const id = req.query.id
+  const action = req.query.action == 1 ? 'add' : 'delete'
   const typeMap = {
     0: 'R_SO_4_', //歌曲
     1: 'R_MV_5_', //mv
@@ -12,14 +11,29 @@ module.exports = (req, res, createWebAPIRequest, request) => {
     5: 'R_VI_62_' //  视频
   }
   const type = typeMap[req.query.type]
-  const data = {
+
+  let data = {
     threadId: `${type}${id}`,
-    commentId: cid,
     csrf_token: ''
   }
-  const action = req.query.t == 1 ? 'like' : 'unlike'
 
-  const url = `/weapi/v1/comment/${action}`
+  if (action == 'add') {
+    data = {
+      ...data,
+      content: req.query.content
+    }
+  }
+
+  if (action == 'delete') {
+    data = {
+      ...data,
+      commentId: req.query.commentId
+    }
+  }
+
+  const url = `/weapi/resource/comments/${action}`
+
+  // console.log({ url, data })
   createWebAPIRequest(
     'music.163.com',
     url,
