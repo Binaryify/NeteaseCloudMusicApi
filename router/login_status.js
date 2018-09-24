@@ -13,7 +13,7 @@ module.exports = (req, res, createWebAPIRequest, request) => {
         var bindings = (/var GBinds=([^;]+);/g).exec(music_req)[1];
         profile = eval(`(${profile})`);
         bindings = eval(`(${bindings})`);
-        res.send({code: 200,profile: profile, bindings: bindings});
+        res.send({code: 200, profile: profile, bindings: bindings});
       } catch (error) {
         res.status(502).send("fetch error");
       }
