@@ -1,31 +1,22 @@
 const assert = require('assert')
-const crypto = require('crypto')
-const { createWebAPIRequest } = require('../util/util')
+const request = require('request')
+host = global.host || 'http://localhost:3000'
 
 describe('测试获取评论是否正常', () => {
   it('数据的 code 应该为200', done => {
-    const rid = 32311
-    const cookie = ''
-    const data = {
-      offset: 0,
-      rid: rid,
-      limit: 20,
-      csrf_token: ''
+    const qs = {
+      id: 32311
     }
-    createWebAPIRequest(
-      'music.163.com',
-      `/weapi/v1/resource/comments/R_SO_4_${rid}/?csrf_token=`,
-      'POST',
-      data,
-      cookie,
-      music_req => {
-        console.log({
-          code: JSON.parse(music_req).code
-        })
-        assert(JSON.parse(music_req).code === 200)
+
+    request.get({url: `${host}/comment/album`,qs: qs}, (err, res, body) => {
+      if (!err && res.statusCode == 200) {
+        body = JSON.parse(body)
+        assert(body.code === 200)
         done()
-      },
-      err => done(err)
-    )
+      }
+      else{
+        done(err)
+      }
+    })
   })
 })
