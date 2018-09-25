@@ -84,34 +84,7 @@ function createWebAPIRequest(
   });
 }
 
-function createRequest(path, method, data) {
-  return new Promise((resolve, reject) => {
-    const options = {
-      url: `http://music.163.com${path}`,
-      method: method,
-      headers: {
-        "Referer": "http://music.163.com",
-        "Cookie": "appver=1.5.2",
-        "Content-Type": "application/x-www-form-urlencoded",
-        "User-Agent": randomUserAgent()
-      }
-    };
-
-    if (method.toLowerCase() === "post") {
-      options.body = data;
-    }
-
-    request(options, function(error, res, body) {
-      if (error) {
-        reject(error);
-      } else {
-        resolve(body);
-      }
-    });
-  });
-}
 module.exports = {
   request,
-  createWebAPIRequest,
-  createRequest
+  createWebAPIRequest
 };

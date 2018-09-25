@@ -99,7 +99,7 @@ fs.readdirSync(path.resolve(__dirname, 'router'))
 
 const port = process.env.PORT || 3000
 
-app.listen(port, () => {
+app.server = app.listen(port, () => {
   console.log(`server running @ http://localhost:${port}`)
 })
 
