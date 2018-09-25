@@ -4,7 +4,7 @@
   "description": "网易云音乐 NodeJS 版 API",
   "scripts": {
     "start": "node app.js",
-    "test": "mocha -r intelli-espower-loader -t 20000 test"
+    "test": "mocha -r intelli-espower-loader -t 20000 app.test.js --exit"
   },
   "keywords": [
     "网易云音乐",

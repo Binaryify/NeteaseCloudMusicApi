@@ -1,22 +1,22 @@
 const assert = require('assert')
-const crypto = require('crypto')
-const { createRequest } = require('../util/util')
+const request = require('request')
+host = global.host || 'http://localhost:3000'
 
 describe('测试搜索是否正常', () => {
   it('获取到的数据的 name 应该和搜索关键词一致', done => {
-    const keywords = '海阔天空'
-    const type = 1
-    const limit = 30
-    const data =
-      's=' + keywords + '&limit=' + limit + '&type=' + type + '&offset=0'
-    createRequest('/api/search/pc/', 'POST', data)
-      .then(result => {
-        console.log(JSON.parse(result).result.songs[0].mp3Url)
-        assert(JSON.parse(result).result.songs[0].name === '海阔天空')
+    const qs = {
+      keywords: '海阔天空',
+      type: 1
+    }
+    request.get({url: `${host}/search`,qs: qs}, (err, res, body) => {
+      if (!err && res.statusCode == 200) {
+        body = JSON.parse(body)
+        assert(body.result.songs[0].name === '海阔天空')
         done()
-      })
-      .catch(err => {
+      }
+      else{
         done(err)
-      })
+      }
+    })
   })
 })
