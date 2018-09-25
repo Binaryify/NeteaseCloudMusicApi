@@ -89,9 +89,6 @@ fs.readdirSync(path.resolve(__dirname, 'router'))
         file
           .replace(/\.js$/i, '')
           .replace(/_/g, '/')
-          .replace(/[A-Z]/g, a => {
-            return '/' + a.toLowerCase()
-          })
     }
 
     app.use(route, Wrap(require('./router/' + file)))
