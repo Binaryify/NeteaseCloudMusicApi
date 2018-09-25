@@ -7,10 +7,10 @@ module.exports = (req, res, createWebAPIRequest, request) => {
     "GET",
     {},
     cookie,
-    (music_req, cookie) => {
+    music_req => {
       try {
-        var profile = (/var GUser=([^;]+);/g).exec(music_req)[1];
-        var bindings = (/var GBinds=([^;]+);/g).exec(music_req)[1];
+        var profile = /GUser\s*=\s*([^;]+);/.exec(music_req)[1];
+        var bindings = /GBinds\s*=\s*([^;]+);/.exec(music_req)[1];
         profile = eval(`(${profile})`);
         bindings = eval(`(${bindings})`);
         res.send({code: 200, profile: profile, bindings: bindings});
