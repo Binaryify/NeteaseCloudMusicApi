@@ -45,8 +45,17 @@ app.use(express.static(path.resolve(__dirname, 'public')))
 app.use(function(req, res, next) {
   const proxy = req.query.proxy
   if (proxy) {
-    req.headers.cookie = req.headers.cookie + `__proxy__${proxy}`
+    req.headers.cookie += `__proxy__${proxy}`
   }
+  next()
+})
+
+// 补全缺失的cookie
+const { completeCookie } = require('./util/init')
+app.use(function(req, res, next) {
+  let cookie = completeCookie(req.headers.cookie)
+  req.headers.cookie = cookie.map(x => x[0]).concat(req.headers.cookie || []).join('; ')
+  res.append('Set-Cookie', cookie.map(x => (x.concat('Path=/').join('; '))))
   next()
 })
 

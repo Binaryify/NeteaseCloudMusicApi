@@ -1,7 +1,6 @@
 const Encrypt = require("./crypto.js");
 const request = require("request");
 const queryString = require("querystring");
-const randomCookie = require("./init.js");
 
 request.debug = true;
 
@@ -48,15 +47,6 @@ function createWebAPIRequest(
 
   const proxy = cookie.split("__proxy__")[1];
   cookie = cookie.split("__proxy__")[0];
-  
-  const jsCookie = randomCookie();
-  const missingCookie = [];
-  for (let key in jsCookie){
-    if (cookie.indexOf(key) == -1){
-      missingCookie.push(`${key}=${jsCookie[key]}`);
-    }
-  }
-  cookie = cookie.split(/;\s*/).concat(missingCookie).join("; ");
 
   const encryptedData = Encrypt(data);
   const options = {
@@ -87,15 +77,8 @@ function createWebAPIRequest(
       console.error(error);
       errorCallback(error);
     } else {
-      //解决 网易云 cookie 添加 .music.163.com 域设置。
-      //如： Domain=.music.163.com
-      let cookie = res.headers["set-cookie"];
-      if (Array.isArray(cookie)) {
-        cookie = cookie
-          .map(x => x.replace(/.music.163.com/g, ""))
-          .sort((a, b) => a.length - b.length);
-        cookie = cookie.concat(missingCookie.map(x => x + '; Expires=' + (new Date((new Date).getTime() + 157680000000)).toGMTString()));
-      }
+      let cookie = res.headers["set-cookie"] || [];
+      cookie = cookie.map(x => x.replace(/\s*Domain=[^(;|$)]+;*/, ""));
       callback(body, cookie);
     }
   });

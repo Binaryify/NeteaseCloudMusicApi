@@ -21,10 +21,7 @@ module.exports = (req, res, createWebAPIRequest, request) => {
     cookie,
     (music_req, cookie) => {
       // console.log(music_req)
-      cookie = cookie && cookie.map(x => x.replace('Domain=.music.163.com', ''))
-      res.set({
-        'Set-Cookie': cookie
-      })
+      res.append("Set-Cookie", cookie)
       res.send(music_req)
     },
     err => res.status(502).send('fetch error')
