@@ -45,8 +45,17 @@ app.use(express.static(path.resolve(__dirname, 'public')))
 app.use(function(req, res, next) {
   const proxy = req.query.proxy
   if (proxy) {
-    req.headers.cookie = req.headers.cookie + `__proxy__${proxy}`
+    req.headers.cookie += `__proxy__${proxy}`
   }
+  next()
+})
+
+// 补全缺失的cookie
+const { completeCookie } = require('./util/init')
+app.use(function(req, res, next) {
+  let cookie = completeCookie(req.headers.cookie)
+  req.headers.cookie = cookie.map(x => x[0]).concat(req.headers.cookie || []).join('; ')
+  res.append('Set-Cookie', cookie.map(x => (x.concat('Path=/').join('; '))))
   next()
 })
 
@@ -80,9 +89,6 @@ fs.readdirSync(path.resolve(__dirname, 'router'))
         file
           .replace(/\.js$/i, '')
           .replace(/_/g, '/')
-          .replace(/[A-Z]/g, a => {
-            return '/' + a.toLowerCase()
-          })
     }
 
     app.use(route, Wrap(require('./router/' + file)))
@@ -90,7 +96,7 @@ fs.readdirSync(path.resolve(__dirname, 'router'))
 
 const port = process.env.PORT || 3000
 
-app.listen(port, () => {
+app.server = app.listen(port, () => {
   console.log(`server running @ http://localhost:${port}`)
 })
 

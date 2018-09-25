@@ -11,9 +11,7 @@ module.exports = (req, res, createWebAPIRequest, request) => {
     data,
     cookie,
     (music_req, cookie) => {
-      res.set({
-        "Set-Cookie": cookie
-      });
+      res.append("Set-Cookie", cookie);
       res.send(music_req);
     },
     err => res.status(502).send("fetch error")
