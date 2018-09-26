@@ -532,6 +532,16 @@ category Code 取值:
 
 **调用例子 :** `/top/playlist/highquality?limit=30`
 
+### 相关歌单推荐
+
+说明 : 调用此接口,传入歌单 id 可获取相关歌单(对应页面 [https://music.163.com/#/playlist?id=1](https://music.163.com/#/playlist?id=1))
+
+**必选参数 :** `id` : 歌单 id
+
+**接口地址 :** `/related/playlist`
+
+**调用例子 :** `/related/playlist?id=1`
+
 ### 获取歌单详情
 
 说明 : 歌单能看到歌单名字 , 但看不到具体歌单内容 , 调用此接口 , 传入歌单 id, 可
