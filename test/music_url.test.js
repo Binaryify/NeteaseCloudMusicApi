@@ -1,6 +1,6 @@
 const assert = require('assert')
 const request = require('request')
-host = global.host || 'http://localhost:3000'
+const host = global.host || 'http://localhost:3000'
 
 describe("测试获取歌曲是否正常", () => {
   it("歌曲的 url 不应该为空", done => {
