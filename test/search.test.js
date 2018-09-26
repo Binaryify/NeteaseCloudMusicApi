@@ -1,6 +1,6 @@
 const assert = require('assert')
 const request = require('request')
-host = global.host || 'http://localhost:3000'
+const host = global.host || 'http://localhost:3000'
 
 describe('测试搜索是否正常', () => {
   it('获取到的数据的 name 应该和搜索关键词一致', done => {
