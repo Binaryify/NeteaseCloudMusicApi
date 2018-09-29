@@ -1,7 +1,7 @@
 //comment like
 module.exports = (req, res, createWebAPIRequest, request) => {
   let cookie = req.get('Cookie') ? req.get('Cookie') : ''
-  cookie += ';os=pc;'
+  cookie = 'os=pc;' + cookie
   const cid = req.query.cid //评论 id
   const id = req.query.id
   const typeMap = {

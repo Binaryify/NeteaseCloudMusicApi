@@ -39,12 +39,12 @@ function createWebAPIRequest(
   callback,
   errorCallback
 ) {
+  const proxy = cookie.split('__proxy__')[1]
+  cookie = cookie.split('__proxy__')[0]
+
   const csrfToken = cookie.match(/_csrf=([^(;|$)]+)/)
   if (csrfToken) data.csrf_token = csrfToken[1]
   else data.csrf_token = ''
-
-  const proxy = cookie.split('__proxy__')[1]
-  cookie = cookie.split('__proxy__')[0]
 
   const encryptedData = Encrypt(data)
   const options = {
