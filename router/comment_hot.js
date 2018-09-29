@@ -1,6 +1,6 @@
 module.exports = (req, res, createWebAPIRequest) => {
   let cookie = req.get('Cookie') ? req.get('Cookie') : ''
-  cookie += ';os=pc;'
+  cookie = 'os=pc;' + cookie
   const rid = req.query.id
   const typeMap = {
     0: 'R_SO_4_', //  歌曲
