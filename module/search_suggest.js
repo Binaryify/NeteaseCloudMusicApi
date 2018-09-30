@@ -21,7 +21,7 @@
 
 module.exports = (query, request) => {
     const data = {
-        s: req.query.keywords || ''
+        s: query.keywords || ''
     }
     return request(
         'POST', `http://music.163.com/weapi/search/suggest/web`, data,

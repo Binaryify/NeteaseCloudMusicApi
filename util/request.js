@@ -48,8 +48,8 @@ function createRequest(method, url, data, options){
         if(url.indexOf('music.163.com') != -1) headers['Referer'] = 'http://music.163.com'
 
         const answer = {
-            code: 500,
-            body: {code: 500},
+            code: 502,
+            body: {code: 502},
             cookie: []
         }
 
@@ -57,7 +57,7 @@ function createRequest(method, url, data, options){
             {method: method, url: url, headers: headers, body: queryString.stringify(data), proxy: options.proxy}, 
             (err, res, body) => {
                 if(err){
-                    answer.body = {code: 500, msg: err.stack}
+                    answer.body = {code: 502, msg: err.stack}
                     reject(answer)
                 }
                 else{
@@ -70,9 +70,10 @@ function createRequest(method, url, data, options){
                         answer.body = body
                         answer.code = res.statusCode
                     }
+                    answer.code = (answer.code < 100 || answer.code > 600) ? 400 : answer.code
                     if(answer.code == 200)
                         resolve(answer)
-                    else
+                    else                  
                         reject(answer)
                 }
             }

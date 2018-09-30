@@ -25,7 +25,7 @@
 
 module.exports = (query, request) => {
     const data = {
-        userId: req.query.uid
+        userId: query.uid
     }
     return request(
         'POST', `http://music.163.com/weapi/djradio/get/byuser`, data,
