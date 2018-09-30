@@ -4,7 +4,7 @@ function randomString(pattern, length){
 
 function completeCookie(cookie){
 	let origin = (cookie || '').split(/;\s*/).map(element => (element.split('=')[0])), extra = []
-	let now = (new Date).getTime()
+	let now = Date.now()
 
 	if(!origin.includes('JSESSIONID-WYYY')){
 		let expire = new Date(now + 1800000) //30 minutes 
