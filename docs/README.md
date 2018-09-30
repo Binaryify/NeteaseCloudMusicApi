@@ -94,6 +94,7 @@
 76. 发送/删除评论
 77. 热门评论
 78. 视频评论
+79. 退出登录
 
 ## 安装
 
@@ -232,6 +233,12 @@ Cookies
 说明 : 调用此接口 , 可刷新登录状态
 
 **调用例子 :** `/login/refresh`
+
+### 退出登录
+
+说明 : 调用此接口 , 可退出登录
+
+**调用例子 :** `/logout`
 
 ### 登录状态
 
@@ -525,6 +532,16 @@ category Code 取值:
 
 **调用例子 :** `/top/playlist/highquality?limit=30`
 
+### 相关歌单推荐
+
+说明 : 调用此接口,传入歌单 id 可获取相关歌单(对应页面 [https://music.163.com/#/playlist?id=1](https://music.163.com/#/playlist?id=1))
+
+**必选参数 :** `id` : 歌单 id
+
+**接口地址 :** `/related/playlist`
+
+**调用例子 :** `/related/playlist?id=1`
+
 ### 获取歌单详情
 
 说明 : 歌单能看到歌单名字 , 但看不到具体歌单内容 , 调用此接口 , 传入歌单 id, 可
@@ -781,7 +798,8 @@ mp3url 不能直接用 , 可通过 `/music/url` 接口传入歌曲 id 获取具�
 **调用例子 :** `/comment/video?id=89ADDE33C0AAE8EC14B99F6750DB954D`
 
 ### 热门评论
-说明 : 调用此接口 ,  传入 type, 资源 id 可获得对应资源热门评论 ( 不需要登录 )
+
+说明 : 调用此接口 , 传入 type, 资源 id 可获得对应资源热门评论 ( 不需要登录 )
 
 **必选参数 :**
 
@@ -797,6 +815,7 @@ mp3url 不能直接用 , 可通过 `/music/url` 接口传入歌曲 id 获取具�
 4: 电台
 5: 视频
 ```
+
 **接口地址 :** `/comment/hot`
 
 **调用例子 :** `/comment/hot?id=186016&type=0`
@@ -825,8 +844,7 @@ mp3url 不能直接用 , 可通过 `/music/url` 接口传入歌曲 id 获取具�
 
 **接口地址 :** `comment/like`
 
-**调用例子 :** `/comment/like?id=186016&cid=4956438&t=1&type=0` 对应给晴天最热门
-的那条评论点赞
+**调用例子 :** `/comment/like?id=29178366&cid=12840183&t=1&type=0` 对应给 [https://music.163.com/#/song?id=29178366](https://music.163.com/#/song?id=29178366) 最热门的评论点赞
 
 ### 发送/删除评论
 
@@ -859,7 +877,7 @@ mp3url 不能直接用 , 可通过 `/music/url` 接口传入歌曲 id 获取具�
 2. 删除评论
 
    **必选参数**
-    `action`:0 删除
+   `action`:0 删除
 
    `tpye`: 数字,资源类型,对应歌曲,mv,专辑,歌单,电台,视频对应以下类型
 
