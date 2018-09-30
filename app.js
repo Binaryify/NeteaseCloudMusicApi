@@ -94,6 +94,45 @@ fs.readdirSync(path.resolve(__dirname, 'router'))
     app.use(route, Wrap(require('./router/' + file)))
   })
 
+  const requestMod = require('./util/request')
+  let dev = express()
+  fs.readdirSync(path.resolve(__dirname, 'module'))
+  .reverse()
+  .forEach(file => {
+    if (/\.js$/i.test(file) === false) {
+      return
+    }
+
+    let route
+
+    if (typeof UnusualRouteFileMap[file] !== 'undefined') {
+      route = UnusualRouteFileMap[file]
+    } else {
+      route =
+        '/' +
+        file
+          .replace(/\.js$/i, '')
+          .replace(/_/g, '/')
+    }
+
+    dev.use(route, (req, res) => {
+      let question = require('./module/' + file)
+      let query = {...req.query, cookie: req.headers.cookie}
+      question(query, requestMod)
+      .then(answer => {
+        console.log('[OK]', req.originalUrl)
+        res.append('Set-Cookie', answer.cookie)
+        res.status(answer.code).send(answer.body)
+      })
+      .catch( answer => {
+        console.log('[ERROR]', req.originalUrl)
+        res.append('Set-Cookie', answer.cookie)
+        res.status(answer.code).send(answer.body)
+      })
+    })
+  })
+  app.use('/dev', dev)
+
 const port = process.env.PORT || 3000
 
 app.server = app.listen(port, () => {
