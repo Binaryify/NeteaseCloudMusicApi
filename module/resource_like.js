@@ -21,7 +21,7 @@
 module.exports = (query, request) => {
     query.t = (query.t == 1 ? "like" : "unlike")
     const data = {
-        threadId: req.query.id
+        threadId: query.id
     }
     return request(
         'POST', `http://music.163.com/weapi/resource/${query.t}`, data,

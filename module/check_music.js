@@ -39,15 +39,16 @@ module.exports = (query, request) => {
         {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
     )
     .then(response => {
-        let body = JSON.parse(response.body)
-        if (body.code == 200) {
-            if (body.data[0].code == 200){
-                response.body = JSON.stringify({success: true, message: 'ok'})
+        if (response.body.code == 200) {
+            if (response.body.data[0].code == 200){
+                response.body = {success: true, message: 'ok'}
                 return response
             }
         }
-        response.code = 404
-        response.body = JSON.stringify({success: false, message: '亲爱的,暂无版权'})
-        return Promise.reject(response)
+        else{
+            response.code = 404
+            response.body = {success: false, message: '亲爱的,暂无版权'}
+            return Promise.reject(response)
+        }
     })
 }

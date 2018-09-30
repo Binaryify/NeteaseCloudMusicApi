@@ -22,8 +22,8 @@
 
 module.exports = (query, request) => {
     const data = {
-        // 'offset': req.query.offset || 0,
-        limit: req.query.limit || 30,
+        // 'offset': query.offset || 0,
+        limit: query.limit || 30,
         total: true
     }
     return request(
