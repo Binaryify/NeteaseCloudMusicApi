@@ -1,27 +1,14 @@
-// module.exports = (req, res, createWebAPIRequest, request) => {
-//   const cookie = req.get("Cookie") ? req.get("Cookie") : "";
-//   const data = {
-//     threadId: req.query.id,
-//     csrf_token: ""
-//   };
-//   const action = req.query.t == 1 ? "like" : "unlike";
-//   createWebAPIRequest(
-//     "music.163.com",
-//     `/weapi/resource/${action}`,
-//     "POST",
-//     data,
-//     cookie,
-//     music_req => {
-//       res.send(music_req);
-//     },
-//     err => res.status(502).send("fetch error")
-//   );
-// };
+// 点赞与取消点赞资源
 
 module.exports = (query, request) => {
-    query.t = (query.t == 1 ? "like" : "unlike")
+    query.t = (query.t == 1 ? 'like' : 'unlike')
+    query.type = {
+        1: 'R_MV_5_', //  MV
+        4: 'A_DJ_1_', //  电台
+        5: 'R_VI_62_' //  视频
+    }[query.type]
     const data = {
-        threadId: query.id
+        threadId: query.type + query.id
     }
     return request(
         'POST', `http://music.163.com/weapi/resource/${query.t}`, data,

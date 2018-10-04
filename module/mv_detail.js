@@ -1,8 +1,11 @@
-// 歌词
+// MV详情
 
 module.exports = (query, request) => {
+    const data = {
+        id: query.mvid
+    }
     return request(
-        'POST', `http://music.163.com/weapi/song/lyric?os=osx&id=${query.id}&lv=-1&kv=-1&tv=-1`, {},
+        'POST', `http://music.163.com/weapi/mv/detail`, data,
         {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
     )
 }

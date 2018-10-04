@@ -1,33 +1,11 @@
-//dj主播 radio
-// module.exports = (req, res, createWebAPIRequest, request) => {
-//   const rid = req.query.rid;
-//   const cookie = req.get("Cookie") ? req.get("Cookie") : "";
-//   const data = {
-//     asc: req.query.asc,
-//     radioId: rid,
-//     limit: req.query.limit || 30,
-//     offset: req.query.offset || 0,
-//     csrf_token: ""
-//   };
-//   createWebAPIRequest(
-//     "music.163.com",
-//     "/weapi/dj/program/byradio",
-//     "POST",
-//     data,
-//     cookie,
-//     music_req => {
-//       res.send(music_req);
-//     },
-//     err => res.status(502).send("fetch error")
-//   );
-// };
+// 电台节目列表
 
 module.exports = (query, request) => {
     const data = {
-        asc: query.asc,
         radioId: query.rid,
         limit: query.limit || 30,
-        offset: query.offset || 0
+        offset: query.offset || 0,
+        asc: query.asc
     }
     return request(
         'POST', `http://music.163.com/weapi/dj/program/byradio`, data,

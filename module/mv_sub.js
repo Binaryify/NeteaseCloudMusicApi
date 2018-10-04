@@ -1,13 +1,13 @@
-// 收藏与取消收藏歌手
+// 收藏与取消收藏MV
 
 module.exports = (query, request) => {
     query.t = (query.t == 1 ? 'sub' : 'unsub')
     const data = {
-        artistId: query.id,
-        artistIds: '[' + query.id + ']'
-    }
+        mvId: query.mvid,
+        mvIds: '["' + query.mvid + '"]'
+    } 
     return request(
-        'POST', `http://music.163.com/weapi/artist/${query.t}`, data,
+        'POST', `http://music.163.com/weapi/mv/${query.t}`, data,
         {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
     )
 }

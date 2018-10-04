@@ -1,34 +1,12 @@
-//分类歌单
-// module.exports = (req, res, createWebAPIRequest, request) => {
-//   const cookie = req.get("Cookie") ? req.get("Cookie") : "";
-//   // order可为 'hot' 可为 'new'
-//   const data = {
-//     cat: req.query.cat || "全部",
-//     order: req.query.order || "hot",
-//     offset: req.query.offset || 0,
-//     total: req.query.total ? "true" : "false",
-//     limit: req.query.limit || 50
-//   };
-//   createWebAPIRequest(
-//     "music.163.com",
-//     "/weapi/playlist/list",
-//     "POST",
-//     data,
-//     cookie,
-//     music_req => {
-//       res.send(music_req);
-//     },
-//     err => res.status(502).send("fetch error")
-//   );
-// };
+// 分类歌单
 
 module.exports = (query, request) => {
     const data = {
-        cat: query.cat || '全部',
-        order: query.order || 'hot',
+        cat: query.cat || '全部', // 全部,华语,欧美,日语,韩语,粤语,小语种,流行,摇滚,民谣,电子,舞曲,说唱,轻音乐,爵士,乡村,R&B/Soul,古典,民族,英伦,金属,朋克,蓝调,雷鬼,世界音乐,拉丁,另类/独立,New Age,古风,后摇,Bossa Nova,清晨,夜晚,学习,工作,午休,下午茶,地铁,驾车,运动,旅行,散步,酒吧,怀旧,清新,浪漫,性感,伤感,治愈,放松,孤独,感动,兴奋,快乐,安静,思念,影视原声,ACG,儿童,校园,游戏,70后,80后,90后,网络歌曲,KTV,经典,翻唱,吉他,钢琴,器乐,榜单,00后
+        order: query.order || 'hot', // hot,new
+        limit: query.limit || 50,
         offset: query.offset || 0,
-        total: query.total ? 'true' : 'false',
-        limit: query.limit || 50
+        total: true
     }
     return request(
         'POST', `http://music.163.com/weapi/playlist/list`, data,

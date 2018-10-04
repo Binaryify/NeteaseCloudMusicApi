@@ -1,30 +1,10 @@
-// module.exports = (req, res, createWebAPIRequest, request) => {
-//   const rid = req.query.id;
-//   const cookie = req.get("Cookie") ? req.get("Cookie") : "";
-//   const data = {
-//     offset: req.query.offset || 0,
-//     rid: rid,
-//     limit: req.query.limit || 20,
-//     csrf_token: ""
-//   };
-//   createWebAPIRequest(
-//     "music.163.com",
-//     `/weapi/v1/resource/comments/R_AL_3_${rid}/?csrf_token=`,
-//     "POST",
-//     data,
-//     cookie,
-//     music_req => {
-//       res.send(music_req);
-//     },
-//     err => res.status(502).send("fetch error")
-//   );
-// };
+// 专辑评论
 
 module.exports = (query, request) => {
     const data = {
-        offset: query.offset || 0,
         rid: query.id,
         limit: query.limit || 20,
+        offset: query.offset || 0
     }
     return request(
         'POST', `http://music.163.com/weapi/v1/resource/comments/R_AL_3_${query.id}`, data,

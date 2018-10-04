@@ -1,13 +1,12 @@
-// 歌单详情
+// 相关视频
 
 module.exports = (query, request) => {
     const data = {
         id: query.id,
-        n: 100000,
-        s: query.s || 8
+        type: (/^\d+$/.test(query.id)) ? 0 : 1
     }
     return request(
-        'POST', `http://music.163.com/weapi/v3/playlist/detail`, data,
+        'POST', `http://music.163.com/weapi/cloudvideo/v1/allvideo/rcmd`, data,
         {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
     )
 }

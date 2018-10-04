@@ -1,50 +1,18 @@
-//comment like
-// module.exports = (req, res, createWebAPIRequest, request) => {
-//   let cookie = req.get('Cookie') ? req.get('Cookie') : ''
-//   cookie = 'os=pc;' + cookie
-//   const cid = req.query.cid //评论 id
-//   const id = req.query.id
-//   const typeMap = {
-//     0: 'R_SO_4_', //歌曲
-//     1: 'R_MV_5_', //mv
-//     2: 'A_PL_0_', //歌单
-//     3: 'R_AL_3_', //专辑
-//     4: 'A_DJ_1_', //电台
-//     5: 'R_VI_62_' //  视频
-//   }
-//   const type = typeMap[req.query.type]
-//   const data = {
-//     threadId: `${type}${id}`,
-//     commentId: cid,
-//     csrf_token: ''
-//   }
-//   const action = req.query.t == 1 ? 'like' : 'unlike'
-
-//   const url = `/weapi/v1/comment/${action}`
-//   createWebAPIRequest(
-//     'music.163.com',
-//     url,
-//     'POST',
-//     data,
-//     cookie,
-//     music_req => res.send(music_req),
-//     err => res.status(502).send('fetch error')
-//   )
-// }
+// 评论点赞与取消
 
 module.exports = (query, request) => {
-    query.cookie = 'os=pc;' + query.cookie
+    query.cookie = 'os=pc; ' + query.cookie
     query.t = (query.t == 1 ? 'like' : 'unlike')
     query.type = {
         0: 'R_SO_4_', //  歌曲
-        1: 'R_MV_5_', //  mv
+        1: 'R_MV_5_', //  MV
         2: 'A_PL_0_', //  歌单
         3: 'R_AL_3_', //  专辑
         4: 'A_DJ_1_', //  电台,
         5: 'R_VI_62_' //  视频
     }[query.type]
     const data = {
-        threadId: `${query.type}${query.id}`,
+        threadId: query.type + query.id,
         commentId: query.cid
     }
     return request(

@@ -1,38 +1,15 @@
-const crypto = require("crypto")
+// 手机登录
 
-//手机登录
-// module.exports = (req, res, createWebAPIRequest, request) => {
-//   const phone = req.query.phone;
-//   const cookie = req.get("Cookie") ? req.get("Cookie") : "";
-//   const md5sum = crypto.createHash("md5");
-//   md5sum.update(req.query.password);
-//   const data = {
-//     phone: phone,
-//     password: md5sum.digest("hex"),
-//     rememberLogin: "true"
-//   };
-//   createWebAPIRequest(
-//     "music.163.com",
-//     "/weapi/login/cellphone",
-//     "POST",
-//     data,
-//     cookie,
-//     (music_req, cookie) => {
-//       res.append("Set-Cookie", cookie);
-//       res.send(music_req);
-//     },
-//     err => res.status(502).send("fetch error")
-//   );
-// };
+const crypto = require('crypto')
 
 module.exports = (query, request) => {
-    const data =  {
+    const data = {
         phone: query.phone,
-        password: crypto.createHash("md5").update(query.password).digest("hex"),
-        rememberLogin: "true"
+        password: crypto.createHash('md5').update(query.password).digest('hex'),
+        rememberLogin: 'true'
     }
     return request(
         'POST', `http://music.163.com/weapi/login/cellphone`, data,
-        {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
+        {crypto: 'weapi', ua: 'pc', cookie: query.cookie, proxy: query.proxy}
     )
 }

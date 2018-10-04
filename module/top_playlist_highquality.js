@@ -1,30 +1,11 @@
-//精品歌单
-// module.exports = (req, res, createWebAPIRequest, request) => {
-//   const cookie = req.get("Cookie") ? req.get("Cookie") : "";
-//   const data = {
-//     cat: req.query.cat || "全部",
-//     offset: req.query.offset || 0,
-//     limit: req.query.limit || 20,
-//     csrf_token: ""
-//   };
-//   createWebAPIRequest(
-//     "music.163.com",
-//     "/weapi/playlist/highquality/list",
-//     "POST",
-//     data,
-//     cookie,
-//     music_req => {
-//       res.send(music_req);
-//     },
-//     err => res.status(502).send("fetch error")
-//   );
-// };
+// 精品歌单
 
 module.exports = (query, request) => {
     const data = {
-        cat: query.cat || '全部',
-        offset: query.offset || 0,
-        limit: query.limit || 20
+        cat: query.cat || '全部', // 全部,华语,欧美,韩语,日语,粤语,小语种,运动,ACG,影视原声,流行,摇滚,后摇,古风,民谣,轻音乐,电子,器乐,说唱,古典,爵士
+        limit: query.limit || 50,
+        lasttime: query.before || 0, // 歌单updateTime
+        total: true
     }
     return request(
         'POST', `http://music.163.com/weapi/playlist/highquality/list`, data,
