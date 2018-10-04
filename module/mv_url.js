@@ -1,18 +1,12 @@
-module.exports = (req, res, createWebAPIRequest, request) => {
-  const url = req.query.url;
-  const headers = {
-    Referer: "http://music.163.com/",
-    Cookie: "appver=1.5.0.75771;",
-    "Content-Type": "video/mp4",
-    Location: url
-  };
-  const options = {
-    header: headers,
-    url: url
-  };
-  request(options)
-    .on("error", err => {
-      res.send({ err });
-    })
-    .pipe(res);
-};
+// MV链接
+
+module.exports = (query, request) => {
+  const data = {
+      id: query.id,
+      r: query.res || 1080
+  }
+  return request(
+      'POST', `http://music.163.com/weapi/song/enhance/play/mv/url`, data,
+      {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
+  )
+}

@@ -1,23 +1,7 @@
-// module.exports = (req, res, createWebAPIRequest, request) => {
-//   const cookie = req.get("Cookie") ? req.get("Cookie") : "";
-//   const data = {
-//     name: req.query.name,
-//     csrf_token: ""
-//   };
-//   createWebAPIRequest(
-//     "music.163.com",
-//     "/weapi/playlist/create",
-//     "POST",
-//     data,
-//     cookie,
-//     music_req => {
-//       res.send(music_req);
-//     },
-//     err => res.status(502).send("fetch error")
-//   );
-// };
+// 创建歌单
 
 module.exports = (query, request) => {
+    query.cookie = 'os=pc; ' + query.cookie
     const data = {
         name: query.name
     }

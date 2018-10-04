@@ -1,30 +1,10 @@
-// 已关注歌手
-// module.exports = (req, res, createWebAPIRequest, request) => {
-//   const cookie = req.get("Cookie") ? req.get("Cookie") : "";
-
-//   const data = {
-//     offset: req.query.offset || 0,
-//     total: req.query.total ? "true" : "false",
-//     limit: req.query.limit || 25
-//   };
-//   createWebAPIRequest(
-//     "music.163.com",
-//     "/weapi/artist/sublist",
-//     "POST",
-//     data,
-//     cookie,
-//     music_req => {
-//       res.send(music_req);
-//     },
-//     err => res.status(502).send("fetch error")
-//   );
-// };
+// 我的歌手列表
 
 module.exports = (query, request) => {
     const data = {
+        limit: query.limit || 25,
         offset: query.offset || 0,
-        total: query.total ? "true" : "false",
-        limit: query.limit || 25
+        total: true
     }
     return request(
         'POST', `http://music.163.com/weapi/artist/sublist`, data,

@@ -1,12 +1,11 @@
-// 云盘数据详情? 暂时不要使用
+// 视频详情
 
 module.exports = (query, request) => {
     const data = {
-        byids: query.id,
         id: query.id
     }
     return request(
-        'POST', `http://music.163.com/weapi/v1/cloud/get/byids`, data,
+        'POST', `http://music.163.com/weapi/cloudvideo/v1/video/detail`, data,
         {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
     )
 }

@@ -1,25 +1,7 @@
-// module.exports = (req, res, createWebAPIRequest, request) => {
-//   const cookie = req.get("Cookie") ? req.get("Cookie") : "";
-//   const data = {
-//     id: req.query.id,
-//     csrf_token: ""
-//   };
-//   const action = req.query.t == 1 ? "subscribe" : "unsubscribe";
-//   createWebAPIRequest(
-//     "music.163.com",
-//     `/weapi/playlist/${action}`,
-//     "POST",
-//     data,
-//     cookie,
-//     music_req => {
-//       res.send(music_req);
-//     },
-//     err => res.status(502).send("fetch error")
-//   );
-// };
+// 收藏与取消收藏歌单
 
 module.exports = (query, request) => {
-    query.t = (query.t == 1 ? "subscribe" : "unsubscribe")
+    query.t = (query.t == 1 ? 'subscribe' : 'unsubscribe')
     const data = {
         id: query.id
     }
