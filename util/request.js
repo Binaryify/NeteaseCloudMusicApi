@@ -64,14 +64,14 @@ function createRequest(method, url, data, options){
                     answer.cookie = (res.headers['set-cookie'] || []).map(x => x.replace(/\s*Domain=[^(;|$)]+;*/, ''))
                     try{
                         answer.body = JSON.parse(body)
-                        answer.code = answer.body.code || res.statusCode
+                        answer.status = answer.body.code || res.statusCode
                     }
                     catch(e){
                         answer.body = body
-                        answer.code = res.statusCode
+                        answer.status = res.statusCode
                     }
-                    answer.code = (answer.code < 100 || answer.code > 600) ? 400 : answer.code
-                    if(answer.code == 200)
+                    answer.status = (100 < answer.status && answer.status < 600) ? answer.status : 400
+                    if(answer.status == 200)
                         resolve(answer)
                     else                  
                         reject(answer)
