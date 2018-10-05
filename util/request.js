@@ -2,7 +2,7 @@ const encrypt = require('./crypto.js')
 const request = require('request')
 const queryString = require('querystring')
 
-request.debug = false
+// request.debug = false
 
 function chooseUserAgent(ua) {
     const userAgentList = [
@@ -36,27 +36,28 @@ function chooseUserAgent(ua) {
 function createRequest(method, url, data, options){
     return new Promise((resolve, reject) => {
 
+        let headers = {'User-Agent': chooseUserAgent(options.ua)}
+        if(method.toUpperCase() == 'POST') headers['Content-Type'] = 'application/x-www-form-urlencoded'
+        if(url.indexOf('music.163.com') != -1) headers['Referer'] = 'http://music.163.com'
+        // headers['X-Real-IP'] = '118.88.88.88'
+
+        if(typeof(options.cookie) === 'object')
+            headers['Cookie'] = Object.keys(options.cookie).map(key => (encodeURIComponent(key) + '=' + encodeURIComponent(options.cookie[key]))).join('; ')
+        else if(options.cookie)
+            headers['Cookie'] = options.cookie
+
         if(options.crypto == 'weapi'){
-            const csrfToken = (options.cookie || '').match(/_csrf=([^(;|$)]+)/)
+            const csrfToken = (headers['Cookie'] || '').match(/_csrf=([^(;|$)]+)/)
             data.csrf_token = (csrfToken ? csrfToken[1] : '')
             data = encrypt(data)
         }
 
-        let headers = {'User-Agent': chooseUserAgent(options.ua)}
-        if(options.cookie) headers['Cookie'] = options.cookie
-        if(method.toUpperCase() == 'POST') headers['Content-Type'] = 'application/x-www-form-urlencoded'
-        if(url.indexOf('music.163.com') != -1) headers['Referer'] = 'http://music.163.com'
-
-        const answer = {
-            code: 502,
-            body: {code: 502},
-            cookie: []
-        }
-
+        const answer = {status: 500, body: {}, cookie: []}
         request(
             {method: method, url: url, headers: headers, body: queryString.stringify(data), proxy: options.proxy}, 
             (err, res, body) => {
                 if(err){
+                    answer.status = 502
                     answer.body = {code: 502, msg: err.stack}
                     reject(answer)
                 }
