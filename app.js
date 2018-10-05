@@ -87,7 +87,7 @@ fs.readdirSync(path.join(__dirname, 'router'))
 .forEach(file => {
   if (!/\.js$/i.test(file)) return
   let route = (file in UnusualRouteFileMap) ?  UnusualRouteFileMap[file] : '/' + file.replace(/\.js$/i, '').replace(/_/g, '/')
-  app.use(route, Wrap(path.join(__dirname, 'router', file)))
+  app.use(route, Wrap(require(path.join(__dirname, 'router', file))))
 })
 
 
