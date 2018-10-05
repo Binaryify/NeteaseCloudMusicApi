@@ -1,7 +1,7 @@
 // 发送与删除评论
 
 module.exports = (query, request) => {
-    query.cookie = 'os=pc; ' + query.cookie
+    query.cookie.os = 'pc'
     query.t = (query.t == 1 ? 'add' : 'delete')
     query.type = {
         0: 'R_SO_4_', //  歌曲

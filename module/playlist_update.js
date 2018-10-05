@@ -1,7 +1,7 @@
 // 编辑歌单
 
 module.exports = (query, request) => {
-    query.cookie = 'os=pc; ' + query.cookie
+    query.cookie.os = 'pc'
     query.desc = query.desc || ''
     query.tags = query.tags || ''
     const data = {

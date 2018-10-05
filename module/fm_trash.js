@@ -1,4 +1,4 @@
-//垃圾桶
+// 垃圾桶
 
 module.exports = (query, request) => {
     const data = {

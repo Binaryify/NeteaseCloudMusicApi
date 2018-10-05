@@ -1,7 +1,7 @@
 // 热门评论
 
 module.exports = (query, request) => {
-    query.cookie = 'os=pc; ' + query.cookie
+    query.cookie.os = 'pc'
     query.type = {
         0: 'R_SO_4_', //  歌曲
         1: 'R_MV_5_', //  MV
