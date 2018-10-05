@@ -1,7 +1,7 @@
-// 评论点赞与取消
+// 点赞与取消点赞评论
 
 module.exports = (query, request) => {
-    query.cookie = 'os=pc; ' + query.cookie
+    query.cookie.os = 'pc'
     query.t = (query.t == 1 ? 'like' : 'unlike')
     query.type = {
         0: 'R_SO_4_', //  歌曲

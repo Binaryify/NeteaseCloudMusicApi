@@ -1,7 +1,7 @@
 // 创建歌单
 
 module.exports = (query, request) => {
-    query.cookie = 'os=pc; ' + query.cookie
+    query.cookie.os = 'pc'
     const data = {
         name: query.name
     }

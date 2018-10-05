@@ -1,4 +1,4 @@
-// 获取音乐详情
+// 歌曲详情
 
 module.exports = (query, request) => {
     query.ids = query.ids.split(/\s*,\s*/)
