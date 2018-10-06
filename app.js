@@ -42,30 +42,20 @@ app.use(cache('2 minutes', onlyStatus200))
 
 app.use(express.static(path.resolve(__dirname, 'public')))
 
+app.use(function(req, res, next) {
+  const proxy = req.query.proxy
+  if (proxy) {
+    req.headers.cookie += `__proxy__${proxy}`
+  }
+  next()
+})
+
 // 补全缺失的cookie
 const { completeCookie } = require('./util/init')
 app.use(function(req, res, next) {
   let cookie = completeCookie(req.headers.cookie)
   req.headers.cookie = cookie.map(x => x[0]).concat(req.headers.cookie || []).join('; ')
   res.append('Set-Cookie', cookie.map(x => (x.concat('Path=/').join('; '))))
-  next()
-})
-
-// cookie parser
-app.use(function(req, res, next) {
-  req.cookies = {}, (req.headers.cookie || '').split(/\s*;\s*/).forEach(pair => {
-    let crack = pair.indexOf('=')
-    if(crack < 1 || crack == pair.length - 1) return
-    req.cookies[decodeURIComponent(pair.slice(0, crack)).trim()] = decodeURIComponent(pair.slice(crack + 1)).trim()
-  })
-  next()
-})
-
-app.use(function(req, res, next) {
-  const proxy = req.query.proxy
-  if (proxy) {
-    req.headers.cookie += `__proxy__${proxy}`
-  }
   next()
 })
 
@@ -82,41 +72,27 @@ const { createWebAPIRequest, request } = require('./util/util')
 const Wrap = fn => (req, res) => fn(req, res, createWebAPIRequest, request)
 
 // 同步读取 router 目录中的js文件, 根据命名规则, 自动注册路由
-fs.readdirSync(path.join(__dirname, 'router'))
-.reverse()
-.forEach(file => {
-  if (!/\.js$/i.test(file)) return
-  let route = (file in UnusualRouteFileMap) ?  UnusualRouteFileMap[file] : '/' + file.replace(/\.js$/i, '').replace(/_/g, '/')
-  app.use(route, Wrap(require(path.join(__dirname, 'router', file))))
-})
+fs.readdirSync(path.resolve(__dirname, 'router'))
+  .reverse()
+  .forEach(file => {
+    if (/\.js$/i.test(file) === false) {
+      return
+    }
 
+    let route
 
-// 改写router为module
-const requestMod = require('./util/request')
-let dev = express()
-fs.readdirSync(path.join(__dirname, 'module'))
-.reverse()
-.forEach(file => {
-  if (!(/\.js$/i.test(file))) return
-  let route = (file in UnusualRouteFileMap) ?  UnusualRouteFileMap[file] : '/' + file.replace(/\.js$/i, '').replace(/_/g, '/')
-  let question = require(path.join(__dirname, 'module', file))
-  
-  dev.use(route, (req, res) => {
-    let query = {...req.query, cookie: req.cookies}
-    question(query, requestMod)
-    .then(answer => {
-      console.log('[OK]', decodeURIComponent(req.originalUrl))
-      res.append('Set-Cookie', answer.cookie)
-      res.status(answer.status).send(answer.body)
-    })
-    .catch(answer => {
-      console.log('[ERR]', decodeURIComponent(req.originalUrl))
-      res.append('Set-Cookie', answer.cookie)
-      res.status(answer.status).send(answer.body)
-    })
+    if (typeof UnusualRouteFileMap[file] !== 'undefined') {
+      route = UnusualRouteFileMap[file]
+    } else {
+      route =
+        '/' +
+        file
+          .replace(/\.js$/i, '')
+          .replace(/_/g, '/')
+    }
+
+    app.use(route, Wrap(require('./router/' + file)))
   })
-})
-app.use('/dev', dev)
 
 const port = process.env.PORT || 3000
 
