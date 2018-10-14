@@ -141,8 +141,8 @@ fetch(url).then(function() {
 // 结果
 // {"data":[{"id":33894312,"url":"http://m10.music.126.net/20180104125640/930a968b3fb04908b733506b3833e60b/ymusic/0fd6/4f65/43ed/a8772889f38dfcb91c04da915b301617.mp3","br":320000,"size":10691439,"md5":"a8772889f38dfcb91c04da915b301617","code":200,"expi":1200,"type":"mp3","gain":-2.0E-4,"fee":0,"uf":null,"payed":0,"flag":0,"canExtend":false}],"code": 200}
 ```
-## 更新到 v3.0 使用说明
-!>2018.10.14 更新到3.0.0,使用了模块化机制,因为部分接口参数和url做了调整,如还不想升级到3.0.0,请查看 [v2的文档](http://binaryify.github.io/NeteaseCloudMusicApi/#/v2), [更新日志](/CHANGELOG.MD), [2.0+下载地址](https://github.com/Binaryify/NeteaseCloudMusicApi/releases/tag/v2.20.5), 同时 2.0+ 将不再维护
+## 更新到 v3.0 说明
+!>2018.10.14 更新到3.0.0,使用了模块化机制,因为部分接口参数和url做了调整,如还不想升级到3.0.0,请查看 [v2的文档](http://binaryify.github.io/NeteaseCloudMusicApi/#/v2), [更新日志](https://github.com/Binaryify/OneDark-Pro/blob/master/CHANGELOG.md), [2.0+下载地址](https://github.com/Binaryify/NeteaseCloudMusicApi/releases/tag/v2.20.5), 同时 2.0+ 将不再维护
 
 
 ## Docker 容器运行
