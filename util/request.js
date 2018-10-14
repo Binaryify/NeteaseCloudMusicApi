@@ -66,6 +66,9 @@ function createRequest(method, url, data, options){
                     try{
                         answer.body = JSON.parse(body)
                         answer.status = answer.body.code || res.statusCode
+                        if(answer.body.code=='301'){
+                            answer.body.apiMsg='需要登陆'
+                        }
                     }
                     catch(e){
                         answer.body = body
