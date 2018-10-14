@@ -1,5 +1,3 @@
-// MV链接
-
 module.exports = (query, request) => {
     const data = {
         id: query.id,
