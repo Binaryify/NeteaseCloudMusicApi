@@ -1,4 +1,4 @@
-// 我的电台列表
+// 订阅电台列表
 
 module.exports = (query, request) => {
     const data = {

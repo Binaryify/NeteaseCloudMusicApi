@@ -1,4 +1,4 @@
-// 我的歌手列表
+// 关注歌手列表
 
 module.exports = (query, request) => {
     const data = {
