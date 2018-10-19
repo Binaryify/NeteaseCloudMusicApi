@@ -1,4 +1,4 @@
-// 红心取消红心歌曲
+// 红心与取消红心歌曲
 
 module.exports = (query, request) => {
     query.like = (query.like ? true : false)
