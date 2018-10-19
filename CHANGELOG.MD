@@ -1,4 +1,58 @@
 # 更新日志
+### 3.0.0 | 2018.10.14
+
+## 整体
+- 完善文档,增加之前没写进文档的接口说明
+
+- 重写 createRequest 返回 Promise 对象
+
+- 模块化路由
+
+- 模块化, 剥离res,req, 方便导出调用
+
+- 增加 cookie-parser 
+
+
+### 参数修改
+- `/song/detail` 增加多id支持  
+
+- `/toplist/detail` 移除参数  
+
+- `/resource/like` 增加参数 `type`  
+
+- `/top/playlist/highquality` 增加分页参数 `before`
+
+### 统一参数
+- `/artist/sub` 与 `artist/unsub` 合并, 用`query.t`
+
+- `/follow` 中 `query.type` 换成 `query.t`
+
+- `/comment` 中 `query.action` 换成 `query.t`
+
+### URL重命名
+- `/video` 改为 `video/url` 
+
+- `/mv` 改为 `mv/detail`
+
+- `/music/url` 改为 `/song/url`
+
+### 转发逻辑修改
+- `/toplist/artist` 换成 weapi
+
+- `/mv/url` 去除了 pipe
+
+### BUG修复
+- `/playlist/create`, `/playlist/update` 被判欺骗,增加 cookie
+
+### 路由增删
+- 删除 `/recommend/dislike` 
+
+- 增加 `/video/sub` (收藏视频), `/mv/sub` (收藏MV)
+
+- 增加 `/video/detail` (视频详情)
+
+- 增加 `/related/allvideo` (相关视频)
+
 ### 2.20.5 | 2018.09.29
 修复非法参数403 #335, 修复代理错误 #334
 
