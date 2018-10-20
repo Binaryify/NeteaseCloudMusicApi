@@ -16,7 +16,6 @@
   "license": "MIT",
   "dependencies": {
     "apicache": "^1.2.1",
-    "big-integer": "^1.6.28",
     "express": "^4.16.3",
     "request": "^2.85.0"
   },
