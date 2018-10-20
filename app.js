@@ -19,7 +19,7 @@ exec('npm info NeteaseCloudMusicApi version', (err, stdout, stderr) => {
 const app = express()
 
 // CORS
-app.use(function(req, res, next){
+app.use((req, res, next) => {
     if(req.path !== '/' && !req.path.includes('.')){
         res.header({
             'Access-Control-Allow-Credentials': true,
@@ -33,7 +33,7 @@ app.use(function(req, res, next){
 })
 
 // cookie parser
-app.use(function(req, res, next){
+app.use((req, res, next) => {
     req.cookies = {}, (req.headers.cookie || '').split(/\s*;\s*/).forEach(pair => {
         let crack = pair.indexOf('=')
         if(crack < 1 || crack == pair.length - 1) return
