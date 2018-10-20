@@ -4,7 +4,7 @@ const queryString = require('querystring')
 
 request.debug = true
 
-function chooseUserAgent(ua){
+const chooseUserAgent = (ua) => {
     const userAgentList = [
         'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
         'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
@@ -33,7 +33,7 @@ function chooseUserAgent(ua){
     return userAgentList[index]
 }
 
-function createRequest(method, url, data, options){
+const createRequest = (method, url, data, options) => {
     return new Promise((resolve, reject) => {
 
         let headers = {'User-Agent': chooseUserAgent(options.ua)}
