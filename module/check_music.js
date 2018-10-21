@@ -10,11 +10,15 @@ module.exports = (query, request) => {
         {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
     )
     .then(response => {
-        if (response.body.code == 200) {
-            if (response.body.data[0].code == 200){
-                response.body = {success: true, message: 'ok'}
-                return response
+        let playable = false
+        if(response.body.code == 200){
+            if(response.body.data[0].code == 200){
+                playable = true
             }
+        }
+        if(playable){
+            response.body = {success: true, message: 'ok'}
+            return response
         }
         else{
             response.status = 404
