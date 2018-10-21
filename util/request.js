@@ -1,10 +1,10 @@
-const encrypt = require('./crypto.js')
+const encrypt = require('./crypto')
 const request = require('request')
 const queryString = require('querystring')
 
-// request.debug = false
+request.debug = true
 
-function chooseUserAgent(ua) {
+const chooseUserAgent = (ua) => {
     const userAgentList = [
         'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
         'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
@@ -33,12 +33,12 @@ function chooseUserAgent(ua) {
     return userAgentList[index]
 }
 
-function createRequest(method, url, data, options){
+const createRequest = (method, url, data, options) => {
     return new Promise((resolve, reject) => {
 
         let headers = {'User-Agent': chooseUserAgent(options.ua)}
         if(method.toUpperCase() == 'POST') headers['Content-Type'] = 'application/x-www-form-urlencoded'
-        if(url.indexOf('music.163.com') != -1) headers['Referer'] = 'http://music.163.com'
+        if(url.includes('music.163.com')) headers['Referer'] = 'http://music.163.com'
         // headers['X-Real-IP'] = '118.88.88.88'
 
         if(typeof(options.cookie) === 'object')
@@ -47,9 +47,15 @@ function createRequest(method, url, data, options){
             headers['Cookie'] = options.cookie
 
         if(options.crypto == 'weapi'){
-            const csrfToken = (headers['Cookie'] || '').match(/_csrf=([^(;|$)]+)/)
+            let csrfToken = (headers['Cookie'] || '').match(/_csrf=([^(;|$)]+)/)
             data.csrf_token = (csrfToken ? csrfToken[1] : '')
-            data = encrypt(data)
+            data = encrypt.weapi(data)
+            url = url.replace(/\w*api/,'weapi')
+        }
+        else if(options.crypto == 'linuxapi'){
+            data = encrypt.linuxapi({'method': method, url: url.replace(/\w*api/,'api'), 'params': data})
+            headers['User-Agent'] = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36'
+            url = 'http://music.163.com/api/linux/forward'
         }
 
         const answer = {status: 500, body: {}, cookie: []}
@@ -66,9 +72,6 @@ function createRequest(method, url, data, options){
                     try{
                         answer.body = JSON.parse(body)
                         answer.status = answer.body.code || res.statusCode
-                        if(answer.body.code=='301'){
-                            answer.body.apiMsg='需要登陆'
-                        }
                     }
                     catch(e){
                         answer.body = body
