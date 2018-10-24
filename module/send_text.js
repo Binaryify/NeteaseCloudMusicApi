@@ -1,6 +1,7 @@
 // 私信
 
 module.exports = (query, request) => {
+    query.cookie.os = 'pc'
     const data = {
         id: query.playlist,
         type: 'text',
