@@ -100,7 +100,8 @@
 82. 收藏 MV
 83. 视频详情
 84. 相关视频
-85. 关注用户 
+85. 关注用户
+86. 新歌速递
 
 ## 安装
 
@@ -141,13 +142,14 @@ fetch(url).then(function() {
 // 结果
 // {"data":[{"id":33894312,"url":"http://m10.music.126.net/20180104125640/930a968b3fb04908b733506b3833e60b/ymusic/0fd6/4f65/43ed/a8772889f38dfcb91c04da915b301617.mp3","br":320000,"size":10691439,"md5":"a8772889f38dfcb91c04da915b301617","code":200,"expi":1200,"type":"mp3","gain":-2.0E-4,"fee":0,"uf":null,"payed":0,"flag":0,"canExtend":false}],"code": 200}
 ```
-## 更新到 v3.0 说明
-!>2018.10.14 更新到3.0.0,使用了模块化机制,因为部分接口参数和url做了调整,如还不想升级到3.0.0,请查看 [v2的文档](http://binaryify.github.io/NeteaseCloudMusicApi/#/v2), [更新日志](https://github.com/Binaryify/NeteaseCloudMusicApi/blob/master/CHANGELOG.MD), [2.0+下载地址](https://github.com/Binaryify/NeteaseCloudMusicApi/releases/tag/v2.20.5), 同时 2.0+ 将不再维护
 
+## 更新到 v3.0 说明
+
+!>2018.10.14 更新到 3.0.0,使用了模块化机制,因为部分接口参数和 url 做了调整,如还不想升级到 3.0.0,请查看 [v2 的文档](http://binaryify.github.io/NeteaseCloudMusicApi/#/v2), [更新日志](https://github.com/Binaryify/NeteaseCloudMusicApi/blob/master/CHANGELOG.MD), [2.0+下载地址](https://github.com/Binaryify/NeteaseCloudMusicApi/releases/tag/v2.20.5), 同时 2.0+ 将不再维护
 
 ## Docker 容器运行
 
-> 注意: 在 docker 中运行的时候, 由于使用了 request 来发请求, 所以会检查几个proxy 相关的环境变量(如下所列), 这些环境变量 会影响到 request 的代理, 详情请参考[request 的文档](https://github.com/request/request#proxies), 如果这些环境变量 指向的代理不可用, 那么就会造成错误, 所以在使用 docker 的时候一定要注意这些环境变量. 不过, 要是你在 query 中加上了 proxy 参数, 那么环境变量会被覆盖, 就会用你通过 proxy 参数提供的代理了.
+> 注意: 在 docker 中运行的时候, 由于使用了 request 来发请求, 所以会检查几个 proxy 相关的环境变量(如下所列), 这些环境变量 会影响到 request 的代理, 详情请参考[request 的文档](https://github.com/request/request#proxies), 如果这些环境变量 指向的代理不可用, 那么就会造成错误, 所以在使用 docker 的时候一定要注意这些环境变量. 不过, 要是你在 query 中加上了 proxy 参数, 那么环境变量会被覆盖, 就会用你通过 proxy 参数提供的代理了.
 
 request 相关的环境变量
 
@@ -405,9 +407,9 @@ tags:歌单tag
 
 **必选参数 :**
 
- `id` : 用户 id
+`id` : 用户 id
 
- `t` : `1`为关注,其他为取消关注  
+`t` : `1`为关注,其他为取消关注
 
 **接口地址 :** `/follow`
 
@@ -477,19 +479,17 @@ category Code 取值:
 
 ### 收藏/取消收藏歌手
 
-说明 : 调用此接口,可收藏歌手  
+说明 : 调用此接口,可收藏歌手
 
-**必选参数 :**  
+**必选参数 :**
 
- `artistId` : 歌手 id  
+`artistId` : 歌手 id
 
- `t`:操作,1为收藏,其他为取消收藏
-
+`t`:操作,1 为收藏,其他为取消收藏
 
 **接口地址 :** `/artist/sub`
 
 **调用例子 :** `/artist/sub?id=6452&t=1`
-
 
 ### 收藏的歌手列表
 
@@ -503,7 +503,7 @@ category Code 取值:
 
 说明 : 调用此接口,可收藏视频
 
-**必选参数 :**   
+**必选参数 :**
 
 `id` : 视频 id
 
@@ -511,14 +511,13 @@ category Code 取值:
 
 **接口地址 :** `/video/sub`
 
-
 **调用例子 :** `/video/sub`
 
 ### 收藏 MV
 
 说明 : 调用此接口,可收藏 MV
 
-**必选参数 :**   
+**必选参数 :**
 
 `id` : MV id
 
@@ -751,6 +750,30 @@ mp3url 不能直接用 , 可通过 `/song/url` 接口传入歌曲 id 获取具�
 返回数据如下图 :
 ![获取歌词](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%AD%8C%E8%AF%8D.png)
 
+### 新歌速递
+
+说明 : 调用此接口 , 可获取新歌速递
+
+**必选参数 :**
+
+`type`: 地区类型 id,对应以下:
+
+```
+全部:0
+华语:7
+欧美:96
+日本:8
+韩国:16
+```
+
+`limit`: 取出数量 , 默认为 100
+
+`offset`: 偏移数量 , 用于分页 , 如 :( 评论页数 -1)\*100, 其中 100 为 limit 的值
+
+**接口地址 :** `/top/song`
+
+**调用例子 :** `/top/song?type=96`
+
 ### 歌曲评论
 
 说明 : 调用此接口 , 传入音乐 id 和 limit 参数 , 可获得该音乐的所有评论 ( 不需要
@@ -944,8 +967,7 @@ mp3url 不能直接用 , 可通过 `/song/url` 接口传入歌曲 id 获取具�
 
 ### banner
 
-说明 : 调用此接口 , 可获取 banner( 轮播图 ) 数据注 : 因参数未知 , 只能获取比较旧
-的数据 , 如果有知道参数的小伙伴 , 可提交 PR
+说明 : 调用此接口 , 可获取 banner( 轮播图 ) 数据
 
 **接口地址 :** `/banner`
 
@@ -953,20 +975,21 @@ mp3url 不能直接用 , 可通过 `/song/url` 接口传入歌曲 id 获取具�
 
 ### 资源点赞( MV,电台,视频)
 
-说明 : 调用此接口 , 可对 MV,电台,视频点赞  
+说明 : 调用此接口 , 可对 MV,电台,视频点赞
 
-**必选参数 :** 
+**必选参数 :**
 
 `type`:资源类型,对应以下类型
+
 ```
 1: mv
 4: 电台
 5: 视频
 ```
 
-`t`: 操作,1为点赞,其他未取消点赞
+`t`: 操作,1 为点赞,其他未取消点赞
 
-`id`: 资源id
+`id`: 资源 id
 
 **接口地址 :** `/resource/like`
 
@@ -1320,6 +1343,7 @@ MV 数据 , 数据包含 mv 名字 , 歌手 , 发布时间 , mv 视频地址等�
 `/mv/url?id=5436712`
 
 ### 相关视频
+
 说明 : 调用此接口 , 可获取相关视频
 
 **必选参数 :** `id`: 视频 的 id
@@ -1329,6 +1353,7 @@ MV 数据 , 数据包含 mv 名字 , 歌手 , 发布时间 , mv 视频地址等�
 **调用例子 :** `/related/allvideo?id=89ADDE33C0AAE8EC14B99F6750DB954D`
 
 ### 视频详情
+
 说明 : 调用此接口 , 可获取相关视频
 
 **必选参数 :** `id`: 视频 的 id
@@ -1351,7 +1376,6 @@ MV 数据 , 数据包含 mv 名字 , 歌手 , 发布时间 , mv 视频地址等�
 返回数据如下图 :
 
 ![视频数据](https://ws1.sinaimg.cn/large/006tNbRwgy1fuqdv10p5rj31kw0da76y.jpg)
-
 
 ### 排行榜
 
@@ -1395,6 +1419,7 @@ MV 数据 , 数据包含 mv 名字 , 歌手 , 发布时间 , mv 视频地址等�
 ![排行榜](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/top_list.png)
 
 ### 所有榜单内容摘要
+
 说明 : 调用此接口,可获取所有榜单内容摘要
 **接口地址 :** `/toplist/detail`
 
