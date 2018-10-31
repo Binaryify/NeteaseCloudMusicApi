@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const express = require('express')
+const bodyParser = require('body-parser')
 const request = require('./util/request')
 const package = require('./package.json')
 const exec = require('child_process').exec
@@ -42,6 +43,10 @@ app.use((req, res, next) => {
     next()
 })
 
+// body parser
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: false}))
+
 // cache
 app.use(cache('2 minutes', ((req, res) => res.statusCode === 200)))
 
@@ -61,7 +66,7 @@ fs.readdirSync(path.join(__dirname, 'module')).reverse().forEach(file => {
     let question = require(path.join(__dirname, 'module', file))
     
     app.use(route, (req, res) => {
-        let query = {...req.query, ...req.body, cookie: req.cookies}
+        let query = Object.assign({}, req.query, req.body, {cookie: req.cookies})
         question(query, request)
         .then(answer => {
             console.log('[OK]', decodeURIComponent(req.originalUrl))
