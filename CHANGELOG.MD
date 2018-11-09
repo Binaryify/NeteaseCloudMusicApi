@@ -1,6 +1,14 @@
 # 更新日志
 
-### 3.0.2 | 2018.10.31
+### 3.0.3 | 2018.11.09
+- 修复取消喜欢歌曲失败问题 [#360](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/360)
+
+- 补充已喜欢音乐列表接口说明文档 [#370](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/370)
+
+- 默认关闭 debug 模式 [#365](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/365)
+
+- 更新 Dockerfile 文件 [#367](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/367)
+
 
 ### 3.0.1 | 2018.10.21
 
