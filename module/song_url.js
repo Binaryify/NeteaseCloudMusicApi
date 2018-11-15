@@ -5,7 +5,7 @@ const crypto = require('crypto')
 module.exports = (query, request) => {
     if(!('MUSIC_U' in query.cookie)) query.cookie._ntes_nuid = crypto.randomBytes(16).toString("hex")
     const data = {
-        ids: '[' + parseInt(query.id) + ']',
+        ids: '[' + query.id + ']',
         br: parseInt(query.br || 999000)
     }
     return request(
