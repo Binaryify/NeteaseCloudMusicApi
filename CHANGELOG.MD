@@ -1,4 +1,6 @@
 # 更新日志
+### 3.0.4 | 2018.11.15
+- 修复 `/song/url` 接口无法返回多个音乐数据的问题
 
 ### 3.0.3 | 2018.11.09
 - 修复取消喜欢歌曲失败问题 [#360](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/360)
