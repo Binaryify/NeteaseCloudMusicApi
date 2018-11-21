@@ -9,7 +9,7 @@ module.exports = (query, request) => {
   }
   return request(
     'POST',
-    `http://music.163.com/weapi/radio/like?alg=${query.alg ||
+    `https://music.163.com/weapi/radio/like?alg=${query.alg ||
       'itembased'}&trackId=${query.id}&like=${query.like}&time=${query.time ||
       25}`,
     data,

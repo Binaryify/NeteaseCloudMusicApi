@@ -7,7 +7,7 @@ module.exports = (query, request) => {
         order: true
     }
     return request(
-        'POST', `http://music.163.com/weapi/user/getfollows/${query.uid}`, data,
+        'POST', `https://music.163.com/weapi/user/getfollows/${query.uid}`, data,
         {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
     )
 }

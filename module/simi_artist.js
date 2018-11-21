@@ -5,7 +5,7 @@ module.exports = (query, request) => {
         artistid: query.id
     }
     return request(
-        'POST', `http://music.163.com/weapi/discovery/simiArtist`, data,
+        'POST', `https://music.163.com/weapi/discovery/simiArtist`, data,
         {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
     )
 }

@@ -19,7 +19,7 @@ module.exports = (query, request) => {
     else if(query.t == 'delete')
         data.commentId = query.commentId
     return request(
-        'POST', `http://music.163.com/weapi/resource/comments/${query.t}`, data,
+        'POST', `https://music.163.com/weapi/resource/comments/${query.t}`, data,
         {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
     )
 }

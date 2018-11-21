@@ -5,7 +5,7 @@ module.exports = (query, request) => {
         mvid: query.mvid
     }
     return request(
-        'POST', `http://music.163.com/weapi/discovery/simiMV`, data,
+        'POST', `https://music.163.com/weapi/discovery/simiMV`, data,
         {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
     )
 }

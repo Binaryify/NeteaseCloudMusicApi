@@ -8,7 +8,7 @@ module.exports = (query, request) => {
         total: true
     }
     return request(
-        'POST', `http://music.163.com/weapi/playlist/highquality/list`, data,
+        'POST', `https://music.163.com/weapi/playlist/highquality/list`, data,
         {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
     )
 }
