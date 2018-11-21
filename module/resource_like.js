@@ -11,7 +11,7 @@ module.exports = (query, request) => {
         threadId: query.type + query.id
     }
     return request(
-        'POST', `http://music.163.com/weapi/resource/${query.t}`, data,
+        'POST', `https://music.163.com/weapi/resource/${query.t}`, data,
         {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
     )
 }

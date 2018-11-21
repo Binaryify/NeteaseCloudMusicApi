@@ -6,7 +6,7 @@ module.exports = (query, request) => {
         resolution: query.res || 1080
     }
     return request(
-        'POST', `http://music.163.com/weapi/cloudvideo/playurl`, data,
+        'POST', `https://music.163.com/weapi/cloudvideo/playurl`, data,
         {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
     )
 }

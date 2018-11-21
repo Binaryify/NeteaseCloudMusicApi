@@ -8,7 +8,7 @@ module.exports = (query, request) => {
         n: 1000
     }
     return request(
-        'POST', `http://music.163.com/weapi/personalized/playlist`, data,
+        'POST', `https://music.163.com/weapi/personalized/playlist`, data,
         {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
     )
 }

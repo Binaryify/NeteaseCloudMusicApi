@@ -6,7 +6,7 @@ module.exports = (query, request) => {
         r: query.res || 1080
     }
     return request(
-        'POST', `http://music.163.com/weapi/song/enhance/play/mv/url`, data,
+        'POST', `https://music.163.com/weapi/song/enhance/play/mv/url`, data,
         {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
     )
 }
