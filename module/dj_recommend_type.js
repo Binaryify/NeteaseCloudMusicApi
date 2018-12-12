@@ -28,7 +28,7 @@ module.exports = (query, request) => {
         cateId: query.type
     }
     return request(
-        'POST', `http://music.163.com/weapi/djradio/recommend`, data,
+        'POST', `https://music.163.com/weapi/djradio/recommend`, data,
         {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
     )
 }

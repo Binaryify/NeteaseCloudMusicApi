@@ -5,7 +5,7 @@ module.exports = (query, request) => {
         userId: query.uid
     }
     return request(
-        'POST', `http://music.163.com/weapi/djradio/get/byuser`, data,
+        'POST', `https://music.163.com/weapi/djradio/get/byuser`, data,
         {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
     )
 }
