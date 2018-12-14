@@ -24,12 +24,14 @@ app.use((req, res, next) => {
     if(req.path !== '/' && !req.path.includes('.')){
         res.header({
             'Access-Control-Allow-Credentials': true,
-            'Access-Control-Allow-Origin': req.headers.origin || '*',
-            'Access-Control-Allow-Headers': 'X-Requested-With',
+            'Access-Control-Allow-Origin':req.headers.origin || '*' ,//'http://127.0.0.1:3000'
+            'Access-Control-Allow-Headers': 'X-Requested-With,Content-Type,Accept',
             'Access-Control-Allow-Methods': 'PUT,POST,GET,DELETE,OPTIONS',
             'Content-Type': 'application/json; charset=utf-8'
-        })
+        });
     }
+    if(req.method === "OPTIONS") res.status(200).send();
+    else
     next()
 })
 

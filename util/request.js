@@ -85,7 +85,20 @@ const createRequest = (method, url, data, options) => {
             x.replace(/\s*Domain=[^(;|$)]+;*/, '')
           )
           try {
-            answer.body = JSON.parse(body)
+            let  _body= JSON.parse(body)
+            const __body = {
+              result:{}
+            }
+            if(!_body.result && _body.code === 200){
+              Object.keys(_body).forEach(item=>{
+                if(item !== 'code'){
+                  __body.result[item] = _body[item]
+                }
+              })
+              __body.code = _body.code 
+              _body = __body
+            }
+            answer.body = _body
             answer.status = answer.body.code || res.statusCode
           } catch (e) {
             answer.body = body
