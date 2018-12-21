@@ -166,7 +166,7 @@ request 相关的环境变量
 ```shell
 docker pull twesix/netease-cloud-music
 
-docker run -d -p 3000:3000 --name netease-cloud-music twesix/netease-music-api
+docker run -d -p 3000:3000 --name netease-cloud-music twesix/netease-cloud-music
 
 // 去掉或者设置相关的环境变量
 
