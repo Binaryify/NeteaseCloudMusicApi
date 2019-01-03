@@ -164,16 +164,23 @@ request 相关的环境变量
 6. NO_PROXY
 
 ```shell
-docker pull twesix/netease-cloud-music
+docker pull binaryify/netease_cloud_music_api
 
-docker run -d -p 3000:3000 --name netease-cloud-music twesix/netease-cloud-music
+docker run -d -p 3000:3000 --name netease_cloud_music_api    binaryify/netease_cloud_music_api
+
+
+// 或者 
+docker run -d -p 3000:3000 binaryify/netease_cloud_music_api
 
 // 去掉或者设置相关的环境变量
 
-docker run -d -p 3000:3000 --name netease-cloud-music -e http_proxy= -e https_proxy= -e no_proxy= -e HTTP_PROXY= -e HTTPS_PROXY= -e NO_PROXY= netease-cloud-music
+docker run -d -p 3000:3000 --name netease_cloud_music_api -e http_proxy= -e https_proxy= -e no_proxy= -e HTTP_PROXY= -e HTTPS_PROXY= -e NO_PROXY= binaryify/netease_cloud_music_api
+
+// 或者
+docker run -d -p 3000:3000 -e http_proxy= -e https_proxy= -e no_proxy= -e HTTP_PROXY= -e HTTPS_PROXY= -e NO_PROXY= binaryify/netease_cloud_music_api
 ```
 
-> 由于 docker 镜像更新不是很及时,推荐自己 build, 以下为 build 镜像的方式
+> 以下是自行 build docker 镜像方式
 
 ```
 $ git clone https://github.com/Binaryify/NeteaseCloudMusicApi && cd NeteaseCloudMusicApi
