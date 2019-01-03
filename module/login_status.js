@@ -2,7 +2,7 @@
 
 module.exports = (query, request) => {
     return request(
-        'GET', `http://music.163.com`, {},
+        'GET', `https://music.163.com`, {},
         {cookie: query.cookie, proxy: query.proxy}
     )
     .then(response => {

@@ -6,7 +6,7 @@ module.exports = (query, request) => {
         type: (/^\d+$/.test(query.id)) ? 0 : 1
     }
     return request(
-        'POST', `http://music.163.com/weapi/cloudvideo/v1/allvideo/rcmd`, data,
+        'POST', `https://music.163.com/weapi/cloudvideo/v1/allvideo/rcmd`, data,
         {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
     )
 }

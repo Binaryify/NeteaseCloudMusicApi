@@ -1,4 +1,27 @@
 # 更新日志
+### 3.0.9 | 2018.12.15
+- 修复关注异常的问题 #399
+
+### 3.0.8 | 2018.12.12
+- 更新文档 #386 #394
+
+- 优化电台节目接口
+
+### 3.0.7 | 2018.11.21
+- 修复歌单详情列表,排行榜,所有榜单失效的问题,更新文档 #380 #381
+
+### 3.0.4 | 2018.11.15
+- 修复 `/song/url` 接口无法返回多个音乐数据的问题
+
+### 3.0.3 | 2018.11.09
+- 修复取消喜欢歌曲失败问题 [#360](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/360)
+
+- 补充已喜欢音乐列表接口说明文档 [#370](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/370)
+
+- 默认关闭 debug 模式 [#365](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/365)
+
+- 更新 Dockerfile 文件 [#367](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/367)
+
 
 ### 3.0.1 | 2018.10.21
 
@@ -12,7 +35,7 @@
 
 ### 3.0.0 | 2018.10.14
 
-## 整体
+#### 整体
 
 - 完善文档,增加之前没写进文档的接口说明
 
@@ -24,7 +47,7 @@
 
 - 增加 cookie-parser
 
-### 参数修改
+##### 参数修改
 
 - `/song/detail` 增加多 id 支持
 
@@ -34,7 +57,7 @@
 
 - `/top/playlist/highquality` 增加分页参数 `before`
 
-### 统一参数
+##### 统一参数
 
 - `/artist/sub` 与 `artist/unsub` 合并, 用`query.t`
 
@@ -42,7 +65,7 @@
 
 - `/comment` 中 `query.action` 换成 `query.t`
 
-### URL 重命名
+##### URL 重命名
 
 - `/video` 改为 `video/url`
 
@@ -50,17 +73,17 @@
 
 - `/music/url` 改为 `/song/url`
 
-### 转发逻辑修改
+##### 转发逻辑修改
 
 - `/toplist/artist` 换成 weapi
 
 - `/mv/url` 去除了 pipe
 
-### BUG 修复
+##### BUG 修复
 
 - `/playlist/create`, `/playlist/update` 被判欺骗,增加 cookie
 
-### 路由增删
+##### 路由增删
 
 - 删除 `/recommend/dislike`
 

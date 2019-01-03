@@ -5,7 +5,7 @@ module.exports = (query, request) => {
         type: "recommend"
     }
     return request(
-        'POST', `http://music.163.com/weapi/personalized/newsong`, data,
+        'POST', `https://music.163.com/weapi/personalized/newsong`, data,
         {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
     )
 }
