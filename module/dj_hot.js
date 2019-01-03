@@ -11,7 +11,7 @@ module.exports = (query, request) => {
         offset: query.offset
     }
     return request(
-        'POST', `http://music.163.com/weapi/djradio/hot/v1`, data,
+        'POST', `https://music.163.com/weapi/djradio/hot/v1`, data,
         {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
     )
 }

@@ -7,7 +7,7 @@ module.exports = (query, request) => {
         trackIds: '[' + query.tracks + ']' // 歌曲id
     }
     return request(
-        'POST', `http://music.163.com/weapi/playlist/manipulate/tracks`, data,
+        'POST', `https://music.163.com/weapi/playlist/manipulate/tracks`, data,
         {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
     )
 }

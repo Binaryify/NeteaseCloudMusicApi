@@ -6,7 +6,7 @@ module.exports = (query, request) => {
         offset: query.offset || 0
     }
     return request(
-        'POST', `http://music.163.com/weapi/dj/program/${query.uid}`, data,
+        'POST', `https://music.163.com/weapi/dj/program/${query.uid}`, data,
         {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
     )
 }

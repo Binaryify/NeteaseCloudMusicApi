@@ -10,7 +10,7 @@ module.exports = (query, request) => {
         "/api/playlist/update/name": `{"id":${query.id},"name":"${query.name}"}`
     }
     return request(
-        'POST', `http://music.163.com/weapi/batch`, data,
+        'POST', `https://music.163.com/weapi/batch`, data,
         {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
     )
 }

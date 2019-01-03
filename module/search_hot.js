@@ -5,7 +5,7 @@ module.exports = (query, request) => {
         type: 1111
     }
     return request(
-        'POST', `http://music.163.com/weapi/search/hot`, data,
+        'POST', `https://music.163.com/weapi/search/hot`, data,
         {crypto: 'weapi', ua: 'mobile', cookie: query.cookie, proxy: query.proxy}
     )
 }

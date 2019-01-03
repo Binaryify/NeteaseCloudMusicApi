@@ -12,7 +12,7 @@ module.exports = (query, request) => {
         type: query.type || 0
     }
     return request(
-        'POST', `http://music.163.com/weapi/point/dailyTask`, data,
+        'POST', `https://music.163.com/weapi/point/dailyTask`, data,
         {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
     )
 }

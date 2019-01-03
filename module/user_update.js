@@ -11,7 +11,7 @@ module.exports = (query, request) => {
         signature: query.signature
     }
     return request(
-        'POST', `http://music.163.com/weapi/user/profile/update`, data,
+        'POST', `https://music.163.com/weapi/user/profile/update`, data,
         {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
     )
 }
