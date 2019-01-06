@@ -1,6 +1,7 @@
 // 歌单评论
 
 module.exports = (query, request) => {
+    query.cookie.os = 'pc'
     const data = {
         rid: query.id,
         limit: query.limit || 20,
