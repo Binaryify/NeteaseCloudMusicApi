@@ -1,6 +1,7 @@
 const encrypt = require('./crypto')
 const request = require('request')
 const queryString = require('querystring')
+const PacProxyAgent = require('pac-proxy-agent')
 
 // request.debug = true // 开启可看到更详细信息
 
@@ -67,14 +68,21 @@ const createRequest = (method, url, data, options) => {
     }
 
     const answer = { status: 500, body: {}, cookie: [] }
+    const settings = {
+      method: method,
+      url: url,
+      headers: headers,
+      body: queryString.stringify(data)
+    }
+
+    if (/\.pac$/i.test(options.proxy)) {
+      settings.agent = new PacProxyAgent(options.proxy)
+    } else {
+      settings.proxy = options.proxy
+    }
+
     request(
-      {
-        method: method,
-        url: url,
-        headers: headers,
-        body: queryString.stringify(data),
-        proxy: options.proxy
-      },
+      settings,
       (err, res, body) => {
         if (err) {
           answer.status = 502
