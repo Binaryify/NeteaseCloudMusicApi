@@ -724,9 +724,11 @@ mp3url 不能直接用 , 可通过 `/song/url` 接口传入歌曲 id 获取具�
 
 **必选参数 :** `keywords` : 关键词
 
+**可选参数 :** `type` : 如果传 'mobile' 则返回移动端数据
+
 **接口地址 :** `/search/suggest`
 
-**调用例子 :** `/search/suggest?keywords= 海阔天空`
+**调用例子 :** `/search/suggest?keywords= 海阔天空` `/search/suggest?keywords= 海阔天空&type=mobile`
 
 ### 搜索多重匹配
 
