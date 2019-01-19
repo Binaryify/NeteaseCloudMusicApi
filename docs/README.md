@@ -105,6 +105,8 @@
 87. 新歌速递
 88. 喜欢音乐列表(无序)
 89. 收藏的 MV 列表
+90. 获取最新专辑
+91. 听歌打卡
 
 ## 安装
 
@@ -1306,6 +1308,26 @@ mp3url 不能直接用 , 可通过 `/song/url` 接口传入歌曲 id 获取具�
 返回数据如下图 :
 
 ![新碟上架](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/new_albums.png)
+
+### 最新专辑
+
+说明 : 调用此接口 ，获取云音乐首页新碟上架数据
+
+**接口地址 :** `/album/newest`
+
+**调用例子 :** `/likelist?uid=32953014`
+
+### 听歌打卡
+
+说明 : 调用此接口 , 传入音乐 id, 来源 id，歌曲时间 time，更新听歌排行数据
+
+**必选参数 :** `id`: 歌曲 id, `sourceid`: 歌单或专辑 id
+
+**可选参数 :** `time`: 歌曲播放时间
+
+**接口地址 :** `/scrobble`
+
+**调用例子 :** `/scrobble?id=482369360&&sourceid=35571977`
 
 ### 热门歌手
 
