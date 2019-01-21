@@ -3,8 +3,7 @@
 module.exports = (query, request) => {
   const data = {
     groupId: query.id,
-    name: query.name,
-    offset: 0,
+    offset: query.offset || 0,
     needUrl: true,
     resolution: query.res || 1080
   }
