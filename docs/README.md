@@ -227,6 +227,8 @@ $ sudo docker run -d -p 3000:3000 netease-music-api
 
 **接口地址 :** `/login/cellphone`
 
+**可选参数 :** `countrycode`: 国家码，用于国外手机号登陆，例如美国传入：`1`
+
 **调用例子 :** `/login/cellphone?phone=xxx&password=yyy`
 
 #### 2. 邮箱登录
