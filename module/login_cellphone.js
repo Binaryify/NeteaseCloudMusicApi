@@ -5,6 +5,7 @@ const crypto = require('crypto')
 module.exports = (query, request) => {
     const data = {
         phone: query.phone,
+        countrycode: query.countrycode,
         password: crypto.createHash('md5').update(query.password).digest('hex'),
         rememberLogin: 'true'
     }
