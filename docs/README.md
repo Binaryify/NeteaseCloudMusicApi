@@ -439,9 +439,9 @@ tags:歌单tag
 
 **必选参数 :** `threadId` : 动态 id，可通过 `/event`，`/user/event` 接口获取
 
-**接口地址 :** `/event/comments`
+**接口地址 :** `/comment/event`
 
-**调用例子 :** `/event/comments?threadId=A_EV_2_6559519868_32953014`
+**调用例子 :** `/comment/event?threadId=A_EV_2_6559519868_32953014`
 
 ### 关注/取消关注用户
 
