@@ -110,6 +110,7 @@
 92. 获取视频标签下的视频
 93. 已收藏专辑列表
 94. 获取动态评论
+95. 歌单收藏者列表
 
 ## 安装
 
@@ -659,7 +660,7 @@ category Code 取值:
 ### 获取歌单详情
 
 说明 : 歌单能看到歌单名字 , 但看不到具体歌单内容 , 调用此接口 , 传入歌单 id, 可
-以获取对应歌单内的所有的音乐
+以获取对应歌单内的所有的音乐，但是返回的trackIds是完整的，tracks 则是不完整的，可拿全部 trackIds 请求一次 `song/detail` 接口获取所有歌曲的详情 ([https://github.com/Binaryify/NeteaseCloudMusicApi/issues/452](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/452))
 
 **必选参数 :** `id` : 歌单 id
 
@@ -784,6 +785,21 @@ mp3url 不能直接用 , 可通过 `/song/url` 接口传入歌曲 id 获取具�
 
 返回数据如下图:
 ![数据](https://ws1.sinaimg.cn/large/006tKfTcgy1fr3vdwx0hvj30s405u74b.jpg)
+
+### 歌单收藏者
+说明 : 调用此接口 , 传入歌单 id 可获取歌单的所有收藏者  
+**必选参数 :**
+
+`id` : 歌单 id
+
+**可选参数 :** `limit`: 取出评论数量 , 默认为 20
+
+`offset`: 偏移数量 , 用于分页 , 如 :( 评论页数 -1)\*20, 其中 20 为 limit 的值
+
+**接口地址 :** `/playlist/subscribers`
+
+**调用例子 :** `/playlist/subscribers?id=544215255&limit=30`
+
 
 ### 对歌单添加或删除歌曲
 
