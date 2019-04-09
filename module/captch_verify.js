@@ -1,4 +1,4 @@
-// 发送验证码
+// 校验验证码
 
 module.exports = (query, request) => {
   const data = {
