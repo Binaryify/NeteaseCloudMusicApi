@@ -18,6 +18,7 @@
     "apicache": "^1.2.1",
     "express": "^4.16.3",
     "pac-proxy-agent": "^3.0.0",
+    "compression": "^1.7.3",
     "request": "^2.85.0"
   },
   "devDependencies": {
