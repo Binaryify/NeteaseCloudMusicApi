@@ -6,6 +6,7 @@ const request = require('./util/request')
 const package = require('./package.json')
 const exec = require('child_process').exec
 const cache = require('apicache').middleware
+var compression = require('compression');
 
 // version check
 exec('npm info NeteaseCloudMusicApi version', (err, stdout, stderr) => {
@@ -52,6 +53,18 @@ app.use(cache('2 minutes', ((req, res) => res.statusCode === 200)))
 
 // static
 app.use(express.static(path.join(__dirname, 'public')))
+
+app.use(compression({filter: shouldCompress}));
+
+// gzip压缩
+function shouldCompress (req, res) {
+	if (req.headers['x-no-compression']) {
+		// don't compress responses with this request header
+		return false;
+	}
+  
+	return compression.filter(req, res);
+}
 
 // router
 const special = {
