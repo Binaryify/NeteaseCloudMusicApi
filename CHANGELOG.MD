@@ -1,4 +1,7 @@
 # 更新日志
+### 3.8.0 | 2019.04.14
+- 增加注册,发送验证码,校验验证码接口 via:[https://github.com/Binaryify/NeteaseCloudMusicApi/pull/460](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/460)
+
 ### 3.7.1 | 2019.04.09
 - 修复登录460问题
 
