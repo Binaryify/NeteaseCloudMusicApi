@@ -279,7 +279,7 @@ Cookies
 
 **接口地址 :** `/captch/sent`
 
-**调用例子 :** `/captch/sent?cellphone=13xxx`
+**调用例子 :** `/captch/sent?phone=13xxx`
 
 
 
