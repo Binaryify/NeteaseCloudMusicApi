@@ -1,6 +1,14 @@
 # 更新日志
+### 3.9.0 | 2019.05.03
+- 新增 云盘歌曲删除, 热门话题, 电台 - 推荐类型, 电台 - 非热门类型, 电台 - 今日优选, 心动模式/智能播放等接口
+
+- 更新文档:banner接口 增加 `type` 参数; 获取动态消息接口增加 `pagesize` 和 `lasttime` 参数; 电台 - 付费精选接口修改默认`limit`为 30
+
+### 3.8.1 | 2019.04.24
+- 修复歌词接口出错问题
+
 ### 3.8.0 | 2019.04.14
-- 增加注册,发送验证码,校验验证码接口 via:[https://github.com/Binaryify/NeteaseCloudMusicApi/pull/460](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/460)
+- 增加注册,发送验证码,校验验证码接口 via:[https://github.com/Binaryify/NeteaseCloudMusicApi/pull/460](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/460) @[KongValley](https://github.com/KongValley)
 
 ### 3.7.1 | 2019.04.09
 - 修复登录460问题

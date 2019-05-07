@@ -1,41 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>test</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>test</title>
-</head>
+  <body>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js
+  "></script>
+    <script>
+      $.ajax({
+        url: "http://localhost:3000/login/cellphone?phone=YOUR_PHONE&password=YOUR_PASSWORD",
+        success: function (data) {
+          console.log(data)
+          $.ajax({
+            url: "http://localhost:3000/recommend/resource ",
+            xhrFields: {
+              withCredentials: true //关键
+            },
+            success: function (data) {
+              console.log(data)
+            },
+            error: function (err) {
+              console.log(err)
+            }
+          })
+        },
+        error: function (err) {
+          console.log(err)
+        }
+      })
 
-<body>
-  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-  <script>
-    $.ajax({
-      url: "http://localhost:3000/login/cellphone?phone=phone&password=password",
-      xhrFields: {
-        withCredentials: true
-      },
-      success: function (data) {
-        console.log(data)
-        $.ajax({
-          url: "http://localhost:3000/recommend/songs ",
-          xhrFields: {
-            withCredentials: true
-          },
-          success: function (data) {
-            console.log(data)
-          },
-          error: function (err) {
-            console.log(err)
-          }
-        })
-      },
-      error: function (err) {
-        console.log(err)
-      }
-    })
-  </script>
-</body>
-
+      axios({
+        url:
+          "http://localhost:3000/login/cellphone?phone=YOUR_PHONE&password=YOUR_PASSWORD"
+      }).then(function(res) {
+        console.log(res.data);
+        axios({
+          url:
+            "http://localhost:3000/recommend/resource",
+            withCredentials: true //关键
+        }).then(function(res) {
+          console.log(res.data);
+        });
+      });
+    </script>
+  </body>
 </html>
