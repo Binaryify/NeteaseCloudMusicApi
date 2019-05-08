@@ -120,7 +120,7 @@
 102. 电台 - 非热门类型
 103. 电台 - 今日优选
 104. 心动模式/智能播放
-
+105. 转发动态
 
 ## 安装
 
@@ -496,6 +496,23 @@ tags:歌单tag
 **接口地址 :** `/user/event`
 
 **调用例子 :** `/user/event?uid=32953014`
+
+### 转发用户动态
+说明 : 登陆后调用此接口 ,可以转发用户动态
+
+**必选参数 :** `uid` : 用户 id  
+
+`evId` : 动态 id  
+
+`forwards` : 转发的评论
+
+**接口地址 :** `/event/forward`
+
+**调用例子 :** `/event/forward?evId=6712917601&uid=32953014&forwards=测试内容`
+
+如下图
+![](https://ws4.sinaimg.cn/large/006tNc79gy1g2trwz8o2gj31b20r6t9n.jpg)
+![](https://ws3.sinaimg.cn/large/006tNc79gy1g2trxa0vlej319u0gyjrq.jpg)
 
 ### 获取动态评论
 
