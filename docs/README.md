@@ -121,6 +121,7 @@
 103. 电台 - 今日优选
 104. 心动模式/智能播放
 105. 转发动态
+106. 删除动态
 
 ## 安装
 
@@ -513,6 +514,15 @@ tags:歌单tag
 如下图
 ![](https://ws4.sinaimg.cn/large/006tNc79gy1g2trwz8o2gj31b20r6t9n.jpg)
 ![](https://ws3.sinaimg.cn/large/006tNc79gy1g2trxa0vlej319u0gyjrq.jpg)
+
+### 删除用户动态
+说明 : 登陆后调用此接口 ,可以删除用户动态
+
+**必选参数 :** `evId` :  动态 id  
+
+**接口地址 :** `/event/del`
+
+**调用例子 :** `/event/del?evId=6712917601`
 
 ### 获取动态评论
 
