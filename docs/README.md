@@ -122,6 +122,7 @@
 104. 心动模式/智能播放
 105. 转发动态
 106. 删除动态
+107. 分享歌曲、歌单、mv、电台、电台节目到动态
 
 ## 安装
 
@@ -523,6 +524,19 @@ tags:歌单tag
 **接口地址 :** `/event/del`
 
 **调用例子 :** `/event/del?evId=6712917601`
+
+### 分享歌曲、歌单、mv、电台、电台节目到动态
+说明 : 登陆后调用此接口 ,可以分享歌曲、歌单、mv、电台、电台节目到动态
+
+**必选参数 :** `id` :   资源 id  （歌曲，歌单，mv，电台，电台节目对应 id）
+
+**可选参数 :** `type`: 资源类型，默认歌曲 song，可传 `song`,`playlist`,`mv`,`djradio`,`djprogram`
+
+`msg`: 内容，140 字限制，支持 emoji，@用户名（`/user/follows`接口获取的用户名，用户名后和内容应该有空格），图片暂不支持
+
+**接口地址 :** `/share/resource`
+
+**调用例子 :** `/share/resource?id=1297494209&msg=测试` `/share/resource?type=djradio&id=336355127` `/share/resource?type=djprogram&id=2061034798` `/share/resource?type=djprogram&id=2061034798&msg=测试@binaryify 测试` 
 
 ### 获取动态评论
 

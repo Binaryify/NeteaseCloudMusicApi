@@ -2,8 +2,8 @@
 
 module.exports = (query, request) => {
   const data = {
-    type: "song",
-    msg: query.msg,
+    type: query.type || "song", // song,playlist,mv,djprogram，djradio
+    msg: query.msg || "",
     id: query.id || ""
   };
   return request(
