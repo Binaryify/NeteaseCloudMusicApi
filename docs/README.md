@@ -241,7 +241,7 @@ $ sudo docker run -d -p 3000:3000 netease-music-api
 !> 文档可能会有缓存 , 如果文档版本和 github 上的版本不一致,请清除缓存再查看
 
 !> 由于网易限制,此项目在国外服务器上使用会受到限制,如需解决 , 可使用大陆服务器或者使用代理 , 感谢 [@hiyangguo](https://github.com/hiyangguo)提出的[解决方法](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/29#issuecomment-298358438):
-在 'util.js' 的 'headers' 处增加 `X-Real-IP':'211.161.244.70' // 任意国内 IP`
+在 '/util/request.js' 的 'headers' 处增加 `X-Real-IP':'211.161.244.70' // 任意国内 IP`
 即可解决
 
 ### 登录
