@@ -241,7 +241,7 @@ $ sudo docker run -d -p 3000:3000 netease-music-api
 !> 文档可能会有缓存 , 如果文档版本和 github 上的版本不一致,请清除缓存再查看
 
 !> 由于网易限制,此项目在国外服务器上使用会受到限制,如需解决 , 可使用大陆服务器或者使用代理 , 感谢 [@hiyangguo](https://github.com/hiyangguo)提出的[解决方法](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/29#issuecomment-298358438):
-在 'util.js' 的 'headers' 处增加 `X-Real-IP':'211.161.244.70' // 任意国内 IP`
+在 '/util/request.js' 的 'headers' 处增加 `X-Real-IP':'211.161.244.70' // 任意国内 IP`
 即可解决
 
 ### 登录
@@ -558,9 +558,9 @@ tags:歌单tag
 
 `offset`: 偏移数量 , 用于分页 , 如 :( 评论页数 -1)\*20, 其中 20 为 limit 的值
 
-**接口地址 :** `/act/hot`
+**接口地址 :** `/hot/topic`
 
-**调用例子 :** `/act/hot?limit=30&offset=30`
+**调用例子 :** `/hot/topic?limit=30&offset=30`
 
 ### 心动模式/智能播放
 说明 : 调用此接口 , 可获取心动模式/智能播放列表
