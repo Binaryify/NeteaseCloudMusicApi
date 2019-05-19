@@ -131,6 +131,7 @@
 113. 云盘数据详情
 114. 私信内容
 115. 我的数字专辑
+116. batch批量请求接口
 
 ## 安装
 
@@ -2050,6 +2051,15 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 **接口地址 :** `/digitalAlbum/purchased`
 
 **调用例子 :** `/digitalAlbum/purchased?limit=10`
+
+### batch批量请求接口
+说明 : 登陆后调用此接口 ,传入接口和对应原始参数(原始参数非文档里写的参数,需参考源码),可批量请求接口
+
+**接口地址 :** `/batch`
+
+**调用例子 :** 使用GET方式:`/batch?/api/v2/banner/get={"clientType":"pc"}` 使用POST方式传入参数:`{ "/api/v2/banner/get": {"clientType":"pc"} }`
+
+
 
 ## 离线访问此文档
 
