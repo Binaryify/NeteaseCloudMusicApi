@@ -1,8 +1,8 @@
 # 更新日志
 ### 3.13.0 | 2019.05.19
-- 新增eapi算法
+- 新增eapi算法 (via:[#491](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/491))
 
-- 新增batch批量请求接口
+- 新增batch批量请求接口  (via:[#491](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/491))
 
 - 用户动态增加分页参数
 
