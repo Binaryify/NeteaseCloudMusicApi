@@ -1,14 +1,13 @@
-// 分享歌曲到动态
+// 云盘数据详情
 
 module.exports = (query, request) => {
+  const id = query.id.replace(/\s/g, "").split(",");
   const data = {
-    type: "song",
-    msg: query.msg,
-    id: query.id || ""
+    songIds: id
   };
   return request(
     "POST",
-    `http://music.163.com/weapi/share/friends/resource`,
+    `https://music.163.com/weapi/v1/cloud/get/byids`,
     data,
     { crypto: "weapi", cookie: query.cookie, proxy: query.proxy }
   );
