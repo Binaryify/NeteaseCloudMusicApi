@@ -1,4 +1,7 @@
 # 更新日志
+### 3.13.1 | 2019.06.09
+- 修复获取用户粉丝列表接口只能获取1000个的问题
+
 ### 3.13.0 | 2019.05.19
 - 新增eapi算法 (via:[#491](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/491))
 
