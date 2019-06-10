@@ -3,8 +3,8 @@
 module.exports = (query, request) => {
   const data = {
     userId: query.uid,
-    limit: query.limit || 30,
-    offset: query.offset || 0
+    time: query.lasttime || -1,
+    limit: query.limit || 30
   };
   return request(
     "POST",
