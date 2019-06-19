@@ -248,6 +248,8 @@ $ sudo docker run -d -p 3000:3000 netease-music-api
 在 '/util/request.js' 的 'headers' 处增加 `X-Real-IP':'211.161.244.70' // 任意国内 IP`
 即可解决
 
+!> 图片加上 `?param=宽y高` 可控制图片尺寸，如 `http://p4.music.126.net/JzNK4a5PjjPIXAgVlqEc5Q==/109951164154280311.jpg?param=200y200`, `http://p4.music.126.net/JzNK4a5PjjPIXAgVlqEc5Q==/109951164154280311.jpg?param=50y50`
+
 ### 登录
 
 说明 : 登录有两个接口
@@ -1516,7 +1518,7 @@ mp3url 不能直接用 , 可通过 `/song/url` 接口传入歌曲 id 获取具�
 
 **接口地址 :** `/album/newest`
 
-**调用例子 :** `/likelist?uid=32953014`
+**调用例子 :** `/album/newest`
 
 ### 听歌打卡
 
@@ -1688,7 +1690,7 @@ MV 数据 , 数据包含 mv 名字 , 歌手 , 发布时间 , mv 视频地址等�
 **调用例子 :** `/video/group/list`
 
 ### 获取视频标签下的视频
-说明 : 调用此接口 , 传入`id`,可获取到相关的视频。  
+说明 : 调用此接口 , 传入`id`,可获取到相关的视频。  (ps：无法分页，每次请求返回内容都不一样，官方桌面软件是打开先请求两次，然后每次滚动到底部的时候再请求一次)
 
 **必选参数 :** `id`: videoGroup 的 id
 
