@@ -138,6 +138,7 @@
 120. 收藏/取消收藏专辑
 121. 专辑动态信息
 122. 热搜列表(详细)
+123. 更换绑定手机
 
 ## 安装
 
@@ -305,9 +306,9 @@ Cookies
 **可选参数 :**
 `ctcode`:  国家区号,默认86即中国
 
-**接口地址 :** `/captch/sent`
+**接口地址 :** `/captcha/sent`
 
-**调用例子 :** `/captch/sent?phone=13xxx`
+**调用例子 :** `/captcha/sent?phone=13xxx`
 
 
 
@@ -323,16 +324,16 @@ Cookies
 
 `ctcode`:  国家区号,默认86即中国
 
-**接口地址 :** `/captch/verify`
+**接口地址 :** `/captcha/verify`
 
-**调用例子 :** `/captch/verify?phone=13xxx&captcha=1597`
+**调用例子 :** `/captcha/verify?phone=13xxx&captcha=1597`
 
 
 ### 注册(修改密码)
 
 说明 : 调用此接口 ,传入手机号码和验证码,密码,昵称, 可注册网易云音乐账号(同时可修改密码)
 
-**必选参数 :** `phone`: 手机号码  
+**必选参数 :** 
 
 `captcha`: 验证码
 
@@ -342,9 +343,25 @@ Cookies
 
 `nickname`: 昵称
 
-**接口地址 :** `/captch/register`
+**接口地址 :** `/register/cellphone`
 
-**调用例子 :** `/captch/register?phone=13xxx&password=xxxxx&captcha=1234&nickname=binary1345`
+**调用例子 :** `/register/cellphone?phone=13xxx&password=xxxxx&captcha=1234&nickname=binary1345`
+
+### 更换绑定手机
+说明 : 调用此接口 ,可更换绑定手机(流程:先发送验证码到原手机号码,再发送验证码到新手机号码然后再调用此接口)
+
+**必选参数 :** 
+`oldcaptcha`: 原手机验证码
+
+`captcha`: 新手机验证码
+
+`phone` :  手机号码  
+
+`ctcode` :  国家区号,默认86即中国
+
+**接口地址 :** `/rebind`
+
+**调用例子 :** `/rebind?phone=xxx&oldcaptcha=1234&captcha=5678`
 
 ### 退出登录
 

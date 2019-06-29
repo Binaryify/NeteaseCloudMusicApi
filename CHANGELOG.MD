@@ -1,4 +1,14 @@
 # 更新日志
+### 3.18.0 | 2019.06.29
+- 新增 `更换绑定手机接口`
+
+#### Breaking change
+1. 调整注册接口由 `/captch/register` 修改为 `/register/cellphone`
+
+2. 调整发送短信接口由 `/captch/sent` 修改为 `/captcha/sent`
+
+3. 调整短信验证接口由 `/captch/verify` 修改为 `/captcha/verify`
+
 ### 3.17.0 | 2019.06.29
 - 新增 `专辑动态信息` `热搜列表(详细)` 接口,更新文档
 
