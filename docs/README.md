@@ -81,7 +81,7 @@
 63. 电台 - 节目
 64. 给评论点赞
 65. 获取动态
-66. 获取热搜
+66. 热搜列表(简略)
 67. 发送私信
 68. 发送私信歌单
 69. 新建歌单
@@ -101,7 +101,7 @@
 83. 所有榜单
 84. 所有榜单内容摘要
 85. 收藏视频
-86. 收藏/取消收藏 MV
+86. 收藏 MV
 87. 视频详情
 88. 相关视频
 89. 关注用户
@@ -136,6 +136,8 @@
 118. 全部mv
 119. 网易出品mv
 120. 收藏/取消收藏专辑
+121. 专辑动态信息
+122. 热搜列表(详细)
 
 ## 安装
 
@@ -847,13 +849,21 @@ mp3url 不能直接用 , 可通过 `/song/url` 接口传入歌曲 id 获取具�
 返回数据如下图 :
 ![搜索音乐](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%90%9C%E7%B4%A2.png)
 
-### 热搜
+### 热搜列表(简略)
 
 说明 : 调用此接口,可获取热门搜索列表
 
 **接口地址 :** `/search/hot`
 
 **调用例子 :** `/search/hot`
+
+### 热搜列表(详细)
+
+说明 : 调用此接口,可获取热门搜索列表
+
+**接口地址 :** `/search/hot/detail`
+
+**调用例子 :** `/search/hot/detail`
 
 ### 搜索建议
 
@@ -1283,6 +1293,16 @@ mp3url 不能直接用 , 可通过 `/song/url` 接口传入歌曲 id 获取具�
 
 返回数据如下图 :
 ![获取专辑内容](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E4%B8%93%E8%BE%91.png)
+
+
+## 专辑动态信息
+说明 : 调用此接口 , 传入专辑 id, 可获得专辑动态信息,如是否收藏,收藏数,评论数,分享数
+
+**必选参数 :** `id`: 专辑 id
+
+**接口地址 :** `/album/detail/dynamic`
+
+**调用例子 :** `/album/detail/dynamic?id=32311`
 
 ### 收藏/取消收藏专辑
 
