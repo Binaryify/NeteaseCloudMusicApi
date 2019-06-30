@@ -1,4 +1,10 @@
 # 更新日志
+### 3.18.1 | 2019.06.30
+- 评论接口增加 `before` 参数以获取超过5000条评论数据 [#521](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/521)
+
+- 修复 `/msg/comments` 传入参数和文档描述不一致问题
+
+
 ### 3.18.0 | 2019.06.29
 - 新增 `更换绑定手机接口`
 
