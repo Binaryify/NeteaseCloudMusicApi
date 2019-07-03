@@ -1,4 +1,7 @@
 # 更新日志
+### 3.18.2 | 2019.07.03
+- 修复听歌打卡接口 `/scrobble` 失效问题
+
 ### 3.18.1 | 2019.06.30
 - 评论接口增加 `before` 参数以获取超过5000条评论数据 [#521](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/521)
 

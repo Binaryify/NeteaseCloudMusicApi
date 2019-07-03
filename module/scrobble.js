@@ -7,7 +7,7 @@ module.exports = (query, request) => {
             json: {
                 download: 0,
                 end: 'playend',
-                id: query.songid,
+                id: query.id,
                 sourceId: query.sourceid,
                 time: query.time,
                 type: 'song',
@@ -15,6 +15,7 @@ module.exports = (query, request) => {
             }
         }])
     }
+    
     return request(
         'POST', `https://music.163.com/weapi/feedback/weblog`, data,
         {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
