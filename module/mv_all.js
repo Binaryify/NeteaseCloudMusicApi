@@ -7,7 +7,7 @@ module.exports = (query, request) => {
       类型: query.type || "全部",
       排序: query.order || "上升最快"
     }),
-    offset: query.limit || 0,
+    offset: query.offset || 0,
     total: "true",
     limit: query.limit || 30
   };
