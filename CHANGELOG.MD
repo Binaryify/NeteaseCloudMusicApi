@@ -1,4 +1,7 @@
 # 更新日志
+### 3.18.3 | 2019.07.04
+- 修复全部 mv`/mv/all` 接口分页参数错误的问题 [#524](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/524)
+
 ### 3.18.2 | 2019.07.03
 - 修复听歌打卡接口 `/scrobble` 失效问题
 
