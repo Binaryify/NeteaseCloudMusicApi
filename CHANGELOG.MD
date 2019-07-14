@@ -1,4 +1,7 @@
 # 更新日志
+### 3.18.4 | 2019.07.14
+- 修复部分歌曲无法获得播放链接的问题 [#531](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/531)
+
 ### 3.18.3 | 2019.07.04
 - 修复全部 mv`/mv/all` 接口分页参数错误的问题 [#524](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/524)
 
