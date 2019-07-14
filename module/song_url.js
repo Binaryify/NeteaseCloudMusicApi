@@ -10,7 +10,7 @@ module.exports = (query, request) => {
         br: parseInt(query.br || 999000)
     }
     return request(
-        'POST', `https://music.163.com/weapi/song/enhance/player/url`, data,
-        {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
+        'POST', `https://music.163.com/api/song/enhance/player/url`, data,
+        {crypto: 'linuxapi', cookie: query.cookie, proxy: query.proxy}
     )
 }
