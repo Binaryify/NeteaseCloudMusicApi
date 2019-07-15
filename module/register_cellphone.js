@@ -2,6 +2,7 @@
 const crypto = require('crypto')
 
 module.exports = (query, request) => {
+  query.cookie.os = 'pc'
   const data = {
     captcha: query.captcha,
     phone: query.phone,
