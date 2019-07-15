@@ -1,4 +1,7 @@
 # 更新日志
+### 3.18.6 | 2019.07.15
+- 修复注册异常的问题 [#532](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/532)
+
 ### 3.18.5 | 2019.07.14
 - 修复部分歌曲无法获得播放链接的问题 [#531](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/531)
 
