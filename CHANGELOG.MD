@@ -1,4 +1,7 @@
 # 更新日志
+### 3.19.0 | 2019.07.24
+- 新增`检测手机号码是否已注册`和`初始化昵称`接口[#540](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/540)
+
 ### 3.18.6 | 2019.07.15
 - 修复注册异常的问题 [#532](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/532)
 

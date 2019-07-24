@@ -1,4 +1,4 @@
-// 检测是否注册
+// 初始化名字
 
 module.exports = (query, request) => {
   const data = {
