@@ -1,8 +1,8 @@
-// 检测是否注册
+// 检测手机号码是否已注册
 
 module.exports = (query, request) => {
   const data = {
-    cellphone: query.cellphone
+    cellphone: query.phone
   };
   return request(
     "POST",
