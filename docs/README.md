@@ -139,6 +139,8 @@
 121. 专辑动态信息
 122. 热搜列表(详细)
 123. 更换绑定手机
+124. 检测手机号码是否已注册
+125. 初始化昵称
 
 ## 安装
 
@@ -346,6 +348,24 @@ Cookies
 **接口地址 :** `/register/cellphone`
 
 **调用例子 :** `/register/cellphone?phone=13xxx&password=xxxxx&captcha=1234&nickname=binary1345`
+
+### 检测手机号码是否已注册
+说明 : 调用此接口 ,可检测手机号码是否已注册
+**必选参数 :** 
+`phone` :  手机号码  
+
+**接口地址 :** `/cellphone/existence/check`
+
+**调用例子 :** `/cellphone/existence/check?phone=13xxx`
+
+### 初始化昵称
+说明 : 刚注册的账号(需登录),调用此接口 ,可初始化昵称
+**必选参数 :** 
+`nickname` :  昵称  
+
+**接口地址 :** `/activate/initProfile`
+
+**调用例子 :** `/activate/initProfile?nickname=testUser2019`
 
 ### 更换绑定手机
 说明 : 调用此接口 ,可更换绑定手机(流程:先发送验证码到原手机号码,再发送验证码到新手机号码然后再调用此接口)
