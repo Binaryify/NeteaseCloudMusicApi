@@ -1,4 +1,7 @@
 # 更新日志
+### 3.20.0 | 2019.08.06
+- 新增`更新歌单描述`,`更新歌单名`,`更新歌单标签`,`默认搜索关键词` 接口,更新文档[#547](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/547)
+
 ### 3.19.0 | 2019.07.24
 - 新增`检测手机号码是否已注册`和`初始化昵称`接口[#540](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/540)
 
