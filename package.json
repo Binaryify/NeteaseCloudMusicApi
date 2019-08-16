@@ -4,7 +4,9 @@
   "description": "网易云音乐 NodeJS 版 API",
   "scripts": {
     "start": "node app.js",
-    "test": "mocha -r intelli-espower-loader -t 20000 app.test.js --exit"
+    "test": "mocha -r intelli-espower-loader -t 20000 app.test.js --exit",
+    "lint-fix": "eslint --fix --ext .js app.js module/ util/ test/ "
+
   },
   "keywords": [
     "网易云音乐",
@@ -21,6 +23,8 @@
     "request": "^2.88.0"
   },
   "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-config-standard": "^13.0.1",
     "intelli-espower-loader": "^1.0.1",
     "mocha": "^6.1.4",
     "power-assert": "^1.6.1"

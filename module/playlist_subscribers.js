@@ -5,9 +5,9 @@ module.exports = (query, request) => {
     offset: query.offset || 0
   };
   return request(
-    "POST",
+    'POST',
     `https://music.163.com/weapi/playlist/subscribers`,
     data,
-    { crypto: "weapi", cookie: query.cookie, proxy: query.proxy }
+    { crypto: 'weapi', cookie: query.cookie, proxy: query.proxy }
   );
 };

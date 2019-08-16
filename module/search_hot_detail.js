@@ -3,9 +3,9 @@ module.exports = (query, request) => {
   const data = {
   };
   return request(
-    "POST",
+    'POST',
     `https://music.163.com/weapi/hotsearchlist/get`,
     data,
-    { crypto: "weapi", cookie: query.cookie, proxy: query.proxy }
+    { crypto: 'weapi', cookie: query.cookie, proxy: query.proxy }
   );
 };

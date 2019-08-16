@@ -1,6 +1,6 @@
 module.exports = (query, request) => {
   const data = {
-    "e_r": true
+    'e_r': true
   };
   Object.keys(query).forEach(i => {
     if (/^\/api\//.test(i)) {

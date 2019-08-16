@@ -23,15 +23,15 @@
 */
 
 module.exports = (query, request) => {
-    const data = {
-        categoryCode: query.cat || '1001',
-        initial: (query.initial || '').toUpperCase().charCodeAt() || '',
-        offset: query.offset || 0,
-        limit: query.limit || 30,
-        total: true
-    }
-    return request(
-        'POST', `https://music.163.com/weapi/artist/list`, data,
-        {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
-    )
+  const data = {
+    categoryCode: query.cat || '1001',
+    initial: (query.initial || '').toUpperCase().charCodeAt() || '',
+    offset: query.offset || 0,
+    limit: query.limit || 30,
+    total: true
+  }
+  return request(
+    'POST', `https://music.163.com/weapi/artist/list`, data,
+    {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
+  )
 }

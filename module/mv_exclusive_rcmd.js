@@ -6,11 +6,11 @@ module.exports = (query, request) => {
     limit: query.limit || 30
   };
   return request(
-    "POST",
+    'POST',
     `https://interface.music.163.com/api/mv/exclusive/rcmd`,
     data,
     {
-      crypto: "weapi",
+      crypto: 'weapi',
       cookie: query.cookie,
       proxy: query.proxy
     }

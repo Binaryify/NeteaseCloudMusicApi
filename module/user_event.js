@@ -8,9 +8,9 @@ module.exports = (query, request) => {
     total: false
   };
   return request(
-    "POST",
+    'POST',
     `https://music.163.com/weapi/event/get/${query.uid}`,
     data,
-    { crypto: "weapi", cookie: query.cookie, proxy: query.proxy }
+    { crypto: 'weapi', cookie: query.cookie, proxy: query.proxy }
   );
 };

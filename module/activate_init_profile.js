@@ -5,11 +5,11 @@ module.exports = (query, request) => {
     nickname: query.nickname
   };
   return request(
-    "POST",
+    'POST',
     `http://music.163.com/eapi/activate/initProfile`,
     data,
     {
-      crypto: "eapi",
+      crypto: 'eapi',
       cookie: query.cookie,
       proxy: query.proxy,
       url: '/api/activate/initProfile'
