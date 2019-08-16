@@ -6,7 +6,6 @@
     "start": "node app.js",
     "test": "mocha -r intelli-espower-loader -t 20000 app.test.js --exit",
     "lint-fix": "eslint --fix --ext .js app.js module/ util/ test/ "
-
   },
   "keywords": [
     "网易云音乐",
@@ -14,6 +13,17 @@
     "音乐",
     "网易云音乐nodejs"
   ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
   "author": "binaryify",
   "license": "MIT",
   "dependencies": {
@@ -25,7 +35,9 @@
   "devDependencies": {
     "eslint": "^6.1.0",
     "eslint-config-standard": "^13.0.1",
+    "husky": "^3.0.3",
     "intelli-espower-loader": "^1.0.1",
+    "lint-staged": "^9.2.1",
     "mocha": "^6.1.4",
     "power-assert": "^1.6.1"
   }
