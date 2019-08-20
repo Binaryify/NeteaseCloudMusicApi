@@ -13,6 +13,7 @@ module.exports = {
 
   rules: {
     indent: ['error', 2, { SwitchCase: 1 }],
+    "space-infix-ops": ["error", {"int32Hint": false}],
     'key-spacing': [
       2,
       {
