@@ -1,4 +1,7 @@
 # 更新日志
+### 3.21.0 | 2019.08.20
+- 新增`歌单删除接口`[#570](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/570)
+
 ### 3.20.0 | 2019.08.06
 - 新增`更新歌单描述`,`更新歌单名`,`更新歌单标签`,`默认搜索关键词` 接口,更新文档[#547](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/547)
 
