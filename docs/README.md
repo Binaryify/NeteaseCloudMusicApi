@@ -367,9 +367,9 @@ Cookies
 **必选参数 :** 
 `nickname` :  昵称  
 
-**接口地址 :** `/activate/initProfile`
+**接口地址 :** `/activate/init/profile`
 
-**调用例子 :** `/activate/initProfile?nickname=testUser2019`
+**调用例子 :** `/activate/init/profile?nickname=testUser2019`
 
 ### 更换绑定手机
 说明 : 调用此接口 ,可更换绑定手机(流程:先发送验证码到原手机号码,再发送验证码到新手机号码然后再调用此接口)
