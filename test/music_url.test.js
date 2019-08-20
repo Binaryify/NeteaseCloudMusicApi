@@ -9,7 +9,7 @@ describe('测试获取歌曲是否正常', () => {
       br: 999000
     }
 
-    request.get({url: `${host}/music/url`, qs: qs}, (err, res, body) => {
+    request.get({url: `${host}/song/url`, qs: qs}, (err, res, body) => {
       if (!err && res.statusCode == 200) {
         body = JSON.parse(body)
         assert(!!body.data[0].url)
