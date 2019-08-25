@@ -19,18 +19,18 @@ exec('npm info NeteaseCloudMusicApi version', (err, stdout, stderr) => {
 
 const app = express()
 
-// CORS
+// CORS & Preflight request
 app.use((req, res, next) => {
   if(req.path !== '/' && !req.path.includes('.')){
-    res.header({
+    res.set({
       'Access-Control-Allow-Credentials': true,
       'Access-Control-Allow-Origin': req.headers.origin || '*',
-      'Access-Control-Allow-Headers': 'X-Requested-With',
+      'Access-Control-Allow-Headers': 'X-Requested-With,Content-Type',
       'Access-Control-Allow-Methods': 'PUT,POST,GET,DELETE,OPTIONS',
       'Content-Type': 'application/json; charset=utf-8'
     })
   }
-  next()
+  req.method === 'OPTIONS' ? res.status(204).end() : next()
 })
 
 // cookie parser
@@ -61,10 +61,10 @@ const special = {
 }
 
 fs.readdirSync(path.join(__dirname, 'module')).reverse().forEach(file => {
-  if(!(/\.js$/i.test(file))) return
+  if(!file.endsWith('.js')) return
   let route = (file in special) ? special[file] : '/' + file.replace(/\.js$/i, '').replace(/_/g, '/')
   let question = require(path.join(__dirname, 'module', file))
-    
+
   app.use(route, (req, res) => {
     let query = Object.assign({}, req.query, req.body, {cookie: req.cookies})
     question(query, request)
@@ -75,7 +75,7 @@ fs.readdirSync(path.join(__dirname, 'module')).reverse().forEach(file => {
       })
       .catch(answer => {
         console.log('[ERR]', decodeURIComponent(req.originalUrl))
-        if(answer.body.code =='301') answer.body.msg = '需要登录'
+        if(answer.body.code == '301') answer.body.msg = '需要登录'
         res.append('Set-Cookie', answer.cookie)
         res.status(answer.status).send(answer.body)
       })
