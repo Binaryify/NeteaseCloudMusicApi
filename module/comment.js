@@ -2,7 +2,11 @@
 
 module.exports = (query, request) => {
   query.cookie.os = 'pc'
-  query.t = (query.t == 1 ? 'add' : 'delete')
+  query.t = {
+    1: 'add',
+    0: 'delete',
+    2: 'reply'
+  }[query.t]
   query.type = {
     0: 'R_SO_4_', //  歌曲
     1: 'R_MV_5_', //  MV
@@ -23,6 +27,10 @@ module.exports = (query, request) => {
     data.content = query.content
   else if(query.t == 'delete')
     data.commentId = query.commentId
+  else if (query.t == 'reply') {
+    data.commentId = query.commentId
+    data.content = query.content
+  }
   return request(
     'POST', `https://music.163.com/weapi/resource/comments/${query.t}`, data,
     {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
