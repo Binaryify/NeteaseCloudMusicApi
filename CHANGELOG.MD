@@ -1,4 +1,6 @@
 # 更新日志
+### 3.22.2 | 2019.09.18
+- 排行榜参数更新,更新文档[#592](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/592)
 
 ### 3.22.1 | 2019.09.12
 - 支持回复评论[#589](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/589)
