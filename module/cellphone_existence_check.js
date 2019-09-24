@@ -2,7 +2,8 @@
 
 module.exports = (query, request) => {
   const data = {
-    cellphone: query.phone
+    cellphone: query.phone,
+    countrycode: query.countrycode
   };
   return request(
     'POST',

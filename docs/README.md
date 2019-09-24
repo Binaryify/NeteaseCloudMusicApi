@@ -362,7 +362,8 @@ Cookies
 说明 : 调用此接口 ,可检测手机号码是否已注册
 **必选参数 :** 
 `phone` :  手机号码  
-
+**可选参数 :**
+`countrycode`: 国家码，用于国外手机号，例如美国传入：`1` 
 **接口地址 :** `/cellphone/existence/check`
 
 **调用例子 :** `/cellphone/existence/check?phone=13xxx`
