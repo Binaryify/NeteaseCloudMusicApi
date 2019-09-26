@@ -2238,7 +2238,7 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 **可选参数 :**
 `limit` : 返回数量 , 默认为 30
 
-`offset` : 偏移数量，用于分页 , 如 :( 页数 -1)\*30, 其中 30 为 limit 的值 , 默认为 0
+`before` : 分页参数,取上一页最后一项的 `time` 获取下一页数据
 
 **接口地址 :** 
 `/msg/private/history`

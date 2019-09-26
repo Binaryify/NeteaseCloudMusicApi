@@ -3,8 +3,8 @@
 module.exports = (query, request) => {
   const data = {
     userId: query.uid,
-    offset: query.offset || 0,
     limit: query.limit || 30,
+    time: query.before || 0,
     total: 'true'
   };
   return request(

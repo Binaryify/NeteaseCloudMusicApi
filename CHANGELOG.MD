@@ -1,4 +1,7 @@
 # 更新日志
+### 3.22.4 | 2019.09.26
+- 修复私信历史记录分页参数问题,更新文档 [#599](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/599)
+
 ### 3.22.3 | 2019.09.24
 - 手机号码检测： 添加国家码作为参数，方便检测国外手机号码 [#598](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/598)
 
