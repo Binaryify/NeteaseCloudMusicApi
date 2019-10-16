@@ -2097,6 +2097,9 @@ MV 数据 , 数据包含 mv 名字 , 歌手 , 发布时间 , mv 视频地址等�
 `limit` : 返回数量 , 默认为 100
 
 `offset` : 偏移数量，用于分页 , 如 :( 页数 -1)\*100, 其中 100 为 limit 的值 , 默认为 0
+
+`type`: 榜单类型, `new` 为新晋电台榜,`hot`为热门电台榜
+
 **接口地址 :** `/dj/toplist`
 
 **调用例子 :** `/dj/toplist?type=hot` `/dj/toplist?type=new&limit=1`
