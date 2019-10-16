@@ -2,6 +2,7 @@
 
 module.exports = (query, request) => {
   const data = {};
+  query.cookie.os = 'pc';
   return request(
     'POST',
     `http://music.163.com/weapi/djradio/banner/get`,
