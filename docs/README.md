@@ -2122,14 +2122,14 @@ MV 数据 , 数据包含 mv 名字 , 歌手 , 发布时间 , mv 视频地址等�
 
 ### 电台 - 分类推荐
 
-说明 : 登陆后调用此接口 , 可获得推荐电台
+说明 : 登陆后调用此接口 , 传入分类,可获得对应类型电台列表
 
 **必选参数 :** `type`: 电台类型 , 数字 , 可通过`/dj/catelist`获取 , 对应关系为
-id 对应 此接口的 type, name 对应类型意义
+id 对应 此接口的 type, name 对应类型
 
 **接口地址 :** `/dj/recommend/type`
 
-**调用例子 :** `/dj/recommend/type?type=1`
+**调用例子 :** `/dj/recommend/type?type=1`(明星做主播) `/dj/recommend/type?type=2001` (创作|翻唱)
 
 ### 电台 - 订阅
 
