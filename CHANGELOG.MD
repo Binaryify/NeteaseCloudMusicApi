@@ -1,4 +1,7 @@
 # 更新日志
+### 3.24.0 | 2019.10.22
+- 新增`类别热门电台` 接口 [#607](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/607)
+
 ### 3.23.0 | 2019.10.16
 - 修复电台 banner 接口无数据问题[#601](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/601)
 

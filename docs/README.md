@@ -152,6 +152,7 @@
 134. 电台 - 节目详情
 135. 电台 - 节目榜
 136. 电台 - 新晋电台榜/热门电台榜
+137. 类别热门电台
 
 
 ## 安装
@@ -2103,6 +2104,20 @@ MV 数据 , 数据包含 mv 名字 , 歌手 , 发布时间 , mv 视频地址等�
 **接口地址 :** `/dj/toplist`
 
 **调用例子 :** `/dj/toplist?type=hot` `/dj/toplist?type=new&limit=1`
+
+### 电台 - 类别热门电台
+
+**可选参数 :**
+
+`limit` : 返回数量 , 默认为 30
+
+`offset` : 偏移数量，用于分页 , 如 :( 页数 -1)\*30, 其中 30 为 limit 的值 , 默认为 0
+
+`cateId`: 类别 id,可通过 `/dj/category/recommend` 接口获取
+
+**接口地址 :** `/dj/radio/hot`
+
+**调用例子 :** `/dj/radio/hot?cateId=2001`(创作|翻唱) `/dj/radio/hot?cateId=10002` (3D|电子)
 
 ### 电台 - 推荐
 
