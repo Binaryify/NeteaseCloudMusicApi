@@ -181,6 +181,15 @@ windows 下使用 git-bash 或者 cmder 等终端执行以下命令 :
 $ set PORT=4000 && node app.js
 ```
 
+服务器启动绑定 127.0.0.1,如果需要更改, 可使用以下命令 : Mac/Linux
+```shell
+$ HOST=localhost node app.js
+```
+windows 下使用 git-bash 或者 cmder 等终端执行以下命令 :
+
+```shell
+$ set HOST=localhost && node app.js
+```
 ## 可以使用代理
 
 在 query 参数中加上 proxy=your-proxy 即可让这一次的请求使用 proxy

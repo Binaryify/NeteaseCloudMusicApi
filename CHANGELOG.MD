@@ -1,4 +1,7 @@
 # 更新日志
+### 3.24.1 | 2019.10.25
+- 修改默认绑定 HOST [#615](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/615)
+
 ### 3.24.0 | 2019.10.22
 - 新增`类别热门电台` 接口 [#607](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/607)
 
