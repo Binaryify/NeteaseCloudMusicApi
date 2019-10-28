@@ -1,4 +1,7 @@
 # 更新日志
+### 3.24.2 | 2019.10.28
+- 修改默认绑定 HOST [#620](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/620)
+
 ### 3.24.1 | 2019.10.25
 - 修改默认绑定 HOST [#615](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/615)
 
