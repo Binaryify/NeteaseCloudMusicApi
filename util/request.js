@@ -152,7 +152,9 @@ const createRequest = (method, url, data, options) => {
 
               answer.body = JSON.parse(body)
               answer.status = answer.body.code || res.statusCode
-
+              if(answer.body.code === 502){
+                answer.status = 200
+              }
             }
 
           } catch (e) {

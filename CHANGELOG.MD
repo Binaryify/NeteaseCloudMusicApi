@@ -1,4 +1,7 @@
 # 更新日志
+### 3.25.1 | 2019.11.07
+- 修复邮箱登录状态码错误,增加相关提示 [#633](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/633)
+
 ### 3.25.0 | 2019.11.06
 - 新增 `云村热评` 接口[#626](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/626)
 
