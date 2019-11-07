@@ -25,8 +25,5 @@ module.exports = async (query, request) => {
       })
     })
   }
-  return request(
-    'POST', `https://music.163.com/weapi/login`, data,
-    {crypto: 'weapi', ua: 'pc', cookie: query.cookie, proxy: query.proxy}
-  )
+  return result
 }
