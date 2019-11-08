@@ -2,7 +2,7 @@ module.exports = (query, request) => {
   const data = {
     limit: query.limit || 20,
     offset: query.offset || 0,
-    beforeTime: query.before|| 0
+    beforeTime: query.before || 0
   };
   return request(
     'POST',

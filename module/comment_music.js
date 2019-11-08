@@ -6,7 +6,7 @@ module.exports = (query, request) => {
     rid: query.id,
     limit: query.limit || 20,
     offset: query.offset || 0,
-    beforeTime: query.before|| 0
+    beforeTime: query.before || 0
   };
   return request(
     'POST',

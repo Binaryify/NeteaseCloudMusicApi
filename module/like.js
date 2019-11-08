@@ -2,7 +2,7 @@
 const { toBoolean } = require('../util')
 
 module.exports = (query, request) => {
-  query.like = query.like=='false' ? false : true
+  query.like = query.like == 'false' ? false : true
   const data = {
     trackId: query.id,
     like: query.like

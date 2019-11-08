@@ -2,7 +2,7 @@
 
 module.exports = (query, request) => {
   const data = {
-    ctcode: query.ctcode||'86',
+    ctcode: query.ctcode || '86',
     cellphone: query.phone,
   }
   return request(

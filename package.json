@@ -1,6 +1,6 @@
 {
   "name": "NeteaseCloudMusicApi",
-  "version": "3.25.2",
+  "version": "3.25.3",
   "description": "网易云音乐 NodeJS 版 API",
   "scripts": {
     "start": "node app.js",
@@ -27,18 +27,18 @@
   "author": "binaryify",
   "license": "MIT",
   "dependencies": {
-    "apicache": "^1.4.0",
-    "express": "^4.16.4",
-    "pac-proxy-agent": "^3.0.0",
+    "apicache": "^1.5.2",
+    "express": "^4.17.1",
+    "pac-proxy-agent": "^3.0.1",
     "request": "^2.88.0"
   },
   "devDependencies": {
-    "eslint": "^6.1.0",
-    "eslint-config-standard": "^13.0.1",
-    "husky": "^3.0.3",
+    "eslint": "^6.6.0",
+    "eslint-plugin-html": "^6.0.0",
+    "husky": "^3.0.9",
     "intelli-espower-loader": "^1.0.1",
-    "lint-staged": "^9.2.1",
-    "mocha": "^6.1.4",
+    "lint-staged": "^9.4.2",
+    "mocha": "^6.2.2",
     "power-assert": "^1.6.1"
   }
 }

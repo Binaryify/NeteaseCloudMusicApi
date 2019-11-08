@@ -1,7 +1,7 @@
 // 歌词
 
 module.exports = (query, request) => {
-  const data={
+  const data = {
     id: query.id
   }
   return request(
