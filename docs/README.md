@@ -2147,7 +2147,7 @@ MV 数据 , 数据包含 mv 名字 , 歌手 , 发布时间 , mv 视频地址等�
 
 `limit` : 返回数量 , 默认为 100 (不支持 offset)
 
-**接口地址 :** `/djprogram/toplist/hours`
+**接口地址 :** `/dj/program/toplist/hours`
 
 **调用例子 :** `/dj/program/toplist/hours?limit=1`
 
