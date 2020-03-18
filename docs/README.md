@@ -494,12 +494,12 @@ name:歌单名字
 
 desc:歌单描述
 
-tags:歌单tag
+tags:歌单tag ,多个用 `;` 隔开,只能用官方规定标签
 ```
 
 **接口地址 :** `/playlist/update`
 
-**调用例子 :** `/playlist/update?id=24381616&name=新歌单&desc=描述&tags=学习`
+**调用例子 :** `/playlist/update?id=24381616&name=新歌单&desc=描述&tags=欧美`
 
 ### 更新歌单描述
 说明 : 登陆后调用此接口,可以单独更新用户歌单描述
