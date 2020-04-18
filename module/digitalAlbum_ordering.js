@@ -12,7 +12,7 @@ module.exports = (query, request) => {
     from: 'web'
   }
   return request(
-    'POST', `https://music.163.com/weapi/ordering/web/digital`, data,
+    'POST', `https://music.163.com/api/ordering/web/digital`, data,
     {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
   )
 }
