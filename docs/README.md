@@ -2453,6 +2453,21 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 
 **调用例子 :** `/digitalAlbum/purchased?limit=10`
 
+### 购买数字专辑
+说明 : 登陆后调用此接口 ,可购买数字专辑
+
+**必选参数 :**
+
+`id` : 专辑的 id
+
+`payment` : 支付方式， 0 为支付宝 3 为微信
+
+`quantity` : 购买的数量
+
+**接口地址 :** `/digitalAlbum/ordering`
+
+**调用例子 :** `/digitalAlbum/ordering?id=86286082&payment=3&quantity=1`
+
 ### batch批量请求接口
 说明 : 登陆后调用此接口 ,传入接口和对应原始参数(原始参数非文档里写的参数,需参考源码),可批量请求接口
 
