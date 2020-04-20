@@ -1,4 +1,7 @@
 # 更新日志
+### 3.27.0 | 2020.04.20
+- 新增购买专辑接口 by [TimonPeng](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/740)
+
 ### 3.26.0 | 2020.04.08
 #### Breaking change
 - 更新歌手分类列表接口参数,因`cat`参数失效,调整为`type`和`area`参数
