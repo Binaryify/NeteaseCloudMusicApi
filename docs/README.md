@@ -857,19 +857,15 @@ tags: 歌单标签
 'hot'
 
 `cat`:`cat`: tag, 比如 " 华语 "、" 古风 " 、" 欧美 "、" 流行 ", 默认为
-"全部",可从歌单分类接口获取(/playlist/catlist)
+"全部",可从歌单分类接口获取(/playlist/catlist)  
+
+`limit`: 取出评论数量 , 默认为 50
+
+`offset`: 偏移数量 , 用于分页 , 如 :( 评论页数 -1)\*50, 其中 50 为 limit 的值
 
 **接口地址 :** `/top/playlist`
 
 **调用例子 :** `/top/playlist?limit=10&order=new`
-
-返回数据如下图 :
-
-![精选碟](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/top_playlist.png)
-
-![对应位置](https://ws2.sinaimg.cn/large/006tKfTcgy1fr3wnpyg6jj317e0vcqdc.jpg)
-
-![返回数据](https://ws4.sinaimg.cn/large/006tKfTcgy1fr3wqs5lw9j31ic1re4c4.jpg)
 
 ### 获取精品歌单
 
