@@ -1,4 +1,8 @@
 # 更新日志
+### 3.28.0 | 2020.05.05
+- 新增获取 mv 点赞转发评论数数据接口
+- 新增获取视频点赞转发评论数数据接口
+
 ### 3.27.0 | 2020.04.20
 - 新增购买专辑接口 by [TimonPeng](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/740)
 
