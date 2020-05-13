@@ -1,4 +1,7 @@
 # 更新日志
+### 3.29.1 | 2020.05.13
+- 调整通知接口分页参数 [#761](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/761)
+
 ### 3.29.0 | 2020.05.11
 - 支持批量删除歌单 [#760](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/760)
 
