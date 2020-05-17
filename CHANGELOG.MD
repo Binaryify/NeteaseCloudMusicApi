@@ -1,4 +1,7 @@
 # 更新日志
+### 3.30.0 | 2020.05.17
+- 登录接口返回内容增加`cookie`字段,支持手动传入cookie
+
 ### 3.29.1 | 2020.05.13
 - 调整通知接口分页参数 [#761](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/761)
 

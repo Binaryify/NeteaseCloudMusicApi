@@ -293,7 +293,10 @@ $ sudo docker run -d -p 3000:3000 netease-music-api
 
 #### 1. 手机登录
 
-**必选参数 :** `phone`: 手机号码 `password`: 密码
+**必选参数 :**   
+`phone`: 手机号码
+
+`password`: 密码
 
 **接口地址 :** `/login/cellphone`
 
@@ -303,22 +306,26 @@ $ sudo docker run -d -p 3000:3000 netease-music-api
 
 #### 2. 邮箱登录
 
-~~ 注意 : 此接口被网易和谐了 , 待修复 , 暂时使用手机登录 (2017.05.20)~~
+**必选参数 :**   
 
-> 更新 : 此接口已经可以正常使用(2018.07.03)
+`email`: 163 网易邮箱   
 
-**必选参数 :** `email`: 163 网易邮箱  
 `password`: 密码
 
 **接口地址 :** `/login`
 
 **调用例子 :** `/login?email=xxx@163.com&password=yyy`
 
-返回数据如下图 :
-![登录](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E7%99%BB%E5%BD%95.png)
-
 完成登录后 , 会在浏览器保存一个 Cookies 用作登录凭证 , 大部分 API 都需要用到这个
-Cookies
+Cookies,非跨域情况请求会自动带上 Cookies,跨域情况参考`调用前须知`
+
+v3.30.0后支持手动传入cookie,登录接口返回内容新增 `cookie` 字段,保存到本地后,get请求带上`?cookie=xxx` 或者 post请求body带上 `cookie` 即可,如:`/user/cloud?cookie=xxx` 或者
+```
+{
+    ...,
+    cookie:"xxx"
+}
+```
 
 #### 注意
 
@@ -921,9 +928,7 @@ tags: 歌单标签
 说明 : 使用歌单详情接口后 , 能得到的音乐的 id, 但不能得到的音乐 url, 调用此接口
 , 传入的音乐 id( 可多个 , 用逗号隔开 ), 可以获取对应的音乐的 url( 不需要登录 )
 
-> 注 : 部分用户反馈获取的 url 会 403,[hwaphon](https://github.com/hwaphon)找到的
-> 解决方案是当获取到音乐的 id 后，将
-> https://music.163.com/song/media/outer/url?id=id.mp3 以 src 赋予 Audio 即可播放
+> 注 : 部分用户反馈获取的 url 会 403,[hwaphon](https://github.com/hwaphon)找到的解决方案是当获取到音乐的 id 后，将 https://music.163.com/song/media/outer/url?id=id.mp3 以 src 赋予 Audio 即可播放
 
 **必选参数 :** `id` : 音乐 id
 
