@@ -215,6 +215,29 @@ fetch(url).then(function() {
 ```
 v3.3.0 后支持使用 PAC代理,如 `?proxy=http://192.168.0.1/proxy.pac`
 
+## 可以在Node.js调用
+v3.31.0后支持Node.js调用,导入的方法为`module`内的文件名,返回内容包含`status`和`body`,`status`为状态码,`body`为请求返回内容,参考`module_example` 文件夹下的 `test.js`
+```js
+const { login_cellphone, user_cloud } = require('NeteaseCloudMusicApi')
+async function main() {
+  try {
+    const result = await login_cellphone({
+      phone: '手机号',
+      password: '密码'
+    })
+    console.log(result)
+    const result2 = await user_cloud({
+      cookie: result.body.cookie // 凭证
+    })
+    console.log(result2.body)
+      
+  } catch (error) {
+    console.log(error)
+  }
+}
+main()
+```
+
 ## 更新到 v3.0 说明
 
 !>2018.10.14 更新到 3.0.0,使用了模块化机制,因为部分接口参数和 url 做了调整,如还不想升级到 3.0.0,请查看 [v2 的文档](http://binaryify.github.io/NeteaseCloudMusicApi/#/v2), [更新日志](https://github.com/Binaryify/NeteaseCloudMusicApi/blob/master/CHANGELOG.MD), [2.0+下载地址](https://github.com/Binaryify/NeteaseCloudMusicApi/releases/tag/v2.20.5), 同时 2.0+ 将不再维护
