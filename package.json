@@ -30,6 +30,10 @@
     },
     "author": "binaryify",
     "license": "MIT",
+    "files": [
+        "module",
+        "util"
+    ],
     "dependencies": {
         "apicache": "^1.5.2",
         "express": "^4.17.1",
