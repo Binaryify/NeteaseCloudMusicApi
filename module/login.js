@@ -29,7 +29,8 @@ module.exports = async (query, request) => {
       body: {
         ...result.body,
         cookie: result.cookie.join(';')
-      }
+      },
+      cookie: result.cookie
     }
   }
   return result

@@ -1,4 +1,7 @@
 # 更新日志
+### 3.31.1 | 2020.05.19
+- 修复`cookie`没返回的问题 [#778](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/778)
+
 ### 3.31.0 | 2020.05.18
 - 支持 `Node.js` 调用,参考`module_example` 文件夹下的 `test.js`
 
