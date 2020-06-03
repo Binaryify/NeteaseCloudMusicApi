@@ -43,11 +43,13 @@ const topList = {
 
 module.exports = (query, request) => {
   const data = {
-    id: topList[query.idx],
-    n: 10000
+    id: query.id || topList[query.idx],
+    n: 1000,
+    s: '5',
+    shareUserId: '0',
   }
   return request(
-    'POST', `https://music.163.com/weapi/v3/playlist/detail`, data,
-    {crypto: 'linuxapi', cookie: query.cookie, proxy: query.proxy}
+    'POST', `https://interface3.music.163.com/api/playlist/v4/detail`, data,
+    {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
   )
 }

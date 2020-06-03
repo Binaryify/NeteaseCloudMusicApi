@@ -1,4 +1,9 @@
 # 更新日志
+### 3.32.0 | 2020.06.03
+- 更新排行榜接口,支持传入榜单id
+- 新增榜单顺序调整接口 [#806](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/806)
+- 完善错误提示信息
+
 ### 3.31.1 | 2020.05.19
 - 修复`cookie`没返回的问题 [#778](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/778)
 
