@@ -1,4 +1,7 @@
 # 更新日志
+### 3.32.1 | 2020.06.03
+- 新增歌曲排序接口
+
 ### 3.32.0 | 2020.06.03
 - 更新排行榜接口,支持传入榜单id
 - 新增榜单顺序调整接口 [#806](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/806)
