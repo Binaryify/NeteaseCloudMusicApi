@@ -1,4 +1,7 @@
 # 更新日志
+### 3.32.2 | 2020.06.05
+- 新增独家放送列表接口 [#808](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/808)
+
 ### 3.32.1 | 2020.06.03
 - 新增歌曲排序接口
 

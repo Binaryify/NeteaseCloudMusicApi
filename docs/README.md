@@ -163,6 +163,9 @@
 145. 购买数字专辑
 146. 获取 mv 点赞转发评论数数据
 147. 获取视频点赞转发评论数数据
+148. 调整歌单顺序
+149. 调整歌曲顺序
+150. 独家放送列表
 
 ## 安装
 
@@ -1882,13 +1885,27 @@ mp3url 不能直接用 , 可通过 `/song/url` 接口传入歌曲 id 获取具�
 
 **调用例子 :** `/program/recommend`
 
-### 独家放送
+### 独家放送(入口列表)
 
 说明 : 调用此接口 , 可获取独家放送
 
 **接口地址 :** `/personalized/privatecontent`
 
 **调用例子 :** `/personalized/privatecontent`
+
+### 独家放送列表
+
+说明 : 调用此接口 , 可获取独家放送列表  
+
+**可选参数 :**
+
+`limit` : 返回数量 , 默认为 60
+
+`offset` : 偏移数量，用于分页 , 如 :( 页数 -1)\*60, 其中 60 为 limit 的值 , 默认为 0
+
+**接口地址 :** `/personalized/privatecontent/list`
+
+**调用例子 :** `/personalized/privatecontent/list?limit=1&offset=2`
 
 ### mv 排行
 
