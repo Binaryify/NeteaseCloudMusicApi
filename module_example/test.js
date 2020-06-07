@@ -1,4 +1,4 @@
-const { login_cellphone, user_cloud, album_sublist } = require('../main')
+const { login_cellphone, user_cloud, album_sublist, song_url } = require('../main')
 async function test() {
   try {
     const result = await login_cellphone({
@@ -14,6 +14,11 @@ async function test() {
       cookie: result.body.cookie
     })
     console.log(result3.body)
+    const result4 = await song_url({
+      cookie: result.body.cookie,
+      id: 33894312
+    })
+    console.log(result4.body)
       
   } catch (error) {
     console.log(error)

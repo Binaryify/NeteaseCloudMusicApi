@@ -1,4 +1,7 @@
 # 更新日志
+### 3.32.3 | 2020.06.07
+- 修复 Nodejs 下 cookie 使用格式问题 [#812](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/812)
+
 ### 3.32.2 | 2020.06.05
 - 新增独家放送列表接口 [#808](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/808)
 
