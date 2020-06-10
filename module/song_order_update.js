@@ -7,7 +7,6 @@ module.exports = (query, request) => {
     op: 'update',
   }
 
-  console.log(data)
   return request(
     'POST', `http://interface.music.163.com/api/playlist/manipulate/tracks`, data,
     {

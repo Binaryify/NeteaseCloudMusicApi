@@ -1,15 +1,18 @@
 module.exports = (query, request) => {
   const data = {
-    groupId: query.id,
     offset: query.offset || 0,
-    need_preview_url: 'true',
-    total: true
-  }
+    total: 'true',
+    limit: query.limit || 99,
+  };
   return request(
-    'POST', `https://music.163.com/api/videotimeline/videogroup/otherclient/get`, data, {
+    'POST',
+    `https://music.163.com/api/cloudvideo/category/list`,
+    data,
+    {
       crypto: 'weapi',
       cookie: query.cookie,
       proxy: query.proxy
     }
-  )
-}
+  );
+};
+  

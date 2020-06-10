@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 const request = require('./util/request')
 const packageJSON = require('./package.json')
 const exec = require('child_process').exec
-const cache = require('apicache').middleware
+const cache = require('./util/apicache').middleware
 
 // version check
 exec('npm info NeteaseCloudMusicApi version', (err, stdout, stderr) => {

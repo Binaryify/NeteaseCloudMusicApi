@@ -2,7 +2,7 @@
 
 module.exports = (query, request) => {
   const data = {
-    type: 1,
+    type: query.type || 1,
     limit: 100,
     offset: 0,
     total: true
