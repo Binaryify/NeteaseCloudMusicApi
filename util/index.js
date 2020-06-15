@@ -4,6 +4,7 @@ module.exports = {
     return val === 'true' || val == '1'
   },
   cookieToJson(cookie) {
+    if (!cookie ) return {}
     let cookieArr = cookie.split(';');
     let obj = {} 
     cookieArr.forEach((i) => {

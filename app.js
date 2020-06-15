@@ -6,7 +6,7 @@ const request = require('./util/request')
 const packageJSON = require('./package.json')
 const exec = require('child_process').exec
 const cache = require('./util/apicache').middleware
-
+const { cookieToJson } = require('./util/index')
 // version check
 exec('npm info NeteaseCloudMusicApi version', (err, stdout, stderr) => {
   if(!err){
@@ -66,7 +66,11 @@ fs.readdirSync(path.join(__dirname, 'module')).reverse().forEach(file => {
   let question = require(path.join(__dirname, 'module', file))
 
   app.use(route, (req, res) => {
+    if(typeof req.query.cookie === 'string'){
+      req.query.cookie = cookieToJson(req.query.cookie)
+    }
     let query = Object.assign({}, {cookie: req.cookies}, req.query, req.body )
+
     question(query, request)
       .then(answer => {
         console.log('[OK]', decodeURIComponent(req.originalUrl))
