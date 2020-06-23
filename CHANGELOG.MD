@@ -1,4 +1,7 @@
 # 更新日志
+### 3.33.2 | 2020.06.23
+- 更新每日推荐接口 [#826](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/826)
+
 ### 3.33.1 | 2020.06.15
 - 修复直接调用时传入 cookie 不生效的问题 [#822](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/822)
 
