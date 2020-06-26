@@ -1,4 +1,4 @@
-// dj非热门类型
+// 电台非热门类型
 
 module.exports = (query, request) => {
 
