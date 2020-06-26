@@ -1,7 +1,8 @@
+// MV 点赞转发评论数数据
 
 module.exports = (query, request) => {
   const data = {
-    'threadid': `R_MV_5_${query.mvid}`,
+    'threadid': `从${query.mvid}`,
     'composeliked': true
   }
   return request(

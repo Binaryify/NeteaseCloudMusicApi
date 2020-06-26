@@ -1,3 +1,5 @@
+// 获取动态评论
+
 module.exports = (query, request) => {
   const data = {
     limit: query.limit || 20,

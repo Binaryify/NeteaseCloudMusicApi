@@ -1,3 +1,5 @@
+// 视频分类列表
+
 module.exports = (query, request) => {
   const data = {
     offset: query.offset || 0,
