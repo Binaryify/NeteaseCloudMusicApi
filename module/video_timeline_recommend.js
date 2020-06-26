@@ -1,3 +1,5 @@
+// 推荐视频
+
 module.exports = (query, request) => {
   const data = {
     offset: query.offset || 0,

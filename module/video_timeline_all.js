@@ -1,3 +1,5 @@
+// 全部视频列表
+
 module.exports = (query, request) => {
   const data = {
     groupId: 0,

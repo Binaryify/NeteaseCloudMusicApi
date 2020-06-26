@@ -1,3 +1,5 @@
+// 批量请求接口
+
 module.exports = (query, request) => {
   const data = {
     'e_r': true
