@@ -1,4 +1,4 @@
-// // 已收藏MV列表
+// 已收藏MV列表
 
 module.exports = (query, request) => {
   const data = {

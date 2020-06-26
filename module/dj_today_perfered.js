@@ -1,4 +1,4 @@
-// dj今日优选
+// 电台今日优选
 
 module.exports = (query, request) => {
   const data = {

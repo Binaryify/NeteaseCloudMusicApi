@@ -1,4 +1,4 @@
-// 创建歌单
+// 删除歌单
 
 module.exports = (query, request) => {
   query.cookie.os = 'pc';
