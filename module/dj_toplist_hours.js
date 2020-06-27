@@ -1,4 +1,5 @@
-// 24小时榜
+// 电台24小时主播榜
+
 module.exports = (query, request) => {
   const data = {
     limit: query.limit || 100

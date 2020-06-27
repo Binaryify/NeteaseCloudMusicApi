@@ -1,3 +1,5 @@
+// 视频标签列表
+
 module.exports = (query, request) => {
   const data = {
   };

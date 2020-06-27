@@ -1,3 +1,5 @@
+// 歌单收藏者
+
 module.exports = (query, request) => {
   const data = {
     id: query.id,

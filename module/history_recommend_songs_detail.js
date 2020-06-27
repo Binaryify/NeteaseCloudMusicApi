@@ -1,4 +1,4 @@
-// 历史每日推荐歌曲
+// 历史每日推荐歌曲详情
 
 module.exports = (query, request) => {
   query.cookie.os = 'ios'

@@ -1,3 +1,4 @@
+// MV 点赞转发评论数数据
 
 module.exports = (query, request) => {
   const data = {
