@@ -1,4 +1,4 @@
-// dj推荐类型
+// 电台推荐类型
 
 module.exports = (query, request) => {
 

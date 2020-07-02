@@ -1,11 +1,14 @@
-// 视频标签列表
+// 视频分类列表
 
 module.exports = (query, request) => {
   const data = {
+    offset: query.offset || 0,
+    total: 'true',
+    limit: query.limit || 99,
   };
   return request(
     'POST',
-    `https://music.163.com/api/cloudvideo/group/list`,
+    `https://music.163.com/api/cloudvideo/category/list`,
     data,
     {
       crypto: 'weapi',

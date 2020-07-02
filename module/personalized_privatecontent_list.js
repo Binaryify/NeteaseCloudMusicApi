@@ -1,15 +1,14 @@
-// 获取动态评论
+// 独家放送列表
 
 module.exports = (query, request) => {
   const data = {
-    limit: query.limit || 20,
     offset: query.offset || 0,
-    beforeTime: query.before || 0
-  };
+    total: 'true',
+    limit: query.limit || 60,
+  }
   return request(
     'POST',
-    `https://music.163.com/weapi/v1/resource/comments/${query.threadId}`,
-    data,
+    `https://music.163.com/api/v2/privatecontent/list`, data,
     { crypto: 'weapi', cookie: query.cookie, proxy: query.proxy }
-  );
-};
+  )
+}

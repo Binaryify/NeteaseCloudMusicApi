@@ -1,11 +1,12 @@
-// MV详情
+// 编辑歌单顺序
 
 module.exports = (query, request) => {
+  query.cookie.os = 'pc'
   const data = {
-    id: query.mvid
+    ids: query.ids
   }
   return request(
-    'POST', `https://music.163.com/api/v1/mv/detail`, data,
+    'POST', `https://music.163.com/api/playlist/order/update`, data,
     {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
   )
 }

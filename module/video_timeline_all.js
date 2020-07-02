@@ -1,14 +1,16 @@
-// 视频标签/分类下的视频
+// 全部视频列表
 
 module.exports = (query, request) => {
   const data = {
-    groupId: query.id,
+    groupId: 0,
     offset: query.offset || 0,
     need_preview_url: 'true',
     total: true
   }
+  console.log({data})
+  //   /api/videotimeline/otherclient/get
   return request(
-    'POST', `https://music.163.com/api/videotimeline/videogroup/otherclient/get`, data, {
+    'POST', `https://music.163.com/api/videotimeline/otherclient/get`, data, {
       crypto: 'weapi',
       cookie: query.cookie,
       proxy: query.proxy

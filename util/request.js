@@ -40,7 +40,6 @@ const createRequest = (method, url, data, options) => {
     if (url.includes('music.163.com'))
       headers['Referer'] = 'https://music.163.com'
     // headers['X-Real-IP'] = '118.88.88.88'
-
     if (typeof options.cookie === 'object')
       headers['Cookie'] = Object.keys(options.cookie)
         .map(
@@ -51,7 +50,10 @@ const createRequest = (method, url, data, options) => {
         )
         .join('; ')
     else if (options.cookie) headers['Cookie'] = options.cookie
-
+      
+    if (!headers['Cookie']) {
+      headers['Cookie'] = options.token || ''
+    }
     if (options.crypto === 'weapi') {
       let csrfToken = (headers['Cookie'] || '').match(/_csrf=([^(;|$)]+)/)
       data.csrf_token = csrfToken ? csrfToken[1] : ''
