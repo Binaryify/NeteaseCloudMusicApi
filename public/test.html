@@ -22,6 +22,9 @@
             }
             $.ajax({
               url: `http://localhost:${port}/login/cellphone?phone=${phone}&password=${password}`,
+              xhrFields: {
+                withCredentials: true //关键
+              },
               success: function(data) {
                 console.log(data)
                 $.ajax({
@@ -43,7 +46,8 @@
             })
 
             axios({
-              url: `http://localhost:${port}/login/cellphone?phone=${phone}&password=${password}`
+              url: `http://localhost:${port}/login/cellphone?phone=${phone}&password=${password}`,
+              withCredentials: true //关键
             }).then(function(res) {
               console.log(res.data)
               axios({
