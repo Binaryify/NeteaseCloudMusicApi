@@ -7,7 +7,7 @@ module.exports = async (query, request) => {
   const data = {
     phone: query.phone,
     countrycode: query.countrycode,
-    password: crypto.createHash('md5').update(query.password).digest('hex'),
+    password: query.md5_password || crypto.createHash('md5').update(query.password).digest('hex'),
     rememberLogin: 'true'
   }
   let result = await request(

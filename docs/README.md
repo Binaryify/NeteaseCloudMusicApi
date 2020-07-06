@@ -329,11 +329,16 @@ $ sudo docker run -d -p 3000:3000 netease-music-api
 
 `password`: 密码
 
+
+
+**可选参数 :**   
+`countrycode`: 国家码，用于国外手机号登陆，例如美国传入：`1`
+
+`md5_password`: md5加密后的密码,传入后 `password` 将失效  
+
 **接口地址 :** `/login/cellphone`
 
-**可选参数 :** `countrycode`: 国家码，用于国外手机号登陆，例如美国传入：`1`
-
-**调用例子 :** `/login/cellphone?phone=xxx&password=yyy`
+**调用例子 :** `/login/cellphone?phone=xxx&password=yyy` `/login/cellphone?phone=xxx&md5_password=yyy`
 
 #### 2. 邮箱登录
 
@@ -342,6 +347,10 @@ $ sudo docker run -d -p 3000:3000 netease-music-api
 `email`: 163 网易邮箱   
 
 `password`: 密码
+
+**可选参数 :**  
+
+`md5_password`: md5加密后的密码,传入后 `password` 将失效
 
 **接口地址 :** `/login`
 

@@ -6,7 +6,7 @@ module.exports = async (query, request) => {
   query.cookie.os = 'pc'
   const data = {
     username: query.email,
-    password: crypto.createHash('md5').update(query.password).digest('hex'),
+    password: query.md5_password || crypto.createHash('md5').update(query.password).digest('hex'),
     rememberLogin: 'true'
   }
   let result = await request(
