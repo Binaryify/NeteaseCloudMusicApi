@@ -1,4 +1,9 @@
 # 更新日志
+### 3.34.2 | 2020.07.13
+- 修复`获取用户播放记录`接口参数错误问题 [#849](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/849)
+
+- 增加`国家编码列表`接口 [#841](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/841)
+
 ### 3.34.1 | 2020.07.06
 - 登录接口增加 `md5_password` 参数 [#839](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/839)
 

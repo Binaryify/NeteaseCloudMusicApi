@@ -171,6 +171,7 @@
 153. 获取全部视频列表接口
 154. 获取历史日推可用日期列表
 155. 获取历史日推详细数据
+156. 国家编码列表
 
 ## 安装
 
@@ -516,6 +517,11 @@ signature：用户签名
 **接口地址 :** `/user/update`
 
 **调用例子 :** `/user/update?gender=0&signature=测试签名&city=440300&nickname=binary&birthday=1525918298004&province=440000`
+
+### 国家编码列表
+说明 : 调用此接口,可获取国家编码列表
+
+**接口地址 :** `/countries/code/list`
 
 ### 获取用户歌单
 
