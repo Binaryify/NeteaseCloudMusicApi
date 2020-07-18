@@ -3,14 +3,14 @@
 // 数据结构可以参考 https://github.com/hcanyz/flutter-netease-music-api/blob/master/lib/src/api/uncategorized/bean.dart#L290 HomeDragonBallWrap 
 // !需要登录或者匿名登录，非登录返回 []
 module.exports = (query, request) => {
-    const data = {}
-    return request(
-        'POST', `https://music.163.com/eapi/homepage/dragon/ball/static`, data,
-        {
-            crypto: 'eapi',
-            cookie: query.cookie,
-            proxy: query.proxy,
-            url: '/api/homepage/dragon/ball/static'
-        }
-    )
+  const data = {}
+  return request(
+    'POST', `https://music.163.com/eapi/homepage/dragon/ball/static`, data,
+    {
+      crypto: 'eapi',
+      cookie: query.cookie,
+      proxy: query.proxy,
+      url: '/api/homepage/dragon/ball/static'
+    }
+  )
 }

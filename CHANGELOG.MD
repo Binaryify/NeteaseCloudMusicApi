@@ -1,4 +1,7 @@
 # 更新日志
+### 3.35.0 | 2020.07.18
+- 新增`首页-发现`,`首页-发现-圆形图标入口列表`接口 [#851](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/851)
+
 ### 3.34.2 | 2020.07.13
 - 修复`获取用户播放记录`接口参数错误问题 [#849](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/849)
 
