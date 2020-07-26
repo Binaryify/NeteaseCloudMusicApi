@@ -1,4 +1,8 @@
 # 更新日志
+### 3.36.0 | 2020.07.26
+- 新增`全部新碟`,`数字专辑-新碟上架`,`数字专辑&数字单曲-榜单`,`数字专辑-语种风格馆`,`数字专辑详情`接口 [#852](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/852)
+- 更新`新碟上架`接口,修改传入参数,返回数据结构有变化
+
 ### 3.35.0 | 2020.07.18
 - 新增`首页-发现`,`首页-发现-圆形图标入口列表`接口 [#851](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/851)
 
