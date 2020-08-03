@@ -1,4 +1,8 @@
 # 更新日志
+### 3.37.0 | 2020.08.03
+- 新增`更新头像`,`歌单封面上传`接口和相关例子 [#403](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/403) [#857](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/857)
+- 加入`axios`依赖
+
 ### 3.36.0 | 2020.07.26
 - 新增`全部新碟`,`数字专辑-新碟上架`,`数字专辑&数字单曲-榜单`,`数字专辑-语种风格馆`,`数字专辑详情`接口 [#852](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/852)
 - 更新`新碟上架`接口,修改传入参数,返回数据结构有变化

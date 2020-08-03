@@ -7,7 +7,6 @@ module.exports = (query, request) => {
     need_preview_url: 'true',
     total: true
   }
-  console.log({data})
   //   /api/videotimeline/otherclient/get
   return request(
     'POST', `https://music.163.com/api/videotimeline/otherclient/get`, data, {

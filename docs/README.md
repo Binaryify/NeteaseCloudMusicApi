@@ -179,6 +179,8 @@
 161. 数字专辑&数字单曲-榜单
 162. 数字专辑-语种风格馆
 163. 数字专辑详情
+164. 更新头像
+165. 歌单封面上传
 
 ## 安装
 
@@ -525,6 +527,20 @@ signature：用户签名
 
 **调用例子 :** `/user/update?gender=0&signature=测试签名&city=440300&nickname=binary&birthday=1525918298004&province=440000`
 
+### 更新头像
+说明 : 登陆后调用此接口,使用`'Content-Type': 'multipart/form-data'`上传图片formData(name为'imgFile'),可更新头像(参考:https://github.com/Binaryify/NeteaseCloudMusicApi/blob/master/public/upload.html)
+
+**可选参数 :**
+
+`imgSize` : 图片尺寸,默认为300
+
+`imgX` : 水平裁剪偏移,方形图片可不传,默认为0
+`imgY` : 垂直裁剪偏移,方形图片可不传,默认为0
+
+**接口地址 :** `/avatar/upload`
+
+**调用例子 :** `/avatar/upload?imgSize=200`
+
 ### 国家编码列表
 说明 : 调用此接口,可获取国家编码列表
 
@@ -606,6 +622,25 @@ tags: 歌单标签
 **接口地址 :** `/playlist/tags/update`  
 
 **调用例子 :** `/playlist/tags/update?id=24381616&tags=学习` 
+
+
+### 歌单封面上传
+说明 : 登陆后调用此接口,使用`'Content-Type': 'multipart/form-data'`上传图片formData(name为'imgFile'),可更新歌单封面(参考:https://github.com/Binaryify/NeteaseCloudMusicApi/blob/master/public//playlist_cover_update.html)
+
+**必选参数 :**  
+`id`: 歌单id 3143833470
+
+**可选参数 :**
+
+`imgSize` : 图片尺寸,默认为300
+
+`imgX` : 水平裁剪偏移,方形图片可不传,默认为0
+`imgY` : 垂直裁剪偏移,方形图片可不传,默认为0
+
+**接口地址 :** `/playlist/cover/update`
+
+**调用例子 :** `/playlist/cover/update?id=3143833470&imgSize=200`
+
 
 ### 调整歌单顺序
 说明 : 登陆后调用此接口,可以根据歌单id顺序调整歌单顺序

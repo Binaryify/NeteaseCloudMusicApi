@@ -7,6 +7,7 @@ const packageJSON = require('./package.json')
 const exec = require('child_process').exec
 const cache = require('./util/apicache').middleware
 const { cookieToJson } = require('./util/index')
+const fileUpload = require('express-fileupload');
 // version check
 exec('npm info NeteaseCloudMusicApi version', (err, stdout, stderr) => {
   if(!err){
@@ -47,12 +48,15 @@ app.use((req, res, next) => {
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 
-// cache
-app.use(cache('2 minutes', ((req, res) => res.statusCode === 200)))
+app.use(fileUpload());
+
+
 
 // static
 app.use(express.static(path.join(__dirname, 'public')))
 
+// cache
+app.use(cache('2 minutes', ((req, res) => res.statusCode === 200)))
 // router
 const special = {
   'daily_signin.js': '/daily_signin',
@@ -69,7 +73,7 @@ fs.readdirSync(path.join(__dirname, 'module')).reverse().forEach(file => {
     if(typeof req.query.cookie === 'string'){
       req.query.cookie = cookieToJson(req.query.cookie)
     }
-    let query = Object.assign({}, {cookie: req.cookies}, req.query, req.body )
+    let query = Object.assign({}, {cookie: req.cookies}, req.query, req.body, req.files )
 
     question(query, request)
       .then(answer => {
