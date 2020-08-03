@@ -32,7 +32,8 @@
   "license": "MIT",
   "files": [
     "module",
-    "util"
+    "util",
+    "plugins"
   ],
   "dependencies": {
     "axios": "^0.19.2",
