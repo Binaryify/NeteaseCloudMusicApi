@@ -8,7 +8,7 @@
   <body>
       
     <input id="file" type="file" name="filename" />
-    <img id="avatar" style="height: 200px; width: 200px; border-radius: 50%;" />
+    <img id="playlist_cover" style="height: 200px; width: 200px; border-radius: 50%;" />
     <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.20.0-0/axios.min.js
     "></script>
     <script>
@@ -42,7 +42,7 @@
         const res = await axios({
           url: `http://localhost:${port}/playlist/detail?id=${playlist_id}`,
         })
-        document.querySelector('#avatar').src = res.data.playlist.coverImgUrl
+        document.querySelector('#playlist_cover').src = res.data.playlist.coverImgUrl
       }
       async function login() {
         const res = await axios({
@@ -63,7 +63,7 @@
           },
           data: formData,
         })
-        document.querySelector('#avatar').src = res.data.data.url
+        document.querySelector('#playlist_cover').src = res.data.data.url
       }
       function getImgSize(file) {
         return new Promise((resolve, reject) => {
