@@ -5,8 +5,8 @@ module.exports = (query, request) => {
     userId: query.uid,
     limit: query.limit || 30,
     time: query.before || 0,
-    total: 'true'
-  };
+    total: 'true',
+  }
   return request(
     'POST',
     `https://music.163.com/api/msg/private/history`,
@@ -14,7 +14,8 @@ module.exports = (query, request) => {
     {
       crypto: 'weapi',
       cookie: query.cookie,
-      proxy: query.proxy
+      proxy: query.proxy,
+      realIP: query.realIP,
     }
-  );
-};
+  )
+}

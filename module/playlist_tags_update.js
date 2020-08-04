@@ -3,15 +3,18 @@
 module.exports = (query, request) => {
   const data = {
     id: query.id,
-    tags: query.tags
+    tags: query.tags,
   }
   return request(
-    'POST', `http://interface3.music.163.com/eapi/playlist/tags/update`, data,
+    'POST',
+    `http://interface3.music.163.com/eapi/playlist/tags/update`,
+    data,
     {
       crypto: 'eapi',
       cookie: query.cookie,
       proxy: query.proxy,
-      url: '/api/playlist/tags/update'
+      url: '/api/playlist/tags/update',
+      realIP: query.realIP,
     }
   )
 }

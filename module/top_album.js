@@ -12,7 +12,14 @@ module.exports = (query, request) => {
     month: query.month || date.getMonth() + 1,
   }
   return request(
-    'POST', `https://music.163.com/api/discovery/new/albums/area`, data,
-    {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
+    'POST',
+    `https://music.163.com/api/discovery/new/albums/area`,
+    data,
+    {
+      crypto: 'weapi',
+      cookie: query.cookie,
+      proxy: query.proxy,
+      realIP: query.realIP,
+    }
   )
 }

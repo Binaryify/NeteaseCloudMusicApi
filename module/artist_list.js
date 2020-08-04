@@ -19,15 +19,19 @@
 
 module.exports = (query, request) => {
   const data = {
-    initial: isNaN(query.initial) ? (query.initial || '').toUpperCase().charCodeAt() || undefined : query.initial,
+    initial: isNaN(query.initial)
+      ? (query.initial || '').toUpperCase().charCodeAt() || undefined
+      : query.initial,
     offset: query.offset || 0,
     limit: query.limit || 30,
     total: true,
     type: query.type || '1',
-    area: query.area
+    area: query.area,
   }
-  return request(
-    'POST', `https://music.163.com/api/v1/artist/list`, data,
-    {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
-  )
+  return request('POST', `https://music.163.com/api/v1/artist/list`, data, {
+    crypto: 'weapi',
+    cookie: query.cookie,
+    proxy: query.proxy,
+    realIP: query.realIP,
+  })
 }
