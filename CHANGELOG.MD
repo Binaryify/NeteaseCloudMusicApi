@@ -1,4 +1,7 @@
 # 更新日志
+### 3.37.1 | 2020.08.04
+- 修复依赖问题
+
 ### 3.37.0 | 2020.08.03
 - 新增`更新头像`,`歌单封面上传`接口和相关例子 [#403](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/403) [#857](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/857)
 - 加入`axios`依赖

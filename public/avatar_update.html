@@ -33,7 +33,7 @@
           false
         )
         const res = await axios({
-          url: `http://localhost:${port}/user/detail?uid=32953014`,
+          url: `http://localhost:${port}/user/detail?uid=32953014&timestamp=${Date.now()}`,
           withCredentials: true, //关键
         })
         document.querySelector('#avatar').src = res.data.profile.avatarUrl
@@ -51,7 +51,7 @@
         const imgSize = await  getImgSize(file)
         const res = await axios({
           method: 'post',
-          url: `http://localhost:3000/avatar/upload?cookie=${cookieToken}&imgSize=${imgSize.width}&imgX=0&imgY=0`,
+          url: `http://localhost:3000/avatar/upload?cookie=${cookieToken}&imgSize=${imgSize.width}&imgX=0&imgY=0&timestamp=${Date.now()}`,
           headers: {
             'Content-Type': 'multipart/form-data',
           },

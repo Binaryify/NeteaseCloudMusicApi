@@ -40,7 +40,7 @@
           false
         )
         const res = await axios({
-          url: `http://localhost:${port}/playlist/detail?id=${playlist_id}`,
+          url: `http://localhost:${port}/playlist/detail?id=${playlist_id}&timestamp=${Date.now()}`,
         })
         document.querySelector('#playlist_cover').src = res.data.playlist.coverImgUrl
       }
@@ -57,7 +57,7 @@
         const imgSize = await getImgSize(file)
         const res = await axios({
           method: 'post',
-          url: `http://localhost:3000/playlist/cover/update?id=${playlist_id}&cookie=${cookieToken}&imgSize=${imgSize.width}&imgX=0&imgY=0`,
+          url: `http://localhost:3000/playlist/cover/update?id=${playlist_id}&cookie=${cookieToken}&imgSize=${imgSize.width}&imgX=0&imgY=0&timestamp=${Date.now()}`,
           headers: {
             'Content-Type': 'multipart/form-data',
           },
