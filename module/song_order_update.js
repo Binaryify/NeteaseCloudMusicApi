@@ -8,12 +8,15 @@ module.exports = (query, request) => {
   }
 
   return request(
-    'POST', `http://interface.music.163.com/api/playlist/manipulate/tracks`, data,
+    'POST',
+    `http://interface.music.163.com/api/playlist/manipulate/tracks`,
+    data,
     {
       crypto: 'weapi',
       cookie: query.cookie,
       proxy: query.proxy,
-      url: '/api/playlist/desc/update'
+      url: '/api/playlist/desc/update',
+      realIP: query.realIP,
     }
   )
 }

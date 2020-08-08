@@ -2,10 +2,17 @@
 
 module.exports = (query, request) => {
   const data = {
-    type: 'recommend'
+    type: 'recommend',
   }
   return request(
-    'POST', `https://music.163.com/weapi/personalized/newsong`, data,
-    {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
+    'POST',
+    `https://music.163.com/weapi/personalized/newsong`,
+    data,
+    {
+      crypto: 'weapi',
+      cookie: query.cookie,
+      proxy: query.proxy,
+      realIP: query.realIP,
+    }
   )
 }

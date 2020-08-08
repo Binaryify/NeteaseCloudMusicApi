@@ -6,10 +6,12 @@ module.exports = (query, request) => {
     order: query.order || 'hot', // hot,new
     limit: query.limit || 50,
     offset: query.offset || 0,
-    total: true
+    total: true,
   }
-  return request(
-    'POST', `https://music.163.com/weapi/playlist/list`, data,
-    {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
-  )
+  return request('POST', `https://music.163.com/weapi/playlist/list`, data, {
+    crypto: 'weapi',
+    cookie: query.cookie,
+    proxy: query.proxy,
+    realIP: query.realIP,
+  })
 }

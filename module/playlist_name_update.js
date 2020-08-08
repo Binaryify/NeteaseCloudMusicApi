@@ -3,15 +3,18 @@
 module.exports = (query, request) => {
   const data = {
     id: query.id,
-    name: query.name
+    name: query.name,
   }
   return request(
-    'POST', `http://interface3.music.163.com/eapi/playlist/update/name`, data,
+    'POST',
+    `http://interface3.music.163.com/eapi/playlist/update/name`,
+    data,
     {
       crypto: 'eapi',
       cookie: query.cookie,
       proxy: query.proxy,
-      url: '/api/playlist/update/name'
+      url: '/api/playlist/update/name',
+      realIP: query.realIP,
     }
   )
 }

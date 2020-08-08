@@ -8,10 +8,17 @@ module.exports = (query, request) => {
     gender: query.gender,
     nickname: query.nickname,
     province: query.province,
-    signature: query.signature
+    signature: query.signature,
   }
   return request(
-    'POST', `https://music.163.com/weapi/user/profile/update`, data,
-    {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
+    'POST',
+    `https://music.163.com/weapi/user/profile/update`,
+    data,
+    {
+      crypto: 'weapi',
+      cookie: query.cookie,
+      proxy: query.proxy,
+      realIP: query.realIP,
+    }
   )
 }

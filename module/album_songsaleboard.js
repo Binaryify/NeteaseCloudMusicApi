@@ -14,6 +14,11 @@ module.exports = (query, request) => {
     'POST',
     `https://music.163.com/api/feealbum/songsaleboard/${type}/type`,
     data,
-    { crypto: 'weapi', cookie: query.cookie, proxy: query.proxy }
+    {
+      crypto: 'weapi',
+      cookie: query.cookie,
+      proxy: query.proxy,
+      realIP: query.realIP,
+    }
   )
 }

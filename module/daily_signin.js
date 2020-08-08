@@ -9,10 +9,12 @@
 
 module.exports = (query, request) => {
   const data = {
-    type: query.type || 0
+    type: query.type || 0,
   }
-  return request(
-    'POST', `https://music.163.com/weapi/point/dailyTask`, data,
-    {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
-  )
+  return request('POST', `https://music.163.com/weapi/point/dailyTask`, data, {
+    crypto: 'weapi',
+    cookie: query.cookie,
+    proxy: query.proxy,
+    realIP: query.realIP,
+  })
 }

@@ -7,22 +7,32 @@ module.exports = async (query, request) => {
   const data = {
     phone: query.phone,
     countrycode: query.countrycode,
-    password: query.md5_password || crypto.createHash('md5').update(query.password).digest('hex'),
-    rememberLogin: 'true'
+    password:
+      query.md5_password ||
+      crypto.createHash('md5').update(query.password).digest('hex'),
+    rememberLogin: 'true',
   }
   let result = await request(
-    'POST', `https://music.163.com/weapi/login/cellphone`, data,
-    {crypto: 'weapi', ua: 'pc', cookie: query.cookie, proxy: query.proxy}
+    'POST',
+    `https://music.163.com/weapi/login/cellphone`,
+    data,
+    {
+      crypto: 'weapi',
+      ua: 'pc',
+      cookie: query.cookie,
+      proxy: query.proxy,
+      realIP: query.realIP,
+    }
   )
- 
+
   if (result.body.code === 200) {
     result = {
       status: 200,
       body: {
         ...result.body,
-        cookie: result.cookie.join(';')
+        cookie: result.cookie.join(';'),
       },
-      cookie: result.cookie
+      cookie: result.cookie,
     }
   }
   return result

@@ -5,7 +5,7 @@ module.exports = (query, request) => {
     offset: query.offset || 0,
     total: 'true',
     limit: query.limit || 99,
-  };
+  }
   return request(
     'POST',
     `https://music.163.com/api/cloudvideo/category/list`,
@@ -13,8 +13,8 @@ module.exports = (query, request) => {
     {
       crypto: 'weapi',
       cookie: query.cookie,
-      proxy: query.proxy
+      proxy: query.proxy,
+      realIP: query.realIP,
     }
-  );
-};
-  
+  )
+}

@@ -4,10 +4,17 @@ module.exports = (query, request) => {
   const data = {
     op: query.op, // del,add
     pid: query.pid, // 歌单id
-    trackIds: '[' + query.tracks + ']' // 歌曲id
+    trackIds: '[' + query.tracks + ']', // 歌曲id
   }
   return request(
-    'POST', `https://music.163.com/weapi/playlist/manipulate/tracks`, data,
-    {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
+    'POST',
+    `https://music.163.com/weapi/playlist/manipulate/tracks`,
+    data,
+    {
+      crypto: 'weapi',
+      cookie: query.cookie,
+      proxy: query.proxy,
+      realIP: query.realIP,
+    }
   )
 }
