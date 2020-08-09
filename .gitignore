@@ -3,7 +3,6 @@ node_modules
 *.log
 
 .idea/
-package-lock.json
-yarn.lock
+
 
 .vscode
