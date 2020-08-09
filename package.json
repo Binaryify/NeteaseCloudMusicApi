@@ -43,12 +43,12 @@
     "request": "^2.88.0"
   },
   "devDependencies": {
-    "eslint": "^6.6.0",
-    "eslint-plugin-html": "^6.0.0",
-    "husky": "^3.0.9",
-    "intelli-espower-loader": "^1.0.1",
-    "lint-staged": "^9.4.2",
-    "mocha": "^6.2.2",
-    "power-assert": "^1.6.1"
+    "eslint": "6.8.0",
+    "eslint-plugin-html": "6.0.3",
+    "husky": "3.1.0",
+    "intelli-espower-loader": "1.0.1",
+    "lint-staged": "9.5.0",
+    "mocha": "6.2.3",
+    "power-assert": "1.6.1"
   }
 }
