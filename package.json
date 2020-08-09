@@ -47,7 +47,7 @@
     "eslint-plugin-html": "6.0.3",
     "husky": "4.2.5",
     "intelli-espower-loader": "1.0.1",
-    "lint-staged": "9.5.0",
+    "lint-staged": "10.2.11",
     "mocha": "6.2.3",
     "power-assert": "1.6.1"
   }
