@@ -43,7 +43,7 @@
     "request": "^2.88.0"
   },
   "devDependencies": {
-    "eslint": "6.8.0",
+    "eslint": "7.6.0",
     "eslint-plugin-html": "6.0.3",
     "husky": "3.1.0",
     "intelli-espower-loader": "1.0.1",
