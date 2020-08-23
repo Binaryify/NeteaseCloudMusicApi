@@ -10,6 +10,8 @@ module.exports = (query, request) => {
     type: query.type || 'new',
     year: query.year || date.getFullYear(),
     month: query.month || date.getMonth() + 1,
+    total: false,
+    rcmd: false
   }
   return request(
     'POST',

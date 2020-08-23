@@ -3,7 +3,7 @@
 module.exports = (query, request) => {
   const data = {
     id: query.id,
-    r: query.res || 1080,
+    r: query.r || 1080,
   }
   return request(
     'POST',

@@ -1,4 +1,9 @@
 # 更新日志
+### 3.39.0 | 2020.08.23
+- 新增`cloudsearch`接口[#893](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/893)
+- `mv 地址`接口修改分辨率参数 [#883](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/883)
+- 修复新碟上架接口分页问题 [#892](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/892)
+
 ### 3.38.0 | 2020.08.09
 - 新增`歌曲楼层评论`,`歌手全部歌曲`接口 [#864](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/864) [#867](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/867)
 - 支持收藏VIP或付费歌曲到歌单 [#860](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/860)
