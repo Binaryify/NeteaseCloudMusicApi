@@ -330,6 +330,8 @@ $ sudo docker run -d -p 3000:3000 netease-music-api
 
 !> 图片加上 `?param=宽y高` 可控制图片尺寸，如 `http://p4.music.126.net/JzNK4a5PjjPIXAgVlqEc5Q==/109951164154280311.jpg?param=200y200`, `http://p4.music.126.net/JzNK4a5PjjPIXAgVlqEc5Q==/109951164154280311.jpg?param=50y50`
 
+!> 分页接口返回字段里有`more`,more为true则为有下一页
+
 ### 登录
 
 说明 : 登录有两个接口,建议使用`encodeURIComponent`对密码编码或者使用`POST`请求,避免某些特殊字符无法解析,如`#`(`#`在url中会被识别为hash,而不是query)
