@@ -3,12 +3,13 @@ module.exports = {
   parserOptions: {
     parser: 'babel-eslint',
     ecmaVersion: 2018,
-    sourceType: 'module'
+    sourceType: 'module',
   },
   plugins: ['html'],
+  extends: ['plugin:prettier/recommended'],
   env: {
     browser: true,
-    node: true
+    node: true,
   },
 
   rules: {
@@ -18,8 +19,8 @@ module.exports = {
       2,
       {
         beforeColon: false,
-        afterColon: true
-      }
+        afterColon: true,
+      },
     ],
     'no-octal': 2,
     'no-redeclare': 2,
@@ -31,18 +32,18 @@ module.exports = {
       'single',
       {
         avoidEscape: true,
-        allowTemplateLiterals: true
-      }
-    ]
+        allowTemplateLiterals: true,
+      },
+    ],
   },
   overrides: [
     {
       files: ['**/*.ts'],
       parser: '@typescript-eslint/parser',
       extends: [
-        'plugin:@typescript-eslint/recommended' // Uses the recommended rules from the @typescript-eslint/eslint-plugin
+        'plugin:@typescript-eslint/recommended', // Uses the recommended rules from the @typescript-eslint/eslint-plugin
+        'prettier/@typescript-eslint',
       ],
-
-    }
-  ]
+    },
+  ],
 }
