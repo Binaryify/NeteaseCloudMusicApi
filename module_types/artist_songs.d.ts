@@ -1,6 +1,6 @@
 import { RequestBaseConfig } from './base'
 
-export interface ArtistSongRequestConfig extends RequestBaseConfig {
+export interface ArtistSongsRequestConfig extends RequestBaseConfig {
   id: string
   order?: 'hot' | 'time'
   offset?: number
