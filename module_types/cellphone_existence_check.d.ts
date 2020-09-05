@@ -1,6 +1,7 @@
 import { RequestBaseConfig } from './base'
 
-export interface CaptchaExistenceCheckRequestConfig extends RequestBaseConfig {
+export interface CellphoneExistenceCheckRequestConfig
+  extends RequestBaseConfig {
   cellphone: string
   countrycode: string
 }

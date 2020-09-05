@@ -1,6 +1,7 @@
 export interface APIBaseResponse {
   code: number
   cookie: string
+  [index: string]: unknown
 }
 
 export interface RequestBaseConfig {

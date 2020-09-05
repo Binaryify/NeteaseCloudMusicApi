@@ -14,6 +14,7 @@
     "网易云音乐nodejs"
   ],
   "main": "main.js",
+  "types": "main.d.ts",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
