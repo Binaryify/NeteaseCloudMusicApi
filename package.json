@@ -34,7 +34,10 @@
   "files": [
     "module",
     "util",
-    "plugins"
+    "plugins",
+    "main.d.ts",
+    "interface.d.ts",
+    "module_types"
   ],
   "dependencies": {
     "axios": "^0.20.0",
