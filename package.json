@@ -44,6 +44,7 @@
     "request": "^2.88.0"
   },
   "devDependencies": {
+    "@types/node": "^14.6.4",
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "@typescript-eslint/parser": "^4.0.1",
     "eslint": "^7.8.1",

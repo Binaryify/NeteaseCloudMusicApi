@@ -20,7 +20,7 @@ import {
   ArtistSubListRequestConfig,
   ArtistTopSongRequestConfig,
   ArtistsRequestConfig,
-  // AvatarUploadRequestConfig,
+  AvatarUploadRequestConfig,
   BannerRequestConfig,
   BatchRequestConfig,
   CaptchaSentRequestConfig,
@@ -105,7 +105,7 @@ import {
   PersonalizedPrivatecontentRequestConfig,
   PersonalizedPrivatecontentListRequestConfig,
   PlaylistCatlistRequestConfig,
-  // PlaylistCoverUpdateRequestConfig,
+  PlaylistCoverUpdateRequestConfig,
   PlaylistCreateRequestConfig,
   PlaylistDeleteRequestConfig,
   PlaylistDescUpdateRequestConfig,
@@ -245,9 +245,9 @@ interface SDKInstance {
     params: ArtistTopSongRequestConfig,
   ) => Promise<Response<APIBaseResponse>>
   artists: (params: ArtistsRequestConfig) => Promise<Response<APIBaseResponse>>
-  // avatar_upload: (
-  //  params: AvatarUploadRequestConfig,
-  //) => Promise<Response<APIBaseResponse>>
+  avatar_upload: (
+    params: AvatarUploadRequestConfig,
+  ) => Promise<Response<APIBaseResponse>>
   banner: (params: BannerRequestConfig) => Promise<Response<APIBaseResponse>>
   batch: (params: BatchRequestConfig) => Promise<Response<APIBaseResponse>>
   captcha_sent: (
@@ -468,9 +468,9 @@ interface SDKInstance {
   playlist_catlist: (
     params: PlaylistCatlistRequestConfig,
   ) => Promise<Response<APIBaseResponse>>
-  // playlist_cover_update: (
-  //  params: PlaylistCoverUpdateRequestConfig,
-  // ) => Promise<Response<APIBaseResponse>>
+  playlist_cover_update: (
+    params: PlaylistCoverUpdateRequestConfig,
+  ) => Promise<Response<APIBaseResponse>>
   playlist_create: (
     params: PlaylistCreateRequestConfig,
   ) => Promise<Response<APIBaseResponse>>
