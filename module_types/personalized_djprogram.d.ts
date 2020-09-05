@@ -1,5 +1,3 @@
 import { RequestBaseConfig } from './base'
 
-  export interface PersonalizedDjprogramRequestConfig extends RequestBaseConfig {
-  }
-  
+export type PersonalizedDjprogramRequestConfig = RequestBaseConfig

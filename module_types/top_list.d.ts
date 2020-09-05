@@ -1,5 +1,5 @@
 import { RequestBaseConfig } from './base'
 
-  export interface TopListRequestConfig extends RequestBaseConfig {
-  }
-  
+export interface TopListRequestConfig extends RequestBaseConfig {
+  id: string
+}

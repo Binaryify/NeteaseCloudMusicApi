@@ -1,5 +1,5 @@
 import { RequestBaseConfig } from './base'
 
-  export interface PlaylistDeleteRequestConfig extends RequestBaseConfig {
-  }
-  
+export interface PlaylistDeleteRequestConfig extends RequestBaseConfig {
+  id: string
+}

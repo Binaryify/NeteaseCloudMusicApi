@@ -1,5 +1,5 @@
 import { RequestBaseConfig } from './base'
 
-  export interface SimiMvRequestConfig extends RequestBaseConfig {
-  }
-  
+export interface SimiMvRequestConfig extends RequestBaseConfig {
+  mvid: string
+}

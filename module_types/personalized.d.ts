@@ -1,5 +1,5 @@
 import { RequestBaseConfig } from './base'
 
-  export interface PersonalizedRequestConfig extends RequestBaseConfig {
-  }
-  
+export interface PersonalizedRequestConfig extends RequestBaseConfig {
+  limit?: number
+}

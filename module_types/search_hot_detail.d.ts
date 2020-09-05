@@ -1,5 +1,3 @@
 import { RequestBaseConfig } from './base'
 
-  export interface SearchHotDetailRequestConfig extends RequestBaseConfig {
-  }
-  
+export type SearchHotDetailRequestConfig = RequestBaseConfig

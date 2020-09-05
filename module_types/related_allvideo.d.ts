@@ -1,5 +1,5 @@
 import { RequestBaseConfig } from './base'
 
-  export interface RelatedAllvideoRequestConfig extends RequestBaseConfig {
-  }
-  
+export interface RelatedAllvideoRequestConfig extends RequestBaseConfig {
+  id: string
+}

@@ -1,5 +1,5 @@
 import { RequestBaseConfig } from './base'
 
-  export interface VideoTimelineAllRequestConfig extends RequestBaseConfig {
-  }
-  
+export interface VideoTimelineAllRequestConfig extends RequestBaseConfig {
+  offset?: number
+}

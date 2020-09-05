@@ -1,5 +1,6 @@
 import { RequestBaseConfig } from './base'
 
-  export interface PlaylistDetailRequestConfig extends RequestBaseConfig {
-  }
-  
+export interface PlaylistDetailRequestConfig extends RequestBaseConfig {
+  id: string
+  s?: number
+}

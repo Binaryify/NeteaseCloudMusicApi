@@ -1,5 +1,3 @@
 import { RequestBaseConfig } from './base'
 
-  export interface PersonalizedMvRequestConfig extends RequestBaseConfig {
-  }
-  
+export type PersonalizedMvRequestConfig = RequestBaseConfig

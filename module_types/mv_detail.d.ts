@@ -1,5 +1,5 @@
 import { RequestBaseConfig } from './base'
 
-  export interface MvDetailRequestConfig extends RequestBaseConfig {
-  }
-  
+export interface MvDetailRequestConfig extends RequestBaseConfig {
+  mvid?: string
+}

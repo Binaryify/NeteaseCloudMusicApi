@@ -1,5 +1,3 @@
 import { RequestBaseConfig } from './base'
 
-  export interface HomepageDragonBallRequestConfig extends RequestBaseConfig {
-  }
-  
+export type HomepageDragonBallRequestConfig = RequestBaseConfig

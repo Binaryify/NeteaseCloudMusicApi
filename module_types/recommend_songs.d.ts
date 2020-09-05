@@ -1,5 +1,3 @@
 import { RequestBaseConfig } from './base'
 
-  export interface RecommendSongsRequestConfig extends RequestBaseConfig {
-  }
-  
+export type RecommendSongsRequestConfig = RequestBaseConfig

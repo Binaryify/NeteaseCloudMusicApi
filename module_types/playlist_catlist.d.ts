@@ -1,5 +1,3 @@
 import { RequestBaseConfig } from './base'
 
-  export interface PlaylistCatlistRequestConfig extends RequestBaseConfig {
-  }
-  
+export type PlaylistCatlistRequestConfig = RequestBaseConfig

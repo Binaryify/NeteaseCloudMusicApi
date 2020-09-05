@@ -1,5 +1,3 @@
 import { RequestBaseConfig } from './base'
 
-  export interface SearchDefaultRequestConfig extends RequestBaseConfig {
-  }
-  
+export type SearchDefaultRequestConfig = RequestBaseConfig

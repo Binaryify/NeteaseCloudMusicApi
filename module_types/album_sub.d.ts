@@ -2,5 +2,5 @@ import { RequestBaseConfig } from './base'
 
 export interface AlbumSubRequestConfig extends RequestBaseConfig {
   id: string
-  t: 'sub' | 'unsub'
+  t: 1 | 0
 }

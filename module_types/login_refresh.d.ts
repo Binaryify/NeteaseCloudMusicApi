@@ -1,5 +1,3 @@
 import { RequestBaseConfig } from './base'
 
-  export interface LoginRefreshRequestConfig extends RequestBaseConfig {
-  }
-  
+export type LoginRefreshRequestConfig = RequestBaseConfig
