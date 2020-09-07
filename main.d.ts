@@ -1,4 +1,4 @@
-export * from './interface'
+// export * from './interface'
 import {
   ActivateInitProfileRequestConfig,
   AlbumRequestConfig,
@@ -182,13 +182,14 @@ import {
   APIBaseResponse,
 } from './interface'
 // Start
-export interface Response<T> {
+// export interface Response<T> {
+interface Response<T> {
   status: number // The Http Response Code
   body: T // API Response body
   cookie: string[]
 }
 
-interface SDKInstance {
+interface APIInstance {
   activate_init_profile: (
     params: ActivateInitProfileRequestConfig,
   ) => Promise<Response<APIBaseResponse>>
@@ -669,7 +670,8 @@ interface SDKInstance {
   ) => Promise<Response<APIBaseResponse>>
   weblog: (params: WeblogRequestConfig) => Promise<Response<APIBaseResponse>>
 }
-
+interface SDKInstance extends APIInstance {
+  default: APIInstance
+}
 declare const SDK: SDKInstance
-
-export default SDK
+export = SDK
