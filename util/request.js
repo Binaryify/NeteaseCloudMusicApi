@@ -74,7 +74,7 @@ const createRequest = (method, url, data, options) => {
         params: data
       })
       headers['User-Agent'] =
-        'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36'
+        'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36'
       url = 'https://music.163.com/api/linux/forward'
     } else if (options.crypto === 'eapi') {
       const cookie = options.cookie || {};
