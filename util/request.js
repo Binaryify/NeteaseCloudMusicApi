@@ -6,7 +6,7 @@ const zlib = require('zlib')
 
 // request.debug = true // 开启可看到更详细信息
 
-function chooseUserAgent(ua = false) {
+const chooseUserAgent = (ua = false) => {
   // UA 列表要经常更新啊
   const userAgentList = {
     mobile: [
