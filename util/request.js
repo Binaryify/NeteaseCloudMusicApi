@@ -35,16 +35,8 @@ function chooseUserAgent(ua = false) {
       // Linux 就算了
     ]
   }
-  let realUserAgentList = []
-  if (!ua)
-    realUserAgentList = (userAgentList.mobile).concat(userAgentList.pc) // concat 把两个 array 合并
-  else if (ua == 'mobile')
-    realUserAgentList = userAgentList.mobile
-  else if (ua == 'pc')
-    realUserAgentList = userAgentList.pc
-  else
-    return ua // 最后返回自定义的 ua
-  return realUserAgentList[Math.floor(Math.random() * realUserAgentList.length)]
+  let realUserAgentList = userAgentList[ua] || (userAgentList.mobile).concat(userAgentList.pc)
+  return (['mobile', 'pc', false].indexOf(ua) > -1) ? realUserAgentList[Math.floor(Math.random() * realUserAgentList.length)] : ua
 }
 const createRequest = (method, url, data, options) => {
   return new Promise((resolve, reject) => {
