@@ -258,6 +258,15 @@ async function main() {
 main()
 ```
 
+## 支持 TypeScript
+```ts
+// test.ts
+import { banner } from 'NeteaseCloudMusicApi'
+banner({ type:0 }).then(res=>{
+  console.log(res)
+})
+```
+
 ## 更新到 v3.0 说明
 
 !>2018.10.14 更新到 3.0.0,使用了模块化机制,因为部分接口参数和 url 做了调整,如还不想升级到 3.0.0,请查看 [v2 的文档](http://binaryify.github.io/NeteaseCloudMusicApi/#/v2), [更新日志](https://github.com/Binaryify/NeteaseCloudMusicApi/blob/master/CHANGELOG.MD), [2.0+下载地址](https://github.com/Binaryify/NeteaseCloudMusicApi/releases/tag/v2.20.5), 同时 2.0+ 将不再维护
