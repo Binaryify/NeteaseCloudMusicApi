@@ -53,4 +53,4 @@ jobs:
     - run: npm ci
       name: Install dependencies
     - name: Lint
-      run: npm lint
+      run: npm run lint
