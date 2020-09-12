@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node app.js",
     "test": "mocha -r intelli-espower-loader -t 20000 app.test.js --exit",
-    "lint-fix": "eslint --fix --ext .js app.js module/ util/ test/ "
+    "lint": "eslint **/*.{js,ts}",
+    "lint-fix": "eslint --fix **/*.{js,ts}"
   },
   "keywords": [
     "网易云音乐",
