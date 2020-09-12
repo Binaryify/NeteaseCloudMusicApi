@@ -12,6 +12,6 @@ module.exports = (query, request) => {
       cookie: query.cookie,
       proxy: query.proxy,
       realIP: query.realIP,
-    }
+    },
   )
 }

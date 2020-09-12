@@ -11,6 +11,6 @@ module.exports = (query, request) => {
       proxy: query.proxy,
       url: '/api/search/defaultkeyword/get',
       realIP: query.realIP,
-    }
+    },
   )
 }

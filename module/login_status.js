@@ -5,7 +5,7 @@ module.exports = (query, request) => {
     'GET',
     `https://music.163.com`,
     {},
-    { cookie: query.cookie, proxy: query.proxy, realIP: query.realIP }
+    { cookie: query.cookie, proxy: query.proxy, realIP: query.realIP },
   ).then((response) => {
     try {
       let profile = eval(`(${/GUser\s*=\s*([^;]+);/.exec(response.body)[1]})`)

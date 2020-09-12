@@ -16,6 +16,6 @@ module.exports = (query, request) => {
       proxy: query.proxy,
       url: '/api/user/getfolloweds',
       realIP: query.realIP,
-    }
+    },
   )
 }

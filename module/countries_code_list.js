@@ -11,6 +11,6 @@ module.exports = (query, request) => {
       proxy: query.proxy,
       url: '/api/lbs/countries/v1',
       realIP: query.realIP,
-    }
+    },
   )
 }
