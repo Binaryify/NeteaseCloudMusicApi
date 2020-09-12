@@ -14,6 +14,6 @@ module.exports = (query, request) => {
       proxy: query.proxy,
       realIP: query.realIP,
       url: '/api/activate/initProfile',
-    }
+    },
   )
 }

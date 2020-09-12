@@ -14,6 +14,7 @@
     "网易云音乐nodejs"
   ],
   "main": "main.js",
+  "types": "main.d.ts",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -33,7 +34,10 @@
   "files": [
     "module",
     "util",
-    "plugins"
+    "plugins",
+    "main.d.ts",
+    "interface.d.ts",
+    "module_types"
   ],
   "dependencies": {
     "axios": "^0.20.0",
@@ -43,12 +47,19 @@
     "request": "^2.88.0"
   },
   "devDependencies": {
-    "eslint": "7.8.1",
+    "@types/node": "^14.6.4",
+    "@typescript-eslint/eslint-plugin": "^4.0.1",
+    "@typescript-eslint/parser": "^4.0.1",
+    "eslint": "^7.8.1",
+    "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-html": "6.0.3",
+    "eslint-plugin-prettier": "^3.1.4",
     "husky": "4.2.5",
     "intelli-espower-loader": "1.0.1",
     "lint-staged": "10.3.0",
     "mocha": "8.1.3",
-    "power-assert": "1.6.1"
+    "power-assert": "1.6.1",
+    "prettier": "^2.1.1",
+    "typescript": "^4.0.2"
   }
 }
