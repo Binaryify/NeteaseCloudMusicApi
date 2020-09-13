@@ -2,5 +2,5 @@ import { RequestBaseConfig } from './base'
 
 export interface UserRecordRequestConfig extends RequestBaseConfig {
   uid: string | number
-  type: 1 | 0
+  type?: 1 | 0
 }
