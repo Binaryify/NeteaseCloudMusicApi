@@ -1,5 +1,5 @@
 import { RequestBaseConfig } from './base'
 
 export interface UserDetailRequestConfig extends RequestBaseConfig {
-  uid: string
+  uid: string | number
 }

@@ -1,7 +1,7 @@
 import { RequestBaseConfig } from './base'
 
 export interface UserFollowsRequestConfig extends RequestBaseConfig {
-  uid: string
-  offset?: number
-  limit?: number
+  uid: string | number
+  offset?: string | number
+  limit?: string | number
 }

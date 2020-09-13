@@ -1,9 +1,9 @@
 import { RequestBaseConfig } from './base'
 
 export interface CommentFloorRequestConfig extends RequestBaseConfig {
-  id: string
-  parentCommentId: string
+  id: string | number
+  parentCommentId: string | number
   type: 0 | 1 | 2 | 3 | 4 | 5
-  limit?: number
-  time?: number
+  limit?: string | number
+  time?: string | number
 }

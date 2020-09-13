@@ -2,6 +2,6 @@ import { RequestBaseConfig } from './base'
 
 export interface TopPlaylistHighqualityRequestConfig extends RequestBaseConfig {
   cat?: string
-  before?: number
-  limit?: number
+  before?: string | number
+  limit?: string | number
 }

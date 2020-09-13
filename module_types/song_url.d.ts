@@ -1,6 +1,6 @@
 import { RequestBaseConfig } from './base'
 
 export interface SongUrlRequestConfig extends RequestBaseConfig {
-  id: string
-  br?: number
+  id: string | number
+  br?: string | number
 }

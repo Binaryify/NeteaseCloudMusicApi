@@ -1,6 +1,6 @@
 import { RequestBaseConfig } from './base'
 
 export interface DjHotRequestConfig extends RequestBaseConfig {
-  offset?: number
-  limit?: number
+  offset?: string | number
+  limit?: string | number
 }
