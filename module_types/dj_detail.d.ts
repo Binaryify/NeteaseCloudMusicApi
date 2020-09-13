@@ -1,5 +1,5 @@
 import { RequestBaseConfig } from './base'
 
 export interface DjDetailRequestConfig extends RequestBaseConfig {
-  rid: string
+  rid: string | number
 }

@@ -1,8 +1,8 @@
 import { RequestBaseConfig } from './base'
 
 export interface LikeRequestConfig extends RequestBaseConfig {
-  like?: 'true' | 'false'
-  id: string
+  like?: 'true' | 'false' | boolean
+  id: string | number
   alg?: string
-  time?: number
+  time?: string | number
 }

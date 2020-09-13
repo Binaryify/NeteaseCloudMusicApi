@@ -1,6 +1,6 @@
 import { RequestBaseConfig } from './base'
 
 export interface PlaylistDescUpdateRequestConfig extends RequestBaseConfig {
-  id: string
+  id: string | number
   desc: string
 }

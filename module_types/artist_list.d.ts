@@ -55,7 +55,7 @@ export interface ArtistListRequestConfig extends RequestBaseConfig {
     | 'X'
     | 'Y'
     | 'Z'
-  offset?: number
-  limit?: number
+  offset?: string | number
+  limit?: string | number
   type?: '1' | '2' | '3'
 }

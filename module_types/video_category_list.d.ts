@@ -1,6 +1,6 @@
 import { RequestBaseConfig } from './base'
 
 export interface VideoCategoryListRequestConfig extends RequestBaseConfig {
-  offset?: number
-  limit?: number
+  offset?: string | number
+  limit?: string | number
 }

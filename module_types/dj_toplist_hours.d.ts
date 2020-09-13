@@ -1,5 +1,5 @@
 import { RequestBaseConfig } from './base'
 
 export interface DjToplistHoursRequestConfig extends RequestBaseConfig {
-  limit?: number
+  limit?: string | number
 }

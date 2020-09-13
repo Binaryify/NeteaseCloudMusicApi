@@ -1,6 +1,6 @@
 import { RequestBaseConfig } from './base'
 
 export interface MvUrlRequestConfig extends RequestBaseConfig {
-  id?: string
-  r?: string
+  id?: string | number
+  r?: string | number
 }

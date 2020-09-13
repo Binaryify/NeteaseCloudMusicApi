@@ -1,6 +1,6 @@
 import { RequestBaseConfig } from './base'
 
 export interface MsgForwardsRequestConfig extends RequestBaseConfig {
-  offset?: number
-  limit?: number
+  offset?: string | number
+  limit?: string | number
 }
