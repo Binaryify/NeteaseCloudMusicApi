@@ -1,5 +1,5 @@
 import { RequestBaseConfig } from './base'
 
 export interface ToplistArtistRequestConfig extends RequestBaseConfig {
-  type: number
+  type?: 1 | 2 | 3 | 4
 }

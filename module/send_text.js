@@ -3,7 +3,6 @@
 module.exports = (query, request) => {
   query.cookie.os = 'pc'
   const data = {
-    id: query.playlist,
     type: 'text',
     msg: query.msg,
     userIds: '[' + query.user_ids + ']',
