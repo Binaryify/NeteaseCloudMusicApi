@@ -31,6 +31,9 @@
     ]
   },
   "author": "binaryify",
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com"
+  },
   "license": "MIT",
   "files": [
     "module",
