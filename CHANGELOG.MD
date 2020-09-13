@@ -1,4 +1,7 @@
 # 更新日志
+### 3.40.1 | 2020.09.13
+- 更新 TypeScript 声明 [#928](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/928)
+
 ### 3.40.0 | 2020.09.12
 - 新增 TypeScript 声明文件 [#908](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/908)
 - 更改随机 UA 相关逻辑[#922](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/922)
