@@ -1,7 +1,7 @@
 import { RequestBaseConfig } from './base'
 
 export interface ScrobbleRequestConfig extends RequestBaseConfig {
-  id: string
-  sourceid: string
-  time: string
+  id: string | number
+  sourceid: string | number
+  time: string | number
 }

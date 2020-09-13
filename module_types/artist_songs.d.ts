@@ -1,8 +1,8 @@
 import { RequestBaseConfig } from './base'
 
 export interface ArtistSongsRequestConfig extends RequestBaseConfig {
-  id: string
+  id: string | number
   order?: 'hot' | 'time'
-  offset?: number
-  limit?: number
+  offset?: string | number
+  limit?: string | number
 }

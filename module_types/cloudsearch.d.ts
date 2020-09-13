@@ -3,6 +3,6 @@ import { RequestBaseConfig } from './base'
 export interface CloudSearchRequestConfig extends RequestBaseConfig {
   keywords: string
   type: 1 | 10 | 100 | 1000 | 1002 | 1004 | 1006 | 1009 | 1014
-  limit?: number
-  offset?: number
+  limit?: string | number
+  offset?: string | number
 }

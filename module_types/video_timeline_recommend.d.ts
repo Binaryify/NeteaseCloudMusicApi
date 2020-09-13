@@ -1,5 +1,5 @@
 import { RequestBaseConfig } from './base'
 
 export interface VideoTimelineRecommendRequestConfig extends RequestBaseConfig {
-  offset?: number
+  offset?: string | number
 }

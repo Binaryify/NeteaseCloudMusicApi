@@ -1,6 +1,6 @@
 import { RequestBaseConfig } from './base'
 
 export interface ArtistSubListRequestConfig extends RequestBaseConfig {
-  limit?: number
-  offset?: number
+  limit?: string | number
+  offset?: string | number
 }

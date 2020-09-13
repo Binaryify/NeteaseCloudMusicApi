@@ -2,5 +2,5 @@ import { RequestBaseConfig } from './base'
 
 export interface VideoGroupRequestConfig extends RequestBaseConfig {
   id: string
-  offset?: number
+  offset?: string | number
 }
