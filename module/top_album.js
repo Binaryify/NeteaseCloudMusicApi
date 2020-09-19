@@ -11,7 +11,7 @@ module.exports = (query, request) => {
     year: query.year || date.getFullYear(),
     month: query.month || date.getMonth() + 1,
     total: false,
-    rcmd: false
+    rcmd: false,
   }
   return request(
     'POST',
@@ -22,6 +22,6 @@ module.exports = (query, request) => {
       cookie: query.cookie,
       proxy: query.proxy,
       realIP: query.realIP,
-    }
+    },
   )
 }

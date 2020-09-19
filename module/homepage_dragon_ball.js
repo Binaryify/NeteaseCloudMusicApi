@@ -14,6 +14,6 @@ module.exports = (query, request) => {
       proxy: query.proxy,
       url: '/api/homepage/dragon/ball/static',
       realIP: query.realIP,
-    }
+    },
   )
 }

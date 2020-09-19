@@ -15,6 +15,6 @@ module.exports = (query, request) => {
       proxy: query.proxy,
       url: '/api/cellphone/existence/check',
       realIP: query.realIP,
-    }
+    },
   )
 }

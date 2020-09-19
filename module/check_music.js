@@ -14,7 +14,7 @@ module.exports = (query, request) => {
       cookie: query.cookie,
       proxy: query.proxy,
       realIP: query.realIP,
-    }
+    },
   ).then((response) => {
     let playable = false
     if (response.body.code == 200) {

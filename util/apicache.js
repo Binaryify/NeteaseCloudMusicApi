@@ -13,19 +13,19 @@ var t = {
 
 var instances = []
 
-var matches = function(a) {
-  return function(b) {
+var matches = function (a) {
+  return function (b) {
     return a === b
   }
 }
 
-var doesntMatch = function(a) {
-  return function(b) {
+var doesntMatch = function (a) {
+  return function (b) {
     return !matches(a)(b)
   }
 }
 
-var logDuration = function(d, prefix) {
+var logDuration = function (d, prefix) {
   var str = d > 1000 ? (d / 1000).toFixed(2) + 'sec' : d + 'ms'
   return '\x1b[33m- ' + (prefix ? prefix + ' ' : '') + str + '\x1b[0m'
 }
@@ -68,10 +68,12 @@ function ApiCache() {
   this.id = instances.length
 
   function debug(a, b, c, d) {
-    var arr = ['\x1b[36m[apicache]\x1b[0m', a, b, c, d].filter(function(arg) {
+    var arr = ['\x1b[36m[apicache]\x1b[0m', a, b, c, d].filter(function (arg) {
       return arg !== undefined
     })
-    var debugEnv = process.env.DEBUG && process.env.DEBUG.split(',').indexOf('apicache') !== -1
+    var debugEnv =
+      process.env.DEBUG &&
+      process.env.DEBUG.split(',').indexOf('apicache') !== -1
 
     return (globalOptions.debug || debugEnv) && console.log.apply(null, arr)
   }
@@ -86,9 +88,17 @@ function ApiCache() {
       return false
     }
 
-    if (codes.exclude && codes.exclude.length && codes.exclude.indexOf(response.statusCode) !== -1)
+    if (
+      codes.exclude &&
+      codes.exclude.length &&
+      codes.exclude.indexOf(response.statusCode) !== -1
+    )
       return false
-    if (codes.include && codes.include.length && codes.include.indexOf(response.statusCode) === -1)
+    if (
+      codes.include &&
+      codes.include.length &&
+      codes.include.indexOf(response.statusCode) === -1
+    )
       return false
 
     return true
@@ -108,10 +118,10 @@ function ApiCache() {
 
   function filterBlacklistedHeaders(headers) {
     return Object.keys(headers)
-      .filter(function(key) {
+      .filter(function (key) {
         return globalOptions.headerBlacklist.indexOf(key) === -1
       })
-      .reduce(function(acc, header) {
+      .reduce(function (acc, header) {
         acc[header] = headers[header]
         return acc
       }, {})
@@ -135,7 +145,7 @@ function ApiCache() {
       try {
         redis.hset(key, 'response', JSON.stringify(value))
         redis.hset(key, 'duration', duration)
-        redis.expire(key, duration / 1000, expireCallback || function() {})
+        redis.expire(key, duration / 1000, expireCallback || function () {})
       } catch (err) {
         debug('[apicache] error in redis.hset()')
       }
@@ -144,7 +154,7 @@ function ApiCache() {
     }
 
     // add automatic cache clearing from duration, includes max limit on setTimeout
-    timers[key] = setTimeout(function() {
+    timers[key] = setTimeout(function () {
       instance.clear(key, true)
     }, Math.min(duration, 2147483647))
   }
@@ -157,7 +167,9 @@ function ApiCache() {
         var oldContent = res._apicache.content
 
         if (typeof oldContent === 'string') {
-          oldContent = !Buffer.from ? new Buffer(oldContent) : Buffer.from(oldContent)
+          oldContent = !Buffer.from
+            ? new Buffer(oldContent)
+            : Buffer.from(oldContent)
         }
 
         if (!oldContent) {
@@ -166,7 +178,7 @@ function ApiCache() {
 
         res._apicache.content = Buffer.concat(
           [oldContent, content],
-          oldContent.length + content.length
+          oldContent.length + content.length,
         )
       } else {
         res._apicache.content = content
@@ -174,7 +186,15 @@ function ApiCache() {
     }
   }
 
-  function makeResponseCacheable(req, res, next, key, duration, strDuration, toggle) {
+  function makeResponseCacheable(
+    req,
+    res,
+    next,
+    key,
+    duration,
+    strDuration,
+    toggle,
+  ) {
     // monkeypatch res.end to create cache object
     res._apicache = {
       write: res.write,
@@ -185,15 +205,18 @@ function ApiCache() {
     }
 
     // append header overwrites if applicable
-    Object.keys(globalOptions.headers).forEach(function(name) {
+    Object.keys(globalOptions.headers).forEach(function (name) {
       res.setHeader(name, globalOptions.headers[name])
     })
 
-    res.writeHead = function() {
+    res.writeHead = function () {
       // add cache control headers
       if (!globalOptions.headers['cache-control']) {
         if (shouldCacheResponse(req, res, toggle)) {
-          res.setHeader('cache-control', 'max-age=' + (duration / 1000).toFixed(0))
+          res.setHeader(
+            'cache-control',
+            'max-age=' + (duration / 1000).toFixed(0),
+          )
         } else {
           res.setHeader('cache-control', 'no-cache, no-store, must-revalidate')
         }
@@ -204,13 +227,13 @@ function ApiCache() {
     }
 
     // patch res.write
-    res.write = function(content) {
+    res.write = function (content) {
       accumulateContent(res, content)
       return res._apicache.write.apply(this, arguments)
     }
 
     // patch res.end
-    res.end = function(content, encoding) {
+    res.end = function (content, encoding) {
       if (shouldCacheResponse(req, res, toggle)) {
         accumulateContent(res, content)
 
@@ -221,13 +244,16 @@ function ApiCache() {
             res.statusCode,
             headers,
             res._apicache.content,
-            encoding
+            encoding,
           )
           cacheResponse(key, cacheObject, duration)
 
           // display log entry
           var elapsed = new Date() - req.apicacheTimer
-          debug('adding cache entry for "' + key + '" @ ' + strDuration, logDuration(elapsed))
+          debug(
+            'adding cache entry for "' + key + '" @ ' + strDuration,
+            logDuration(elapsed),
+          )
           debug('_apicache.headers: ', res._apicache.headers)
           debug('res.getHeaders(): ', getSafeHeaders(res))
           debug('cacheObject: ', cacheObject)
@@ -240,31 +266,46 @@ function ApiCache() {
     next()
   }
 
-  function sendCachedResponse(request, response, cacheObject, toggle, next, duration) {
+  function sendCachedResponse(
+    request,
+    response,
+    cacheObject,
+    toggle,
+    next,
+    duration,
+  ) {
     if (toggle && !toggle(request, response)) {
       return next()
     }
 
     var headers = getSafeHeaders(response)
 
-    Object.assign(headers, filterBlacklistedHeaders(cacheObject.headers || {}), {
-      // set properly-decremented max-age header.  This ensures that max-age is in sync with the cache expiration.
-      'cache-control':
-        'max-age=' +
-        Math.max(
-          0,
-          (duration / 1000 - (new Date().getTime() / 1000 - cacheObject.timestamp)).toFixed(0)
-        ),
-    })
+    Object.assign(
+      headers,
+      filterBlacklistedHeaders(cacheObject.headers || {}),
+      {
+        // set properly-decremented max-age header.  This ensures that max-age is in sync with the cache expiration.
+        'cache-control':
+          'max-age=' +
+          Math.max(
+            0,
+            (
+              duration / 1000 -
+              (new Date().getTime() / 1000 - cacheObject.timestamp)
+            ).toFixed(0),
+          ),
+      },
+    )
 
     // only embed apicache headers when not in production environment
-    
 
     // unstringify buffers
     var data = cacheObject.data
     if (data && data.type === 'Buffer') {
       data =
-        typeof data.data === 'number' ? new Buffer.alloc(data.data) : new Buffer.from(data.data)
+        typeof data.data === 'number'
+          ? new Buffer.alloc(data.data)
+          : new Buffer.from(data.data)
     }
 
     // test Etag against If-None-Match for 304
@@ -283,18 +324,22 @@ function ApiCache() {
 
   function syncOptions() {
     for (var i in middlewareOptions) {
-      Object.assign(middlewareOptions[i].options, globalOptions, middlewareOptions[i].localOptions)
+      Object.assign(
+        middlewareOptions[i].options,
+        globalOptions,
+        middlewareOptions[i].localOptions,
+      )
     }
   }
 
-  this.clear = function(target, isAutomatic) {
+  this.clear = function (target, isAutomatic) {
     var group = index.groups[target]
     var redis = globalOptions.redisClient
 
     if (group) {
       debug('clearing group "' + target + '"')
 
-      group.forEach(function(key) {
+      group.forEach(function (key) {
         debug('clearing cached entry for "' + key + '"')
         clearTimeout(timers[key])
         delete timers[key]
@@ -312,7 +357,13 @@ function ApiCache() {
 
       delete index.groups[target]
     } else if (target) {
-      debug('clearing ' + (isAutomatic ? 'expired' : 'cached') + ' entry for "' + target + '"')
+      debug(
+        'clearing ' +
+          (isAutomatic ? 'expired' : 'cached') +
+          ' entry for "' +
+          target +
+          '"',
+      )
       clearTimeout(timers[target])
       delete timers[target]
       // clear actual cached entry
@@ -330,8 +381,10 @@ function ApiCache() {
       index.all = index.all.filter(doesntMatch(target))
 
       // remove target from each group that it may exist in
-      Object.keys(index.groups).forEach(function(groupName) {
-        index.groups[groupName] = index.groups[groupName].filter(doesntMatch(target))
+      Object.keys(index.groups).forEach(function (groupName) {
+        index.groups[groupName] = index.groups[groupName].filter(
+          doesntMatch(target),
+        )
 
         // delete group if now empty
         if (!index.groups[groupName].length) {
@@ -345,7 +398,7 @@ function ApiCache() {
         memCache.clear()
       } else {
         // clear redis keys one by one from internal index to prevent clearing non-apicache entries
-        index.all.forEach(function(key) {
+        index.all.forEach(function (key) {
           clearTimeout(timers[key])
           delete timers[key]
           try {
@@ -381,7 +434,7 @@ function ApiCache() {
     return defaultDuration
   }
 
-  this.getDuration = function(duration) {
+  this.getDuration = function (duration) {
     return parseDuration(duration, globalOptions.defaultDuration)
   }
 
@@ -393,13 +446,13 @@ function ApiCache() {
    * })
    * </code>
    */
-  this.getPerformance = function() {
-    return performanceArray.map(function(p) {
+  this.getPerformance = function () {
+    return performanceArray.map(function (p) {
       return p.report()
     })
   }
 
-  this.getIndex = function(group) {
+  this.getIndex = function (group) {
     if (group) {
       return index.groups[group]
     } else {
@@ -407,7 +460,11 @@ function ApiCache() {
     }
   }
 
-  this.middleware = function cache(strDuration, middlewareToggle, localOptions) {
+  this.middleware = function cache(
+    strDuration,
+    middlewareToggle,
+    localOptions,
+  ) {
     var duration = instance.getDuration(strDuration)
     var opt = {}
 
@@ -415,9 +472,9 @@ function ApiCache() {
       options: opt,
     })
 
-    var options = function(localOptions) {
+    var options = function (localOptions) {
       if (localOptions) {
-        middlewareOptions.find(function(middleware) {
+        middlewareOptions.find(function (middleware) {
           return middleware.options === opt
         }).localOptions = localOptions
       }
@@ -433,7 +490,7 @@ function ApiCache() {
      * A Function for non tracking performance
      */
     function NOOPCachePerformance() {
-      this.report = this.hit = this.miss = function() {} // noop;
+      this.report = this.hit = this.miss = function () {} // noop;
     }
 
     /**
@@ -487,7 +544,7 @@ function ApiCache() {
       /**
        * Return performance statistics
        */
-      this.report = function() {
+      this.report = function () {
         return {
           lastCacheHit: this.lastCacheHit,
           lastCacheMiss: this.lastCacheMiss,
@@ -507,7 +564,7 @@ function ApiCache() {
        * @param {Uint8Array} array An array representing hits and misses.
        * @returns a number between 0 and 1, or null if the array has no hits or misses
        */
-      this.hitRate = function(array) {
+      this.hitRate = function (array) {
         var hits = 0
         var misses = 0
         for (var i = 0; i < array.length; i++) {
@@ -540,7 +597,7 @@ function ApiCache() {
        * 01 encodes a hit
        * 10 encodes a miss
        */
-      this.recordHitInArray = function(array, hit) {
+      this.recordHitInArray = function (array, hit) {
         var arrayIndex = ~~(this.callCount / 4) % array.length
         var bitOffset = (this.callCount % 4) * 2 // 2 bits per record, 4 records per uint8 array element
         var clearMask = ~(3 << bitOffset)
@@ -552,7 +609,7 @@ function ApiCache() {
        * Records the hit or miss in the tracking arrays and increments the call count.
        * @param {boolean} hit true records a hit, false records a miss
        */
-      this.recordHit = function(hit) {
+      this.recordHit = function (hit) {
         this.recordHitInArray(this.hitsLast100, hit)
         this.recordHitInArray(this.hitsLast1000, hit)
         this.recordHitInArray(this.hitsLast10000, hit)
@@ -565,7 +622,7 @@ function ApiCache() {
        * Records a hit event, setting lastCacheMiss to the given key
        * @param {string} key The key that had the cache hit
        */
-      this.hit = function(key) {
+      this.hit = function (key) {
         this.recordHit(true)
         this.lastCacheHit = key
       }
@@ -574,17 +631,19 @@ function ApiCache() {
        * Records a miss event, setting lastCacheMiss to the given key
        * @param {string} key The key that had the cache miss
        */
-      this.miss = function(key) {
+      this.miss = function (key) {
         this.recordHit(false)
         this.lastCacheMiss = key
       }
     }
 
-    var perf = globalOptions.trackPerformance ? new CachePerformance() : new NOOPCachePerformance()
+    var perf = globalOptions.trackPerformance
+      ? new CachePerformance()
+      : new NOOPCachePerformance()
 
     performanceArray.push(perf)
 
-    var cache = function(req, res, next) {
+    var cache = function (req, res, next) {
       function bypass() {
         debug('bypass detected, skipping cache.')
         return next()
@@ -592,7 +651,11 @@ function ApiCache() {
 
       // initial bypass chances
       if (!opt.enabled) return bypass()
-      if (req.headers['x-apicache-bypass'] || req.headers['x-apicache-force-fetch']) return bypass()
+      if (
+        req.headers['x-apicache-bypass'] ||
+        req.headers['x-apicache-force-fetch']
+      )
+        return bypass()
 
       // REMOVED IN 0.11.1 TO CORRECT MIDDLEWARE TOGGLE EXECUTE ORDER
       // if (typeof middlewareToggle === 'function') {
@@ -631,19 +694,34 @@ function ApiCache() {
       // send if cache hit from memory-cache
       if (cached) {
         var elapsed = new Date() - req.apicacheTimer
-        debug('sending cached (memory-cache) version of', key, logDuration(elapsed))
+        debug(
+          'sending cached (memory-cache) version of',
+          key,
+          logDuration(elapsed),
+        )
 
         perf.hit(key)
-        return sendCachedResponse(req, res, cached, middlewareToggle, next, duration)
+        return sendCachedResponse(
+          req,
+          res,
+          cached,
+          middlewareToggle,
+          next,
+          duration,
+        )
       }
 
       // send if cache hit from redis
       if (redis && redis.connected) {
         try {
-          redis.hgetall(key, function(err, obj) {
+          redis.hgetall(key, function (err, obj) {
             if (!err && obj && obj.response) {
               var elapsed = new Date() - req.apicacheTimer
-              debug('sending cached (redis) version of', key, logDuration(elapsed))
+              debug(
+                'sending cached (redis) version of',
+                key,
+                logDuration(elapsed),
+              )
 
               perf.hit(key)
               return sendCachedResponse(
@@ -652,7 +730,7 @@ function ApiCache() {
                 JSON.parse(obj.response),
                 middlewareToggle,
                 next,
-                duration
+                duration,
               )
             } else {
               perf.miss(key)
@@ -663,18 +741,34 @@ function ApiCache() {
                 key,
                 duration,
                 strDuration,
-                middlewareToggle
+                middlewareToggle,
               )
             }
           })
         } catch (err) {
           // bypass redis on error
           perf.miss(key)
-          return makeResponseCacheable(req, res, next, key, duration, strDuration, middlewareToggle)
+          return makeResponseCacheable(
+            req,
+            res,
+            next,
+            key,
+            duration,
+            strDuration,
+            middlewareToggle,
+          )
         }
       } else {
         perf.miss(key)
-        return makeResponseCacheable(req, res, next, key, duration, strDuration, middlewareToggle)
+        return makeResponseCacheable(
+          req,
+          res,
+          next,
+          key,
+          duration,
+          strDuration,
+          middlewareToggle,
+        )
       }
     }
 
@@ -683,18 +777,23 @@ function ApiCache() {
     return cache
   }
 
-  this.options = function(options) {
+  this.options = function (options) {
     if (options) {
       Object.assign(globalOptions, options)
       syncOptions()
 
       if ('defaultDuration' in options) {
         // Convert the default duration to a number in milliseconds (if needed)
-        globalOptions.defaultDuration = parseDuration(globalOptions.defaultDuration, 3600000)
+        globalOptions.defaultDuration = parseDuration(
+          globalOptions.defaultDuration,
+          3600000,
+        )
       }
 
       if (globalOptions.trackPerformance) {
-        debug('WARNING: using trackPerformance flag can cause high memory usage!')
+        debug(
+          'WARNING: using trackPerformance flag can cause high memory usage!',
+        )
       }
 
       return this
@@ -703,14 +802,14 @@ function ApiCache() {
     }
   }
 
-  this.resetIndex = function() {
+  this.resetIndex = function () {
     index = {
       all: [],
       groups: {},
     }
   }
 
-  this.newInstance = function(config) {
+  this.newInstance = function (config) {
     var instance = new ApiCache()
 
     if (config) {
@@ -720,7 +819,7 @@ function ApiCache() {
     return instance
   }
 
-  this.clone = function() {
+  this.clone = function () {
     return this.newInstance(this.options())
   }
 

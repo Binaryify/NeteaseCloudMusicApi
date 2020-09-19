@@ -15,6 +15,6 @@ module.exports = (query, request) => {
       proxy: query.proxy,
       url: '/api/playlist/tags/update',
       realIP: query.realIP,
-    }
+    },
   )
 }
