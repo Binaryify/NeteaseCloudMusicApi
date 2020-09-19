@@ -182,6 +182,7 @@ import {
   APIBaseResponse,
   UserLevelRequestConfig,
   PlaylistHighqualityTagsRequestConfig,
+  DjPersonalizeRecommendRequestConfig,
 } from './interface'
 // Start
 // export interface Response<T> {
@@ -332,6 +333,9 @@ interface APIInstance {
   dj_hot: (params: DjHotRequestConfig) => Promise<Response<APIBaseResponse>>
   dj_paygift: (
     params: DjPaygiftRequestConfig,
+  ) => Promise<Response<APIBaseResponse>>
+  dj_personalize_recommend: (
+    params: DjPersonalizeRecommendRequestConfig,
   ) => Promise<Response<APIBaseResponse>>
   dj_program: (
     params: DjProgramRequestConfig,

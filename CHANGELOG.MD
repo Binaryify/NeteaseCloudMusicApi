@@ -1,4 +1,7 @@
 # 更新日志
+### 3.41.1 | 2020.09.19
+- 新增`电台个性推荐接口` [#824](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/824)
+
 ### 3.41.0 | 2020.09.19
 - 新增`精品歌单标签列表`接口 [#921](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/921)
 
