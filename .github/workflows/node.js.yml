@@ -26,11 +26,10 @@ jobs:
           ${{ runner.os }}-node-
     - run: npm ci
       name: Install dependencies
-    - name: Set Test Env
-      run: |
-        export NCM_API_TEST_LOGIN_PHONE=${{ secrets.NCM_API_TEST_LOGIN_PHONE }}
-        export NCM_API_TEST_LOGIN_PASSWORD=${{ secrets.NCM_API_TEST_LOGIN_PASSWORD }}
     - name: Test
+      env:
+        NCM_API_TEST_LOGIN_PHONE: ${{ secrets.NCM_API_TEST_LOGIN_PHONE }}
+        NCM_API_TEST_LOGIN_PASSWORD: ${{ secrets.NCM_API_TEST_LOGIN_PASSWORD }}
       run: npm test
   lint:
     name: Lint

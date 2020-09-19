@@ -18,6 +18,7 @@ describe('测试登录是否正常', () => {
         if (!err && res.statusCode == 200) {
           body = JSON.parse(body)
           assert(body.code === 200)
+          console.log('昵称:' + body.profile.nickname)
           done()
         } else {
           done('登录错误')
