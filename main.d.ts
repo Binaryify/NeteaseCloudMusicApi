@@ -180,6 +180,8 @@ import {
   VideoUrlRequestConfig,
   WeblogRequestConfig,
   APIBaseResponse,
+  UserLevelRequestConfig,
+  PlaylistHighqualityTagsRequestConfig
 } from './interface'
 // Start
 // export interface Response<T> {
@@ -484,6 +486,9 @@ interface APIInstance {
   playlist_detail: (
     params: PlaylistDetailRequestConfig,
   ) => Promise<Response<APIBaseResponse>>
+  playlist_highquality_tags: (
+    params: PlaylistHighqualityTagsRequestConfig,
+  ) => Promise<Response<APIBaseResponse>>
   playlist_hot: (
     params: PlaylistHotRequestConfig,
   ) => Promise<Response<APIBaseResponse>>
@@ -620,6 +625,9 @@ interface APIInstance {
     params: UserDetailRequestConfig,
   ) => Promise<Response<APIBaseResponse>>
   user_dj: (params: UserDjRequestConfig) => Promise<Response<APIBaseResponse>>
+  user_level: (
+    params: UserLevelRequestConfig,
+  ) => Promise<Response<APIBaseResponse>>
   user_event: (
     params: UserEventRequestConfig,
   ) => Promise<Response<APIBaseResponse>>

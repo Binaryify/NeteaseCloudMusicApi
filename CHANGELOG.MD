@@ -1,4 +1,11 @@
 # 更新日志
+### 3.41.0 | 2020.09.19
+- 新增`精品歌单标签列表`接口 [#921](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/921)
+
+- 新增`用户等级信息`接口 [#929](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/929)
+
+- 增加新接口的 d.ts 文件,修复登录接口的 d.ts 的 countrycode 为非可选属性的错误
+
 ### 3.40.1 | 2020.09.13
 - 更新 TypeScript 声明 [#928](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/928)
 
