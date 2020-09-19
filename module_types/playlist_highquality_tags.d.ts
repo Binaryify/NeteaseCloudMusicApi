@@ -1,4 +1,3 @@
 import { RequestBaseConfig } from './base'
 
-export interface PlaylistHighqualityTagsRequestConfig extends RequestBaseConfig {
-}
+export type PlaylistHighqualityTagsRequestConfig = RequestBaseConfig

@@ -181,7 +181,7 @@ import {
   WeblogRequestConfig,
   APIBaseResponse,
   UserLevelRequestConfig,
-  PlaylistHighqualityTagsRequestConfig
+  PlaylistHighqualityTagsRequestConfig,
 } from './interface'
 // Start
 // export interface Response<T> {
