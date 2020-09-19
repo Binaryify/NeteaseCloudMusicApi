@@ -20,7 +20,7 @@ describe('测试登录是否正常', () => {
           assert(body.code === 200)
           done()
         } else {
-          done(err)
+          done('登录错误')
         }
       },
     )
