@@ -1,4 +1,7 @@
 # 更新日志
+### 3.41.2 | 2020.09.20
+- 更新`获取音乐 url`接口,未登录状态返回试听片段 [#897](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/897)
+
 ### 3.41.1 | 2020.09.19
 - 新增`电台个性推荐接口` [#824](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/824)
 
