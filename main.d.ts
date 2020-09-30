@@ -5,6 +5,16 @@ declare module 'NeteaseCloudMusicApi' {
     proxy?: string // HTTP proxy
   }
 
+  export interface ImageUploadConfig {
+    imgFile: {
+      name: string
+      data: string | Buffer
+    }
+    imgSize?: number
+    imgX?: number
+    imgY?: number
+  }
+
   export interface APIBaseResponse {
     code: number
     cookie: string
@@ -15,6 +25,11 @@ declare module 'NeteaseCloudMusicApi' {
     status: number // The Http Response Code
     body: APIBaseResponse // API Response body
     cookie: string[]
+  }
+
+  export enum SubAction {
+    sub = 1,
+    ubsub = 0,
   }
 
   export function activate_init_profile(
@@ -33,20 +48,40 @@ declare module 'NeteaseCloudMusicApi' {
     params: { id: string | number } & RequestBaseConfig,
   ): Promise<Response>
 
+  export enum AlbumListArea {
+    all = 'ALL',
+    zh = 'ZH',
+    ea = 'EA',
+    kr = 'KR',
+    jp = 'JP',
+  }
+
+  export enum ListOrder {
+    hot = 'hot',
+    new = 'new',
+  }
+
   export function album_list(
     params: {
       limit?: string | number // 默认 30
       offset?: string | number // 默认 0
-      area?: 'ALL' | 'ZH' | 'EA' | 'KR' | 'JP' // 默认 ALL
+      area?: AlbumListArea // 默认 ALL
       type: string
     } & RequestBaseConfig,
   ): Promise<Response>
+
+  export enum AlbumListStyleArea {
+    zh = 'Z_H',
+    ea = 'E_A',
+    kr = 'KR',
+    jp = 'JP',
+  }
 
   export function album_list_style(
     params: {
       limit?: string | number // 默认 10
       offset?: string | number // 默认 0
-      area?: 'Z_H' | 'E_A' | 'KR' | 'JP' // 默认 ALL
+      area?: AlbumListStyleArea // 默认 ALL
     } & RequestBaseConfig,
   ): Promise<Response>
 
@@ -54,16 +89,28 @@ declare module 'NeteaseCloudMusicApi' {
     params: {
       limit?: string | number // 默认 30
       offset?: string | number // 默认 0
-      area?: 'ALL' | 'ZH' | 'EA' | 'KR' | 'JP' // 默认 ALL
+      area?: AlbumListArea // 默认 ALL
     } & RequestBaseConfig,
   ): Promise<Response>
 
   export function album_newest(params: RequestBaseConfig): Promise<Response>
 
+  export enum AlbumSongsaleboardType {
+    daily = 'daily',
+    week = 'week',
+    year = 'year',
+    total = 'total',
+  }
+
+  export enum AlbumSongsaleboardAlbumType {
+    album = 0,
+    single = 1,
+  }
+
   export function album_songsaleboard(
     params: {
-      albumType?: 0 | 1 // 0 为数字专辑,1 为数字单曲
-      type?: 'daily' | 'week' | 'year' | 'total'
+      albumType?: AlbumSongsaleboardAlbumType // 0 为数字专辑,1 为数字单曲
+      type?: AlbumSongsaleboardType
       year?: string | number // 年份，默认本年。 type 为 year 时有效
     } & RequestBaseConfig,
   ): Promise<Response>
@@ -71,7 +118,7 @@ declare module 'NeteaseCloudMusicApi' {
   export function album_sub(
     params: {
       id: string | number
-      t: 1 | 0
+      t: SubAction
     } & RequestBaseConfig,
   ): Promise<Response>
 
@@ -94,9 +141,31 @@ declare module 'NeteaseCloudMusicApi' {
     params: { id: string | number } & RequestBaseConfig,
   ): Promise<Response>
 
+  export enum ArtistListArea {
+    zh = 'Z_H',
+    ea = 'E_A',
+    kr = 'KR',
+    jp = 'JP',
+  }
+
+  export enum ArtistArea {
+    all = '-1',
+    zh = '7',
+    ea = '96',
+    ja = '8',
+    kr = '16',
+    other = '0',
+  }
+
+  export enum ArtistType {
+    male = '1',
+    female = '2',
+    band = '3',
+  }
+
   export function artist_list(
     params: {
-      area: '-1' | '7' | '96' | '8' | '16' | '0'
+      area: ArtistArea
       initial?:
         | 'a'
         | 'b'
@@ -152,7 +221,7 @@ declare module 'NeteaseCloudMusicApi' {
         | 'Z'
       offset?: string | number
       limit?: string | number
-      type?: '1' | '2' | '3'
+      type?: ArtistType
     } & RequestBaseConfig,
   ): Promise<Response>
 
@@ -164,17 +233,22 @@ declare module 'NeteaseCloudMusicApi' {
     } & RequestBaseConfig,
   ): Promise<Response>
 
+  export enum ArtistSongsOrder {
+    hot = 'hot',
+    time = 'time',
+  }
+
   export function artist_songs(
     params: {
       id: string | number
-      order?: 'hot' | 'time'
+      order?: ArtistSongsOrder
       offset?: string | number
       limit?: string | number
     } & RequestBaseConfig,
   ): Promise<Response>
 
   export function artist_sub(
-    params: { id: string | number; t: 1 | 0 } & RequestBaseConfig,
+    params: { id: string | number; t: SubAction } & RequestBaseConfig,
   ): Promise<Response>
 
   export function artist_sublist(
@@ -195,19 +269,18 @@ declare module 'NeteaseCloudMusicApi' {
   ): Promise<Response>
 
   export function avatar_upload(
-    params: {
-      imgFile: {
-        name: string
-        data: string | Buffer
-      }
-      imgSize?: number
-      imgX?: number
-      imgY?: number
-    } & RequestBaseConfig,
+    params: ImageUploadConfig & RequestBaseConfig,
   ): Promise<Response>
 
+  export enum BannerType {
+    pc = 0,
+    android = 1,
+    iphone = 2,
+    ipad = 3,
+  }
+
   export function banner(
-    params: { type?: 0 | 1 | 2 | 3 } & RequestBaseConfig,
+    params: { type?: BannerType } & RequestBaseConfig,
   ): Promise<Response>
 
   export function batch(
@@ -234,20 +307,49 @@ declare module 'NeteaseCloudMusicApi' {
     params: { id: string | number; br: string | number } & RequestBaseConfig,
   ): Promise<Response>
 
+  export enum SearchType {
+    single = 1,
+    album = 10,
+    artist = 100,
+    playlist = 1000,
+    user = 1002,
+    mv = 1004,
+    lyric = 1006,
+    dj = 1009,
+    video = 1014,
+    complex = 1018,
+  }
+
   export function cloudsearch(
     params: {
       keywords: string
-      type?: 1 | 10 | 100 | 1000 | 1002 | 1004 | 1006 | 1009 | 1014
+      type?: SearchType
       limit?: string | number
       offset?: string | number
     } & RequestBaseConfig,
   ): Promise<Response>
 
+  export enum CommentType {
+    song = 0,
+    mv = 1,
+    playlist = 2,
+    album = 3,
+    dj = 4,
+    video = 5,
+    event = 6,
+  }
+
+  export enum CommentAction {
+    add = 1,
+    delete = 0,
+    reply = 2,
+  }
+
   export function comment(
     params: {
       id: string | number
-      type: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      t: 1 | 2 | 0
+      type: CommentType
+      t: CommentAction
       threadId?: string
       content?: string | number
       commentId?: string | number
@@ -285,7 +387,7 @@ declare module 'NeteaseCloudMusicApi' {
     params: {
       id: string | number
       parentCommentId: string | number
-      type: 0 | 1 | 2 | 3 | 4 | 5
+      type: CommentType
       limit?: string | number
       time?: string | number
     } & RequestBaseConfig,
@@ -294,7 +396,7 @@ declare module 'NeteaseCloudMusicApi' {
   export function comment_hot(
     params: {
       id: string | number
-      type: 0 | 1 | 2 | 3 | 4 | 5
+      type: CommentType
       offset?: string | number
       limit?: string | number
       before?: string | number
@@ -308,8 +410,8 @@ declare module 'NeteaseCloudMusicApi' {
   export function comment_like(
     params: {
       id: string | number
-      type: 0 | 1 | 2 | 3 | 4 | 5
-      t: 1 | 0
+      type: CommentType
+      t: SubAction
       cid: string | number
       threadId?: string
     } & RequestBaseConfig,
@@ -355,8 +457,13 @@ declare module 'NeteaseCloudMusicApi' {
     params: RequestBaseConfig,
   ): Promise<Response>
 
+  export enum DailySigninType {
+    android = 0,
+    pc = 1,
+  }
+
   export function daily_signin(
-    params: { type?: 0 | 1 } & RequestBaseConfig,
+    params: { type?: DailySigninType } & RequestBaseConfig,
   ): Promise<Response>
 
   export function digitalAlbum_ordering(
@@ -466,33 +573,11 @@ declare module 'NeteaseCloudMusicApi' {
 */
 
   export function dj_recommend_type(
-    params: {
-      type:
-        | 10001
-        | 453050
-        | 453051
-        | 11
-        | 13
-        | 14
-        | 2001
-        | 2
-        | 10002
-        | 8
-        | 3
-        | 6
-        | 5
-        | 7
-        | 3001
-        | 1
-        | 4
-        | 453052
-        | 4001
-        | 12
-    } & RequestBaseConfig,
+    params: { type: number } & RequestBaseConfig,
   ): Promise<Response>
 
   export function dj_sub(
-    params: { t: 1 | 0; rid: string | number } & RequestBaseConfig,
+    params: { t: SubAction; rid: string | number } & RequestBaseConfig,
   ): Promise<Response>
 
   export function dj_sublist(
@@ -508,7 +593,7 @@ declare module 'NeteaseCloudMusicApi' {
 
   export function dj_toplist(
     params: {
-      type?: 'new' | 'hot'
+      type?: ListOrder
       limit?: string | number
       offset?: string | number
     } & RequestBaseConfig,
@@ -556,7 +641,7 @@ declare module 'NeteaseCloudMusicApi' {
   ): Promise<Response>
 
   export function follow(
-    params: { t: 0 | 1; id: string | number } & RequestBaseConfig,
+    params: { t: SubAction; id: string | number } & RequestBaseConfig,
   ): Promise<Response>
 
   export function history_recommend_songs(
@@ -659,11 +744,34 @@ declare module 'NeteaseCloudMusicApi' {
     } & RequestBaseConfig,
   ): Promise<Response>
 
+  export enum MvArea {
+    all = '全部',
+    zh = '内地',
+    hk = '港台',
+    ea = '欧美',
+    kr = '韩国',
+    jp = '日本',
+  }
+
+  export enum MvType {
+    all = '全部',
+    offical = '官方版',
+    raw = '原生',
+    live = '现场版',
+    netease = '网易出品',
+  }
+
+  export enum MvOrder {
+    trend = '上升最快',
+    hot = '最热',
+    new = '最新',
+  }
+
   export function mv_all(
     params: {
-      area?: string
-      type?: string
-      order?: string
+      area?: MvArea
+      type?: MvType
+      order?: MvOrder
       offset?: string | number
       limit?: string | number
     } & RequestBaseConfig,
@@ -685,11 +793,11 @@ declare module 'NeteaseCloudMusicApi' {
   ): Promise<Response>
 
   export function mv_first(
-    params: { area?: string; limit?: string | number } & RequestBaseConfig,
+    params: { area?: MvArea; limit?: string | number } & RequestBaseConfig,
   ): Promise<Response>
 
   export function mv_sub(
-    params: { t: 0 | 1; mvid: string | number } & RequestBaseConfig,
+    params: { t: SubAction; mvid: string | number } & RequestBaseConfig,
   ): Promise<Response>
 
   export function mv_sublist(
@@ -733,16 +841,7 @@ declare module 'NeteaseCloudMusicApi' {
   export function playlist_catlist(params: RequestBaseConfig): Promise<Response>
 
   export function playlist_cover_update(
-    params: {
-      id: string
-      imgFile: {
-        name: string
-        data: string | Buffer
-      }
-      imgSize?: number
-      imgX?: number
-      imgY?: number
-    } & RequestBaseConfig,
+    params: { id: string } & ImageUploadConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function playlist_create(
@@ -776,7 +875,7 @@ declare module 'NeteaseCloudMusicApi' {
   ): Promise<Response>
 
   export function playlist_subscribe(
-    params: { t: 0 | 1; id: string | number } & RequestBaseConfig,
+    params: { t: SubAction; id: string | number } & RequestBaseConfig,
   ): Promise<Response>
 
   export function playlist_subscribers(
@@ -857,10 +956,17 @@ declare module 'NeteaseCloudMusicApi' {
     params: { id: string | number } & RequestBaseConfig,
   ): Promise<Response>
 
+  export enum ResourceType {
+    mv = 1,
+    dj = 4,
+    video = 5,
+    event = 6,
+  }
+
   export function resource_like(
     params: {
-      t: 0 | 1
-      type: 1 | 4 | 5 | 6
+      t: SubAction
+      type: ResourceType
       id?: string | number
       threadId?: string
     } & RequestBaseConfig,
@@ -877,7 +983,7 @@ declare module 'NeteaseCloudMusicApi' {
   export function search(
     params: {
       keywords: string
-      type?: 1 | 10 | 100 | 1000 | 1002 | 1004 | 1006 | 1009 | 1014
+      type?: SearchType
       limit?: string | number
       offset?: string | number
     } & RequestBaseConfig,
@@ -895,8 +1001,13 @@ declare module 'NeteaseCloudMusicApi' {
     params: { type?: number; keywords: string } & RequestBaseConfig,
   ): Promise<Response>
 
+  export enum SearchSuggestType {
+    mobile = 'mobile',
+    web = 'web',
+  }
+
   export function search_suggest(
-    params: { keywords: string; type?: 'mobile' | 'web' } & RequestBaseConfig,
+    params: { keywords: string; type?: SearchSuggestType } & RequestBaseConfig,
   ): Promise<Response>
 
   export function send_playlist(
@@ -913,9 +1024,17 @@ declare module 'NeteaseCloudMusicApi' {
 
   export function setting(params: RequestBaseConfig): Promise<Response>
 
+  export enum ShareResourceType {
+    song = 'song',
+    playlist = 'playlist',
+    mv = 'mv',
+    djprogram = 'djprogram',
+    djradio = 'djradio',
+  }
+
   export function share_resource(
     params: {
-      type?: 'song' | 'playlist' | 'mv' | 'djprogram' | 'djradio'
+      type?: ShareResourceType
       msg?: string
       id?: string | number
     } & RequestBaseConfig,
@@ -967,10 +1086,10 @@ declare module 'NeteaseCloudMusicApi' {
 
   export function top_album(
     params: {
-      area?: 'ALL' | 'ZH' | 'EA' | 'KR' | 'JP'
+      area?: AlbumListArea
       limit?: string | number
       offset?: string | number
-      type?: string
+      type?: ListOrder
       year?: string
       mouth?: string
     } & RequestBaseConfig,
@@ -989,7 +1108,7 @@ declare module 'NeteaseCloudMusicApi' {
 
   export function top_mv(
     params: {
-      area?: string
+      area?: MvArea
       limit?: string | number
       offset?: string | number
     } & RequestBaseConfig,
@@ -998,7 +1117,7 @@ declare module 'NeteaseCloudMusicApi' {
   export function top_playlist(
     params: {
       cat?: string
-      order?: 'hot' | 'new'
+      order?: ListOrder
       limit?: string | number
       offset?: string | number
     } & RequestBaseConfig,
@@ -1012,14 +1131,29 @@ declare module 'NeteaseCloudMusicApi' {
     } & RequestBaseConfig,
   ): Promise<Response>
 
+  export enum TopSongType {
+    all = 0,
+    zh = 7,
+    ea = 96,
+    kr = 16,
+    ja = 8,
+  }
+
   export function top_song(
-    params: { type: 0 | 7 | 96 | 8 | 16 } & RequestBaseConfig,
+    params: { type: TopSongType } & RequestBaseConfig,
   ): Promise<Response>
 
   export function toplist(params: RequestBaseConfig): Promise<Response>
 
+  export enum ToplistArtistType {
+    zh = 1,
+    ea = 2,
+    kr = 3,
+    ja = 4,
+  }
+
   export function toplist_artist(
-    params: { type?: 1 | 2 | 3 | 4 } & RequestBaseConfig,
+    params: { type?: ToplistArtistType } & RequestBaseConfig,
   ): Promise<Response>
 
   export function toplist_detail(params: RequestBaseConfig): Promise<Response>
@@ -1089,8 +1223,13 @@ declare module 'NeteaseCloudMusicApi' {
     } & RequestBaseConfig,
   ): Promise<Response>
 
+  export enum UserRecordType {
+    all = 0,
+    weekly = 1,
+  }
+
   export function user_record(
-    params: { uid: string | number; type?: 1 | 0 } & RequestBaseConfig,
+    params: { uid: string | number; type?: UserRecordType } & RequestBaseConfig,
   ): Promise<Response>
 
   export function user_subcount(params: RequestBaseConfig): Promise<Response>
@@ -1128,7 +1267,7 @@ declare module 'NeteaseCloudMusicApi' {
   export function video_group_list(params: RequestBaseConfig): Promise<Response>
 
   export function video_sub(
-    params: { t?: 1 | 0; id: string } & RequestBaseConfig,
+    params: { t?: SubAction; id: string } & RequestBaseConfig,
   ): Promise<Response>
 
   export function video_timeline_all(
