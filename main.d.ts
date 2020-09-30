@@ -5,6 +5,11 @@ declare module 'NeteaseCloudMusicApi' {
     proxy?: string // HTTP proxy
   }
 
+  export interface MultiPageConfig {
+    limit?: string | number
+    offset?: string | number
+  }
+
   export interface ImageUploadConfig {
     imgFile: {
       name: string
@@ -62,12 +67,8 @@ declare module 'NeteaseCloudMusicApi' {
   }
 
   export function album_list(
-    params: {
-      limit?: string | number // 默认 30
-      offset?: string | number // 默认 0
-      area?: AlbumListArea // 默认 ALL
-      type: string
-    } & RequestBaseConfig,
+    params: { area?: AlbumListArea; type: string } & MultiPageConfig &
+      RequestBaseConfig,
   ): Promise<Response>
 
   export const enum AlbumListStyleArea {
@@ -78,19 +79,11 @@ declare module 'NeteaseCloudMusicApi' {
   }
 
   export function album_list_style(
-    params: {
-      limit?: string | number // 默认 10
-      offset?: string | number // 默认 0
-      area?: AlbumListStyleArea // 默认 ALL
-    } & RequestBaseConfig,
+    params: { area?: AlbumListStyleArea } & MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function album_new(
-    params: {
-      limit?: string | number // 默认 30
-      offset?: string | number // 默认 0
-      area?: AlbumListArea // 默认 ALL
-    } & RequestBaseConfig,
+    params: { area?: AlbumListArea } & MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function album_newest(params: RequestBaseConfig): Promise<Response>
@@ -123,18 +116,11 @@ declare module 'NeteaseCloudMusicApi' {
   ): Promise<Response>
 
   export function album_sublist(
-    params: {
-      limit: string | number // 默认： 25
-      offset: string | number // 默认： 0
-    } & RequestBaseConfig,
+    params: MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function artist_album(
-    params: {
-      id: string | number
-      limit?: string | number // 默认 30
-      offset?: string | number // 默认 0
-    } & RequestBaseConfig,
+    params: { id: string | number } & MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function artist_desc(
@@ -219,18 +205,13 @@ declare module 'NeteaseCloudMusicApi' {
         | 'X'
         | 'Y'
         | 'Z'
-      offset?: string | number
-      limit?: string | number
       type?: ArtistType
-    } & RequestBaseConfig,
+    } & MultiPageConfig &
+      RequestBaseConfig,
   ): Promise<Response>
 
   export function artist_mv(
-    params: {
-      id: string | number
-      limit: string | number
-      offset: string | number
-    } & RequestBaseConfig,
+    params: { id: string | number } & MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export const enum ArtistSongsOrder {
@@ -242,9 +223,8 @@ declare module 'NeteaseCloudMusicApi' {
     params: {
       id: string | number
       order?: ArtistSongsOrder
-      offset?: string | number
-      limit?: string | number
-    } & RequestBaseConfig,
+    } & MultiPageConfig &
+      RequestBaseConfig,
   ): Promise<Response>
 
   export function artist_sub(
@@ -252,10 +232,7 @@ declare module 'NeteaseCloudMusicApi' {
   ): Promise<Response>
 
   export function artist_sublist(
-    params: {
-      limit?: string | number
-      offset?: string | number
-    } & RequestBaseConfig,
+    params: MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function artist_top_song(
@@ -324,9 +301,8 @@ declare module 'NeteaseCloudMusicApi' {
     params: {
       keywords: string
       type?: SearchType
-      limit?: string | number
-      offset?: string | number
-    } & RequestBaseConfig,
+    } & MultiPageConfig &
+      RequestBaseConfig,
   ): Promise<Response>
 
   export const enum CommentType {
@@ -404,28 +380,25 @@ declare module 'NeteaseCloudMusicApi' {
   export function comment_album(
     params: {
       id: string | number
-      limit?: string | number
-      offset?: string | number
       before?: string | number
-    } & RequestBaseConfig,
+    } & MultiPageConfig &
+      RequestBaseConfig,
   ): Promise<Response>
 
   export function comment_dj(
     params: {
       id: string | number
-      limit?: string | number
-      offset?: string | number
       before?: string | number
-    } & RequestBaseConfig,
+    } & MultiPageConfig &
+      RequestBaseConfig,
   ): Promise<Response>
 
   export function comment_event(
     params: {
       threadId: string
-      limit?: string | number
-      offset?: string | number
       before?: string | number
-    } & RequestBaseConfig,
+    } & MultiPageConfig &
+      RequestBaseConfig,
   ): Promise<Response>
 
   export function comment_floor(
@@ -442,10 +415,9 @@ declare module 'NeteaseCloudMusicApi' {
     params: {
       id: string | number
       type: CommentType
-      offset?: string | number
-      limit?: string | number
       before?: string | number
-    } & RequestBaseConfig,
+    } & MultiPageConfig &
+      RequestBaseConfig,
   ): Promise<Response>
 
   export function comment_hotwall_list(
@@ -465,37 +437,34 @@ declare module 'NeteaseCloudMusicApi' {
   export function comment_music(
     params: {
       id: string | number
-      limit?: string | number
-      offset?: string | number
       before?: string | number
-    } & RequestBaseConfig,
+    } & MultiPageConfig &
+      RequestBaseConfig,
   ): Promise<Response>
 
   export function comment_mv(
     params: {
       id: string | number
-      limit?: string | number
-      offset?: string | number
       before?: string | number
-    } & RequestBaseConfig,
+    } & MultiPageConfig &
+      RequestBaseConfig,
   ): Promise<Response>
 
   export function comment_playlist(
     params: {
       id: string | number
-      limit?: string | number
-      offset?: string | number
+
       before?: string | number
-    } & RequestBaseConfig,
+    } & MultiPageConfig &
+      RequestBaseConfig,
   ): Promise<Response>
 
   export function comment_video(
     params: {
       id: string | number
-      limit?: string | number
-      offset?: string | number
       before?: string | number
-    } & RequestBaseConfig,
+    } & MultiPageConfig &
+      RequestBaseConfig,
   ): Promise<Response>
 
   export function countries_code_list(
@@ -520,10 +489,7 @@ declare module 'NeteaseCloudMusicApi' {
   ): Promise<Response>
 
   export function digitalAlbum_purchased(
-    params: {
-      offset?: string | number
-      limit?: string | number
-    } & RequestBaseConfig,
+    params: MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function dj_banner(params: RequestBaseConfig): Promise<Response>
@@ -543,17 +509,11 @@ declare module 'NeteaseCloudMusicApi' {
   ): Promise<Response>
 
   export function dj_hot(
-    params: {
-      offset?: string | number
-      limit?: string | number
-    } & RequestBaseConfig,
+    params: MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function dj_paygift(
-    params: {
-      offset?: string | number
-      limit?: string | number
-    } & RequestBaseConfig,
+    params: MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function dj_personalize_recommend(
@@ -563,10 +523,9 @@ declare module 'NeteaseCloudMusicApi' {
   export function dj_program(
     params: {
       rid: string | number
-      limit?: string | number
-      offset?: string | number
       asc: 'true' | 1 | 'false' | 0
-    } & RequestBaseConfig,
+    } & MultiPageConfig &
+      RequestBaseConfig,
   ): Promise<Response>
 
   export function dj_program_detail(
@@ -574,10 +533,7 @@ declare module 'NeteaseCloudMusicApi' {
   ): Promise<Response>
 
   export function dj_program_toplist(
-    params: {
-      limit?: string | number
-      offset?: string | number
-    } & RequestBaseConfig,
+    params: MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function dj_program_toplist_hours(
@@ -587,9 +543,8 @@ declare module 'NeteaseCloudMusicApi' {
   export function dj_radio_hot(
     params: {
       cateId: string | number
-      limit?: string | number
-      offset?: string | number
-    } & RequestBaseConfig,
+    } & MultiPageConfig &
+      RequestBaseConfig,
   ): Promise<Response>
 
   export function dj_recommend(params: RequestBaseConfig): Promise<Response>
@@ -626,10 +581,7 @@ declare module 'NeteaseCloudMusicApi' {
   ): Promise<Response>
 
   export function dj_sublist(
-    params: {
-      limit?: string | number
-      offset?: string | number
-    } & RequestBaseConfig,
+    params: MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function dj_today_perfered(
@@ -637,24 +589,15 @@ declare module 'NeteaseCloudMusicApi' {
   ): Promise<Response>
 
   export function dj_toplist(
-    params: {
-      type?: ListOrder
-      limit?: string | number
-      offset?: string | number
-    } & RequestBaseConfig,
+    params: { type?: ListOrder } & MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function dj_toplist_hours(
-    params: {
-      limit?: string | number
-    } & RequestBaseConfig,
+    params: { limit?: string | number } & RequestBaseConfig,
   ): Promise<Response>
 
   export function dj_toplist_newcomer(
-    params: {
-      limit?: string | number
-      offset?: string | number
-    } & RequestBaseConfig,
+    params: MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function dj_toplist_pay(
@@ -706,10 +649,7 @@ declare module 'NeteaseCloudMusicApi' {
   ): Promise<Response>
 
   export function hot_topic(
-    params: {
-      limit?: string | number
-      offset?: string | number
-    } & RequestBaseConfig,
+    params: MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function like(
@@ -768,10 +708,7 @@ declare module 'NeteaseCloudMusicApi' {
   ): Promise<Response>
 
   export function msg_forwards(
-    params: {
-      offset?: string | number
-      limit?: string | number
-    } & RequestBaseConfig,
+    params: MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function msg_notices(
@@ -782,10 +719,7 @@ declare module 'NeteaseCloudMusicApi' {
   ): Promise<Response>
 
   export function msg_private(
-    params: {
-      offset?: string | number
-      limit?: string | number
-    } & RequestBaseConfig,
+    params: MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function msg_private_history(
@@ -824,9 +758,8 @@ declare module 'NeteaseCloudMusicApi' {
       area?: MvArea
       type?: MvType
       order?: MvOrder
-      offset?: string | number
-      limit?: string | number
-    } & RequestBaseConfig,
+    } & MultiPageConfig &
+      RequestBaseConfig,
   ): Promise<Response>
 
   export function mv_detail(
@@ -838,10 +771,7 @@ declare module 'NeteaseCloudMusicApi' {
   ): Promise<Response>
 
   export function mv_exclusive_rcmd(
-    params: {
-      offset?: string | number
-      limit?: string | number
-    } & RequestBaseConfig,
+    params: MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function mv_first(
@@ -853,10 +783,7 @@ declare module 'NeteaseCloudMusicApi' {
   ): Promise<Response>
 
   export function mv_sublist(
-    params: {
-      limit?: string | number
-      offset?: string | number
-    } & RequestBaseConfig,
+    params: MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function mv_url(
@@ -884,10 +811,7 @@ declare module 'NeteaseCloudMusicApi' {
   ): Promise<Response>
 
   export function personalized_privatecontent_list(
-    params: {
-      offset?: string | number
-      limit?: string | number
-    } & RequestBaseConfig,
+    params: MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function playlist_catlist(params: RequestBaseConfig): Promise<Response>
@@ -931,11 +855,7 @@ declare module 'NeteaseCloudMusicApi' {
   ): Promise<Response>
 
   export function playlist_subscribers(
-    params: {
-      id?: string | number
-      limit?: string | number
-      offset?: string | number
-    } & RequestBaseConfig,
+    params: { id?: string | number } & MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function playlist_tags_update(
@@ -969,11 +889,7 @@ declare module 'NeteaseCloudMusicApi' {
   ): Promise<Response>
 
   export function program_recommend(
-    params: {
-      type: string
-      limit?: string | number
-      offset?: string | number
-    } & RequestBaseConfig,
+    params: { type: string } & MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function rebind(
@@ -1036,9 +952,8 @@ declare module 'NeteaseCloudMusicApi' {
     params: {
       keywords: string
       type?: SearchType
-      limit?: string | number
-      offset?: string | number
-    } & RequestBaseConfig,
+    } & MultiPageConfig &
+      RequestBaseConfig,
   ): Promise<Response>
 
   export function search_default(params: RequestBaseConfig): Promise<Response>
@@ -1101,27 +1016,15 @@ declare module 'NeteaseCloudMusicApi' {
   ): Promise<Response>
 
   export function simi_playlist(
-    params: {
-      id: string | number
-      limit?: string | number
-      offset?: string | number
-    } & RequestBaseConfig,
+    params: { id: string | number } & MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function simi_song(
-    params: {
-      id: string | number
-      limit?: string | number
-      offset?: string | number
-    } & RequestBaseConfig,
+    params: { id: string | number } & MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function simi_user(
-    params: {
-      id: string | number
-      limit?: string | number
-      offset?: string | number
-    } & RequestBaseConfig,
+    params: { id: string | number } & MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function song_detail(
@@ -1139,19 +1042,15 @@ declare module 'NeteaseCloudMusicApi' {
   export function top_album(
     params: {
       area?: AlbumListArea
-      limit?: string | number
-      offset?: string | number
       type?: ListOrder
       year?: string
       mouth?: string
-    } & RequestBaseConfig,
+    } & MultiPageConfig &
+      RequestBaseConfig,
   ): Promise<Response>
 
   export function top_artists(
-    params: {
-      limit?: string | number
-      offset?: string | number
-    } & RequestBaseConfig,
+    params: MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function top_list(
@@ -1159,20 +1058,12 @@ declare module 'NeteaseCloudMusicApi' {
   ): Promise<Response>
 
   export function top_mv(
-    params: {
-      area?: MvArea
-      limit?: string | number
-      offset?: string | number
-    } & RequestBaseConfig,
+    params: { area?: MvArea } & MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function top_playlist(
-    params: {
-      cat?: string
-      order?: ListOrder
-      limit?: string | number
-      offset?: string | number
-    } & RequestBaseConfig,
+    params: { cat?: string; order?: ListOrder } & MultiPageConfig &
+      RequestBaseConfig,
   ): Promise<Response>
 
   export function top_playlist_highquality(
@@ -1215,10 +1106,7 @@ declare module 'NeteaseCloudMusicApi' {
   ): Promise<Response>
 
   export function user_cloud(
-    params: {
-      limit?: string | number
-      offset?: string | number
-    } & RequestBaseConfig,
+    params: MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function user_cloud_del(
@@ -1234,11 +1122,7 @@ declare module 'NeteaseCloudMusicApi' {
   ): Promise<Response>
 
   export function user_dj(
-    params: {
-      limit?: string | number
-      offset?: string | number
-      uid: string | number
-    } & RequestBaseConfig,
+    params: { uid: string | number } & MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function user_event(
@@ -1258,21 +1142,13 @@ declare module 'NeteaseCloudMusicApi' {
   ): Promise<Response>
 
   export function user_follows(
-    params: {
-      uid: string | number
-      offset?: string | number
-      limit?: string | number
-    } & RequestBaseConfig,
+    params: { uid: string | number } & MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function user_level(params: RequestBaseConfig): Promise<Response>
 
   export function user_playlist(
-    params: {
-      uid: string | number
-      limit?: string | number
-      offset?: string | number
-    } & RequestBaseConfig,
+    params: { uid: string | number } & MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export const enum UserRecordType {
@@ -1298,10 +1174,7 @@ declare module 'NeteaseCloudMusicApi' {
   ): Promise<Response>
 
   export function video_category_list(
-    params: {
-      offset?: string | number
-      limit?: string | number
-    } & RequestBaseConfig,
+    params: MultiPageConfig & RequestBaseConfig,
   ): Promise<Response>
 
   export function video_detail(
@@ -1335,8 +1208,6 @@ declare module 'NeteaseCloudMusicApi' {
   ): Promise<Response>
 
   export function weblog(
-    params: {
-      data?: { [index: string]: unknown }
-    } & RequestBaseConfig,
+    params: { data?: { [index: string]: unknown } } & RequestBaseConfig,
   ): Promise<Response>
 }
