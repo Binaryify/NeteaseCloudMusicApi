@@ -349,10 +349,55 @@ declare module 'NeteaseCloudMusicApi' {
     params: {
       id: string | number
       type: CommentType
-      t: CommentAction
-      threadId?: string
-      content?: string | number
-      commentId?: string | number
+      t: CommentAction.delete
+      commentId: string | number
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function comment(
+    params: {
+      type: CommentType.event
+      t: CommentAction.delete
+      threadId: string
+      commentId: string | number
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function comment(
+    params: {
+      id: string | number
+      type: CommentType
+      t: CommentAction.add
+      content: string | number
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function comment(
+    params: {
+      type: CommentType.event
+      t: CommentAction.add
+      threadId: string
+      content: string | number
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function comment(
+    params: {
+      id: string | number
+      type: CommentType
+      t: CommentAction.reply
+      content: string | number
+      commentId: string | number
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function comment(
+    params: {
+      type: CommentType.event
+      t: CommentAction.reply
+      threadId: string
+      content: string | number
+      commentId: string | number
     } & RequestBaseConfig,
   ): Promise<Response>
 
@@ -681,10 +726,18 @@ declare module 'NeteaseCloudMusicApi' {
   ): Promise<Response>
 
   export function login(
+    params: { email: string; password: string } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function login(
+    params: { email: string; md5_password: string } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function login_cellphone(
     params: {
-      email: string
-      password?: string
-      md5_password?: string
+      phone: string
+      countrycode?: string
+      password: string
     } & RequestBaseConfig,
   ): Promise<Response>
 
@@ -692,8 +745,7 @@ declare module 'NeteaseCloudMusicApi' {
     params: {
       phone: string
       countrycode?: string
-      password?: string
-      md5_password?: string
+      md5_password: string
     } & RequestBaseConfig,
   ): Promise<Response>
 
