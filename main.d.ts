@@ -27,7 +27,7 @@ declare module 'NeteaseCloudMusicApi' {
     cookie: string[]
   }
 
-  export enum SubAction {
+  export const enum SubAction {
     sub = 1,
     ubsub = 0,
   }
@@ -48,7 +48,7 @@ declare module 'NeteaseCloudMusicApi' {
     params: { id: string | number } & RequestBaseConfig,
   ): Promise<Response>
 
-  export enum AlbumListArea {
+  export const enum AlbumListArea {
     all = 'ALL',
     zh = 'ZH',
     ea = 'EA',
@@ -56,7 +56,7 @@ declare module 'NeteaseCloudMusicApi' {
     jp = 'JP',
   }
 
-  export enum ListOrder {
+  export const enum ListOrder {
     hot = 'hot',
     new = 'new',
   }
@@ -70,7 +70,7 @@ declare module 'NeteaseCloudMusicApi' {
     } & RequestBaseConfig,
   ): Promise<Response>
 
-  export enum AlbumListStyleArea {
+  export const enum AlbumListStyleArea {
     zh = 'Z_H',
     ea = 'E_A',
     kr = 'KR',
@@ -95,14 +95,14 @@ declare module 'NeteaseCloudMusicApi' {
 
   export function album_newest(params: RequestBaseConfig): Promise<Response>
 
-  export enum AlbumSongsaleboardType {
+  export const enum AlbumSongsaleboardType {
     daily = 'daily',
     week = 'week',
     year = 'year',
     total = 'total',
   }
 
-  export enum AlbumSongsaleboardAlbumType {
+  export const enum AlbumSongsaleboardAlbumType {
     album = 0,
     single = 1,
   }
@@ -141,14 +141,14 @@ declare module 'NeteaseCloudMusicApi' {
     params: { id: string | number } & RequestBaseConfig,
   ): Promise<Response>
 
-  export enum ArtistListArea {
+  export const enum ArtistListArea {
     zh = 'Z_H',
     ea = 'E_A',
     kr = 'KR',
     jp = 'JP',
   }
 
-  export enum ArtistArea {
+  export const enum ArtistArea {
     all = '-1',
     zh = '7',
     ea = '96',
@@ -157,7 +157,7 @@ declare module 'NeteaseCloudMusicApi' {
     other = '0',
   }
 
-  export enum ArtistType {
+  export const enum ArtistType {
     male = '1',
     female = '2',
     band = '3',
@@ -233,7 +233,7 @@ declare module 'NeteaseCloudMusicApi' {
     } & RequestBaseConfig,
   ): Promise<Response>
 
-  export enum ArtistSongsOrder {
+  export const enum ArtistSongsOrder {
     hot = 'hot',
     time = 'time',
   }
@@ -272,7 +272,7 @@ declare module 'NeteaseCloudMusicApi' {
     params: ImageUploadConfig & RequestBaseConfig,
   ): Promise<Response>
 
-  export enum BannerType {
+  export const enum BannerType {
     pc = 0,
     android = 1,
     iphone = 2,
@@ -307,7 +307,7 @@ declare module 'NeteaseCloudMusicApi' {
     params: { id: string | number; br: string | number } & RequestBaseConfig,
   ): Promise<Response>
 
-  export enum SearchType {
+  export const enum SearchType {
     single = 1,
     album = 10,
     artist = 100,
@@ -329,7 +329,7 @@ declare module 'NeteaseCloudMusicApi' {
     } & RequestBaseConfig,
   ): Promise<Response>
 
-  export enum CommentType {
+  export const enum CommentType {
     song = 0,
     mv = 1,
     playlist = 2,
@@ -339,7 +339,7 @@ declare module 'NeteaseCloudMusicApi' {
     event = 6,
   }
 
-  export enum CommentAction {
+  export const enum CommentAction {
     add = 1,
     delete = 0,
     reply = 2,
@@ -502,7 +502,7 @@ declare module 'NeteaseCloudMusicApi' {
     params: RequestBaseConfig,
   ): Promise<Response>
 
-  export enum DailySigninType {
+  export const enum DailySigninType {
     android = 0,
     pc = 1,
   }
@@ -796,7 +796,7 @@ declare module 'NeteaseCloudMusicApi' {
     } & RequestBaseConfig,
   ): Promise<Response>
 
-  export enum MvArea {
+  export const enum MvArea {
     all = '全部',
     zh = '内地',
     hk = '港台',
@@ -805,7 +805,7 @@ declare module 'NeteaseCloudMusicApi' {
     jp = '日本',
   }
 
-  export enum MvType {
+  export const enum MvType {
     all = '全部',
     offical = '官方版',
     raw = '原生',
@@ -813,7 +813,7 @@ declare module 'NeteaseCloudMusicApi' {
     netease = '网易出品',
   }
 
-  export enum MvOrder {
+  export const enum MvOrder {
     trend = '上升最快',
     hot = '最热',
     new = '最新',
@@ -1008,7 +1008,7 @@ declare module 'NeteaseCloudMusicApi' {
     params: { id: string | number } & RequestBaseConfig,
   ): Promise<Response>
 
-  export enum ResourceType {
+  export const enum ResourceType {
     mv = 1,
     dj = 4,
     video = 5,
@@ -1053,7 +1053,7 @@ declare module 'NeteaseCloudMusicApi' {
     params: { type?: number; keywords: string } & RequestBaseConfig,
   ): Promise<Response>
 
-  export enum SearchSuggestType {
+  export const enum SearchSuggestType {
     mobile = 'mobile',
     web = 'web',
   }
@@ -1076,7 +1076,7 @@ declare module 'NeteaseCloudMusicApi' {
 
   export function setting(params: RequestBaseConfig): Promise<Response>
 
-  export enum ShareResourceType {
+  export const enum ShareResourceType {
     song = 'song',
     playlist = 'playlist',
     mv = 'mv',
@@ -1183,7 +1183,7 @@ declare module 'NeteaseCloudMusicApi' {
     } & RequestBaseConfig,
   ): Promise<Response>
 
-  export enum TopSongType {
+  export const enum TopSongType {
     all = 0,
     zh = 7,
     ea = 96,
@@ -1197,7 +1197,7 @@ declare module 'NeteaseCloudMusicApi' {
 
   export function toplist(params: RequestBaseConfig): Promise<Response>
 
-  export enum ToplistArtistType {
+  export const enum ToplistArtistType {
     zh = 1,
     ea = 2,
     kr = 3,
@@ -1275,7 +1275,7 @@ declare module 'NeteaseCloudMusicApi' {
     } & RequestBaseConfig,
   ): Promise<Response>
 
-  export enum UserRecordType {
+  export const enum UserRecordType {
     all = 0,
     weekly = 1,
   }
