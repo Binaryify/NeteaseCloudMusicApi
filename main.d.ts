@@ -1,689 +1,1213 @@
-// export * from './interface'
-import {
-  ActivateInitProfileRequestConfig,
-  AlbumRequestConfig,
-  AlbumDetailRequestConfig,
-  AlbumDetailDynamicRequestConfig,
-  AlbumListRequestConfig,
-  AlbumListStyleRequestConfig,
-  AlbumNewRequestConfig,
-  AlbumNewestRequestConfig,
-  AlbumSongSaleBoardRequestConfig,
-  AlbumSubRequestConfig,
-  AlbumSubListRequestConfig,
-  ArtistAlbumRequestConfig,
-  ArtistDescRequestConfig,
-  ArtistListRequestConfig,
-  ArtistMVRequestConfig,
-  ArtistSongsRequestConfig,
-  ArtistSubRequestConfig,
-  ArtistSubListRequestConfig,
-  ArtistTopSongRequestConfig,
-  ArtistsRequestConfig,
-  AvatarUploadRequestConfig,
-  BannerRequestConfig,
-  BatchRequestConfig,
-  CaptchaSentRequestConfig,
-  CaptchaVerifyRequestConfig,
-  CellphoneExistenceCheckRequestConfig,
-  CheckMusicRequestConfig,
-  CloudSearchRequestConfig,
-  CommentRequestConfig,
-  CommentAlbumRequestConfig,
-  CommentDjRequestConfig,
-  CommentEventRequestConfig,
-  CommentFloorRequestConfig,
-  CommentHotRequestConfig,
-  CommentHotwallListRequestConfig,
-  CommentLikeRequestConfig,
-  CommentMusicRequestConfig,
-  CommentMvRequestConfig,
-  CommentPlaylistRequestConfig,
-  CommentVideoRequestConfig,
-  CountriesCodeListRequestConfig,
-  DailySigninRequestConfig,
-  DigitalAlbumOrderingRequestConfig,
-  DigitalAlbumPurchasedRequestConfig,
-  DjBannerRequestConfig,
-  DjCategoryExcludehotRequestConfig,
-  DjCategoryRecommendRequestConfig,
-  DjCatelistRequestConfig,
-  DjDetailRequestConfig,
-  DjHotRequestConfig,
-  DjPaygiftRequestConfig,
-  DjProgramRequestConfig,
-  DjProgramDetailRequestConfig,
-  DjProgramToplistRequestConfig,
-  DjProgramToplistHoursRequestConfig,
-  DjRadioHotRequestConfig,
-  DjRecommendRequestConfig,
-  DjRecommendTypeRequestConfig,
-  DjSubRequestConfig,
-  DjSublistRequestConfig,
-  DjTodayPerferedRequestConfig,
-  DjToplistRequestConfig,
-  DjToplistHoursRequestConfig,
-  DjToplistNewcomerRequestConfig,
-  DjToplistPayRequestConfig,
-  DjToplistPopularRequestConfig,
-  EventRequestConfig,
-  EventDelRequestConfig,
-  EventForwardRequestConfig,
-  FmTrashRequestConfig,
-  FollowRequestConfig,
-  HistoryRecommendSongsRequestConfig,
-  HistoryRecommendSongsDetailRequestConfig,
-  HomepageBlockPageRequestConfig,
-  HomepageDragonBallRequestConfig,
-  HotTopicRequestConfig,
-  LikeRequestConfig,
-  LikelistRequestConfig,
-  LoginRequestConfig,
-  LoginCellphoneRequestConfig,
-  LoginRefreshRequestConfig,
-  LoginStatusRequestConfig,
-  LogoutRequestConfig,
-  LyricRequestConfig,
-  MsgCommentsRequestConfig,
-  MsgForwardsRequestConfig,
-  MsgNoticesRequestConfig,
-  MsgPrivateRequestConfig,
-  MsgPrivateHistoryRequestConfig,
-  MvAllRequestConfig,
-  MvDetailRequestConfig,
-  MvDetailInfoRequestConfig,
-  MvExclusiveRcmdRequestConfig,
-  MvFirstRequestConfig,
-  MvSubRequestConfig,
-  MvSublistRequestConfig,
-  MvUrlRequestConfig,
-  PersonalFmRequestConfig,
-  PersonalizedRequestConfig,
-  PersonalizedDjprogramRequestConfig,
-  PersonalizedMvRequestConfig,
-  PersonalizedNewsongRequestConfig,
-  PersonalizedPrivatecontentRequestConfig,
-  PersonalizedPrivatecontentListRequestConfig,
-  PlaylistCatlistRequestConfig,
-  PlaylistCoverUpdateRequestConfig,
-  PlaylistCreateRequestConfig,
-  PlaylistDeleteRequestConfig,
-  PlaylistDescUpdateRequestConfig,
-  PlaylistDetailRequestConfig,
-  PlaylistHotRequestConfig,
-  PlaylistNameUpdateRequestConfig,
-  PlaylistOrderUpdateRequestConfig,
-  PlaylistSubscribeRequestConfig,
-  PlaylistSubscribersRequestConfig,
-  PlaylistTagsUpdateRequestConfig,
-  PlaylistTracksRequestConfig,
-  PlaylistUpdateRequestConfig,
-  PlaymodeIntelligenceListRequestConfig,
-  ProgramRecommendRequestConfig,
-  RebindRequestConfig,
-  RecommendResourceRequestConfig,
-  RecommendSongsRequestConfig,
-  RegisterCellphoneRequestConfig,
-  RelatedAllvideoRequestConfig,
-  RelatedPlaylistRequestConfig,
-  ResourceLikeRequestConfig,
-  ScrobbleRequestConfig,
-  SearchRequestConfig,
-  SearchDefaultRequestConfig,
-  SearchHotRequestConfig,
-  SearchHotDetailRequestConfig,
-  SearchMultimatchRequestConfig,
-  SearchSuggestRequestConfig,
-  SendPlaylistRequestConfig,
-  SendTextRequestConfig,
-  SettingRequestConfig,
-  ShareResourceRequestConfig,
-  SimiArtistRequestConfig,
-  SimiMvRequestConfig,
-  SimiPlaylistRequestConfig,
-  SimiSongRequestConfig,
-  SimiUserRequestConfig,
-  SongDetailRequestConfig,
-  SongOrderUpdateRequestConfig,
-  SongUrlRequestConfig,
-  TopAlbumRequestConfig,
-  TopArtistsRequestConfig,
-  TopListRequestConfig,
-  TopMvRequestConfig,
-  TopPlaylistRequestConfig,
-  TopPlaylistHighqualityRequestConfig,
-  TopSongRequestConfig,
-  ToplistRequestConfig,
-  ToplistArtistRequestConfig,
-  ToplistDetailRequestConfig,
-  UserAudioRequestConfig,
-  UserCloudRequestConfig,
-  UserCloudDelRequestConfig,
-  UserCloudDetailRequestConfig,
-  UserDetailRequestConfig,
-  UserDjRequestConfig,
-  UserEventRequestConfig,
-  UserFollowedsRequestConfig,
-  UserFollowsRequestConfig,
-  UserPlaylistRequestConfig,
-  UserRecordRequestConfig,
-  UserSubcountRequestConfig,
-  UserUpdateRequestConfig,
-  VideoCategoryListRequestConfig,
-  VideoDetailRequestConfig,
-  VideoDetailInfoRequestConfig,
-  VideoGroupRequestConfig,
-  VideoGroupListRequestConfig,
-  VideoSubRequestConfig,
-  VideoTimelineAllRequestConfig,
-  VideoTimelineRecommendRequestConfig,
-  VideoUrlRequestConfig,
-  WeblogRequestConfig,
-  APIBaseResponse,
-  UserLevelRequestConfig,
-  PlaylistHighqualityTagsRequestConfig,
-  DjPersonalizeRecommendRequestConfig,
-} from './interface'
-// Start
-// export interface Response<T> {
-interface Response<T> {
-  status: number // The Http Response Code
-  body: T // API Response body
-  cookie: string[]
-}
+declare module 'NeteaseCloudMusicApi' {
+  export interface RequestBaseConfig {
+    cookie?: string
+    realIP?: string // IPv4/IPv6 filled in X-Real-IP
+    proxy?: string // HTTP proxy
+  }
 
-interface APIInstance {
-  activate_init_profile: (
-    params: ActivateInitProfileRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  album: (params: AlbumRequestConfig) => Promise<Response<APIBaseResponse>>
-  album_detail: (
-    params: AlbumDetailRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  album_detail_dynamic: (
-    params: AlbumDetailDynamicRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  album_list: (
-    params: AlbumListRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  album_list_style: (
-    params: AlbumListStyleRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  album_new: (
-    params: AlbumNewRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  album_newest: (
-    params: AlbumNewestRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  album_songsaleboard: (
-    params: AlbumSongSaleBoardRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  album_sub: (
-    params: AlbumSubRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  album_sublist: (
-    params: AlbumSubListRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  artist_album: (
-    params: ArtistAlbumRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  artist_desc: (
-    params: ArtistDescRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  artist_list: (
-    params: ArtistListRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  artist_mv: (
-    params: ArtistMVRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  artist_songs: (
-    params: ArtistSongsRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  artist_sub: (
-    params: ArtistSubRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  artist_sublist: (
-    params: ArtistSubListRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  artist_top_song: (
-    params: ArtistTopSongRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  artists: (params: ArtistsRequestConfig) => Promise<Response<APIBaseResponse>>
-  avatar_upload: (
-    params: AvatarUploadRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  banner: (params: BannerRequestConfig) => Promise<Response<APIBaseResponse>>
-  batch: (params: BatchRequestConfig) => Promise<Response<APIBaseResponse>>
-  captcha_sent: (
-    params: CaptchaSentRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  captcha_verify: (
-    params: CaptchaVerifyRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  cellphone_existence_check: (
-    params: CellphoneExistenceCheckRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  check_music: (
-    params: CheckMusicRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  cloudsearch: (
-    params: CloudSearchRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  comment: (params: CommentRequestConfig) => Promise<Response<APIBaseResponse>>
-  comment_album: (
-    params: CommentAlbumRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  comment_dj: (
-    params: CommentDjRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  comment_event: (
-    params: CommentEventRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  comment_floor: (
-    params: CommentFloorRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  comment_hot: (
-    params: CommentHotRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  comment_hotwall_list: (
-    params: CommentHotwallListRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  comment_like: (
-    params: CommentLikeRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  comment_music: (
-    params: CommentMusicRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  comment_mv: (
-    params: CommentMvRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  comment_playlist: (
-    params: CommentPlaylistRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  comment_video: (
-    params: CommentVideoRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  countries_code_list: (
-    params: CountriesCodeListRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  daily_signin: (
-    params: DailySigninRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  digitalAlbum_ordering: (
-    params: DigitalAlbumOrderingRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  digitalAlbum_purchased: (
-    params: DigitalAlbumPurchasedRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  dj_banner: (
-    params: DjBannerRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  dj_category_excludehot: (
-    params: DjCategoryExcludehotRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  dj_category_recommend: (
-    params: DjCategoryRecommendRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  dj_catelist: (
-    params: DjCatelistRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  dj_detail: (
-    params: DjDetailRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  dj_hot: (params: DjHotRequestConfig) => Promise<Response<APIBaseResponse>>
-  dj_paygift: (
-    params: DjPaygiftRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  dj_personalize_recommend: (
-    params: DjPersonalizeRecommendRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  dj_program: (
-    params: DjProgramRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  dj_program_detail: (
-    params: DjProgramDetailRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  dj_program_toplist: (
-    params: DjProgramToplistRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  dj_program_toplist_hours: (
-    params: DjProgramToplistHoursRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  dj_radio_hot: (
-    params: DjRadioHotRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  dj_recommend: (
-    params: DjRecommendRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  dj_recommend_type: (
-    params: DjRecommendTypeRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  dj_sub: (params: DjSubRequestConfig) => Promise<Response<APIBaseResponse>>
-  dj_sublist: (
-    params: DjSublistRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  dj_today_perfered: (
-    params: DjTodayPerferedRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  dj_toplist: (
-    params: DjToplistRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  dj_toplist_hours: (
-    params: DjToplistHoursRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  dj_toplist_newcomer: (
-    params: DjToplistNewcomerRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  dj_toplist_pay: (
-    params: DjToplistPayRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  dj_toplist_popular: (
-    params: DjToplistPopularRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  event: (params: EventRequestConfig) => Promise<Response<APIBaseResponse>>
-  event_del: (
-    params: EventDelRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  event_forward: (
-    params: EventForwardRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  fm_trash: (params: FmTrashRequestConfig) => Promise<Response<APIBaseResponse>>
-  follow: (params: FollowRequestConfig) => Promise<Response<APIBaseResponse>>
-  history_recommend_songs: (
-    params: HistoryRecommendSongsRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  history_recommend_songs_detail: (
-    params: HistoryRecommendSongsDetailRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  homepage_block_page: (
-    params: HomepageBlockPageRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  homepage_dragon_ball: (
-    params: HomepageDragonBallRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  hot_topic: (
-    params: HotTopicRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  like: (params: LikeRequestConfig) => Promise<Response<APIBaseResponse>>
-  likelist: (
-    params: LikelistRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  login: (params: LoginRequestConfig) => Promise<Response<APIBaseResponse>>
-  login_cellphone: (
-    params: LoginCellphoneRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  login_refresh: (
-    params: LoginRefreshRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  login_status: (
-    params: LoginStatusRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  logout: (params: LogoutRequestConfig) => Promise<Response<APIBaseResponse>>
-  lyric: (params: LyricRequestConfig) => Promise<Response<APIBaseResponse>>
-  msg_comments: (
-    params: MsgCommentsRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  msg_forwards: (
-    params: MsgForwardsRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  msg_notices: (
-    params: MsgNoticesRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  msg_private: (
-    params: MsgPrivateRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  msg_private_history: (
-    params: MsgPrivateHistoryRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  mv_all: (params: MvAllRequestConfig) => Promise<Response<APIBaseResponse>>
-  mv_detail: (
-    params: MvDetailRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  mv_detail_info: (
-    params: MvDetailInfoRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  mv_exclusive_rcmd: (
-    params: MvExclusiveRcmdRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  mv_first: (params: MvFirstRequestConfig) => Promise<Response<APIBaseResponse>>
-  mv_sub: (params: MvSubRequestConfig) => Promise<Response<APIBaseResponse>>
-  mv_sublist: (
-    params: MvSublistRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  mv_url: (params: MvUrlRequestConfig) => Promise<Response<APIBaseResponse>>
-  personal_fm: (
-    params: PersonalFmRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  personalized: (
-    params: PersonalizedRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  personalized_djprogram: (
-    params: PersonalizedDjprogramRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  personalized_mv: (
-    params: PersonalizedMvRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  personalized_newsong: (
-    params: PersonalizedNewsongRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  personalized_privatecontent: (
-    params: PersonalizedPrivatecontentRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  personalized_privatecontent_list: (
-    params: PersonalizedPrivatecontentListRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  playlist_catlist: (
-    params: PlaylistCatlistRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  playlist_cover_update: (
-    params: PlaylistCoverUpdateRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  playlist_create: (
-    params: PlaylistCreateRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  playlist_delete: (
-    params: PlaylistDeleteRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  playlist_desc_update: (
-    params: PlaylistDescUpdateRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  playlist_detail: (
-    params: PlaylistDetailRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  playlist_highquality_tags: (
-    params: PlaylistHighqualityTagsRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  playlist_hot: (
-    params: PlaylistHotRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  playlist_name_update: (
-    params: PlaylistNameUpdateRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  playlist_order_update: (
-    params: PlaylistOrderUpdateRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  playlist_subscribe: (
-    params: PlaylistSubscribeRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  playlist_subscribers: (
-    params: PlaylistSubscribersRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  playlist_tags_update: (
-    params: PlaylistTagsUpdateRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  playlist_tracks: (
-    params: PlaylistTracksRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  playlist_update: (
-    params: PlaylistUpdateRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  playmode_intelligence_list: (
-    params: PlaymodeIntelligenceListRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  program_recommend: (
-    params: ProgramRecommendRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  rebind: (params: RebindRequestConfig) => Promise<Response<APIBaseResponse>>
-  recommend_resource: (
-    params: RecommendResourceRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  recommend_songs: (
-    params: RecommendSongsRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  register_cellphone: (
-    params: RegisterCellphoneRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  related_allvideo: (
-    params: RelatedAllvideoRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  related_playlist: (
-    params: RelatedPlaylistRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  resource_like: (
-    params: ResourceLikeRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  scrobble: (
-    params: ScrobbleRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  search: (params: SearchRequestConfig) => Promise<Response<APIBaseResponse>>
-  search_default: (
-    params: SearchDefaultRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  search_hot: (
-    params: SearchHotRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  search_hot_detail: (
-    params: SearchHotDetailRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  search_multimatch: (
-    params: SearchMultimatchRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  search_suggest: (
-    params: SearchSuggestRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  send_playlist: (
-    params: SendPlaylistRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  send_text: (
-    params: SendTextRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  setting: (params: SettingRequestConfig) => Promise<Response<APIBaseResponse>>
-  share_resource: (
-    params: ShareResourceRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  simi_artist: (
-    params: SimiArtistRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  simi_mv: (params: SimiMvRequestConfig) => Promise<Response<APIBaseResponse>>
-  simi_playlist: (
-    params: SimiPlaylistRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  simi_song: (
-    params: SimiSongRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  simi_user: (
-    params: SimiUserRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  song_detail: (
-    params: SongDetailRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  song_order_update: (
-    params: SongOrderUpdateRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  song_url: (params: SongUrlRequestConfig) => Promise<Response<APIBaseResponse>>
-  top_album: (
-    params: TopAlbumRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  top_artists: (
-    params: TopArtistsRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  top_list: (params: TopListRequestConfig) => Promise<Response<APIBaseResponse>>
-  top_mv: (params: TopMvRequestConfig) => Promise<Response<APIBaseResponse>>
-  top_playlist: (
-    params: TopPlaylistRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  top_playlist_highquality: (
-    params: TopPlaylistHighqualityRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  top_song: (params: TopSongRequestConfig) => Promise<Response<APIBaseResponse>>
-  toplist: (params: ToplistRequestConfig) => Promise<Response<APIBaseResponse>>
-  toplist_artist: (
-    params: ToplistArtistRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  toplist_detail: (
-    params: ToplistDetailRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  user_audio: (
-    params: UserAudioRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  user_cloud: (
-    params: UserCloudRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  user_cloud_del: (
-    params: UserCloudDelRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  user_cloud_detail: (
-    params: UserCloudDetailRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  user_detail: (
-    params: UserDetailRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  user_dj: (params: UserDjRequestConfig) => Promise<Response<APIBaseResponse>>
-  user_level: (
-    params: UserLevelRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  user_event: (
-    params: UserEventRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  user_followeds: (
-    params: UserFollowedsRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  user_follows: (
-    params: UserFollowsRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  user_playlist: (
-    params: UserPlaylistRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  user_record: (
-    params: UserRecordRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  user_subcount: (
-    params: UserSubcountRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  user_update: (
-    params: UserUpdateRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  video_category_list: (
-    params: VideoCategoryListRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  video_detail: (
-    params: VideoDetailRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  video_detail_info: (
-    params: VideoDetailInfoRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  video_group: (
-    params: VideoGroupRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  video_group_list: (
-    params: VideoGroupListRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  video_sub: (
-    params: VideoSubRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  video_timeline_all: (
-    params: VideoTimelineAllRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  video_timeline_recommend: (
-    params: VideoTimelineRecommendRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  video_url: (
-    params: VideoUrlRequestConfig,
-  ) => Promise<Response<APIBaseResponse>>
-  weblog: (params: WeblogRequestConfig) => Promise<Response<APIBaseResponse>>
+  export interface MultiPageConfig {
+    limit?: string | number
+    offset?: string | number
+  }
+
+  export interface ImageUploadConfig {
+    imgFile: {
+      name: string
+      data: string | Buffer
+    }
+    imgSize?: number
+    imgX?: number
+    imgY?: number
+  }
+
+  export interface APIBaseResponse {
+    code: number
+    cookie: string
+    [index: string]: unknown
+  }
+
+  export interface Response {
+    status: number // The Http Response Code
+    body: APIBaseResponse // API Response body
+    cookie: string[]
+  }
+
+  export const enum SubAction {
+    sub = 1,
+    ubsub = 0,
+  }
+
+  export function activate_init_profile(
+    params: { nickname: string } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function album(
+    params: { id: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function album_detail(
+    params: { id: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function album_detail_dynamic(
+    params: { id: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export const enum AlbumListArea {
+    all = 'ALL',
+    zh = 'ZH',
+    ea = 'EA',
+    kr = 'KR',
+    jp = 'JP',
+  }
+
+  export const enum ListOrder {
+    hot = 'hot',
+    new = 'new',
+  }
+
+  export function album_list(
+    params: { area?: AlbumListArea; type: string } & MultiPageConfig &
+      RequestBaseConfig,
+  ): Promise<Response>
+
+  export const enum AlbumListStyleArea {
+    zh = 'Z_H',
+    ea = 'E_A',
+    kr = 'KR',
+    jp = 'JP',
+  }
+
+  export function album_list_style(
+    params: { area?: AlbumListStyleArea } & MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function album_new(
+    params: { area?: AlbumListArea } & MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function album_newest(params: RequestBaseConfig): Promise<Response>
+
+  export const enum AlbumSongsaleboardType {
+    daily = 'daily',
+    week = 'week',
+    year = 'year',
+    total = 'total',
+  }
+
+  export const enum AlbumSongsaleboardAlbumType {
+    album = 0,
+    single = 1,
+  }
+
+  export function album_songsaleboard(
+    params: {
+      albumType?: AlbumSongsaleboardAlbumType // 0 为数字专辑,1 为数字单曲
+      type?: AlbumSongsaleboardType
+      year?: string | number // 年份，默认本年。 type 为 year 时有效
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function album_sub(
+    params: {
+      id: string | number
+      t: SubAction
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function album_sublist(
+    params: MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function artist_album(
+    params: { id: string | number } & MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function artist_desc(
+    params: { id: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export const enum ArtistListArea {
+    zh = 'Z_H',
+    ea = 'E_A',
+    kr = 'KR',
+    jp = 'JP',
+  }
+
+  export const enum ArtistArea {
+    all = '-1',
+    zh = '7',
+    ea = '96',
+    ja = '8',
+    kr = '16',
+    other = '0',
+  }
+
+  export const enum ArtistType {
+    male = '1',
+    female = '2',
+    band = '3',
+  }
+
+  export function artist_list(
+    params: {
+      area: ArtistArea
+      initial?:
+        | 'a'
+        | 'b'
+        | 'c'
+        | 'd'
+        | 'e'
+        | 'f'
+        | 'g'
+        | 'h'
+        | 'i'
+        | 'j'
+        | 'k'
+        | 'l'
+        | 'm'
+        | 'n'
+        | 'o'
+        | 'p'
+        | 'q'
+        | 'r'
+        | 's'
+        | 't'
+        | 'u'
+        | 'v'
+        | 'w'
+        | 'x'
+        | 'y'
+        | 'z'
+        | 'A'
+        | 'B'
+        | 'C'
+        | 'D'
+        | 'E'
+        | 'F'
+        | 'G'
+        | 'H'
+        | 'I'
+        | 'J'
+        | 'K'
+        | 'L'
+        | 'M'
+        | 'N'
+        | 'O'
+        | 'P'
+        | 'Q'
+        | 'R'
+        | 'S'
+        | 'T'
+        | 'U'
+        | 'V'
+        | 'W'
+        | 'X'
+        | 'Y'
+        | 'Z'
+      type?: ArtistType
+    } & MultiPageConfig &
+      RequestBaseConfig,
+  ): Promise<Response>
+
+  export function artist_mv(
+    params: { id: string | number } & MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export const enum ArtistSongsOrder {
+    hot = 'hot',
+    time = 'time',
+  }
+
+  export function artist_songs(
+    params: {
+      id: string | number
+      order?: ArtistSongsOrder
+    } & MultiPageConfig &
+      RequestBaseConfig,
+  ): Promise<Response>
+
+  export function artist_sub(
+    params: { id: string | number; t: SubAction } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function artist_sublist(
+    params: MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function artist_top_song(
+    params: {
+      id: string | number
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function artists(
+    params: { id: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function avatar_upload(
+    params: ImageUploadConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export const enum BannerType {
+    pc = 0,
+    android = 1,
+    iphone = 2,
+    ipad = 3,
+  }
+
+  export function banner(
+    params: { type?: BannerType } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function batch(
+    params: { [index: string]: unknown } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function captcha_sent(
+    params: { cellphone: string; ctcode?: string } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function captcha_verify(
+    params: {
+      ctcode?: string
+      cellphone: string
+      captcha: string
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function cellphone_existence_check(
+    params: { cellphone: string; countrycode: string } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function check_music(
+    params: { id: string | number; br: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export const enum SearchType {
+    single = 1,
+    album = 10,
+    artist = 100,
+    playlist = 1000,
+    user = 1002,
+    mv = 1004,
+    lyric = 1006,
+    dj = 1009,
+    video = 1014,
+    complex = 1018,
+  }
+
+  export function cloudsearch(
+    params: {
+      keywords: string
+      type?: SearchType
+    } & MultiPageConfig &
+      RequestBaseConfig,
+  ): Promise<Response>
+
+  export const enum CommentType {
+    song = 0,
+    mv = 1,
+    playlist = 2,
+    album = 3,
+    dj = 4,
+    video = 5,
+    event = 6,
+  }
+
+  export const enum CommentAction {
+    add = 1,
+    delete = 0,
+    reply = 2,
+  }
+
+  export function comment(
+    params: {
+      id: string | number
+      type: CommentType
+      t: CommentAction.delete
+      commentId: string | number
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function comment(
+    params: {
+      type: CommentType.event
+      t: CommentAction.delete
+      threadId: string
+      commentId: string | number
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function comment(
+    params: {
+      id: string | number
+      type: CommentType
+      t: CommentAction.add
+      content: string | number
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function comment(
+    params: {
+      type: CommentType.event
+      t: CommentAction.add
+      threadId: string
+      content: string | number
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function comment(
+    params: {
+      id: string | number
+      type: CommentType
+      t: CommentAction.reply
+      content: string | number
+      commentId: string | number
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function comment(
+    params: {
+      type: CommentType.event
+      t: CommentAction.reply
+      threadId: string
+      content: string | number
+      commentId: string | number
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function comment_album(
+    params: {
+      id: string | number
+      before?: string | number
+    } & MultiPageConfig &
+      RequestBaseConfig,
+  ): Promise<Response>
+
+  export function comment_dj(
+    params: {
+      id: string | number
+      before?: string | number
+    } & MultiPageConfig &
+      RequestBaseConfig,
+  ): Promise<Response>
+
+  export function comment_event(
+    params: {
+      threadId: string
+      before?: string | number
+    } & MultiPageConfig &
+      RequestBaseConfig,
+  ): Promise<Response>
+
+  export function comment_floor(
+    params: {
+      id: string | number
+      parentCommentId: string | number
+      type: CommentType
+      limit?: string | number
+      time?: string | number
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function comment_hot(
+    params: {
+      id: string | number
+      type: CommentType
+      before?: string | number
+    } & MultiPageConfig &
+      RequestBaseConfig,
+  ): Promise<Response>
+
+  export function comment_hotwall_list(
+    params: RequestBaseConfig,
+  ): Promise<Response>
+
+  export function comment_like(
+    params: {
+      id: string | number
+      type: CommentType
+      t: SubAction
+      cid: string | number
+      threadId?: string
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function comment_music(
+    params: {
+      id: string | number
+      before?: string | number
+    } & MultiPageConfig &
+      RequestBaseConfig,
+  ): Promise<Response>
+
+  export function comment_mv(
+    params: {
+      id: string | number
+      before?: string | number
+    } & MultiPageConfig &
+      RequestBaseConfig,
+  ): Promise<Response>
+
+  export function comment_playlist(
+    params: {
+      id: string | number
+
+      before?: string | number
+    } & MultiPageConfig &
+      RequestBaseConfig,
+  ): Promise<Response>
+
+  export function comment_video(
+    params: {
+      id: string | number
+      before?: string | number
+    } & MultiPageConfig &
+      RequestBaseConfig,
+  ): Promise<Response>
+
+  export function countries_code_list(
+    params: RequestBaseConfig,
+  ): Promise<Response>
+
+  export const enum DailySigninType {
+    android = 0,
+    pc = 1,
+  }
+
+  export function daily_signin(
+    params: { type?: DailySigninType } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function digitalAlbum_ordering(
+    params: {
+      payment: string
+      id: string | number
+      quantity: string
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function digitalAlbum_purchased(
+    params: MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function dj_banner(params: RequestBaseConfig): Promise<Response>
+
+  export function dj_category_excludehot(
+    params: RequestBaseConfig,
+  ): Promise<Response>
+
+  export function dj_category_recommend(
+    params: RequestBaseConfig,
+  ): Promise<Response>
+
+  export function dj_catelist(params: RequestBaseConfig): Promise<Response>
+
+  export function dj_detail(
+    params: { rid: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function dj_hot(
+    params: MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function dj_paygift(
+    params: MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function dj_personalize_recommend(
+    params: { limit?: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function dj_program(
+    params: {
+      rid: string | number
+      asc: 'true' | 1 | 'false' | 0
+    } & MultiPageConfig &
+      RequestBaseConfig,
+  ): Promise<Response>
+
+  export function dj_program_detail(
+    params: { id: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function dj_program_toplist(
+    params: MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function dj_program_toplist_hours(
+    params: { limit?: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function dj_radio_hot(
+    params: {
+      cateId: string | number
+    } & MultiPageConfig &
+      RequestBaseConfig,
+  ): Promise<Response>
+
+  export function dj_recommend(params: RequestBaseConfig): Promise<Response>
+
+  /*
+    有声书 10001
+    知识技能 453050
+    商业财经 453051
+    人文历史 11
+    外语世界 13
+    亲子宝贝 14
+    创作|翻唱 2001
+    音乐故事 2
+    3D|电子 10002
+    相声曲艺 8
+    情感调频 3
+    美文读物 6
+    脱口秀 5
+    广播剧 7
+    二次元 3001
+    明星做主播 1
+    娱乐|影视 4
+    科技科学 453052
+    校园|教育 4001
+    旅途|城市 12
+*/
+
+  export function dj_recommend_type(
+    params: { type: number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function dj_sub(
+    params: { t: SubAction; rid: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function dj_sublist(
+    params: MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function dj_today_perfered(
+    params: { page?: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function dj_toplist(
+    params: { type?: ListOrder } & MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function dj_toplist_hours(
+    params: { limit?: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function dj_toplist_newcomer(
+    params: MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function dj_toplist_pay(
+    params: { limit?: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function dj_toplist_popular(
+    params: { limit?: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function event(
+    params: { pagesize?: number; lasttime?: number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function event_del(
+    params: { evId: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function event_forward(
+    params: {
+      forwords: string
+      evId: string | number
+      uid: string | number
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function fm_trash(
+    params: { id: string | number; time?: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function follow(
+    params: { t: SubAction; id: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function history_recommend_songs(
+    params: RequestBaseConfig,
+  ): Promise<Response>
+
+  export function history_recommend_songs_detail(
+    params: { date?: string } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function homepage_block_page(
+    params: { refresh?: 'true' | 'false' | boolean } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function homepage_dragon_ball(
+    params: RequestBaseConfig,
+  ): Promise<Response>
+
+  export function hot_topic(
+    params: MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function like(
+    params: {
+      like?: 'true' | 'false' | boolean
+      id: string | number
+      alg?: string
+      time?: string | number
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function likelist(
+    params: { uid: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function login(
+    params: { email: string; password: string } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function login(
+    params: { email: string; md5_password: string } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function login_cellphone(
+    params: {
+      phone: string
+      countrycode?: string
+      password: string
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function login_cellphone(
+    params: {
+      phone: string
+      countrycode?: string
+      md5_password: string
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function login_refresh(params: RequestBaseConfig): Promise<Response>
+
+  export function login_status(params: RequestBaseConfig): Promise<Response>
+
+  export function logout(params: RequestBaseConfig): Promise<Response>
+
+  export function lyric(
+    params: { id: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function msg_comments(
+    params: {
+      uid: string | number
+      before?: string | number
+      limit?: string | number
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function msg_forwards(
+    params: MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function msg_notices(
+    params: {
+      limit?: string | number
+      lasttime?: string | number
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function msg_private(
+    params: MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function msg_private_history(
+    params: {
+      before?: string | number
+      limit?: string | number
+      uid: string | number
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export const enum MvArea {
+    all = '全部',
+    zh = '内地',
+    hk = '港台',
+    ea = '欧美',
+    kr = '韩国',
+    jp = '日本',
+  }
+
+  export const enum MvType {
+    all = '全部',
+    offical = '官方版',
+    raw = '原生',
+    live = '现场版',
+    netease = '网易出品',
+  }
+
+  export const enum MvOrder {
+    trend = '上升最快',
+    hot = '最热',
+    new = '最新',
+  }
+
+  export function mv_all(
+    params: {
+      area?: MvArea
+      type?: MvType
+      order?: MvOrder
+    } & MultiPageConfig &
+      RequestBaseConfig,
+  ): Promise<Response>
+
+  export function mv_detail(
+    params: { mvid?: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function mv_detail_info(
+    params: { mvid: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function mv_exclusive_rcmd(
+    params: MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function mv_first(
+    params: { area?: MvArea; limit?: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function mv_sub(
+    params: { t: SubAction; mvid: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function mv_sublist(
+    params: MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function mv_url(
+    params: { id?: string | number; r?: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function personal_fm(params: RequestBaseConfig): Promise<Response>
+
+  export function personalized(
+    params: { limit?: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function personalized_djprogram(
+    params: RequestBaseConfig,
+  ): Promise<Response>
+
+  export function personalized_mv(params: RequestBaseConfig): Promise<Response>
+
+  export function personalized_newsong(
+    params: RequestBaseConfig,
+  ): Promise<Response>
+
+  export function personalized_privatecontent(
+    params: RequestBaseConfig,
+  ): Promise<Response>
+
+  export function personalized_privatecontent_list(
+    params: MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function playlist_catlist(params: RequestBaseConfig): Promise<Response>
+
+  export function playlist_cover_update(
+    params: { id: string } & ImageUploadConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function playlist_create(
+    params: { name: string; privacy: 0 | 10 } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function playlist_delete(
+    params: { id: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function playlist_desc_update(
+    params: { id: string | number; desc: string } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function playlist_detail(
+    params: { id: string | number; s?: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function playlist_highquality_tags(
+    params: RequestBaseConfig,
+  ): Promise<Response>
+
+  export function playlist_hot(params: RequestBaseConfig): Promise<Response>
+
+  export function playlist_name_update(
+    params: { id: string | number; name: string } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function playlist_order_update(
+    params: { ids: string } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function playlist_subscribe(
+    params: { t: SubAction; id: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function playlist_subscribers(
+    params: { id?: string | number } & MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function playlist_tags_update(
+    params: { id: string | number; tags: string } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function playlist_tracks(
+    params: {
+      op: 'add' | 'del'
+      pid: string | number
+      tracks: string
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function playlist_update(
+    params: {
+      id: string | number
+      name: string
+      desc?: string
+      tags?: string
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function playmode_intelligence_list(
+    params: {
+      id: string | number
+      pid: string | number
+      sid?: string | number
+      count?: string | number
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function program_recommend(
+    params: { type: string } & MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function rebind(
+    params: {
+      captcha: string
+      phone: string
+      oldcaptcha: string
+      ctcode?: string
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function recommend_resource(
+    params: RequestBaseConfig,
+  ): Promise<Response>
+
+  export function recommend_songs(params: RequestBaseConfig): Promise<Response>
+
+  export function register_cellphone(
+    params: {
+      captcha: string
+      phone: string
+      password: string
+      nickname: string
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function related_allvideo(
+    params: { id: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function related_playlist(
+    params: { id: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export const enum ResourceType {
+    mv = 1,
+    dj = 4,
+    video = 5,
+    event = 6,
+  }
+
+  export function resource_like(
+    params: {
+      t: SubAction
+      type: ResourceType
+      id?: string | number
+      threadId?: string
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function scrobble(
+    params: {
+      id: string | number
+      sourceid: string | number
+      time: string | number
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function search(
+    params: {
+      keywords: string
+      type?: SearchType
+    } & MultiPageConfig &
+      RequestBaseConfig,
+  ): Promise<Response>
+
+  export function search_default(params: RequestBaseConfig): Promise<Response>
+
+  export function search_hot(params: RequestBaseConfig): Promise<Response>
+
+  export function search_hot_detail(
+    params: RequestBaseConfig,
+  ): Promise<Response>
+
+  export function search_multimatch(
+    params: { type?: number; keywords: string } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export const enum SearchSuggestType {
+    mobile = 'mobile',
+    web = 'web',
+  }
+
+  export function search_suggest(
+    params: { keywords: string; type?: SearchSuggestType } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function send_playlist(
+    params: {
+      playlist: string | number
+      msg: string
+      user_ids: string
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function send_text(
+    params: { msg: string; user_ids: string } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function setting(params: RequestBaseConfig): Promise<Response>
+
+  export const enum ShareResourceType {
+    song = 'song',
+    playlist = 'playlist',
+    mv = 'mv',
+    djprogram = 'djprogram',
+    djradio = 'djradio',
+  }
+
+  export function share_resource(
+    params: {
+      type?: ShareResourceType
+      msg?: string
+      id?: string | number
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function simi_artist(
+    params: { id: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function simi_mv(
+    params: { mvid: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function simi_playlist(
+    params: { id: string | number } & MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function simi_song(
+    params: { id: string | number } & MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function simi_user(
+    params: { id: string | number } & MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function song_detail(
+    params: { ids: string } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function song_order_update(
+    params: { pid: string | number; ids: string } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function song_url(
+    params: { id: string | number; br?: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function top_album(
+    params: {
+      area?: AlbumListArea
+      type?: ListOrder
+      year?: string
+      mouth?: string
+    } & MultiPageConfig &
+      RequestBaseConfig,
+  ): Promise<Response>
+
+  export function top_artists(
+    params: MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function top_list(
+    params: { id: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function top_mv(
+    params: { area?: MvArea } & MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function top_playlist(
+    params: { cat?: string; order?: ListOrder } & MultiPageConfig &
+      RequestBaseConfig,
+  ): Promise<Response>
+
+  export function top_playlist_highquality(
+    params: {
+      cat?: string
+      before?: string | number
+      limit?: string | number
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export const enum TopSongType {
+    all = 0,
+    zh = 7,
+    ea = 96,
+    kr = 16,
+    ja = 8,
+  }
+
+  export function top_song(
+    params: { type: TopSongType } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function toplist(params: RequestBaseConfig): Promise<Response>
+
+  export const enum ToplistArtistType {
+    zh = 1,
+    ea = 2,
+    kr = 3,
+    ja = 4,
+  }
+
+  export function toplist_artist(
+    params: { type?: ToplistArtistType } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function toplist_detail(params: RequestBaseConfig): Promise<Response>
+
+  export function user_audio(
+    params: { uid: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function user_cloud(
+    params: MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function user_cloud_del(
+    params: { id: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function user_cloud_detail(
+    params: { id: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function user_detail(
+    params: { uid: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function user_dj(
+    params: { uid: string | number } & MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function user_event(
+    params: {
+      lasttime?: string | number
+      limit?: string | number
+      uid: string | number
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function user_followeds(
+    params: {
+      uid: string | number
+      lasttime?: string | number
+      limit?: string | number
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function user_follows(
+    params: { uid: string | number } & MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function user_level(params: RequestBaseConfig): Promise<Response>
+
+  export function user_playlist(
+    params: { uid: string | number } & MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export const enum UserRecordType {
+    all = 0,
+    weekly = 1,
+  }
+
+  export function user_record(
+    params: { uid: string | number; type?: UserRecordType } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function user_subcount(params: RequestBaseConfig): Promise<Response>
+
+  export function user_update(
+    params: {
+      birthday: string
+      city: string
+      gender: string
+      nickname: string
+      province: string
+      signature: string
+    } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function video_category_list(
+    params: MultiPageConfig & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function video_detail(
+    params: { id: string } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function video_detail_info(
+    params: { vid: string } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function video_group(
+    params: { id: string; offset?: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function video_group_list(params: RequestBaseConfig): Promise<Response>
+
+  export function video_sub(
+    params: { t?: SubAction; id: string } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function video_timeline_all(
+    params: { offset?: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function video_timeline_recommend(
+    params: { offset?: string | number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function video_url(
+    params: { id: string | number; res?: number } & RequestBaseConfig,
+  ): Promise<Response>
+
+  export function weblog(
+    params: { data?: { [index: string]: unknown } } & RequestBaseConfig,
+  ): Promise<Response>
 }
-interface SDKInstance extends APIInstance {
-  default: APIInstance
-}
-declare const SDK: SDKInstance
-export = SDK
