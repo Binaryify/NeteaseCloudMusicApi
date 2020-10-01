@@ -2,7 +2,6 @@ const encrypt = require('./crypto')
 const axios = require('axios')
 const queryString = require('querystring')
 const PacProxyAgent = require('pac-proxy-agent')
-const zlib = require('zlib')
 const http = require('http')
 const https = require('https')
 
@@ -137,37 +136,14 @@ const createRequest = (method, url, data, options) => {
           x.replace(/\s*Domain=[^(;|$)]+;*/, ''),
         )
         try {
-          if (options.crypto === 'eapi') {
-            zlib.unzip(body, function (err, buffer) {
-              const _buffer = err ? body : buffer
-              try {
-                try {
-                  answer.body = JSON.parse(encrypt.decrypt(_buffer).toString())
-                  answer.status = answer.body.code || res.statusCode
-                } catch (e) {
-                  answer.body = JSON.parse(_buffer.toString())
-                  answer.status = res.statusCode
-                }
-              } catch (e) {
-                answer.body = _buffer.toString()
-                answer.status = res.statusCode
-              }
-              answer.status =
-                100 < answer.status && answer.status < 600 ? answer.status : 400
-              if (answer.status === 200) resolve(answer)
-              else reject(answer)
-            })
-            return false
-          } else {
-            answer.body = JSON.parse(body)
-            answer.status = answer.body.code || res.statusCode
-            if (answer.body.code === 502) {
-              answer.status = 200
-            }
+          answer.body = body
+          answer.status = answer.body.code || res.status
+          if (answer.body.code === 502) {
+            answer.status = 200
           }
         } catch (e) {
           answer.body = body
-          answer.status = res.statusCode
+          answer.status = res.status
         }
 
         answer.status =
