@@ -21,8 +21,9 @@ describe('测试登录是否正常', () => {
           console.log('昵称:' + data.profile.nickname)
           assert(data.code === 200)
           done()
+        } else {
+          done('登录错误')
         }
-        done('登录错误')
       })
       .catch((err) => {
         done(err)
