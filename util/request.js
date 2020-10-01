@@ -1,8 +1,10 @@
 const encrypt = require('./crypto')
-const request = require('request')
+const axios = require('axios')
 const queryString = require('querystring')
 const PacProxyAgent = require('pac-proxy-agent')
 const zlib = require('zlib')
+const http = require('http')
+const https = require('https')
 
 // request.debug = true // 开启可看到更详细信息
 
@@ -114,23 +116,23 @@ const createRequest = (method, url, data, options) => {
       method: method,
       url: url,
       headers: headers,
-      body: queryString.stringify(data),
+      data: queryString.stringify(data),
+      httpAgent: new http.Agent({ keepAlive: true }),
+      httpsAgent: new https.Agent({ keepAlive: true }),
     }
 
     if (options.crypto === 'eapi') settings.encoding = null
 
     if (/\.pac$/i.test(options.proxy)) {
-      settings.agent = new PacProxyAgent(options.proxy)
+      settings.httpAgent = new PacProxyAgent(options.proxy)
+      settings.httpsAgent = new PacProxyAgent(options.proxy)
     } else {
       settings.proxy = options.proxy
     }
 
-    request(settings, (err, res, body) => {
-      if (err) {
-        answer.status = 502
-        answer.body = { code: 502, msg: err.stack }
-        reject(answer)
-      } else {
+    axios(settings)
+      .then((res) => {
+        const body = res.data
         answer.cookie = (res.headers['set-cookie'] || []).map((x) =>
           x.replace(/\s*Domain=[^(;|$)]+;*/, ''),
         )
@@ -172,8 +174,12 @@ const createRequest = (method, url, data, options) => {
           100 < answer.status && answer.status < 600 ? answer.status : 400
         if (answer.status == 200) resolve(answer)
         else reject(answer)
-      }
-    })
+      })
+      .catch((err) => {
+        answer.status = 502
+        answer.body = { code: 502, msg: err }
+        reject(answer)
+      })
   })
 }
 
