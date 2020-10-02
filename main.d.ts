@@ -34,7 +34,7 @@ declare module 'NeteaseCloudMusicApi' {
 
   export const enum SubAction {
     sub = 1,
-    ubsub = 0,
+    unsub = 0,
   }
 
   export function activate_init_profile(
