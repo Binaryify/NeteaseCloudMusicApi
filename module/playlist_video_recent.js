@@ -1,10 +1,8 @@
 module.exports = (query, request) => {
-  const data = {
-  
-  }
+  const data = {}
   return request(
     'POST',
-    `https://music.163.com/api/usersafe/loginprotect/status/get`,
+    `https://music.163.com/api/playlist/video/recent`,
     data,
     {
       crypto: 'weapi',

@@ -1,8 +1,11 @@
 module.exports = (query, request) => {
-  const data = {}
+  const data = {
+    time: query.time || '-1',
+    limit: query.limit || '12',
+  }
   return request(
     'POST',
-    `https://music.163.com/api/v1/user/bindings/${query.uid}`,
+    `https://music.163.com/api/mlog/playlist/mylike/bytime/get`,
     data,
     {
       crypto: 'weapi',
