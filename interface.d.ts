@@ -152,58 +152,58 @@ export function artist_list(
   params: {
     area: ArtistArea
     initial?:
-    | 'a'
-    | 'b'
-    | 'c'
-    | 'd'
-    | 'e'
-    | 'f'
-    | 'g'
-    | 'h'
-    | 'i'
-    | 'j'
-    | 'k'
-    | 'l'
-    | 'm'
-    | 'n'
-    | 'o'
-    | 'p'
-    | 'q'
-    | 'r'
-    | 's'
-    | 't'
-    | 'u'
-    | 'v'
-    | 'w'
-    | 'x'
-    | 'y'
-    | 'z'
-    | 'A'
-    | 'B'
-    | 'C'
-    | 'D'
-    | 'E'
-    | 'F'
-    | 'G'
-    | 'H'
-    | 'I'
-    | 'J'
-    | 'K'
-    | 'L'
-    | 'M'
-    | 'N'
-    | 'O'
-    | 'P'
-    | 'Q'
-    | 'R'
-    | 'S'
-    | 'T'
-    | 'U'
-    | 'V'
-    | 'W'
-    | 'X'
-    | 'Y'
-    | 'Z'
+      | 'a'
+      | 'b'
+      | 'c'
+      | 'd'
+      | 'e'
+      | 'f'
+      | 'g'
+      | 'h'
+      | 'i'
+      | 'j'
+      | 'k'
+      | 'l'
+      | 'm'
+      | 'n'
+      | 'o'
+      | 'p'
+      | 'q'
+      | 'r'
+      | 's'
+      | 't'
+      | 'u'
+      | 'v'
+      | 'w'
+      | 'x'
+      | 'y'
+      | 'z'
+      | 'A'
+      | 'B'
+      | 'C'
+      | 'D'
+      | 'E'
+      | 'F'
+      | 'G'
+      | 'H'
+      | 'I'
+      | 'J'
+      | 'K'
+      | 'L'
+      | 'M'
+      | 'N'
+      | 'O'
+      | 'P'
+      | 'Q'
+      | 'R'
+      | 'S'
+      | 'T'
+      | 'U'
+      | 'V'
+      | 'W'
+      | 'X'
+      | 'Y'
+      | 'Z'
     type?: ArtistType
   } & MultiPageConfig &
     RequestBaseConfig,
@@ -820,7 +820,11 @@ export function playlist_cover_update(
 ): Promise<Response>
 
 export function playlist_create(
-  params: { name: string; privacy: 0 | 10, type?: PlaylistType } & RequestBaseConfig,
+  params: {
+    name: string
+    privacy: 0 | 10
+    type?: PlaylistType
+  } & RequestBaseConfig,
 ): Promise<Response>
 
 export function playlist_delete(
@@ -900,9 +904,7 @@ export function rebind(
   } & RequestBaseConfig,
 ): Promise<Response>
 
-export function recommend_resource(
-  params: RequestBaseConfig,
-): Promise<Response>
+export function recommend_resource(params: RequestBaseConfig): Promise<Response>
 
 export function recommend_songs(params: RequestBaseConfig): Promise<Response>
 
@@ -929,9 +931,7 @@ export const enum ResourceType {
   video = 5,
   event = 6,
 }
-type PlaylistType = 'NROMAL' | 'VIDEO';
-
-
+type PlaylistType = 'NROMAL' | 'VIDEO'
 
 export function resource_like(
   params: {
@@ -962,9 +962,7 @@ export function search_default(params: RequestBaseConfig): Promise<Response>
 
 export function search_hot(params: RequestBaseConfig): Promise<Response>
 
-export function search_hot_detail(
-  params: RequestBaseConfig,
-): Promise<Response>
+export function search_hot_detail(params: RequestBaseConfig): Promise<Response>
 
 export function search_multimatch(
   params: { type?: number; keywords: string } & RequestBaseConfig,
@@ -1214,27 +1212,39 @@ export function weblog(
 ): Promise<Response>
 
 export function playlist_mylike(
-  params: { time?: number | string, limit: number | string } & RequestBaseConfig,
+  params: {
+    time?: number | string
+    limit: number | string
+  } & RequestBaseConfig,
 ): Promise<Response>
 
 export function playlist_track_add(
-  params: { pid?: number | string, ids: number | string } & RequestBaseConfig,
+  params: { pid?: number | string; ids: number | string } & RequestBaseConfig,
 ): Promise<Response>
 
 export function playlist_track_delete(
-  params: { pid?: number | string, ids: number | string } & RequestBaseConfig,
+  params: { pid?: number | string; ids: number | string } & RequestBaseConfig,
 ): Promise<Response>
 
 export function comment_new(
-  params: { type?: number | string, id: number | string, pageNo?: number | string, pageSize?: number | string, sortType?: number | string } & RequestBaseConfig,
+  params: {
+    type?: number | string
+    id: number | string
+    pageNo?: number | string
+    pageSize?: number | string
+    sortType?: number | string
+  } & RequestBaseConfig,
 ): Promise<Response>
 
 export function calendar(
-  params: { startTime?: number | string, endTime: number | string } & RequestBaseConfig,
+  params: {
+    startTime?: number | string
+    endTime: number | string
+  } & RequestBaseConfig,
 ): Promise<Response>
 
 export function playlist_video_recent(
-  params: {} & RequestBaseConfig,
+  params: RequestBaseConfig,
 ): Promise<Response>
 
 export function user_binding(
@@ -1242,9 +1252,12 @@ export function user_binding(
 ): Promise<Response>
 
 export function user_replacephone(
-  params: { phone: number | string, captcha: number | string, oldcaptcha: number | string, countrycode?: number | string } & RequestBaseConfig,
+  params: {
+    phone: number | string
+    captcha: number | string
+    oldcaptcha: number | string
+    countrycode?: number | string
+  } & RequestBaseConfig,
 ): Promise<Response>
 
-export function user_safe(
-  params: {} & RequestBaseConfig,
-): Promise<Response>
+export function user_safe(params: RequestBaseConfig): Promise<Response>
