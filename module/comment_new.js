@@ -12,11 +12,14 @@ module.exports = (query, request) => {
     6: 'A_EV_2_', //  动态
   }[query.type]
   const threadId = query.type + query.id
+  const pageSize = query.pageSize || 20
+  const pageNo = query.pageNo || 1
   const data = {
     threadId: threadId, //'R_SO_4_863481066',
-    pageNo: query.pageNo || 1,
+    pageNo: pageNo,
     showInner: query.showInner || true,
-    pageSize: query.pageSize || 20,
+    pageSize: pageSize,
+    cursor: (pageNo - 1) * (pageSize || 20),
     sortType: query.sortType || 1, //1:按推荐排序,2:按热度排序,3:按时间排序
   }
   return request(
