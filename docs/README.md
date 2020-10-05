@@ -181,7 +181,7 @@
 163. 数字专辑详情
 164. 更新头像
 165. 歌单封面上传
-166. 歌曲楼层评论
+166. 楼层评论
 167. 歌手全部歌曲
 168. 精品歌单标签列表
 169. 用户等级信息
@@ -1404,9 +1404,9 @@ mp3url 不能直接用 , 可通过 `/song/url` 接口传入歌曲 id 获取具�
 返回数据如下图 :
 ![获取评论](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/comment.png)
 
-### 歌曲楼层评论
+### 楼层评论
 
-说明 : 调用此接口 , 传入音乐 parentCommentId 和 threadId 参数 , 可获得该音乐的歌曲楼层评论
+说明 : 调用此接口 , 传入资源 parentCommentId 和资源类型 type和资源id 参数, 可获得该资源的歌曲楼层评论
 
 **必选参数 :**   
 `parentCommentId`: 楼层评论 id
@@ -1430,9 +1430,7 @@ mp3url 不能直接用 , 可通过 `/song/url` 接口传入歌曲 id 获取具�
 ```
 
 
-**可选参数 :** `limit`: 取出评论数量 , 默认为 20
-
-`offset`: 偏移数量 , 用于分页 , 如 :( 评论页数 -1)\*20, 其中 20 为 limit 的值  
+**可选参数 :** `limit`: 取出评论数量 , 默认为 20  
 
 `time`: 分页参数,取上一页最后一项的 `time` 获取下一页数据
 
