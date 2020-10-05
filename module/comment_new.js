@@ -19,7 +19,7 @@ module.exports = (query, request) => {
     pageNo: pageNo,
     showInner: query.showInner || true,
     pageSize: pageSize,
-    cursor: (pageNo - 1) * (pageSize || 20),
+    cursor: (pageNo - 1) * pageSize,
     sortType: query.sortType || 1, //1:按推荐排序,2:按热度排序,3:按时间排序
   }
   return request(
