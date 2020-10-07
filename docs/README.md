@@ -1584,11 +1584,13 @@ mp3url 不能直接用 , 可通过 `/song/url` 接口传入歌曲 id 获取具�
 
 `pageSize`:分页参数,每页多少条数据,默认20
 
-`sortType` 排序方式,1:按推荐排序,2:按热度排序,3:按时间排序
+`sortType`: 排序方式,1:按推荐排序,2:按热度排序,3:按时间排序
+
+`cursor`: 当`sortType`为3时且页数不是第一页时需传入,值为上一条数据的time
 
 **接口地址 :** `/comment/new`
 
-**调用例子 :** `/comment/new?type=0&id=863481066` 
+**调用例子 :** `/comment/new?type=0&id=863481066`, `/comment/new?type=0&id=863481066&sortType=3&cursor=1602043961599` 
 
 ### 给评论点赞
 
