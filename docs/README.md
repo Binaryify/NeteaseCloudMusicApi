@@ -1590,7 +1590,7 @@ mp3url 不能直接用 , 可通过 `/song/url` 接口传入歌曲 id 获取具�
 
 **接口地址 :** `/comment/new`
 
-**调用例子 :** `/comment/new?type=0&id=863481066`, `/comment/new?type=0&id=863481066&sortType=3&cursor=1602043961599` 
+**调用例子 :** `/comment/new?type=0&id=1407551413&sortType=3`, `/comment/new?type=0&id=1407551413&sortType=3&cursor=1602072870260&pageSize=20&pageNo=2` 
 
 ### 给评论点赞
 
