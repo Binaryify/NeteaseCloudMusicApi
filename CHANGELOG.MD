@@ -1,4 +1,7 @@
 # 更新日志
+### 3.43.0 | 2020.10.16
+- 新增`电台订阅者列表`接口 [#971](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/971)
+
 ### 3.42.4 | 2020.10.07
 - 修复新评论接口分页参数问题
 
