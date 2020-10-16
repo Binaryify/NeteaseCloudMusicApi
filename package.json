@@ -57,7 +57,7 @@
     "husky": "4.2.5",
     "intelli-espower-loader": "1.0.1",
     "lint-staged": "10.4.0",
-    "mocha": "8.1.3",
+    "mocha": "8.2.0",
     "power-assert": "1.6.1",
     "prettier": "2.1.2",
     "typescript": "4.0.3"
