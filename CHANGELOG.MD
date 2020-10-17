@@ -1,4 +1,10 @@
 # 更新日志
+### 3.44.0 | 2020.10.17
+- 更新`电台详情`,`电台节目详情`接口 [#977](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/977)
+
+#### Breaking change
+- `电台详情`接口更新后数据结构有变化
+
 ### 3.43.0 | 2020.10.16
 - 新增`电台订阅者列表`接口 [#971](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/971)
 
