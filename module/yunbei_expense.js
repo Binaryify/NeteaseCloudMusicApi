@@ -1,19 +1,17 @@
-// 初始化名字
-
 module.exports = (query, request) => {
   const data = {
-    nickname: query.nickname,
+    limit: query.limit || 10,
+    offset: query.offset || 0,
   }
   return request(
     'POST',
-    `https://music.163.com/eapi/activate/initProfile`,
+    `https://music.163.com/store/api/point/expense`,
     data,
     {
-      crypto: 'eapi',
+      crypto: 'api',
       cookie: query.cookie,
       proxy: query.proxy,
       realIP: query.realIP,
-      url: '/api/activate/initProfile',
     },
   )
 }

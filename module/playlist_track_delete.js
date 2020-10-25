@@ -14,7 +14,7 @@ module.exports = async (query, request) => {
 
   return request(
     'POST',
-    `http://music.163.com/api/playlist/track/delete`,
+    `https://music.163.com/api/playlist/track/delete`,
     data,
     {
       crypto: 'weapi',

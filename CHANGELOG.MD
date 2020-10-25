@@ -1,4 +1,15 @@
 # 更新日志
+### 3.45.0 | 2020.10.25
+- 修复代理配置失效的问题 [#992](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/992)
+
+- 修复新碟上架不返回周数据的问题,修复推荐新音乐接口返回数量问题,并添加limit参数支持 [#981](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/981)
+
+- 添加`云贝`相关接口 [#985](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/985)
+
+- 添加`用户账号信息`接口
+
+- 替换接口文件所有http url 为 https
+
 ### 3.44.0 | 2020.10.17
 - 更新`电台详情`,`电台节目详情`接口 [#977](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/977)
 

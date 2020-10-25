@@ -1,11 +1,8 @@
-//热门话题
-
 module.exports = (query, request) => {
   const data = {
-    limit: query.limit || 20,
-    offset: query.offset || 0,
+    type: '0',
   }
-  return request('POST', `https://music.163.com/weapi/act/hot`, data, {
+  return request('POST', `https://music.163.com/api/point/dailyTask`, data, {
     crypto: 'weapi',
     cookie: query.cookie,
     proxy: query.proxy,

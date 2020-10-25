@@ -4,11 +4,11 @@ const queryString = require('querystring')
 const PacProxyAgent = require('pac-proxy-agent')
 const http = require('http')
 const https = require('https')
-
+const tunnel = require('tunnel')
+const qs = require('url')
 // request.debug = true // 开启可看到更详细信息
 
 const chooseUserAgent = (ua = false) => {
-  // UA 列表要经常更新啊
   const userAgentList = {
     mobile: [
       // iOS 13.5.1 14.0 beta with safari
@@ -122,11 +122,26 @@ const createRequest = (method, url, data, options) => {
 
     if (options.crypto === 'eapi') settings.encoding = null
 
-    if (/\.pac$/i.test(options.proxy)) {
-      settings.httpAgent = new PacProxyAgent(options.proxy)
-      settings.httpsAgent = new PacProxyAgent(options.proxy)
-    } else {
-      settings.proxy = options.proxy
+    if (options.proxy) {
+      if (options.proxy.indexOf('pac') > -1) {
+        settings.httpAgent = new PacProxyAgent(options.proxy)
+        settings.httpsAgent = new PacProxyAgent(options.proxy)
+      } else {
+        var purl = qs.parse(options.proxy)
+        if (purl.hostname) {
+          const agent = tunnel.httpsOverHttp({
+            proxy: {
+              host: purl.hostname,
+              port: purl.port || 80,
+            },
+          })
+          settings.httpsAgent = agent
+          settings.httpAgent = agent
+          settings.proxy = false
+        } else {
+          console.error('代理配置无效,不使用代理')
+        }
+      }
     }
 
     axios(settings)

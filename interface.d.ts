@@ -802,7 +802,10 @@ export function personalized_djprogram(
 export function personalized_mv(params: RequestBaseConfig): Promise<Response>
 
 export function personalized_newsong(
-  params: RequestBaseConfig,
+  params: {
+    area?: string | number
+    limit?: string | number
+  } & RequestBaseConfig,
 ): Promise<Response>
 
 export function personalized_privatecontent(
@@ -1268,4 +1271,36 @@ export function dj_subscriber(
     limit?: number | string
     time?: number | string
   } & RequestBaseConfig,
+): Promise<Response>
+
+export function user_account(params: RequestBaseConfig): Promise<Response>
+
+export function yunbei(params: RequestBaseConfig): Promise<Response>
+
+export function yunbei_info(params: RequestBaseConfig): Promise<Response>
+
+export function yunbei_sign(params: RequestBaseConfig): Promise<Response>
+
+export function yunbei_receipt(
+  params: {
+    limit?: number | string
+    offset?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function yunbei_expense(
+  params: {
+    limit?: number | string
+    offset?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function yunbei_tasks(params: RequestBaseConfig): Promise<Response>
+
+export function yunbei_today(params: RequestBaseConfig): Promise<Response>
+
+export function yunbei_tasks_todo(params: RequestBaseConfig): Promise<Response>
+
+export function yunbei_task_finish(
+  params: { userTaskId?: number | string } & RequestBaseConfig,
 ): Promise<Response>

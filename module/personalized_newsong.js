@@ -3,6 +3,8 @@
 module.exports = (query, request) => {
   const data = {
     type: 'recommend',
+    limit: query.limit || 10,
+    areaId: query.areaId || 0,
   }
   return request(
     'POST',
