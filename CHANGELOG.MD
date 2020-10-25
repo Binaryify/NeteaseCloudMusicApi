@@ -1,5 +1,5 @@
 # 更新日志
-### 3.45.0 | 2020.10.25
+### 3.45.1 | 2020.10.25
 - 修复代理配置失效的问题 [#992](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/992)
 
 - 修复新碟上架不返回周数据的问题,修复推荐新音乐接口返回数量问题,并添加limit参数支持 [#981](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/981)
