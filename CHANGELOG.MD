@@ -1,4 +1,7 @@
 # 更新日志
+### 3.45.2 | 2020.10.26
+- 云贝完成任务接口增加`depositCode`参数
+
 ### 3.45.1 | 2020.10.25
 - 修复代理配置失效的问题 [#992](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/992)
 

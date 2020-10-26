@@ -1,7 +1,7 @@
 module.exports = (query, request) => {
   const data = {
     userTaskId: query.userTaskId,
-    depositCode: '0',
+    depositCode: query.depositCode || '0',
   }
   return request(
     'POST',

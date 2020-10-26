@@ -2987,9 +2987,13 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 
 `userTaskId` : 任务id
 
+**可选参数 :** 
+
+`depositCode`: 任务depositCode  
+
 **接口地址 :** `/yunbei/task/finish`
 
-**调用例子 :** `/yunbei/task/finish?userTaskId=5146243240`
+**调用例子 :** `/yunbei/task/finish?userTaskId=5146243240&depositCode=0`
 
 ### 云贝收入
 说明 :登录后调用此接口可获取云贝收入  
@@ -2997,6 +3001,7 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 **可选参数 :** `limit`: 取出评论数量 , 默认为 10
 
 `offset`: 偏移数量 , 用于分页 , 如 :( 评论页数 -1)\*10, 其中 10 为 limit 的值  
+
 **接口地址 :** `/yunbei/tasks/receipt`
 
 **调用例子 :** `/yunbei/tasks/receipt?limit=1`

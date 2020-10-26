@@ -1302,5 +1302,8 @@ export function yunbei_today(params: RequestBaseConfig): Promise<Response>
 export function yunbei_tasks_todo(params: RequestBaseConfig): Promise<Response>
 
 export function yunbei_task_finish(
-  params: { userTaskId?: number | string } & RequestBaseConfig,
+  params: {
+    userTaskId: number | string
+    depositCode?: number | string
+  } & RequestBaseConfig,
 ): Promise<Response>
