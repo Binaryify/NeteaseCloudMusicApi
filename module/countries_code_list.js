@@ -3,7 +3,7 @@ module.exports = (query, request) => {
   const data = {}
   return request(
     'POST',
-    `http://interface3.music.163.com/eapi/lbs/countries/v1`,
+    `https://interface3.music.163.com/eapi/lbs/countries/v1`,
     data,
     {
       crypto: 'eapi',

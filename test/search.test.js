@@ -1,5 +1,5 @@
 const assert = require('assert')
-const request = require('request')
+const axios = require('axios')
 const host = global.host || 'http://localhost:3000'
 
 describe('测试搜索是否正常', () => {
@@ -8,14 +8,18 @@ describe('测试搜索是否正常', () => {
       keywords: '海阔天空',
       type: 1,
     }
-    request.get({ url: `${host}/search`, qs: qs }, (err, res, body) => {
-      if (!err && res.statusCode == 200) {
-        body = JSON.parse(body)
-        assert(body.result.songs[0].name === '海阔天空')
+    axios
+      .get(`${host}/search`, {
+        params: qs,
+      })
+      .then(({ status, data }) => {
+        if (status == 200) {
+          assert(data.result.songs[0].name === '海阔天空')
+        }
         done()
-      } else {
+      })
+      .catch((err) => {
         done(err)
-      }
-    })
+      })
   })
 })

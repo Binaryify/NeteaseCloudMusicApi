@@ -11,7 +11,7 @@ module.exports = (query, request) => {
     year: query.year || date.getFullYear(),
     month: query.month || date.getMonth() + 1,
     total: false,
-    rcmd: false,
+    rcmd: true,
   }
   return request(
     'POST',

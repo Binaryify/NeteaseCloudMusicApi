@@ -6,7 +6,7 @@ module.exports = (query, request) => {
   }
   return request(
     'POST',
-    `http://music.163.com/eapi/activate/initProfile`,
+    `https://music.163.com/eapi/activate/initProfile`,
     data,
     {
       crypto: 'eapi',

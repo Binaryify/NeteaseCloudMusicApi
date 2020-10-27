@@ -13,7 +13,7 @@ module.exports = async (query, request) => {
   try {
     const res = await request(
       'POST',
-      `http://music.163.com/api/playlist/manipulate/tracks`,
+      `https://music.163.com/api/playlist/manipulate/tracks`,
       data,
       {
         crypto: 'weapi',
@@ -32,7 +32,7 @@ module.exports = async (query, request) => {
     if (error.body.code === 512) {
       return request(
         'POST',
-        `http://music.163.com/api/playlist/manipulate/tracks`,
+        `https://music.163.com/api/playlist/manipulate/tracks`,
         {
           op: query.op, // del,add
           pid: query.pid, // 歌单id
