@@ -1,6 +1,11 @@
 // 相似歌手
-
+const config = require('../util/config')
 module.exports = (query, request) => {
+  if (typeof query.cookie === 'string') {
+    query.cookie = cookieToJson(query.cookie)
+  }
+  if (!('MUSIC_U' in query.cookie))
+    query.cookie.MUSIC_A = config.anonymous_token
   const data = {
     artistid: query.id,
   }

@@ -1,4 +1,9 @@
 # 更新日志
+### 3.45.3 | 2020.11.1
+- `相似歌手`,`首页-发现-圆形图标入口列表`接口增加匿名token[#877](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/877) [#988](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/988)
+
+- 修复`音乐 url`接口POST方式手动传入cookie报错问题 [#1005](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1005)
+
 ### 3.45.2 | 2020.10.26
 - 云贝完成任务接口增加`depositCode`参数
 
