@@ -1,4 +1,7 @@
 # 更新日志
+### 3.46.1 | 2020.11.7
+- 修复私信音乐接口出现风险提示的问题
+
 ### 3.46.0 | 2020.11.7
 - 添加私信音乐接口 [#1016](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1016)
 
