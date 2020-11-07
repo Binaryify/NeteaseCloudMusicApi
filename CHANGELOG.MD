@@ -1,4 +1,13 @@
 # 更新日志
+### 3.46.0 | 2020.11.7
+- 添加私信音乐接口 [#1016](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1016)
+
+- 添加最近联系人接口
+
+- 修复用户动态数量不准确问题 [#1010](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1010)
+
+- 修复 cloudsearch 接口分页问题 [#1015](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1015)
+
 ### 3.45.3 | 2020.11.1
 - `相似歌手`,`首页-发现-圆形图标入口列表`接口增加匿名token[#877](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/877) [#988](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/988)
 

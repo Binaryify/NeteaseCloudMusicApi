@@ -205,6 +205,8 @@
 187. 云贝支出
 188. 云贝账户信息
 189. 账号信息
+190. 最近联系人
+191. 私信音乐
 
 ## 安装
 
@@ -2771,6 +2773,41 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 
 **调用例子 :** `/send/text?user_ids=32953014&msg=test`,`/send/text?user_ids=32953014,475625142&msg=test`
 
+### 发送私信音乐
+
+说明 : 登录后调用此接口 , 传入用户 id 和要发送的信息,音乐id, 可以发送音乐私信,返回内容为历史私信
+
+**必选参数 :**
+
+`user_ids` : 用户 id,多个需用逗号隔开
+
+`msg` : 要发送的信息
+
+**接口地址 :** `/send/song`
+
+**调用例子 :** `/send/song?user_ids=1&id=351318&msg=测试`
+
+
+### 发送私信(带歌单)
+
+说明 : 登录后调用此接口 , 传入用户 id 和要发送的信息和歌单 id, 可以发送带歌单的私信(注:不能发送重复的歌单)
+
+**必选参数 :**
+
+`user_ids` : 用户 id,多个需用逗号隔开
+
+`msg` : 要发送的信息
+
+**接口地址 :** `/send/playlist`
+
+**调用例子 :** `/send/playlist?msg=test&user_ids=475625142&playlist=705123491`,`/send/playlist?msg=test2&user_ids=475625142,32953014&playlist=705123493`
+
+### 最近联系人
+说明 : 登录后调用此接口 ,可获取最接近联系人
+
+**接口地址 :** `/msg/recentcontact`
+
+**调用例子 :** `/msg/recentcontact`
 
 ### 私信内容
 说明 : 登录后调用此接口 , 可获取私信内容
@@ -2788,21 +2825,6 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 
 **调用例子 :**
 `/msg/private/history?uid=9003` (云音乐小秘书)
-
-### 发送私信(带歌单)
-
-说明 : 登录后调用此接口 , 传入用户 id 和要发送的信息和歌单 id, 可以发送带歌单的私信(注:不能发送重复的歌单)
-
-**必选参数 :**
-
-`user_ids` : 用户 id,多个需用逗号隔开
-
-`msg` : 要发送的信息
-
-**接口地址 :** `/send/playlist`
-
-**调用例子 :** `/send/playlist?msg=test&user_ids=475625142&playlist=705123491`,`/send/playlist?msg=test2&user_ids=475625142,32953014&playlist=705123493`
-
 
 ### 通知 - 评论
 
