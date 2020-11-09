@@ -107,7 +107,7 @@ fs.readdirSync(path.join(__dirname, 'module'))
     })
   })
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 8800
 const host = process.env.HOST || ''
 
 app.server = app.listen(port, host, () => {
