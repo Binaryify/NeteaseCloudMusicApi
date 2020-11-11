@@ -53,7 +53,7 @@
     "@typescript-eslint/parser": "4.4.1",
     "eslint": "7.12.0",
     "eslint-config-prettier": "6.15.0",
-    "eslint-plugin-html": "6.0.3",
+    "eslint-plugin-html": "6.1.1",
     "eslint-plugin-prettier": "3.1.4",
     "husky": "4.2.5",
     "intelli-espower-loader": "1.0.1",
