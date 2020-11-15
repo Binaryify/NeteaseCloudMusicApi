@@ -1,4 +1,6 @@
 # 更新日志
+### 3.47.2 | 2020.11.15
+- 新增关注歌手新歌/新MV接口 [#1028](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1028)
 ### 3.47.1 | 2020.11.14
 - 修复使用post请求取消喜欢音乐会失败的问题 [#1024](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1024)
 

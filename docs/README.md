@@ -210,6 +210,8 @@
 192. 抱一抱评论
 193. 评论抱一抱列表
 194. 收藏的专栏
+195. 关注歌手新歌
+196. 关注歌手新MV
 
 ## 安装
 
@@ -3097,6 +3099,30 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 **接口地址 :** `/yunbei/tasks/expense`
 
 **调用例子 :** `/yunbei/tasks/expense?limit=1`
+
+### 关注歌手新歌
+说明 :登录后调用此接口可获取关注歌手新歌
+
+**可选参数 :** `limit`: 取出评论数量 , 默认为 20
+
+`before`: 上一页数据返回的publishTime的数据 
+
+**接口地址 :** `/artist/new/song`
+
+**调用例子 :** `/artist/new/song?limit=1` `/artist/new/song?limit=1&before=1602777625000`
+
+
+### 关注歌手新MV
+说明 :登录后调用此接口可获取关注歌手新MV 
+
+**可选参数 :** `limit`: 取出评论数量 , 默认为 20
+
+`before`: 上一页数据返回的publishTime的数据
+
+**接口地址 :** `/artist/new/mv`
+
+**调用例子 :** `/artist/new/mv?limit=1` `/artist/new/mv?limit=1&before=1602777625000`
+
 
 ### batch批量请求接口
 说明 : 登录后调用此接口 ,传入接口和对应原始参数(原始参数非文档里写的参数,需参考源码),可批量请求接口

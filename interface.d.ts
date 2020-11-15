@@ -1333,3 +1333,24 @@ export function topic_sublist(
     offset?: number | string
   } & RequestBaseConfig,
 ): Promise<Response>
+
+export function topic_sublist(
+  params: {
+    limit?: number | string
+    offset?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function artist_new_mv(
+  params: {
+    limit?: number | string
+    startTimestamp?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function artist_new_song(
+  params: {
+    limit?: number | string
+    startTimestamp?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
