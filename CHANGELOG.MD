@@ -1,5 +1,5 @@
 # 更新日志
-### 3.47.0 | 2020.11.14
+### 3.47.1 | 2020.11.14
 - 修复使用post请求取消喜欢音乐会失败的问题 [#1024](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1024)
 
 - 新增抱一抱评论和评论抱一抱列表接口 [#1016](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1016)
