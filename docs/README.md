@@ -1188,8 +1188,6 @@ tags: 歌单标签
 
 **调用例子 :** `/song/url?id=33894312` `/song/url?id=405998841,33894312`
 
-返回数据如下图 :
-![音乐 url](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E9%9F%B3%E4%B9%90%20url.png)
 
 ### 音乐是否可用
 
