@@ -1354,3 +1354,9 @@ export function artist_new_song(
     startTimestamp?: number | string
   } & RequestBaseConfig,
 ): Promise<Response>
+
+export function artist_detail(
+  params: {
+    id: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
