@@ -1,4 +1,7 @@
 # 更新日志
+### 3.47.4 | 2020.12.03
+- 修复收藏的专栏接口无法调用的问题 [#1042](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1042)
+
 ### 3.47.3 | 2020.11.22
 - 新增歌手详情接口 [#1035](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1035)
 
