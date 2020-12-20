@@ -2,7 +2,7 @@
 
 module.exports = (query, request) => {
   query.cookie.os = 'ios'
-  query.cookie.appver = '7.3.27'
+  query.cookie.appver = '8.0.0'
   const data = {
     getcounts: true,
     time: query.lasttime || -1,
