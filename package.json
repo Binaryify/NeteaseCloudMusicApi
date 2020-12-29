@@ -43,7 +43,7 @@
     "tunnel": "^0.0.6"
   },
   "devDependencies": {
-    "@types/node": "14.14.6",
+    "@types/node": "14.14.16",
     "@typescript-eslint/eslint-plugin": "4.4.1",
     "@typescript-eslint/parser": "4.4.1",
     "eslint": "7.12.0",
