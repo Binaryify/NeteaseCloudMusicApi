@@ -40,6 +40,7 @@
     "express": "^4.17.1",
     "express-fileupload": "^1.1.9",
     "pac-proxy-agent": "^4.0.0",
+    "qrcode": "^1.4.4",
     "tunnel": "^0.0.6"
   },
   "devDependencies": {

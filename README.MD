@@ -18,6 +18,8 @@
 
 [sqaiyan/netmusic-node](https://github.com/sqaiyan/netmusic-node)
 
+[greats3an/pyncm](https://github.com/greats3an/pyncm)
+
 
 ## 环境要求
 

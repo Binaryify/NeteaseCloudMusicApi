@@ -153,7 +153,11 @@ const createRequest = (method, url, data, options) => {
         try {
           answer.body = body
           answer.status = answer.body.code || res.status
-          if (answer.body.code === 502) {
+          if (
+            [201, 302, 400, 502, 800, 801, 802, 803].indexOf(answer.body.code) >
+            -1
+          ) {
+            // 特殊状态码
             answer.status = 200
           }
         } catch (e) {
