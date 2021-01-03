@@ -16,10 +16,8 @@ module.exports = async (query, request) => {
   return {
     status: 200,
     body: {
-      data: {
-        ...result.body,
-        code: 200,
-      },
+      data: result.body,
+      code: 200,
     },
     cookie: result.cookie,
   }

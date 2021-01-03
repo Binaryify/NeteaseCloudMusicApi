@@ -12,6 +12,6 @@ module.exports = (query, request) => {
     'POST',
     `https://music.163.com/api/v2/banner/get`,
     { clientType: type },
-    { crypto: 'linuxapi', proxy: query.proxy, realIP: query.realIP },
+    { crypto: 'api', proxy: query.proxy, realIP: query.realIP },
   )
 }

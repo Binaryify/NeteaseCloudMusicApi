@@ -23,36 +23,36 @@
     $.ajax({
       url: `/login/cellphone?phone=${phone}&password=${password}`,
       xhrFields: {
-        withCredentials: true //关键
+        withCredentials: true, //关键
       },
       success: function (data) {
         console.log(data)
         $.ajax({
           url: `/recommend/resource `,
           xhrFields: {
-            withCredentials: true //关键
+            withCredentials: true, //关键
           },
           success: function (data) {
             console.log(data)
           },
           error: function (err) {
             console.log(err)
-          }
+          },
         })
       },
       error: function (err) {
         console.log(err)
-      }
+      },
     })
 
     axios({
       url: `/login/cellphone?phone=${phone}&password=${password}`,
-      withCredentials: true //关键
+      withCredentials: true, //关键
     }).then(function (res) {
       console.log(res.data)
       axios({
         url: `/recommend/resource`,
-        withCredentials: true //关键
+        withCredentials: true, //关键
       }).then(function (res) {
         console.log(res.data)
       })

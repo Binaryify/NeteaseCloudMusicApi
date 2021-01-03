@@ -9,7 +9,7 @@ module.exports = (query, request) => {
     tv: -1,
   }
   return request('POST', `https://music.163.com/api/song/lyric`, data, {
-    crypto: 'linuxapi',
+    crypto: 'api',
     cookie: query.cookie,
     proxy: query.proxy,
     realIP: query.realIP,
