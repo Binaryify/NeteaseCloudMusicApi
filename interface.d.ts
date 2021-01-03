@@ -1360,3 +1360,32 @@ export function artist_detail(
     id: number | string
   } & RequestBaseConfig,
 ): Promise<Response>
+
+export function cloud(params: RequestBaseConfig): Promise<Response>
+
+export function topic_detail(
+  params: {
+    actid?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function topic_detail_event_hot(
+  params: {
+    actid?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function login_qr_key(params: RequestBaseConfig): Promise<Response>
+
+export function login_qr_create(
+  params: {
+    key?: number | string
+    qrimg?: boolean | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function login_qr_check(
+  params: {
+    key?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>

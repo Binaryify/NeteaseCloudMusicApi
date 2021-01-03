@@ -1,4 +1,11 @@
 # 更新日志
+### 4.0.0 | 2021.1.03
+- 新增云盘上传接口,新增二维码登录相关接口和相关demo(http://localhost:3000/qrlogin.html, http://localhost:3000/cloud.html),更新 d.ts
+
+- 升级部分接口加密方法("linuxapi" 都替换到了"api")
+
+- 更新 `login/status` 接口(返回字段和之前不一样)
+
 ### 3.47.5 | 2020.12.20
 - 更新appver [#1060](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1060)
 
