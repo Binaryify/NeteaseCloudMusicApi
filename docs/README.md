@@ -2584,7 +2584,7 @@ type : 地区
 
 参考: https://github.com/Binaryify/NeteaseCloudMusicApi/blob/master/public/cloud.html  
 
-访问地址: http://localhost:3000/qrlogin.html)  
+访问地址: http://localhost:3000/cloud.html)  
 
 支持命令行调用,参考module_example目录下`song_upload.js`
 
