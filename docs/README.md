@@ -2454,13 +2454,11 @@ MV 点赞转发评论数数据
 ### 获取推荐视频
 说明 : 调用此接口, 可获取推荐视频,分页参数只能传入offset 
 
-**必选参数 :** `id`: videoGroup 的 id  
-
 **可选参数 :** `offset`: 默认0
 
-**接口地址 :** `/video/group`
+**接口地址 :** `/video/timeline/recommend`
 
-**调用例子 :** `/video/timeline/recommend`
+**调用例子 :** `/video/timeline/recommend?offset=10`
 
 ### 相关视频
 
