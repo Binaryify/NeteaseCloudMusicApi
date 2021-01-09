@@ -1,4 +1,7 @@
 # 更新日志
+### 4.0.1 | 2021.1.09
+- 新增歌单详情动态接口 [#1088](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1088)
+
 ### 4.0.0 | 2021.1.03
 - 新增云盘上传接口,新增二维码登录相关接口和相关demo(http://localhost:3000/qrlogin.html, http://localhost:3000/cloud.html),更新 d.ts
 

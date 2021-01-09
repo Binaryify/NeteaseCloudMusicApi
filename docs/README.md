@@ -217,6 +217,7 @@
 199. 二维码登录
 200. 话题详情
 201. 话题详情热门动态
+202. 歌单详情动态
 
 ## 安装
 
@@ -1221,8 +1222,15 @@ tags: 歌单标签
 
 **调用例子 :** `/playlist/detail?id=24381616`
 
-返回数据如下图 :
-![歌单详情](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%AD%8C%E5%8D%95%E8%AF%A6%E6%83%85.png)
+### 歌单详情动态
+
+说明 : 调用后可获取歌单详情动态部分,如评论数,是否收藏,播放数
+
+**必选参数 :** `id` : 歌单 id
+
+**接口地址 :** `/playlist/detail/dynamic`
+
+**调用例子 :** `/playlist/detail/dynamic?id=24381616`
 
 ### 获取音乐 url
 

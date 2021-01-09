@@ -1389,3 +1389,7 @@ export function login_qr_check(
     key?: number | string
   } & RequestBaseConfig,
 ): Promise<Response>
+
+export function playlist_detail_dynamic(
+  params: { id: string | number } & RequestBaseConfig,
+): Promise<Response>
