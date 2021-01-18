@@ -46,6 +46,11 @@ module.exports = async (query, request) => {
           realIP: query.realIP,
         },
       )
+    } else if (error.body.code === 521) {
+      return {
+        status: 200,
+        body: error.body,
+      }
     }
   }
 }
