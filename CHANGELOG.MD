@@ -1,4 +1,7 @@
 # 更新日志
+### 4.0.3 | 2021.1.28
+- 修复云盘接口中文音乐信息乱码的问题 [#1108](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1108)
+
 ### 4.0.2 | 2021.1.18
 - 修复未绑定手机号对歌单添加或删除歌曲无响应的问题 [#1099](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1099)
 
