@@ -42,25 +42,40 @@ module.exports = async (query, request) => {
   let songName = ''
   try {
     const metadata = await mm.parseBuffer(query.songFile.data, 'audio/mpeg')
-    if (metadata.native.ID3v1) {
-      metadata.native.ID3v1.forEach((item) => {
-        // console.log(item.id, item.value)
-        if (item.id === 'title') {
-          songName = item.value
-        }
-        if (item.id === 'artist') {
-          artist = item.value
-        }
-        if (item.id === 'album') {
-          album = item.value
-        }
-      })
-      // console.log({
-      //   songName,
-      //   album,
-      //   songName,
-      // })
+    const info = metadata.common
+    if (info.title) {
+      songName = info.title
     }
+    if (info.album) {
+      album = info.album
+    }
+    if (info.artist) {
+      artist = info.artist
+    }
+    // if (metadata.native.ID3v1) {
+    //   metadata.native.ID3v1.forEach((item) => {
+    //     // console.log(item.id, item.value)
+    //     if (item.id === 'title') {
+    //       songName = item.value
+    //     }
+    //     if (item.id === 'artist') {
+    //       artist = item.value
+    //     }
+    //     if (item.id === 'album') {
+    //       album = item.value
+    //     }
+    //   })
+    //   // console.log({
+    //   //   songName,
+    //   //   album,
+    //   //   songName,
+    //   // })
+    // }
+    // console.log({
+    //   songName,
+    //   album,
+    //   songName,
+    // })
   } catch (error) {
     console.log(error)
   }
