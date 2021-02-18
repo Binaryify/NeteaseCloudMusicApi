@@ -11,7 +11,7 @@ module.exports = (query, request) => {
     query.cookie.MUSIC_A = config.anonymous_token
   const data = {}
   query.cookie.os = 'ios'
-  query.cookie.appver = '8.0.00'
+  query.cookie.appver = '8.1.20'
   return request(
     'POST',
     `https://music.163.com/eapi/homepage/dragon/ball/static`,

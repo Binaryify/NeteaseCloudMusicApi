@@ -1,6 +1,6 @@
 module.exports = (query, request) => {
   query.cookie.os = 'ios'
-  query.cookie.appver = '8.0.00'
+  query.cookie.appver = '8.1.20'
   const data = {
     limit: query.limit || 20,
     startTimestamp: query.before || Date.now(),
