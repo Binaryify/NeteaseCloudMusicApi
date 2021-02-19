@@ -6,7 +6,6 @@ module.exports = (query, request) => {
     trackId: query.id,
     like: query.like,
   }
-  console.log(query.like)
   return request(
     'POST',
     `https://music.163.com/weapi/radio/like?alg=${

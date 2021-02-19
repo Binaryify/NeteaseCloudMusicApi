@@ -1,4 +1,7 @@
 # 更新日志
+### 4.0.5 | 2021.2.19
+- 修复红心接口默认不红心的问题 [#1126](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1126)
+
 ### 4.0.4 | 2021.2.18
 - 移除云村热评接口(官方下架) [#1111](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1111)
 - 更新 app version
