@@ -1,8 +1,7 @@
 // 红心与取消红心歌曲
-const { toBoolean } = require('../util')
 
 module.exports = (query, request) => {
-  query.like = toBoolean(query.like)
+  query.like = query.like == 'false' ? false : true
   const data = {
     trackId: query.id,
     like: query.like,
