@@ -111,7 +111,7 @@ const createRequest = (method, url, data, options) => {
     }
 
     const answer = { status: 500, body: {}, cookie: [] }
-    const settings = {
+    let settings = {
       method: method,
       url: url,
       headers: headers,
@@ -143,7 +143,12 @@ const createRequest = (method, url, data, options) => {
         }
       }
     }
-
+    if (options.crypto === 'eapi') {
+      settings = {
+        ...settings,
+        responseType: 'arraybuffer',
+      }
+    }
     axios(settings)
       .then((res) => {
         const body = res.data
@@ -151,7 +156,12 @@ const createRequest = (method, url, data, options) => {
           x.replace(/\s*Domain=[^(;|$)]+;*/, ''),
         )
         try {
-          answer.body = body
+          if (options.crypto === 'eapi') {
+            answer.body = JSON.parse(encrypt.decrypt(body).toString())
+          } else {
+            answer.body = body
+          }
+
           answer.status = answer.body.code || res.status
           if (
             [201, 302, 400, 502, 800, 801, 802, 803].indexOf(answer.body.code) >
@@ -161,6 +171,7 @@ const createRequest = (method, url, data, options) => {
             answer.status = 200
           }
         } catch (e) {
+          // console.log(e)
           answer.body = body
           answer.status = res.status
         }

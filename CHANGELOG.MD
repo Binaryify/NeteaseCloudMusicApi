@@ -1,4 +1,7 @@
 # 更新日志
+### 4.0.6 | 2021.2.20
+- 修复 eapi 接口无法正确解密response的问题 [#1138](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1138)
+
 ### 4.0.5 | 2021.2.19
 - 修复红心接口默认不红心的问题 [#1126](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1126)
 
