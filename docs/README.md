@@ -255,6 +255,16 @@ windows 下使用 git-bash 或者 cmder 等终端执行以下命令 :
 ```shell
 $ set HOST=127.0.0.1 && node app.js
 ```
+
+## Vercel 部署
+v4.0.8 加入了 Vercel 配置文件,可以直接在 Vercel 下部署了,不需要自己的服务器
+### 操作方法
+1. fork 此项目
+2. 在 Vercel 官网点击 `New Project`
+3. 点击 `Import Git Repository` 并选择你 fork 的此项目并点击`import`
+4. 点击 `PERSONAL ACCOUNT` 的 `select`
+5. 直接点`Continue`
+6. `PROJECT NAME`自己填,`FRAMEWORK PRESET` 选 `Other` 然后直接点 `Deploy` 接着等部署完成即可
 ## 可以使用代理
 
 在 query 参数中加上 proxy=your-proxy 即可让这一次的请求使用 proxy

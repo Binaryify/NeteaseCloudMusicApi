@@ -1,4 +1,7 @@
 # 更新日志
+### 4.0.8 | 2021.2.27
+- 加入vercel 配置文件,支持 vercel 部署
+
 ### 4.0.7 | 2021.2.27
 - 更新红心接口,修复红心接口460错误问题 [#1151](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1151)
 
