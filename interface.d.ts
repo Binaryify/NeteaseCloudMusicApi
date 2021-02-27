@@ -264,19 +264,22 @@ export function batch(
 ): Promise<Response>
 
 export function captcha_sent(
-  params: { cellphone: string; ctcode?: string } & RequestBaseConfig,
+  params: { cellphone: string; ctcode?: number | string } & RequestBaseConfig,
 ): Promise<Response>
 
 export function captcha_verify(
   params: {
-    ctcode?: string
-    cellphone: string
+    ctcode?: number | string
+    cellphone: number | string
     captcha: string
   } & RequestBaseConfig,
 ): Promise<Response>
 
 export function cellphone_existence_check(
-  params: { cellphone: string; countrycode: string } & RequestBaseConfig,
+  params: {
+    cellphone: number | string
+    countrycode: number | string
+  } & RequestBaseConfig,
 ): Promise<Response>
 
 export function check_music(
@@ -674,16 +677,16 @@ export function login(
 
 export function login_cellphone(
   params: {
-    phone: string
-    countrycode?: string
+    phone: number | string
+    countrycode?: number | string
     password: string
   } & RequestBaseConfig,
 ): Promise<Response>
 
 export function login_cellphone(
   params: {
-    phone: string
-    countrycode?: string
+    phone: number | string
+    countrycode?: number | string
     md5_password: string
   } & RequestBaseConfig,
 ): Promise<Response>
@@ -903,7 +906,7 @@ export function rebind(
     captcha: string
     phone: string
     oldcaptcha: string
-    ctcode?: string
+    ctcode?: number | string
   } & RequestBaseConfig,
 ): Promise<Response>
 
@@ -1392,4 +1395,13 @@ export function login_qr_check(
 
 export function playlist_detail_dynamic(
   params: { id: string | number } & RequestBaseConfig,
+): Promise<Response>
+
+export function user_bindingcellphone(
+  params: {
+    phone: number | string
+    captcha: number | string
+    countrycode?: number | string
+    password?: string
+  } & RequestBaseConfig,
 ): Promise<Response>

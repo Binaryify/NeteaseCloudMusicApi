@@ -1,4 +1,17 @@
 # 更新日志
+### 4.0.7 | 2021.2.27
+- 更新红心接口,修复红心接口460错误问题 [#1151](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1151)
+
+- 更新发送验证码接口
+
+- 注册接口添加 countrycode 参数 [#1152](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1152)
+
+- 新增绑定手机接口 [#1152](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1152)
+
+- 更新 song/detail 接口 [#1143](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1143)
+
+- 用户粉丝接口修改分页参数 [#1161](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1161)
+
 ### 4.0.6 | 2021.2.20
 - 修复 eapi 接口无法正确解密response的问题 [#1138](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1138)
 

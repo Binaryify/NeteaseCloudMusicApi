@@ -218,6 +218,7 @@
 200. 话题详情
 201. 话题详情热门动态
 202. 歌单详情动态
+203. 绑定手机
 
 ## 安装
 
@@ -478,8 +479,6 @@ v3.30.0后支持手动传入cookie,登录接口返回内容新增 `cookie` 字�
 
 **调用例子 :** `/captcha/sent?phone=13xxx`
 
-
-
 ### 验证验证码
 
 说明 : 调用此接口 ,传入手机号码和验证码, 可校验验证码是否正确
@@ -511,16 +510,22 @@ v3.30.0后支持手动传入cookie,登录接口返回内容新增 `cookie` 字�
 
 `nickname`: 昵称
 
+**可选参数 :**  
+
+`countrycode`: 国家码，用于国外手机号，例如美国传入：`1` ,默认86即中国
+
 **接口地址 :** `/register/cellphone`
 
 **调用例子 :** `/register/cellphone?phone=13xxx&password=xxxxx&captcha=1234&nickname=binary1345`
 
 ### 检测手机号码是否已注册
 说明 : 调用此接口 ,可检测手机号码是否已注册  
-**必选参数 :** 
+**必选参数 :**  
 `phone` :  手机号码  
-**可选参数 :**
-`countrycode`: 国家码，用于国外手机号，例如美国传入：`1` 
+
+**可选参数 :**  
+`countrycode`: 国家码，用于国外手机号，例如美国传入：`1` ,默认86即中国  
+
 **接口地址 :** `/cellphone/existence/check`
 
 **调用例子 :** `/cellphone/existence/check?phone=13xxx`
@@ -834,14 +839,14 @@ tags: 歌单标签
 
 **必选参数 :** `uid` : 用户 id  
 
-**可选参数 :** `limit` : 返回数量 , 默认为 30   
+**可选参数 :** 
+`limit` : 返回数量 , 默认为 30   
 
-`lasttime` : 返回数据的 `lasttime` ,默认-1,传入上一次返回结果的 lasttime,将会返回下一页的数据
-
+`offset` : 偏移数量，用于分页 ,如 :( 页数 -1)\*30, 其中 30 为 limit 的值 , 默认为 0
 
 **接口地址 :** `/user/followeds`
 
-**调用例子 :** `/user/followeds?uid=32953014` `/user/followeds?uid=416608258&time=1560152549136`
+**调用例子 :** `/user/followeds?uid=32953014` `/user/followeds?uid=416608258&limit=1` `/user/followeds?uid=416608258&limit=1&offset=1`
 
 ### 获取用户动态
 
