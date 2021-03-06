@@ -54,7 +54,7 @@
     "eslint-plugin-html": "6.1.1",
     "eslint-plugin-prettier": "3.3.1",
     "intelli-espower-loader": "1.0.1",
-    "lint-staged": "10.5.0",
+    "lint-staged": "10.5.4",
     "mocha": "8.3.1",
     "power-assert": "1.6.1",
     "prettier": "2.2.1",
