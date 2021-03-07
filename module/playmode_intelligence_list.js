@@ -10,7 +10,7 @@ module.exports = (query, request) => {
   }
   return request(
     'POST',
-    `http://music.163.com/weapi/playmode/intelligence/list`,
+    `https://music.163.com/weapi/playmode/intelligence/list`,
     data,
     {
       crypto: 'weapi',

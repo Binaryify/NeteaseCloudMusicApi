@@ -1,13 +1,14 @@
 const encrypt = require('./crypto')
-const request = require('request')
+const axios = require('axios')
 const queryString = require('querystring')
 const PacProxyAgent = require('pac-proxy-agent')
-const zlib = require('zlib')
-
+const http = require('http')
+const https = require('https')
+const tunnel = require('tunnel')
+const qs = require('url')
 // request.debug = true // 开启可看到更详细信息
 
 const chooseUserAgent = (ua = false) => {
-  // UA 列表要经常更新啊
   const userAgentList = {
     mobile: [
       // iOS 13.5.1 14.0 beta with safari
@@ -84,7 +85,7 @@ const createRequest = (method, url, data, options) => {
       const header = {
         osver: cookie.osver, //系统版本
         deviceId: cookie.deviceId, //encrypt.base64.encode(imei + '\t02:00:00:00:00:00\t5106025eb79a5247\t70ffbaac7')
-        appver: cookie.appver || '6.1.1', // app版本
+        appver: cookie.appver || '8.0.0', // app版本
         versioncode: cookie.versioncode || '140', //版本号
         mobilename: cookie.mobilename, //设备model
         buildver: cookie.buildver || Date.now().toString().substr(0, 10),
@@ -110,70 +111,81 @@ const createRequest = (method, url, data, options) => {
     }
 
     const answer = { status: 500, body: {}, cookie: [] }
-    const settings = {
+    let settings = {
       method: method,
       url: url,
       headers: headers,
-      body: queryString.stringify(data),
+      data: queryString.stringify(data),
+      httpAgent: new http.Agent({ keepAlive: true }),
+      httpsAgent: new https.Agent({ keepAlive: true }),
     }
 
     if (options.crypto === 'eapi') settings.encoding = null
 
-    if (/\.pac$/i.test(options.proxy)) {
-      settings.agent = new PacProxyAgent(options.proxy)
-    } else {
-      settings.proxy = options.proxy
-    }
-
-    request(settings, (err, res, body) => {
-      if (err) {
-        answer.status = 502
-        answer.body = { code: 502, msg: err.stack }
-        reject(answer)
+    if (options.proxy) {
+      if (options.proxy.indexOf('pac') > -1) {
+        settings.httpAgent = new PacProxyAgent(options.proxy)
+        settings.httpsAgent = new PacProxyAgent(options.proxy)
       } else {
+        var purl = qs.parse(options.proxy)
+        if (purl.hostname) {
+          const agent = tunnel.httpsOverHttp({
+            proxy: {
+              host: purl.hostname,
+              port: purl.port || 80,
+            },
+          })
+          settings.httpsAgent = agent
+          settings.httpAgent = agent
+          settings.proxy = false
+        } else {
+          console.error('代理配置无效,不使用代理')
+        }
+      }
+    }
+    if (options.crypto === 'eapi') {
+      settings = {
+        ...settings,
+        responseType: 'arraybuffer',
+      }
+    }
+    axios(settings)
+      .then((res) => {
+        const body = res.data
         answer.cookie = (res.headers['set-cookie'] || []).map((x) =>
           x.replace(/\s*Domain=[^(;|$)]+;*/, ''),
         )
         try {
           if (options.crypto === 'eapi') {
-            zlib.unzip(body, function (err, buffer) {
-              const _buffer = err ? body : buffer
-              try {
-                try {
-                  answer.body = JSON.parse(encrypt.decrypt(_buffer).toString())
-                  answer.status = answer.body.code || res.statusCode
-                } catch (e) {
-                  answer.body = JSON.parse(_buffer.toString())
-                  answer.status = res.statusCode
-                }
-              } catch (e) {
-                answer.body = _buffer.toString()
-                answer.status = res.statusCode
-              }
-              answer.status =
-                100 < answer.status && answer.status < 600 ? answer.status : 400
-              if (answer.status === 200) resolve(answer)
-              else reject(answer)
-            })
-            return false
+            answer.body = JSON.parse(encrypt.decrypt(body).toString())
           } else {
-            answer.body = JSON.parse(body)
-            answer.status = answer.body.code || res.statusCode
-            if (answer.body.code === 502) {
-              answer.status = 200
-            }
+            answer.body = body
+          }
+
+          answer.status = answer.body.code || res.status
+          if (
+            [201, 302, 400, 502, 800, 801, 802, 803].indexOf(answer.body.code) >
+            -1
+          ) {
+            // 特殊状态码
+            answer.status = 200
           }
         } catch (e) {
+          // console.log(e)
           answer.body = body
-          answer.status = res.statusCode
+          answer.status = res.status
         }
 
         answer.status =
           100 < answer.status && answer.status < 600 ? answer.status : 400
         if (answer.status == 200) resolve(answer)
         else reject(answer)
-      }
-    })
+      })
+      .catch((err) => {
+        answer.status = 502
+        answer.body = { code: 502, msg: err }
+        reject(answer)
+      })
   })
 }
 

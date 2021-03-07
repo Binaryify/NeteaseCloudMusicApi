@@ -5,7 +5,7 @@ module.exports = (query, request) => {
     limit: query.limit || 20,
     offset: query.offset || 0,
   }
-  return request('POST', `http://music.163.com/weapi/act/hot`, data, {
+  return request('POST', `https://music.163.com/api/act/hot`, data, {
     crypto: 'weapi',
     cookie: query.cookie,
     proxy: query.proxy,
