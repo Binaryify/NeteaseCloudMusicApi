@@ -1405,3 +1405,7 @@ export function user_bindingcellphone(
     password?: string
   } & RequestBaseConfig,
 ): Promise<Response>
+
+export function listen_together_status(
+  params: RequestBaseConfig,
+): Promise<Response>
