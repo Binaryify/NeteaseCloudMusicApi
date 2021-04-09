@@ -1,4 +1,7 @@
 # 更新日志
+### 4.0.10 | 2021.4.09
+- 新增用户历史评论接口 [#1197](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1197)
+
 ### 4.0.9 | 2021.3.13
 - 新增一起听状态接口 [#1170](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1170)
 
