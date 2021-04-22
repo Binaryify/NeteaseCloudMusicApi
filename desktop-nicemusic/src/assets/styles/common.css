@@ -1,0 +1,239 @@
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  max-width: 1380px;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* flex */
+
+.flex-layout {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* 过渡 */
+
+.transition {
+  transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  -webkit-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+}
+
+/* margin */
+.mr5 {
+  margin-right: 5px;
+}
+
+/* 文字控制显示 */
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ellipsis-two {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+/* shadow */
+.shadow {
+  background-color: #FFFFFF;
+  -webkit-box-shadow: 0px 5px 40px -1px rgba(2, 10, 18, 0.1);
+  box-shadow: 0px 5px 40px -1px rgba(2, 10, 18, 0.1);
+}
+
+.layer {
+  position: relative;
+}
+
+.layer:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: #8A2387;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #F27121, #E94057, #8A2387);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #F27121, #E94057, #8A2387); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  opacity: 0.3;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* element image */
+.el-image {
+  width: 100%;
+  height: 100%;
+}
+
+/* element pagination */
+.el-pagination.is-background .el-pager li:not(.disabled).active {
+  background-color: #fa2800;
+  color: #FFF;
+}
+
+.el-pagination.is-background .el-pager li:not(.disabled).active:hover {
+  color: #fff;
+}
+
+.el-pagination.is-background .el-pager li:not(.disabled):hover {
+  color: #fa2800;
+}
+
+/* element slider */
+.el-slider__runway {
+  height: 3px;
+  margin: 0;
+  background: rgba(0,0,0,0.05);
+}
+
+.el-slider__bar {
+  height: 3px;
+  border-radius: 3px;
+  background-color: #fa2800;
+}
+
+.el-slider__button-wrapper {
+  width: 12px;
+  height: 12px;
+  top: -9.5px;
+}
+
+.el-slider__button {
+  width: 12px;
+  height: 12px;
+  border: 2px solid #fa2800;
+}
+
+.el-slider__button:hover {
+  cursor: pointer;
+}
+
+.image-slot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  color: #999999;
+}
+
+.image-slot i {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.image-slot p {
+  margin-top: 10px;
+}
+
+.image-slot .dot {
+  margin-top: -8px;
+  margin-left: 5px;
+}
+
+.load-bottom {
+  padding-bottom: 20px;
+}
+
+.page-wrap {
+  text-align: center;
+}
+
+.el-message-box__headerbtn:focus .el-message-box__close, .el-message-box__headerbtn:hover .el-message-box__close {
+  color: #fa2800;
+}
+
+.el-message-box__message p {
+  margin: 0;
+  line-height: 24px;
+  overflow-y: scroll;
+  max-height: 600px;
+}
+
+/* el-loading css */
+.el-loading-mask {
+  background-color: #ffffff;
+}
+.el-loading-spinner .path {
+  stroke: #4a4a4a;
+}
+
+.el-loading-spinner .el-loading-text {
+  color: #4a4a4a;
+}
+
+.el-dropdown-menu__item .el-icon-user {
+  margin-right: 2px;
+}
+
+.el-dropdown-menu__item .el-icon-switch-button {
+  margin-right: 2px;
+}
+
+.el-dropdown-menu__item:focus, .el-dropdown-menu__item:not(.is-disabled):hover {
+  background-color: #ffffff;
+  color: #fa2800;
+}
+
+.no-data-text {
+  padding-bottom: 10px;
+}
+
+@keyframes play {
+	0% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0)
+	}
+
+	to {
+		-webkit-transform: translateY(85%);
+		transform: translateY(85%)
+	}
+}
+
+@keyframes turn{
+  0%{-webkit-transform:rotate(0deg);}
+  25%{-webkit-transform:rotate(90deg);}
+  50%{-webkit-transform:rotate(180deg);}
+  75%{-webkit-transform:rotate(270deg);}
+  100%{-webkit-transform:rotate(360deg);}
+}

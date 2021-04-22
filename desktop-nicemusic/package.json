@@ -1,0 +1,73 @@
+{
+  "name": "desktop-nicemusic",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "eslint --fix --ext .js,.vue src"
+  },
+  "dependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/polyfill": "^7.0.0-beta.52",
+    "babel-preset-env": "^7.0.0-beta.3",
+    "core-js": "^3.6.4",
+    "element-ui": "^2.13.2",
+    "lyric-parser": "^1.0.1",
+    "swiper": "^5.4.5",
+    "vue": "^2.6.11",
+    "vue-awesome-swiper": "^2.6.7",
+    "vue-infinite-scroll": "^2.0.2",
+    "vue-router": "^3.1.6",
+    "vuex": "^3.1.3",
+    "better-scroll": "^1.6.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/runtime": "^7.9.2",
+    "@vue/cli-plugin-babel": "~4.3.0",
+    "@vue/cli-plugin-eslint": "~4.3.0",
+    "@vue/cli-plugin-router": "~4.3.0",
+    "@vue/cli-plugin-vuex": "~4.3.0",
+    "@vue/cli-service": "~4.3.0",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "axios": "^0.19.2",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-component": "^1.1.1",
+    "eslint": "^6.7.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-vue": "^6.2.2",
+    "good-storage": "^1.1.1",
+    "page-skeleton-webpack-plugin": "^0.10.12",
+    "prettier": "^1.19.1",
+    "qs": "^6.9.4",
+    "stylus": "^0.54.7",
+    "stylus-loader": "^3.0.2",
+    "vue-kinesis": "^1.1.5",
+    "vue-mouse-parallax": "^1.3.3",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended",
+      "@vue/prettier"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {
+      "no-console": "off"
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
