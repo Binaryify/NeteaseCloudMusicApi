@@ -1417,3 +1417,11 @@ export function user_comment_history(
     time?: number | string
   } & RequestBaseConfig,
 ): Promise<Response>
+
+export function cloud_match(
+  params: {
+    uid: number | string
+    sid: number | string
+    asid: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
