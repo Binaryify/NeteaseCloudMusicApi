@@ -2645,7 +2645,7 @@ type : 地区
 
 **接口地址 :** `/cloud/match`
 
-**调用例子 :** `/cloud/match?uid=32953014&asid=0&sid=1321856840`
+**调用例子 :** `/cloud/match?uid=32953014&sid=aaa&asid=bbb` `/cloud/match?uid=32953014&sid=bbb&asid=0`
 
 ### 电台banner
 说明 : 调用此接口,可获取电台banner
