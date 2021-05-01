@@ -260,7 +260,7 @@ $ set HOST=127.0.0.1 && node app.js
 ```
 
 ## Vercel 部署
-v4.0.8 加入了 Vercel 配置文件,可以直接在 Vercel 下部署了,不需要自己的服务器
+v4.0.8 加入了 Vercel 配置文件,可以直接在 Vercel 下部署了,不需要自己的服务器(访问Vercel部署的接口,需要额外加一个realIP参数,如 `/song/url?id=191254&realIP=116.25.146.177`)
 ### 操作方法
 1. fork 此项目
 2. 在 Vercel 官网点击 `New Project`
@@ -1502,7 +1502,9 @@ mp3url 不能直接用 , 可通过 `/song/url` 接口传入歌曲 id 获取具�
 
 **接口地址 :** `/homepage/block/page` 
 
-**可选参数 :** `refresh`: 是否刷新数据,默认为true
+**可选参数 :** `refresh`: 是否刷新数据,默认为false
+
+`cursor`: 上一条数据返回的cursor
 
 
 ### 首页-发现-圆形图标入口列表
@@ -1934,7 +1936,7 @@ mp3url 不能直接用 , 可通过 `/song/url` 接口传入歌曲 id 获取具�
 
 ### 获取歌曲详情
 
-说明 : 调用此接口 , 传入音乐 id(支持多个 id, 用 `,` 隔开), 可获得歌曲详情(注意:歌曲封面现在需要通过专辑内容接口获取)
+说明 : 调用此接口 , 传入音乐 id(支持多个 id, 用 `,` 隔开), 可获得歌曲详情
 
 **必选参数 :** `ids`: 音乐 id, 如 `ids=347230`
 
@@ -1942,8 +1944,7 @@ mp3url 不能直接用 , 可通过 `/song/url` 接口传入歌曲 id 获取具�
 
 **调用例子 :** `/song/detail?ids=347230`,`/song/detail?ids=347230,347231`
 
-返回数据如下图 :
-![获取歌曲详情](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/songDetail.png)
+
 
 ### 获取专辑内容
 
@@ -1954,9 +1955,6 @@ mp3url 不能直接用 , 可通过 `/song/url` 接口传入歌曲 id 获取具�
 **接口地址 :** `/album`
 
 **调用例子 :** `/album?id=32311`
-
-返回数据如下图 :
-![获取专辑内容](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E4%B8%93%E8%BE%91.png)
 
 
 ### 专辑动态信息

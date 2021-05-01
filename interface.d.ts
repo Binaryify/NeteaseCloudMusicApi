@@ -643,7 +643,10 @@ export function history_recommend_songs_detail(
 ): Promise<Response>
 
 export function homepage_block_page(
-  params: { refresh?: 'true' | 'false' | boolean } & RequestBaseConfig,
+  params: {
+    refresh?: 'true' | 'false' | boolean
+    cursor?: string
+  } & RequestBaseConfig,
 ): Promise<Response>
 
 export function homepage_dragon_ball(
