@@ -1,4 +1,12 @@
 # 更新日志
+### 4.0.12 | 2021.5.1
+- 首页-发现接口增加 cursor 参数,refresh默认设为false [#1217](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1217)
+
+- 更新`song/detail` 接口
+
+### 4.0.11 | 2021.4.26
+- 新增云盘歌曲信息匹配纠正接口 [#1212](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1212)
+
 ### 4.0.10 | 2021.4.09
 - 新增用户历史评论接口 [#1197](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1197)
 
