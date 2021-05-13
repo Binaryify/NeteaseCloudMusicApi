@@ -57,7 +57,7 @@
     "lint-staged": "10.5.4",
     "mocha": "8.3.2",
     "power-assert": "1.6.1",
-    "prettier": "2.2.1",
+    "prettier": "2.3.0",
     "typescript": "4.2.3"
   }
 }
