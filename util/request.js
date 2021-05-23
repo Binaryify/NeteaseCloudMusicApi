@@ -127,7 +127,7 @@ const createRequest = (method, url, data, options) => {
         settings.httpAgent = new PacProxyAgent(options.proxy)
         settings.httpsAgent = new PacProxyAgent(options.proxy)
       } else {
-        var purl = qs.parse(options.proxy)
+        const purl = qs.parse(options.proxy)
         if (purl.hostname) {
           const agent = tunnel.httpsOverHttp({
             proxy: {
@@ -184,7 +184,7 @@ const createRequest = (method, url, data, options) => {
 
         answer.status =
           100 < answer.status && answer.status < 600 ? answer.status : 400
-        if (answer.status == 200) resolve(answer)
+        if (answer.status === 200) resolve(answer)
         else reject(answer)
       })
       .catch((err) => {
