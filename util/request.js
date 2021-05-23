@@ -172,7 +172,13 @@ const createRequest = (method, url, data, options) => {
           }
         } catch (e) {
           // console.log(e)
-          answer.body = body
+          try {
+            answer.body = JSON.parse(body.toString())
+          } catch (err) {
+            // console.log(err)
+            // can't decrypt and can't parse directly
+            answer.body = body
+          }
           answer.status = res.status
         }
 
