@@ -53,7 +53,7 @@
     "eslint": "7.23.0",
     "eslint-config-prettier": "7.1.0",
     "eslint-plugin-html": "6.1.2",
-    "eslint-plugin-prettier": "3.3.1",
+    "eslint-plugin-prettier": "3.4.0",
     "husky": "6.0.0",
     "intelli-espower-loader": "1.0.1",
     "lint-staged": "11.0.0",
