@@ -1,4 +1,7 @@
 # 更新日志
+### 4.0.14 | 2021.5.28
+- 增加云贝推歌接口,云贝推歌历史记录接口 [#1246](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1246)
+
 ### 4.0.13 | 2021.5.24
 - 修复解析问题，改善 Docker 支持 [#1241](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1241)
 ### 4.0.12 | 2021.5.1

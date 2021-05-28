@@ -1428,3 +1428,18 @@ export function cloud_match(
     asid: number | string
   } & RequestBaseConfig,
 ): Promise<Response>
+
+
+export function yunbei_rcmd_song(
+  params: {
+    id: number | string
+    reason?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function yunbei_rcmd_song_history(
+  params: {
+    size?: number | string
+    cursor?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
