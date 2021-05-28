@@ -1201,7 +1201,7 @@ tags: 歌单标签
 **可选参数 :** `order`: 可选值为 'new' 和 'hot', 分别对应最新和最热 , 默认为
 'hot'
 
-`cat`:`cat`: tag, 比如 " 华语 "、" 古风 " 、" 欧美 "、" 流行 ", 默认为
+`cat`: tag, 比如 " 华语 "、" 古风 " 、" 欧美 "、" 流行 ", 默认为
 "全部",可从歌单分类接口获取(/playlist/catlist)  
 
 `limit`: 取出歌单数量 , 默认为 50
@@ -3273,6 +3273,29 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 
 **调用例子 :** 使用GET方式:`/batch?/api/v2/banner/get={"clientType":"pc"}` 使用POST方式传入参数:`{ "/api/v2/banner/get": {"clientType":"pc"} }`
 
+### 云贝推歌
+
+说明 : 登录后调用此接口 , 传入歌曲 id, 可以进行云贝推歌
+
+**必选参数 :** `id` : 歌曲 id
+
+**可选参数 :** `reason` : 推歌理由
+
+**接口地址 :** `/yunbei/rcmd/song`
+
+**调用例子 :** `/yunbei/rcmd/song?id=65528`  `/yunbei/rcmd/song?id=65528&reason=人间好声音推荐给你听`
+
+### 云贝推歌历史记录
+
+说明 : 登录后调用此接口 , 可以获得云贝推歌历史记录
+
+**可选参数 :** `size` : 返回数量 , 默认为 20
+
+`cursor` : 返回数据的 cursor, 默认为 '' , 传入上一次返回结果的 cursor,将会返回下一页的数据
+
+**接口地址 :** `/yunbei/rcmd/song/history`
+
+**调用例子 :** `/yunbei/rcmd/song/history?size=10`
 
 
 ## 离线访问此文档
