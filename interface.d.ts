@@ -1428,3 +1428,48 @@ export function cloud_match(
     asid: number | string
   } & RequestBaseConfig,
 ): Promise<Response>
+
+export function yunbei_rcmd_song(
+  params: {
+    id: number | string
+    reason?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function yunbei_rcmd_song_history(
+  params: {
+    size?: number | string
+    cursor?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function song_purchased(
+  params: MultiPageConfig & RequestBaseConfig,
+): Promise<Response>
+
+export function mlog_url(
+  params: {
+    id?: number | string
+    res?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function mlog_to_video(
+  params: {
+    id?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function vip_growthpoint(params: RequestBaseConfig): Promise<Response>
+
+export function vip_growthpoint_details(
+  params: MultiPageConfig & RequestBaseConfig,
+): Promise<Response>
+
+export function vip_tasks(params: RequestBaseConfig): Promise<Response>
+
+export function vip_growthpoint_get(
+  params: {
+    id?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>

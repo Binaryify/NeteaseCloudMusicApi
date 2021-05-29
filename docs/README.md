@@ -222,6 +222,15 @@
 204. 一起听状态
 205. 用户历史评论
 206. 云盘歌曲信息匹配纠正
+207. 云贝推歌
+208. 云贝推歌历史记录
+209. 已购单曲
+210. 获取mlog播放地址
+211. 将mlog id转为视频id
+212. vip成长值
+213. vip成长值获取记录
+214. vip任务
+215. 领取vip成长值
 
 ## 安装
 
@@ -1201,7 +1210,7 @@ tags: 歌单标签
 **可选参数 :** `order`: 可选值为 'new' 和 'hot', 分别对应最新和最热 , 默认为
 'hot'
 
-`cat`:`cat`: tag, 比如 " 华语 "、" 古风 " 、" 欧美 "、" 流行 ", 默认为
+`cat`: tag, 比如 " 华语 "、" 古风 " 、" 欧美 "、" 流行 ", 默认为
 "全部",可从歌单分类接口获取(/playlist/catlist)  
 
 `limit`: 取出歌单数量 , 默认为 50
@@ -3273,6 +3282,99 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 
 **调用例子 :** 使用GET方式:`/batch?/api/v2/banner/get={"clientType":"pc"}` 使用POST方式传入参数:`{ "/api/v2/banner/get": {"clientType":"pc"} }`
 
+### 云贝推歌
+
+说明 : 登录后调用此接口 , 传入歌曲 id, 可以进行云贝推歌
+
+**必选参数 :** `id` : 歌曲 id
+
+**可选参数 :** `reason` : 推歌理由
+
+**接口地址 :** `/yunbei/rcmd/song`
+
+**调用例子 :** `/yunbei/rcmd/song?id=65528`  `/yunbei/rcmd/song?id=65528&reason=人间好声音推荐给你听`
+
+### 云贝推歌历史记录
+
+说明 : 登录后调用此接口 , 可以获得云贝推歌历史记录
+
+**可选参数 :** `size` : 返回数量 , 默认为 20
+
+`cursor` : 返回数据的 cursor, 默认为 '' , 传入上一次返回结果的 cursor,将会返回下一页的数据
+
+**接口地址 :** `/yunbei/rcmd/song/history`
+
+**调用例子 :** `/yunbei/rcmd/song/history?size=10`
+
+### 已购单曲
+说明 :登录后调用此接口可获取已购买的单曲  
+
+**可选参数 :** `limit`: 取出评论数量 , 默认为 20
+
+`offset`: 偏移数量 , 用于分页 , 如 :( 评论页数 -1)\*10, 其中 10 为 limit 的值  
+
+**接口地址 :** `/song/purchased`
+
+**调用例子 :** `/song/purchased?limit=10`
+
+### 获取mlog播放地址
+
+说明 : 调用此接口 , 传入mlog id, 可获取mlog播放地址
+
+**必选参数 :** `id` : mlog id
+
+**可选参数 :** `res`: 分辨率 , 默认为 1080
+
+**接口地址 :** `/mlog/url`
+
+**调用例子 :** `/mlog/url?id=a1qOVPTWKS1ZrK8`
+
+### 将mlog id转为视频id
+
+说明 : 调用此接口 , 传入mlog id, 可获取video id，然后通过`video/url` 获取播放地址
+
+**必选参数 :** `id` : mlog id
+
+**接口地址 :** `/mlog/to/video`
+
+**调用例子 :** `/mlog/to/video?id=a1qOVPTWKS1ZrK8`
+
+### vip成长值
+
+说明 : 登陆后调用此接口 , 可获取当前会员成长值
+
+**接口地址 :** `/vip/growthpoint`
+
+**调用例子 :** `/vip/growthpoint`
+
+### vip成长值获取记录
+说明 :登录后调用此接口可获取会员成长值领取记录  
+
+**可选参数 :** `limit`: 取出评论数量 , 默认为 20
+
+`offset`: 偏移数量 , 用于分页 , 如 :( 评论页数 -1)\*10, 其中 10 为 limit 的值  
+
+**接口地址 :** `/vip/growthpoint/details`
+
+**调用例子 :** `/vip/growthpoint/details?limit=10`
+
+### vip任务
+
+说明 : 登陆后调用此接口 , 可获取会员任务
+
+**接口地址 :** `/vip/tasks`
+
+**调用例子 :** `/vip/tasks`
+
+### 领取vip成长值
+
+说明 : 登陆后调用此接口 , 可获取会员成长值
+
+**必选参数 :** `id` : 会员任务 id
+
+**接口地址 :** `/vip/growthpoint/get`
+
+**调用例子 :** `/vip/growthpoint/get?id=7043206830_7`
 
 
 ## 离线访问此文档
