@@ -1429,7 +1429,6 @@ export function cloud_match(
   } & RequestBaseConfig,
 ): Promise<Response>
 
-
 export function yunbei_rcmd_song(
   params: {
     id: number | string
@@ -1461,20 +1460,16 @@ export function mlog_to_video(
   } & RequestBaseConfig,
 ): Promise<Response>
 
-export function vip_growthpoint(
-  params: RequestBaseConfig,
-): Promise<Response>
+export function vip_growthpoint(params: RequestBaseConfig): Promise<Response>
 
 export function vip_growthpoint_details(
   params: MultiPageConfig & RequestBaseConfig,
 ): Promise<Response>
 
-export function vip_tasks(
-  params: RequestBaseConfig,
-): Promise<Response>
+export function vip_tasks(params: RequestBaseConfig): Promise<Response>
 
 export function vip_growthpoint_get(
-  params:  {
+  params: {
     id?: number | string
   } & RequestBaseConfig,
 ): Promise<Response>
