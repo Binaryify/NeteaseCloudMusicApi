@@ -4,7 +4,7 @@ module.exports = (query, request) => {
   const data = {
     id: query.id,
     limit: query.limit || 20,
-    offset: query.offset || 20,
+    offset: query.offset || 0,
   }
   return request(
     'POST',
