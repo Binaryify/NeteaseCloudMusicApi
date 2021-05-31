@@ -3416,7 +3416,7 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 
 **接口地址 :** `/digitalAlbum/sales`
 
-**调用例子 :** `/digitalAlbum/sales?id=120605500` `/digitalAlbum/sales?id=120605500,125080528`
+**调用例子 :** `/digitalAlbum/sales?ids=120605500` `/digitalAlbum/sales?ids=120605500,125080528`
 
 ### 音乐人数据概况
 
