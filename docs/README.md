@@ -234,6 +234,11 @@
 216. 歌手粉丝
 216. 数字专辑详情
 217. 数字专辑销量
+218. 音乐人数据概况
+219. 音乐人播放趋势
+220. 音乐人任务
+221. 账号云豆数
+222. 领取云豆
 
 ## 安装
 
@@ -3411,7 +3416,55 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 
 **接口地址 :** `/digitalAlbum/sales`
 
-**调用例子 :** `/digitalAlbum/sales?id=120605500` `/digitalAlbum/sales?id=120605500,125080528,`
+**调用例子 :** `/digitalAlbum/sales?id=120605500` `/digitalAlbum/sales?id=120605500,125080528`
+
+### 音乐人数据概况
+
+说明 : 音乐人登录后调用此接口 , 可获取统计数据概况
+
+**接口地址 :** `/musician/data/overview`
+
+**调用例子 :** `/musician/data/overview`
+
+### 音乐人播放趋势
+
+说明 : 音乐人登录后调用此接口 , 可获取歌曲播放趋势
+
+**必选参数 :** `startTime` : 开始时间
+
+`endTime` : 结束时间
+
+**接口地址 :** `/musician/play/trend`
+
+**调用例子 :** `/musician/play/trend?startTime=2021-05-24&endTime=2021-05-30`
+
+### 音乐人任务
+
+说明 : 音乐人登录后调用此接口 , 可获取音乐人任务
+
+**接口地址 :** `/musician/tasks`
+
+**调用例子 :** `/musician/tasks`
+
+### 账号云豆数
+
+说明 : 音乐人登录后调用此接口 , 可获取账号云豆数
+
+**接口地址 :** `/musician/cloudbean`
+
+**调用例子 :** `/musician/cloudbean`
+
+### 领取云豆
+
+说明 : 音乐人登录后调用此接口 , 可领取已完成的音乐人任务的云豆奖励
+
+**必选参数 :** `id` : 任务id，通过`/musician/tasks`获取到的`userMissionId`即为任务id
+
+`period` : 通过`/musician/tasks`获取
+
+**接口地址 :** `/musician/cloudbean/obtain`
+
+**调用例子 :** `/musician/cloudbean/obtain?id=7036416928&period=1`
 
 
 
