@@ -2,7 +2,7 @@
 
 module.exports = (query, request) => {
   const data = {
-    taskIds: query.id,
+    taskIds: query.ids,
   }
   return request(
     'POST',

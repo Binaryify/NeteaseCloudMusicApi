@@ -3376,13 +3376,13 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 
 ### 领取vip成长值
 
-说明 : 登陆后调用此接口 , 可获取会员成长值
+说明 : 登陆后调用此接口 , 可获取已完成的会员任务的成长值奖励
 
-**必选参数 :** `id` : 会员任务 id
+**必选参数 :** `ids` : 通过`/vip/tasks`获取到的`unGetIds`
 
 **接口地址 :** `/vip/growthpoint/get`
 
-**调用例子 :** `/vip/growthpoint/get?id=7043206830_7`
+**调用例子 :** `/vip/growthpoint/get?ids=7043206830_7` `/vip/growthpoint/get?ids=8613118351_1,8607552957_1`
 
 ### 歌手粉丝
 
