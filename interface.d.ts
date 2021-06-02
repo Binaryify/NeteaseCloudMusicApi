@@ -1473,3 +1473,45 @@ export function vip_growthpoint_get(
     ids?: number | string
   } & RequestBaseConfig,
 ): Promise<Response>
+
+export function artist_fans(
+  params: {
+    id: number | string
+    limit?: number | string
+    offset?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function digitalAlbum_detail(
+  params: {
+    id: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function digitalAlbum_sales(
+  params: {
+    ids: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function musician_data_overview(
+  params: RequestBaseConfig,
+): Promise<Response>
+
+export function musician_play_trend(
+  params: {
+    startTime: number | string
+    endTime: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function musician_tasksss(params: RequestBaseConfig): Promise<Response>
+
+export function musician_cloudbean(params: RequestBaseConfig): Promise<Response>
+
+export function musician_cloudbean_obtain(
+  params: {
+    id: number | string
+    period: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
