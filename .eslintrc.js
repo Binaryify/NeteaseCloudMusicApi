@@ -42,7 +42,7 @@ module.exports = {
       parser: '@typescript-eslint/parser',
       extends: [
         'plugin:@typescript-eslint/recommended', // Uses the recommended rules from the @typescript-eslint/eslint-plugin
-        'prettier/@typescript-eslint',
+        // 'prettier/@typescript-eslint',
       ],
     },
   ],
