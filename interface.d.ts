@@ -1470,6 +1470,6 @@ export function vip_tasks(params: RequestBaseConfig): Promise<Response>
 
 export function vip_growthpoint_get(
   params: {
-    id?: number | string
+    ids?: number | string
   } & RequestBaseConfig,
 ): Promise<Response>

@@ -1,12 +1,13 @@
-// 领取会员成长值
+// 音乐人歌曲播放趋势
 
 module.exports = (query, request) => {
   const data = {
-    taskIds: query.ids,
+    startTime: query.startTime,
+    endTime: query.endTime,
   }
   return request(
     'POST',
-    `https://music.163.com/weapi/vipnewcenter/app/level/task/reward/get`,
+    `https://music.163.com/weapi/creator/musician/play/count/statistic/data/trend/get`,
     data,
     {
       crypto: 'weapi',
@@ -16,3 +17,4 @@ module.exports = (query, request) => {
     },
   )
 }
+  

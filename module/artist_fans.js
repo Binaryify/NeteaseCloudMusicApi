@@ -1,12 +1,14 @@
-// 领取会员成长值
+// 歌手粉丝
 
 module.exports = (query, request) => {
   const data = {
-    taskIds: query.ids,
+    id: query.id,
+    limit: query.limit || 20,
+    offset: query.offset || 0,
   }
   return request(
     'POST',
-    `https://music.163.com/weapi/vipnewcenter/app/level/task/reward/get`,
+    `https://music.163.com/weapi/artist/fans/get`,
     data,
     {
       crypto: 'weapi',

@@ -1,12 +1,10 @@
-// 领取会员成长值
+// 音乐人数据概况
 
 module.exports = (query, request) => {
-  const data = {
-    taskIds: query.ids,
-  }
+  const data = {}
   return request(
     'POST',
-    `https://music.163.com/weapi/vipnewcenter/app/level/task/reward/get`,
+    `https://music.163.com/weapi/creator/musician/statistic/data/overview/get`,
     data,
     {
       crypto: 'weapi',
@@ -16,3 +14,4 @@ module.exports = (query, request) => {
     },
   )
 }
+  
