@@ -464,7 +464,7 @@ v3.30.0后支持手动传入cookie,登录接口返回内容新增 `cookie` 字�
 
 **接口地址 :** `/login/qr/key`
 ##### 2. 二维码生成接口
-说明: 调用此接口传入上一个接口生成的key可生成二维码图片的base64和二维码信息,可使用base64展示图片,或者使用二维码信息内容自行使用第三方二维码生产库渲染二维码  
+说明: 调用此接口传入上一个接口生成的key可生成二维码图片的base64和二维码信息,可使用base64展示图片,或者使用二维码信息内容自行使用第三方二维码生成库渲染二维码  
 
 必选参数: `key`,由第一个接口生成  
 
@@ -3474,9 +3474,7 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 
 ## 关于此文档
 
-此文档由 [docsify](https://github.com/QingWei-Li/docsify/) 生成 docsify 是一个动
-态生成文档网站的工具。不同于 GitBook、Hexo 的地方是它不会生成将 .md 转成 .html
-文件，所有转换工作都是在运行时进行。
+此文档由 [docsify](https://github.com/QingWei-Li/docsify/) 生成 docsify 是一个动态生成文档网站的工具。不同于 GitBook、Hexo 的地方是它不会生成将 .md 转成 .html 文件，所有转换工作都是在运行时进行。
 
 ## License
 
