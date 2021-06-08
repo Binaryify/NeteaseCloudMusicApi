@@ -1,15 +1,9 @@
+const { resourceTypeMap } = require('../util/config.json')
 // 热门评论
 
 module.exports = (query, request) => {
   query.cookie.os = 'pc'
-  query.type = {
-    0: 'R_SO_4_', //  歌曲
-    1: 'R_MV_5_', //  MV
-    2: 'A_PL_0_', //  歌单
-    3: 'R_AL_3_', //  专辑
-    4: 'A_DJ_1_', //  电台,
-    5: 'R_VI_62_', //  视频
-  }[query.type]
+  query.type = resourceTypeMap[query.type]
   const data = {
     rid: query.id,
     limit: query.limit || 20,

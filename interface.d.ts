@@ -264,19 +264,22 @@ export function batch(
 ): Promise<Response>
 
 export function captcha_sent(
-  params: { cellphone: string; ctcode?: string } & RequestBaseConfig,
+  params: { cellphone: string; ctcode?: number | string } & RequestBaseConfig,
 ): Promise<Response>
 
 export function captcha_verify(
   params: {
-    ctcode?: string
-    cellphone: string
+    ctcode?: number | string
+    cellphone: number | string
     captcha: string
   } & RequestBaseConfig,
 ): Promise<Response>
 
 export function cellphone_existence_check(
-  params: { cellphone: string; countrycode: string } & RequestBaseConfig,
+  params: {
+    cellphone: number | string
+    countrycode: number | string
+  } & RequestBaseConfig,
 ): Promise<Response>
 
 export function check_music(
@@ -640,7 +643,10 @@ export function history_recommend_songs_detail(
 ): Promise<Response>
 
 export function homepage_block_page(
-  params: { refresh?: 'true' | 'false' | boolean } & RequestBaseConfig,
+  params: {
+    refresh?: 'true' | 'false' | boolean
+    cursor?: string
+  } & RequestBaseConfig,
 ): Promise<Response>
 
 export function homepage_dragon_ball(
@@ -674,16 +680,16 @@ export function login(
 
 export function login_cellphone(
   params: {
-    phone: string
-    countrycode?: string
+    phone: number | string
+    countrycode?: number | string
     password: string
   } & RequestBaseConfig,
 ): Promise<Response>
 
 export function login_cellphone(
   params: {
-    phone: string
-    countrycode?: string
+    phone: number | string
+    countrycode?: number | string
     md5_password: string
   } & RequestBaseConfig,
 ): Promise<Response>
@@ -903,7 +909,7 @@ export function rebind(
     captcha: string
     phone: string
     oldcaptcha: string
-    ctcode?: string
+    ctcode?: number | string
   } & RequestBaseConfig,
 ): Promise<Response>
 
@@ -1305,5 +1311,207 @@ export function yunbei_task_finish(
   params: {
     userTaskId: number | string
     depositCode?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function msg_recentcontact(params: RequestBaseConfig): Promise<Response>
+
+export function hug_comment(
+  params: {
+    uid: number | string
+    cid: number | string
+    sid: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function comment_hug_list(
+  params: {
+    page: number | string
+    cursor: number | string
+    idCursor: number | string
+    pageSize?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function topic_sublist(
+  params: {
+    limit?: number | string
+    offset?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function topic_sublist(
+  params: {
+    limit?: number | string
+    offset?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function artist_new_mv(
+  params: {
+    limit?: number | string
+    startTimestamp?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function artist_new_song(
+  params: {
+    limit?: number | string
+    startTimestamp?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function artist_detail(
+  params: {
+    id: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function cloud(params: RequestBaseConfig): Promise<Response>
+
+export function topic_detail(
+  params: {
+    actid?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function topic_detail_event_hot(
+  params: {
+    actid?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function login_qr_key(params: RequestBaseConfig): Promise<Response>
+
+export function login_qr_create(
+  params: {
+    key?: number | string
+    qrimg?: boolean | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function login_qr_check(
+  params: {
+    key?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function playlist_detail_dynamic(
+  params: { id: string | number } & RequestBaseConfig,
+): Promise<Response>
+
+export function user_bindingcellphone(
+  params: {
+    phone: number | string
+    captcha: number | string
+    countrycode?: number | string
+    password?: string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function listen_together_status(
+  params: RequestBaseConfig,
+): Promise<Response>
+
+export function user_comment_history(
+  params: {
+    limit?: number | string
+    uid: number | string
+    time?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function cloud_match(
+  params: {
+    uid: number | string
+    sid: number | string
+    asid: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function yunbei_rcmd_song(
+  params: {
+    id: number | string
+    reason?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function yunbei_rcmd_song_history(
+  params: {
+    size?: number | string
+    cursor?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function song_purchased(
+  params: MultiPageConfig & RequestBaseConfig,
+): Promise<Response>
+
+export function mlog_url(
+  params: {
+    id?: number | string
+    res?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function mlog_to_video(
+  params: {
+    id?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function vip_growthpoint(params: RequestBaseConfig): Promise<Response>
+
+export function vip_growthpoint_details(
+  params: MultiPageConfig & RequestBaseConfig,
+): Promise<Response>
+
+export function vip_tasks(params: RequestBaseConfig): Promise<Response>
+
+export function vip_growthpoint_get(
+  params: {
+    ids?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function artist_fans(
+  params: {
+    id: number | string
+    limit?: number | string
+    offset?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function digitalAlbum_detail(
+  params: {
+    id: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function digitalAlbum_sales(
+  params: {
+    ids: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function musician_data_overview(
+  params: RequestBaseConfig,
+): Promise<Response>
+
+export function musician_play_trend(
+  params: {
+    startTime: number | string
+    endTime: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function musician_tasksss(params: RequestBaseConfig): Promise<Response>
+
+export function musician_cloudbean(params: RequestBaseConfig): Promise<Response>
+
+export function musician_cloudbean_obtain(
+  params: {
+    id: number | string
+    period: number | string
   } & RequestBaseConfig,
 ): Promise<Response>

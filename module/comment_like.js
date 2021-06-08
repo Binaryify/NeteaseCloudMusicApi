@@ -1,17 +1,10 @@
+const { resourceTypeMap } = require('../util/config.json')
 // 点赞与取消点赞评论
 
 module.exports = (query, request) => {
   query.cookie.os = 'pc'
   query.t = query.t == 1 ? 'like' : 'unlike'
-  query.type = {
-    0: 'R_SO_4_', //  歌曲
-    1: 'R_MV_5_', //  MV
-    2: 'A_PL_0_', //  歌单
-    3: 'R_AL_3_', //  专辑
-    4: 'A_DJ_1_', //  电台,
-    5: 'R_VI_62_', //  视频
-    6: 'A_EV_2_', //  动态
-  }[query.type]
+  query.type = resourceTypeMap[query.type]
   const data = {
     threadId: query.type + query.id,
     commentId: query.cid,

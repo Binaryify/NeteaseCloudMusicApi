@@ -5,7 +5,7 @@ module.exports = (query, request) => {
     ctcode: query.ctcode || '86',
     cellphone: query.phone,
   }
-  return request('POST', `https://music.163.com/weapi/sms/captcha/sent`, data, {
+  return request('POST', `https://music.163.com/api/sms/captcha/sent`, data, {
     crypto: 'weapi',
     cookie: query.cookie,
     proxy: query.proxy,

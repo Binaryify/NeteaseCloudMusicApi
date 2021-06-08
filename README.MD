@@ -18,6 +18,8 @@
 
 [sqaiyan/netmusic-node](https://github.com/sqaiyan/netmusic-node)
 
+[greats3an/pyncm](https://github.com/greats3an/pyncm)
+
 
 ## 环境要求
 
@@ -56,6 +58,16 @@ windows 下使用 git-bash 或者 cmder 等终端执行以下命令:
 ```shell
 $ set PORT=4000 && node app.js
 ```
+
+## Vercel 部署
+v4.0.8 加入了 Vercel 配置文件,可以直接在 Vercel 下部署了,不需要自己的服务器
+### 操作方法
+1. fork 此项目
+2. 在 Vercel 官网点击 `New Project`
+3. 点击 `Import Git Repository` 并选择你 fork 的此项目并点击`import`
+4. 点击 `PERSONAL ACCOUNT` 的 `select`
+5. 直接点`Continue`
+6. `PROJECT NAME`自己填,`FRAMEWORK PRESET` 选 `Other` 然后直接点 `Deploy` 接着等部署完成即可  
 
 ## 可以在Node.js调用
 v3.31.0后支持Node.js调用,导入的方法为`module`内的文件名,返回内容包含`status`和`body`,`status`为状态码,`body`为请求返回内容,参考`module_example` 文件夹下的 `test.js`
@@ -291,6 +303,38 @@ banner({ type:0 }).then(res=>{
 189. 账号信息
 190. 最近联系人
 191. 私信音乐
+192. 抱一抱评论
+193. 评论抱一抱列表
+194. 收藏的专栏
+195. 关注歌手新歌
+196. 关注歌手新MV
+197. 歌手详情
+198. 云盘上传
+199. 二维码登录
+200. 话题详情
+201. 话题详情热门动态
+202. 歌单详情动态
+203. 绑定手机
+204. 一起听状态
+205. 用户历史评论
+206. 云盘歌曲信息匹配纠正
+207. 云贝推歌
+208. 云贝推歌历史记录
+209. 已购单曲
+210. 获取mlog播放地址
+211. 将mlog id转为视频id
+212. vip成长值
+213. vip成长值获取记录
+214. vip任务
+215. 领取vip成长值
+216. 歌手粉丝
+216. 数字专辑详情
+217. 数字专辑销量
+218. 音乐人数据概况
+219. 音乐人播放趋势
+220. 音乐人任务
+221. 账号云豆数
+222. 领取云豆
 
 ## 更新日志
 
