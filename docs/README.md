@@ -486,6 +486,7 @@ v3.30.0后支持手动传入cookie,登录接口返回内容新增 `cookie` 字�
 
 调用可参考项目文件例子`/public/qrlogin.html` (访问地址:http://localhost:3000/qrlogin.html)
 
+*注意: 检测扫码状态接口最好加上一个随机时间戳来防止缓存, 具体见`调用前须知`*
 
 #### 注意
 
