@@ -21,6 +21,7 @@ exec('npm info NeteaseCloudMusicApi version', (err, stdout, stderr) => {
 })
 
 const app = express()
+app.set('trust proxy', true)
 
 // CORS & Preflight request
 app.use((req, res, next) => {
@@ -93,7 +94,21 @@ fs.readdirSync(path.join(__dirname, 'module'))
       question(query, request)
         .then((answer) => {
           console.log('[OK]', decodeURIComponent(req.originalUrl))
-          res.append('Set-Cookie', answer.cookie)
+
+          const cookies = answer.cookie
+          if (Array.isArray(cookies) && cookies.length > 0) {
+            if (req.protocol === 'https') {
+              // Try to fix CORS SameSite Problem
+              res.append(
+                'Set-Cookie',
+                cookies.map((cookie) => {
+                  return cookie + '; SameSite=None; Secure'
+                }),
+              )
+            } else {
+              res.append('Set-Cookie', cookies)
+            }
+          }
           res.status(answer.status).send(answer.body)
         })
         .catch((answer) => {
