@@ -7,7 +7,14 @@
     "test": "mocha -r intelli-espower-loader -t 20000 app.test.js --exit",
     "lint": "eslint \"**/*.{js,ts}\"",
     "lint-fix": "eslint --fix \"**/*.{js,ts}\"",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "pkgwin": "pkg . -t node14-win-x64 -o app",
+    "pkglinux": "pkg . -t node14-linux-x64 -o app",
+    "pkgmacos": "pkg . -t node14-macos-x64 -o app"
+  },
+  "bin": "./app.js",
+  "pkg": {
+    "scripts": "module/*.js"
   },
   "keywords": [
     "网易云音乐",
