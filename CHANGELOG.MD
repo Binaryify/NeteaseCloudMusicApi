@@ -1,6 +1,9 @@
 # 更新日志
+### 4.0.16 | 2021.6.2
+- 新增歌手粉丝,数字专辑详情,数字专辑销量,音乐人数据概况,音乐人播放趋势,音乐人任务,账号云豆数,领取云豆等接口 [#1252](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1252)
+
 ### 4.0.15 | 2021.5.29
-- 新增已购单曲,获取mlog播放地址,将mlog id转为视频id,vip成长值,vip成长值获取记录,vip任务,领取vip成长值 等接口 [#1248](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1248)
+- 新增已购单曲,获取mlog播放地址,将mlog id转为视频id,vip成长值,vip成长值获取记录,vip任务,领取vip成长值等接口 [#1248](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1248)
 
 ### 4.0.14 | 2021.5.28
 - 增加云贝推歌接口,云贝推歌历史记录接口 [#1246](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1246)

@@ -1,12 +1,12 @@
-// 领取会员成长值
+// 数字专辑销量
 
 module.exports = (query, request) => {
   const data = {
-    taskIds: query.ids,
+    albumIds: query.ids,
   }
   return request(
     'POST',
-    `https://music.163.com/weapi/vipnewcenter/app/level/task/reward/get`,
+    `https://music.163.com/weapi/vipmall/albumproduct/album/query/sales`,
     data,
     {
       crypto: 'weapi',

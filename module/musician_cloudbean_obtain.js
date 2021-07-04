@@ -1,12 +1,13 @@
-// 领取会员成长值
+// 领取云豆
 
 module.exports = (query, request) => {
   const data = {
-    taskIds: query.ids,
+    userMissionId: query.id,
+    period: query.period,
   }
   return request(
     'POST',
-    `https://music.163.com/weapi/vipnewcenter/app/level/task/reward/get`,
+    `https://music.163.com/weapi/nmusician/workbench/mission/reward/obtain/new`,
     data,
     {
       crypto: 'weapi',
