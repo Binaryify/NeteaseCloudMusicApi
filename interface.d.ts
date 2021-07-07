@@ -1515,3 +1515,5 @@ export function musician_cloudbean_obtain(
     period: number | string
   } & RequestBaseConfig,
 ): Promise<Response>
+
+export function vip_info(params: RequestBaseConfig): Promise<Response>
