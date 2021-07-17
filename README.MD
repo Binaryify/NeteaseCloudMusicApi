@@ -1,4 +1,4 @@
-# 网易云音乐 API
+# 网易云音乐 APIs
 
 网易云音乐 Node.js API service
 
