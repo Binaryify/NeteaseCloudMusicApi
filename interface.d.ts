@@ -1505,7 +1505,7 @@ export function musician_play_trend(
   } & RequestBaseConfig,
 ): Promise<Response>
 
-export function musician_tasksss(params: RequestBaseConfig): Promise<Response>
+export function musician_tasks(params: RequestBaseConfig): Promise<Response>
 
 export function musician_cloudbean(params: RequestBaseConfig): Promise<Response>
 
@@ -1517,3 +1517,5 @@ export function musician_cloudbean_obtain(
 ): Promise<Response>
 
 export function vip_info(params: RequestBaseConfig): Promise<Response>
+
+export function musician_sign(params: RequestBaseConfig): Promise<Response>
