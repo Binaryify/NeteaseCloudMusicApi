@@ -41,7 +41,7 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
   req.cookies = {}
   //;(req.headers.cookie || '').split(/\s*;\s*/).forEach((pair) => { //  Polynomial regular expression //
-  ;(req.headers.cookie || '').split(/^\s+|(?<!\s)\s+$/g).forEach((pair) => {
+  (req.headers.cookie || '').split(/;\s+|(?<!\s)\s+$/g).forEach((pair) => {
     let crack = pair.indexOf('=')
     if (crack < 1 || crack == pair.length - 1) return
     req.cookies[decodeURIComponent(pair.slice(0, crack)).trim()] =
