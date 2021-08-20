@@ -694,6 +694,14 @@ export function login_cellphone(
   } & RequestBaseConfig,
 ): Promise<Response>
 
+export function login_cellphone(
+  params: {
+    phone: number | string
+    countrycode?: number | string
+    captcha: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
 export function login_refresh(params: RequestBaseConfig): Promise<Response>
 
 export function login_status(params: RequestBaseConfig): Promise<Response>
