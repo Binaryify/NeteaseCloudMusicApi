@@ -19,7 +19,7 @@ exec('npm info NeteaseCloudMusicApi version', (err, stdout, stderr) => {
 
 const app = express()
 
-// CORS
+// CORS.
 app.use((req, res, next) => {
     if(req.path !== '/' && !req.path.includes('.')){
         res.header({
