@@ -117,6 +117,14 @@ fs.readdirSync(path.join(__dirname, 'module'))
             status: answer.status,
             body: answer.body,
           })
+          if (!answer.body) {
+            res.status(404).send({
+              code: 404,
+              data: null,
+              msg: 'Not Found',
+            })
+            return
+          }
           if (answer.body.code == '301') answer.body.msg = '需要登录'
           res.append('Set-Cookie', answer.cookie)
           res.status(answer.status).send(answer.body)
