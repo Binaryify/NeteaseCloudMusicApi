@@ -142,6 +142,8 @@ const createRequest = (method, url, data, options) => {
           console.error('代理配置无效,不使用代理')
         }
       }
+    } else {
+      settings.proxy = false
     }
     if (options.crypto === 'eapi') {
       settings = {
