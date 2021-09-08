@@ -1,4 +1,7 @@
 # 更新日志
+### 4.0.22 | 2021.9.08
+- 修复 URI malformed 错误 [#1347](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1347)
+
 ### 4.0.21 | 2021.9.04
 - 修复云盘上传失败问题 #1332
 
