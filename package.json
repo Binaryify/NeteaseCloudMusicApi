@@ -52,7 +52,8 @@
     "pac-proxy-agent": "^5.0.0",
     "qrcode": "^1.4.4",
     "safe-decode-uri-component": "^1.2.1",
-    "tunnel": "^0.0.6"
+    "tunnel": "^0.0.6",
+    "yargs": "^17.1.1"
   },
   "devDependencies": {
     "@types/node": "14.17.15",
