@@ -1375,7 +1375,14 @@ export function artist_detail(
   } & RequestBaseConfig,
 ): Promise<Response>
 
-export function cloud(params: RequestBaseConfig): Promise<Response>
+export function cloud(
+  params: {
+    songFile: {
+      name: string
+      data: Buffer
+    }
+  } & RequestBaseConfig,
+): Promise<Response>
 
 export function topic_detail(
   params: {
