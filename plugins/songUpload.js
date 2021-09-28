@@ -29,9 +29,12 @@ module.exports = async (query, request) => {
         'Content-Length': String(query.songFile.size),
       },
       data: query.songFile.data,
+      maxContentLength: Infinity,
+      maxBodyLength: Infinity,
     })
   } catch (error) {
     console.log('error', error.response)
+    throw error.response
   }
   return {
     ...tokenRes,
