@@ -1534,3 +1534,23 @@ export function musician_cloudbean_obtain(
 export function vip_info(params: RequestBaseConfig): Promise<Response>
 
 export function musician_sign(params: RequestBaseConfig): Promise<Response>
+
+export function song_download_url(
+  params: {
+    id: number | string
+    br?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function send_event_text(
+  params: {
+    msg: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function playlist_track_all(
+  params: {
+    id: number | string
+    s?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
