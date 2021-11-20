@@ -1554,3 +1554,5 @@ export function playlist_track_all(
     s?: number | string
   } & RequestBaseConfig,
 ): Promise<Response>
+
+export function sign_happy_info(params: RequestBaseConfig): Promise<Response>

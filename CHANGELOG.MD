@@ -1,5 +1,9 @@
 # 更新日志
 
+### 4.1.1 | 2021.11.20
+
+- 添加乐签信息接口 [#1365](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1365)
+
 ### 4.1.0 | 2021.11.20
 
 - 修复新版评论返回参数错误问题 [#1393](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1393) [#1377](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1377)
@@ -7,7 +11,6 @@
 - 新增获取歌单所有歌曲的 API [#1397](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1397)
 
 - 新增发送文本动态接口, 获取客户端歌曲下载链接 url 接口 [#1391](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1391)
-
 
 ### 4.0.23 | 2021.9.15
 
