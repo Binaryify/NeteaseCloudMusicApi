@@ -44,7 +44,7 @@
     "module_types"
   ],
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.24.0",
     "express": "^4.17.1",
     "express-fileupload": "^1.1.9",
     "md5": "^2.3.0",
