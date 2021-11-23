@@ -1559,3 +1559,39 @@ export function artist_video(
 ): Promise<Response>
 
 export function sign_happy_info(params: RequestBaseConfig): Promise<Response>
+
+export function record_recent_song(
+  params: {
+    limit?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function record_recent_video(
+  params: {
+    limit?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function record_recent_voice(
+  params: {
+    limit?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function record_recent_playlist(
+  params: {
+    limit?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function record_recent_album(
+  params: {
+    limit?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function record_recent_dj(
+  params: {
+    limit?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
