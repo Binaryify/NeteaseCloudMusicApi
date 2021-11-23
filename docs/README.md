@@ -1424,7 +1424,7 @@ mp3url 不能直接用 , 可通过 `/song/url` 接口传入歌曲 id 获取具�
 
 `privacy` : 是否设置为隐私歌单，默认否，传'10'则设置成隐私歌单
 
-`type` : 歌单类型,默认'NORMAL',传 'VIDEO'则为视频歌单
+`type` : 歌单类型,默认'NORMAL',传 'VIDEO'则为视频歌单,传 'SHARED'则为共享歌单
 
 **接口地址 :** `/playlist/create`
 
