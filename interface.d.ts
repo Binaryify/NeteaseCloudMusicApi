@@ -1542,16 +1542,19 @@ export function song_download_url(
   } & RequestBaseConfig,
 ): Promise<Response>
 
-export function send_event_text(
-  params: {
-    msg: number | string
-  } & RequestBaseConfig,
-): Promise<Response>
-
 export function playlist_track_all(
   params: {
     id: number | string
     s?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function artist_video(
+  params: {
+    id: number | string
+    size?: number | string
+    cursor?: number | string
+    order?: number | string
   } & RequestBaseConfig,
 ): Promise<Response>
 

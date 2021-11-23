@@ -241,10 +241,10 @@
 223. 领取云豆
 224. 获取 VIP 信息
 225. 音乐人签到
-226. 发送文本动态
-227. 获取客户端歌曲下载 url
-228. 获取歌单所有歌曲
-229. 乐签信息
+226. 获取客户端歌曲下载 url
+227. 获取歌单所有歌曲
+228. 乐签信息
+229. 获取歌手视频
 
 ## 安装
 
@@ -982,7 +982,7 @@ tags: 歌单标签
 
 **接口地址 :** `/share/resource`
 
-**调用例子 :** `/share/resource?id=1297494209&msg=测试` `/share/resource?type=djradio&id=336355127` `/share/resource?type=djprogram&id=2061034798` `/share/resource?type=djprogram&id=2061034798&msg=测试@binaryify 测试`
+**调用例子 :** `/share/resource?id=1297494209&msg=测试` `/share/resource?type=djradio&id=336355127` `/share/resource?type=djprogram&id=2061034798` `/share/resource?type=djprogram&id=2061034798&msg=测试@binaryify 测试` `/share/resource?type=noresource&msg=测试`
 
 ### 获取动态评论
 
@@ -1424,7 +1424,7 @@ mp3url 不能直接用 , 可通过 `/song/url` 接口传入歌曲 id 获取具�
 
 `privacy` : 是否设置为隐私歌单，默认否，传'10'则设置成隐私歌单
 
-`type` : 歌单类型,默认'NORMAL',传 'VIDEO'则为视频歌单
+`type` : 歌单类型,默认'NORMAL',传 'VIDEO'则为视频歌单,传 'SHARED'则为共享歌单
 
 **接口地址 :** `/playlist/create`
 
@@ -3588,14 +3588,6 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 
 **接口地址 :** `/playlist/privacy`
 
-### 发送文本动态
-
-说明: 可以调用此接口发送动态。
-
-**必选参数 :** `msg` : 要发送的动态内容
-
-**接口地址 :** `/send/event/text`
-
 ### 获取客户端歌曲下载 url
 
 说明 : 使用 `/song/url` 接口获取的是歌曲试听 url, 但存在部分歌曲在非 VIP 账号上可以下载无损音质而不能试听无损音质, 使用此接口可使非 VIP 账号获取这些歌曲的无损音频
@@ -3605,6 +3597,22 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 **可选参数 :** `br` : 码率, 默认设置了 999000 即最大码率, 如果要 320k 则可设置为 320000, 其他类推
 
 **接口地址 :** `/song/download/url`
+
+### 获取歌手视频
+
+说明 : 调用此接口 , 传入歌手 id, 可获得歌手视频
+
+**必选参数 :** `id` : 歌手 id
+
+**可选参数 :** `size` : 返回数量 , 默认为 10
+
+`cursor` : 返回数据的 cursor, 默认为 0 , 传入上一次返回结果的 cursor,将会返回下一页的数据
+
+`order` : 排序方法, 0 表示按时间排序, 1 表示按热度排序, 默认为 0
+
+**接口地址 :** `/artist/video`
+
+**调用例子 :** `/artist/video?id=2116`
 
 ## 离线访问此文档
 
