@@ -241,10 +241,9 @@
 223. 领取云豆
 224. 获取 VIP 信息
 225. 音乐人签到
-226. 发送文本动态
-227. 获取客户端歌曲下载 url
-228. 获取歌单所有歌曲
-229. 乐签信息
+226. 获取客户端歌曲下载 url
+227. 获取歌单所有歌曲
+228. 乐签信息
 
 ## 安装
 
@@ -982,7 +981,7 @@ tags: 歌单标签
 
 **接口地址 :** `/share/resource`
 
-**调用例子 :** `/share/resource?id=1297494209&msg=测试` `/share/resource?type=djradio&id=336355127` `/share/resource?type=djprogram&id=2061034798` `/share/resource?type=djprogram&id=2061034798&msg=测试@binaryify 测试`
+**调用例子 :** `/share/resource?id=1297494209&msg=测试` `/share/resource?type=djradio&id=336355127` `/share/resource?type=djprogram&id=2061034798` `/share/resource?type=djprogram&id=2061034798&msg=测试@binaryify 测试` `/share/resource?type=noresource&msg=测试`
 
 ### 获取动态评论
 
@@ -3587,14 +3586,6 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 **必选参数 :** `id` : 歌单 ID
 
 **接口地址 :** `/playlist/privacy`
-
-### 发送文本动态
-
-说明: 可以调用此接口发送动态。
-
-**必选参数 :** `msg` : 要发送的动态内容
-
-**接口地址 :** `/send/event/text`
 
 ### 获取客户端歌曲下载 url
 
