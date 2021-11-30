@@ -1,14 +1,10 @@
-// 分享歌曲到动态
-
 module.exports = (query, request) => {
   const data = {
-    type: query.type || 'song', // song,playlist,mv,djprogram,djradio,noresource
-    msg: query.msg || '',
-    id: query.id || '',
+    limit: query.limit || 100,
   }
   return request(
     'POST',
-    `https://music.163.com/weapi/share/friends/resource`,
+    `https://music.163.com/api/play-record/album/list`,
     data,
     {
       crypto: 'weapi',
