@@ -1,20 +1,16 @@
-// 发送文本动态
-
 module.exports = (query, request) => {
   const data = {
-    msg: query.msg,
-    type: 'noresource',
+    limit: query.limit || 100,
   }
   return request(
     'POST',
-    `https://interface.music.163.com/eapi/share/friends/resource`,
+    `https://music.163.com/api/play-record/song/list`,
     data,
     {
-      crypto: 'eapi',
+      crypto: 'weapi',
       cookie: query.cookie,
       proxy: query.proxy,
       realIP: query.realIP,
-      url: '/api/share/friends/resource',
     },
   )
 }
