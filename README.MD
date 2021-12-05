@@ -10,6 +10,7 @@
 <a href="https://codeclimate.com/github/Binaryify/NeteaseCloudMusicApi"><img src="https://codeclimate.com/github/Binaryify/NeteaseCloudMusicApi/badges/gpa.svg" /></a>
 </p>
 
+
 ## 灵感来自
 
 [disoul/electron-cloud-music](https://github.com/disoul/electron-cloud-music)
@@ -28,13 +29,13 @@
 ## 安装
 
 ```shell
-
 $ git clone git@github.com:Binaryify/NeteaseCloudMusicApi.git 
 
 $ npm install
 ```
 
 或者
+
 ```shell
 $ git clone https://github.com/Binaryify/NeteaseCloudMusicApi.git
 
@@ -60,8 +61,11 @@ $ set PORT=4000 && node app.js
 ```
 
 ## Vercel 部署
+
 v4.0.8 加入了 Vercel 配置文件,可以直接在 Vercel 下部署了,不需要自己的服务器
+
 ### 操作方法
+
 1. fork 此项目
 2. 在 Vercel 官网点击 `New Project`
 3. 点击 `Import Git Repository` 并选择你 fork 的此项目并点击`import`
@@ -70,7 +74,9 @@ v4.0.8 加入了 Vercel 配置文件,可以直接在 Vercel 下部署了,不需�
 6. `PROJECT NAME`自己填,`FRAMEWORK PRESET` 选 `Other` 然后直接点 `Deploy` 接着等部署完成即可  
 
 ## 可以在Node.js调用
+
 v3.31.0后支持Node.js调用,导入的方法为`module`内的文件名,返回内容包含`status`和`body`,`status`为状态码,`body`为请求返回内容,参考`module_example` 文件夹下的 `test.js`
+
 ```js
 const { login_cellphone, user_cloud } = require('NeteaseCloudMusicApi')
 async function main() {
@@ -93,6 +99,7 @@ main()
 ```
 
 ## 支持 TypeScript
+
 ```ts
 // test.ts
 import { banner } from 'NeteaseCloudMusicApi'
@@ -112,6 +119,7 @@ banner({ type:0 }).then(res=>{
 
 
 ## 功能特性
+
 1. 登录
 2. 刷新登录
 3. 发送验证码
@@ -328,14 +336,25 @@ banner({ type:0 }).then(res=>{
 214. vip任务
 215. 领取vip成长值
 216. 歌手粉丝
-216. 数字专辑详情
-217. 数字专辑销量
-218. 音乐人数据概况
-219. 音乐人播放趋势
-220. 音乐人任务
-221. 账号云豆数
-222. 领取云豆
-223. 获取 VIP 信息
+217. 数字专辑详情
+218. 数字专辑销量
+219. 音乐人数据概况
+220. 音乐人播放趋势
+221. 音乐人任务
+222. 账号云豆数
+223. 领取云豆
+224. 获取 VIP 信息
+225. 音乐人签到
+226. 发送文本动态
+227. 获取客户端歌曲下载 url
+228. 获取歌单所有歌曲
+229. 乐签信息
+230. 最近播放-歌曲
+231. 最近播放-视频
+232. 最近播放-声音
+233. 最近播放-歌单
+234. 最近播放-专辑
+235. 最近播放-播客
 
 ## 更新日志
 
@@ -350,7 +369,15 @@ $ npm test
 ![单元测试](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/screenshot1.png)
 ![单元测试](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/screenshot2.png)
 
+## SDK
+
+| 语言 |                    作者                     |                             地址                             |  类型  |
+| :--: | :-----------------------------------------: | :----------------------------------------------------------: | :----: |
+| Java |    [JackuXL](https://github.com/JackuXL)    | [https://github.com/JackuXL/NeteaseCloudMusicApi-SDK](https://github.com/JackuXL/NeteaseCloudMusicApi-SDK) | 第三方 |
+| Java | [1015770492](https://github.com/1015770492) |       https://github.com/1015770492/yumbo-music-utils        | 第三方 |
+
 ## 贡献者
+
 ![](https://opencollective.com/NeteaseCloudMusicApi/contributors.svg?width=890)
 
 
