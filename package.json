@@ -49,9 +49,11 @@
     "express-fileupload": "^1.1.9",
     "md5": "^2.3.0",
     "music-metadata": "^7.5.3",
+    "mysql2": "^2.3.3",
     "pac-proxy-agent": "^5.0.0",
     "qrcode": "^1.4.4",
     "safe-decode-uri-component": "^1.2.1",
+    "sequelize": "^6.12.0-beta.3",
     "tunnel": "^0.0.6",
     "yargs": "^17.1.1"
   },
