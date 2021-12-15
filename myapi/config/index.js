@@ -12,7 +12,7 @@ const config = {
     expiresIn: '4h' // token 有效期
   },
   DATABASE: {
-    database: 'music',
+    database: 'music_test',
     user: 'root',
     password: '123456',
     options: {
