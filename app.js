@@ -8,6 +8,8 @@ const exec = require('child_process').exec
 const cache = require('./util/apicache').middleware
 const { cookieToJson } = require('./util/index')
 const fileUpload = require('express-fileupload')
+const decode = require('safe-decode-uri-component')
+
 // version check
 exec('npm info NeteaseCloudMusicApi version', (err, stdout, stderr) => {
   if (!err) {
@@ -21,6 +23,7 @@ exec('npm info NeteaseCloudMusicApi version', (err, stdout, stderr) => {
 })
 
 const app = express()
+app.set('trust proxy', true)
 
 // CORS & Preflight request
 app.use((req, res, next) => {
@@ -39,11 +42,13 @@ app.use((req, res, next) => {
 // cookie parser
 app.use((req, res, next) => {
   req.cookies = {}
-  ;(req.headers.cookie || '').split(/\s*;\s*/).forEach((pair) => {
+  //;(req.headers.cookie || '').split(/\s*;\s*/).forEach((pair) => { //  Polynomial regular expression //
+  ;(req.headers.cookie || '').split(/;\s+|(?<!\s)\s+$/g).forEach((pair) => {
     let crack = pair.indexOf('=')
     if (crack < 1 || crack == pair.length - 1) return
-    req.cookies[decodeURIComponent(pair.slice(0, crack)).trim()] =
-      decodeURIComponent(pair.slice(crack + 1)).trim()
+    req.cookies[decode(pair.slice(0, crack)).trim()] = decode(
+      pair.slice(crack + 1),
+    ).trim()
   })
   next()
 })
@@ -79,7 +84,7 @@ fs.readdirSync(path.join(__dirname, 'module'))
     app.use(route, (req, res) => {
       ;[req.query, req.body].forEach((item) => {
         if (typeof item.cookie === 'string') {
-          item.cookie = cookieToJson(decodeURIComponent(item.cookie))
+          item.cookie = cookieToJson(decode(item.cookie))
         }
       })
       let query = Object.assign(
@@ -92,15 +97,37 @@ fs.readdirSync(path.join(__dirname, 'module'))
 
       question(query, request)
         .then((answer) => {
-          console.log('[OK]', decodeURIComponent(req.originalUrl))
-          res.append('Set-Cookie', answer.cookie)
+          console.log('[OK]', decode(req.originalUrl))
+
+          const cookies = answer.cookie
+          if (Array.isArray(cookies) && cookies.length > 0) {
+            if (req.protocol === 'https') {
+              // Try to fix CORS SameSite Problem
+              res.append(
+                'Set-Cookie',
+                cookies.map((cookie) => {
+                  return cookie + '; SameSite=None; Secure'
+                }),
+              )
+            } else {
+              res.append('Set-Cookie', cookies)
+            }
+          }
           res.status(answer.status).send(answer.body)
         })
         .catch((answer) => {
-          console.log('[ERR]', decodeURIComponent(req.originalUrl), {
+          console.log('[ERR]', decode(req.originalUrl), {
             status: answer.status,
             body: answer.body,
           })
+          if (!answer.body) {
+            res.status(404).send({
+              code: 404,
+              data: null,
+              msg: 'Not Found',
+            })
+            return
+          }
           if (answer.body.code == '301') answer.body.msg = '需要登录'
           res.append('Set-Cookie', answer.cookie)
           res.status(answer.status).send(answer.body)
