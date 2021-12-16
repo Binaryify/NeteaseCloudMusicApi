@@ -717,7 +717,7 @@ signature：用户签名
 
 ### 更新头像
 
-说明 : 登录后调用此接口,使用`'Content-Type': 'multipart/form-data'`上传图片 formData(name 为'imgFile'),可更新头像(参考:https://github.com/Binaryify/NeteaseCloudMusicApi/blob/master/public/avatar_update.html),支持命令行调用,参考module_example目录下`avatar_upload.js`
+说明 : 登录后调用此接口,使用`'Content-Type': 'multipart/form-data'`上传图片 formData(name 为'imgFile'),可更新头像(参考: https://github.com/Binaryify/NeteaseCloudMusicApi/blob/master/public/avatar_update.html  ),支持命令行调用,参考module_example目录下`avatar_upload.js`
 
 **可选参数 :**
 
@@ -3663,7 +3663,7 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 
 ### 最近播放-专辑
 
-说明 : 调用此接口 , 可获得最近播放-歌曲
+说明 : 调用此接口 , 可获得最近播放-专辑
 
 **可选参数 :** `limit` : 返回数量 , 默认为 100
 
@@ -3673,7 +3673,7 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 
 ### 最近播放-播客
 
-说明 : 调用此接口 , 可获得最近播放-歌曲
+说明 : 调用此接口 , 可获得最近播放-播客
 
 **可选参数 :** `limit` : 返回数量 , 默认为 100
 
