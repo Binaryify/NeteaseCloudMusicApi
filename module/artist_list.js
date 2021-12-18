@@ -16,8 +16,8 @@
 
     initial 取值 a-z/A-Z
 */
-
-module.exports = (query, request) => {
+const { Singer } = require('../myapi/app/models/index')
+module.exports = async (query, request) => {
   const data = {
     initial: isNaN(query.initial)
       ? (query.initial || '').toUpperCase().charCodeAt() || undefined
@@ -28,10 +28,29 @@ module.exports = (query, request) => {
     type: query.type || '1',
     area: query.area,
   }
-  return request('POST', `https://music.163.com/api/v1/artist/list`, data, {
+  const res = await request('POST', `https://music.163.com/api/v1/artist/list`, data, {
     crypto: 'weapi',
     cookie: query.cookie,
     proxy: query.proxy,
     realIP: query.realIP,
   })
+
+  console.log(res)
+  if(res.status == 200) {
+    const arr = res.body.artists
+    console.log(data, typeof data.initial)
+    arr.forEach(item => {
+      Singer.create({
+        name: item.name,
+        picUrl: item.picUrl,
+        type: data.type,
+        initial: data.initial,
+        area: data.area,
+        isHot: 0,
+        netSingerId: item.id
+      })
+    });
+  }
+
+  return res
 }

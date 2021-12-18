@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "start": "cross-env NODE_ENV=development node server.js",
+    "dev:model": "node ./app/models/index.js",
     "dev": "cross-env NODE_ENV=development nodemon server.js",
     "prod": "cross-env NODE_ENV=production pm2 start server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
