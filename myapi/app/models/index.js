@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes } = require('sequelize')
+const { Sequelize, DataTypes, HostNotFoundError } = require('sequelize')
 const { command } = require('yargs')
 const sequelize = new Sequelize('music', 'root', '123456', {
   host: 'localhost',
@@ -174,7 +174,7 @@ const Song = sequelize.define(
     dt: {
       type: DataTypes.STRING(200),
       comment: '歌曲时长',
-    }
+    },
   },
   {
     timestamps: false,
@@ -201,6 +201,7 @@ Album.belongsToMany(Song, {
   through: Album_Song,
 })
 
+
 //热词表
 const Hot = sequelize.define(
   'hot',
@@ -221,6 +222,7 @@ const Hot = sequelize.define(
     freezeTableName: true,
   },
 )
+
 
 ;(async () => {
   // 建表

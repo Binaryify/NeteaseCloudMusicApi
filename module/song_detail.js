@@ -16,21 +16,22 @@ module.exports = async (query, request) => {
       realIP: query.realIP,
     },
   )
-  const tempSongDetail = res.result
-
+  const tempSongDetail = res.body.songs[0]
+  // console.log('tempSongDetail', res)
   //创建歌手取id才能进行关联
   const newsinger = await Singer.create({
-    netSongId: tempSongDetail.ar.id,
+    netSongId: tempSongDetail.id,
   })
+  console.log('newsinger', newsinger)
   if (newsinger.dataValues.id) {
     await Song.update(
       {
         singerId: newsinger.dataValues.id,
-        dt: tempSongDetail.dt
+        dt: tempSongDetail.dt,
       },
       {
         where: {
-          netSongId: tempSongDetail.ar.id,
+          netSongId: tempSongDetail.id,
         },
       },
     )
