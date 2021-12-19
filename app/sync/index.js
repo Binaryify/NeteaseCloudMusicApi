@@ -1,27 +1,15 @@
-const { Banner } = require('../../myapi/app/models/index');
+const { Banner, Singer, Album, Song, Hot, Album_Song, sequelize } = require('../../myapi/app/models/index');
+const host = global.host || 'http://localhost:4000';
+const banner = require("./banner")
+const album = require("./album")
 
-module.exports = async (request) => {
-  const query = {}
-  const type =
-    {
-      0: 'pc',
-      1: 'android',
-      2: 'iphone',
-      3: 'ipad',
-    }[query.type || 0] || 'pc'
-  const res = await request(
-    'POST',
-    `https://music.163.com/api/v2/banner/get`,
-    {clientType: type},
-    {crypto: 'api', proxy: query.proxy, realIP: query.realIP},
-  )
-  // const {imageUrl} = res
-  // const bannerData = Banner.cre
-  console.log('banner重新', res.body.banners);
-  const arr = res.body.banners;
-  arr.forEach(el => {
-    Banner.create({
-      imageUrl: el.imageUrl
-    })
-  })
-}
+
+module.exports = async () => {
+  const result = await sequelize.transaction((t) => {
+    banner.syncDB(t, host)
+    // syncAlbum(t)
+  }).catch(err => {
+    console.log(err)
+  });
+  console.log(result)
+};

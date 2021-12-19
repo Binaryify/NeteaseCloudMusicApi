@@ -1,6 +1,11 @@
 const { Sequelize, DataTypes, HostNotFoundError } = require('sequelize')
 const { command } = require('yargs')
-const sequelize = new Sequelize('music', 'root', '123456', {
+const cls = require('cls-hooked');
+const namespace = cls.createNamespace('my-namespace');
+
+Sequelize.useCLS(namespace);
+
+const sequelize = new Sequelize('music', 'root', 'rootqwer', {
   host: 'localhost',
   port: '3306',
   dialect: 'mysql',
@@ -122,8 +127,8 @@ const Album = sequelize.define(
       comment: '是否是全球榜',
     },
     isRank: {
-      type: DataTypes.TINYINT(100),
-      comment: '是否是全球榜',
+      type: DataTypes.TINYINT,
+      comment: '是否是排行榜',
     },
   },
   {
@@ -232,4 +237,4 @@ const Hot = sequelize.define(
   console.log(err)
 })
 
-module.exports = { Banner, Singer, Album, Song, Hot, Album_Song }
+module.exports = { Banner, Singer, Album, Song, Hot, Album_Song, sequelize }
