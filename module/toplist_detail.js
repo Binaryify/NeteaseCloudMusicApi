@@ -15,11 +15,11 @@ module.exports = async (query, request) => {
   )
 
   console.log(res)
-  if(res.status == 200) {
-    const arr = res.body.list;
+  if (res.status == 200) {
+    const arr = res.body.list
     var rankRes = ''
-    arr.forEach(async item => {
-      if(item.tracks && item.tracks.length > 0 ){
+    arr.forEach(async (item) => {
+      if (item.tracks && item.tracks.length > 0) {
         Album.create({
           coverImgId: item.coverImgId,
           picUrl: item.coverImgUrl,
@@ -30,10 +30,9 @@ module.exports = async (query, request) => {
           subscribedCount: item.subscribedCount,
           playCount: item.playCount,
           trackCount: item.trackCount,
-          isRank: 1
+          isRank: 1,
         })
-        
-      }else {
+      } else {
         Album.create({
           coverImgId: item.coverImgId,
           picUrl: item.coverImgUrl,
@@ -44,11 +43,10 @@ module.exports = async (query, request) => {
           subscribedCount: item.subscribedCount,
           playCount: item.playCount,
           trackCount: item.trackCount,
-          isRank: 1
+          isRank: 1,
         })
       }
-    });
+    })
   }
   return res
-
 }

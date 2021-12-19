@@ -206,7 +206,6 @@ Album.belongsToMany(Song, {
   through: Album_Song,
 })
 
-
 //热词表
 const Hot = sequelize.define(
   'hot',
