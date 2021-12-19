@@ -16,13 +16,12 @@ module.exports = async (query, request) => {
   )
   // const {imageUrl} = res
   // const bannerData = Banner.cre
-  console.log('banner重新', res.body.banners);
-  const arr = res.body.banners;
-  arr.forEach(el=> {
+  console.log('banner重新', res.body.banners)
+  const arr = res.body.banners
+  arr.forEach((el) => {
     Banner.create({
-      imageUrl: el.imageUrl
+      imageUrl: el.imageUrl,
     })
   })
   return res
-
 }

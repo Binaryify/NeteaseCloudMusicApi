@@ -1,4 +1,4 @@
-const { Singer } = require('../models/index')
+const { Singer, Song } = require('../models/index')
 
 async function getHotSingerList(ctx) {
   const { offset = 30 } = ctx.request.query
@@ -35,7 +35,15 @@ async function getSingerDetail(ctx) {
       netSingerId: id,
     },
   })
-  ctx.success('歌手列表获取成功', singerdetail)
+  // console.log(singerdetail[0].dataValues.id)
+  const targetSingerId = singerdetail[0].dataValues.id
+  var constsongList
+  if (targetSingerId) {
+    constsongList = await Song.findAll({
+      singerId: targetSingerId,
+    })
+  }
+  ctx.success('歌手列表获取成功', { singerdetail, constsongList })
 }
 
 module.exports = {
