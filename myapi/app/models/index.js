@@ -1,11 +1,11 @@
 const { Sequelize, DataTypes, HostNotFoundError } = require('sequelize')
 const { command } = require('yargs')
-const cls = require('cls-hooked');
-const namespace = cls.createNamespace('my-namespace');
+const cls = require('cls-hooked')
+const namespace = cls.createNamespace('my-namespace')
 
-Sequelize.useCLS(namespace);
+Sequelize.useCLS(namespace)
 
-const sequelize = new Sequelize('music', 'root', 'rootqwer', {
+const sequelize = new Sequelize('music', 'root', '123456', {
   host: 'localhost',
   port: '3306',
   dialect: 'mysql',
@@ -110,11 +110,15 @@ const Album = sequelize.define(
       type: DataTypes.STRING(200),
       comment: '歌单创建者头像',
     },
+    creatorId: {
+      type: DataTypes.STRING(100),
+      comment: '歌单创建者id',
+    },
     creatorNickName: {
       type: DataTypes.STRING(100),
       comment: '歌单创建者名字',
     },
-    subscribedCount: {
+    q: {
       type: DataTypes.STRING(100),
       comment: '播放量',
     },
@@ -227,6 +231,44 @@ const Hot = sequelize.define(
   },
 )
 
+//用户表
+const User = sequelize.define(
+  'user',
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+      comment: '主键',
+    },
+    name: {
+      type: DataTypes.STRING(200),
+      comment: '用户名',
+    },
+    password: {
+      type: DataTypes.STRING(200),
+      comment: '用户密码',
+    },
+    avatarUrl: {
+      type: DataTypes.STRING(300),
+      comment: '用户头像',
+    },
+    sex: {
+      type: DataTypes.STRING(100),
+      comment: '性别',
+    },
+    isDelete: {
+      type: DataTypes.STRING(50),
+      comment: '软删除用户',
+    },
+  },
+  {
+    timestamps: false,
+    freezeTableName: true,
+  },
+)
+
+User.belongsTo(Album)
 
 ;(async () => {
   // 建表

@@ -23,33 +23,8 @@ async function getSongDetail(ctx) {
   ctx.success('歌曲详情获取成功', songData)
 }
 
-//模糊搜索
-async function getSuggestList(ctx) {
-  const { keyword } = ctx.request.query
-  const songData = await Song.findAll({
-    where: {
-      [Op.and]: [
-        {
-          name: {
-            [Op.like]: `%${keyword}%`,
-          },
-        },
-      ],
-    },
-  })
-  ctx.success('模糊查询歌曲结构', songData)
-}
-//热词推荐
-async function getSuggest(ctx) {
-  //对歌曲的频率进行排序，查询出列表
-  const getSuggestList = await Song.findAll({
-    
-  })
-}
-//修改更新频率
-async function updateFrequency() {}
+
 module.exports = {
   getLyric,
   getSongDetail,
-  getSuggestList,
 }

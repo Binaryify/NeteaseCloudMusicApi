@@ -86,14 +86,17 @@ const Album = require('@routes/album')
 const Singer = require('@routes/singer')
 const Rank = require('@routes/rank')
 const Song = require('@routes/song')
-const Hot = require('@routes/hot')
+const Search = require('@routes/search')
+const User = require('@routes/user')
 
 app.use(Banner.routes(), Banner.allowedMethods())
 app.use(Album.routes(), Album.allowedMethods())
 app.use(Singer.routes(), Singer.allowedMethods())
 app.use(Rank.routes(), Rank.allowedMethods())
 app.use(Song.routes(), Song.allowedMethods())
-app.use(Hot.routes(), Hot.allowedMethods())
+app.use(Search.routes(), Search.allowedMethods())
+app.use(User.routes(), User.allowedMethods())
+
 
 // error-handling
 app.on('error', (err, ctx) => {

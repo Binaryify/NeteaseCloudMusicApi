@@ -1,11 +1,11 @@
 // 搜索建议
 
-module.exports = (query, request) => {
+module.exports = async (query, request) => {
   const data = {
     s: query.keywords || '',
   }
   let type = query.type == 'mobile' ? 'keyword' : 'web'
-  return request(
+  const res = await  request(
     'POST',
     `https://music.163.com/weapi/search/suggest/` + type,
     data,
@@ -16,4 +16,6 @@ module.exports = (query, request) => {
       realIP: query.realIP,
     },
   )
+  console.log(res)
+  return res
 }
