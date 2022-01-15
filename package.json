@@ -65,7 +65,7 @@
     "eslint-plugin-prettier": "4.0.0",
     "husky": "7.0.4",
     "intelli-espower-loader": "1.1.0",
-    "lint-staged": "12.1.2",
+    "lint-staged": "12.1.7",
     "mocha": "8.4.0",
     "power-assert": "1.6.1",
     "prettier": "2.3.0",
