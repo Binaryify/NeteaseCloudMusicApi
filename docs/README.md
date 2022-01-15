@@ -1322,7 +1322,7 @@ tags: 歌单标签
 
 **接口地址 :** `/playlist/track/all`
 
-**调用例子 :** `/playlist/track/all?id=24381616&limit=10`
+**调用例子 :** `/playlist/track/all?id=24381616&limit=10&offset=1`
 
 > 注：关于`offset`，你可以这样理解，假设你当前的歌单有100首歌
 > 
