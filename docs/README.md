@@ -1316,11 +1316,23 @@ tags: 歌单标签
 
 **必选参数 :** `id` : 歌单 id
 
-**可选参数 :** `limit` : 限制获取歌曲的数量
+**可选参数 :** `limit` : 限制获取歌曲的数量，默认值为当前歌单的歌曲数量
+
+**可选参数 :** `offset` : 默认值为0，用于歌曲的分页，计算方法为 `limit` * `offset`<= 你得到的歌曲 <= `limit` * `offset + 1` 
 
 **接口地址 :** `/playlist/track/all`
 
-**调用例子 :** `/playlist/track/all?id=24381616&limit=10`
+**调用例子 :** `/playlist/track/all?id=24381616&limit=10&offset=1`
+
+> 注：关于`offset`，你可以这样理解，假设你当前的歌单有100首歌
+> 
+> 你传入limit=10&offset=0等价于limit=10，你会得到第1-10首歌曲
+> 
+> 你传入limit=10&offset=1，你会得到第11-20首歌曲
+> 
+> 如果你设置limit=10&offset=2，你就会得到第21-30首歌曲
+> 
+> 如果你offset超出了最大偏移量，即超出了`歌曲数量`/`limit`，则offset重置为最大偏移量
 
 ### 歌单详情动态
 
