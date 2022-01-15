@@ -9,6 +9,7 @@ module.exports = (query, request) => {
   }
   //不放在data里面避免请求带上无用的数据
   let limit = query.limit
+  let offset = parseInt(query.offset) || 0
   let trackIds
   let idsData = Object.create(null)
 
@@ -23,8 +24,9 @@ module.exports = (query, request) => {
     if (typeof limit === 'undefined') {
       limit = trackIds.length
     }
+
     trackIds.forEach((item, index) => {
-      if (index < limit) {
+      if (index >= limit * offset && index < limit * (offset + 1)) {
         ids.push(item.id)
       }
     })
