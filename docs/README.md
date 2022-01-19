@@ -717,7 +717,7 @@ signature：用户签名
 
 ### 更新头像
 
-说明 : 登录后调用此接口,使用`'Content-Type': 'multipart/form-data'`上传图片 formData(name 为'imgFile'),可更新头像(参考:https://github.com/Binaryify/NeteaseCloudMusicApi/blob/master/public/avatar_update.html),支持命令行调用,参考module_example目录下`avatar_upload.js`
+说明 : 登录后调用此接口,使用`'Content-Type': 'multipart/form-data'`上传图片 formData(name 为'imgFile'),可更新头像(参考: https://github.com/Binaryify/NeteaseCloudMusicApi/blob/master/public/avatar_update.html  ),支持命令行调用,参考module_example目录下`avatar_upload.js`
 
 **可选参数 :**
 
@@ -1316,11 +1316,23 @@ tags: 歌单标签
 
 **必选参数 :** `id` : 歌单 id
 
-**可选参数 :** `limit` : 限制获取歌曲的数量
+**可选参数 :** `limit` : 限制获取歌曲的数量，默认值为当前歌单的歌曲数量
+
+**可选参数 :** `offset` : 默认值为0，用于歌曲的分页，计算方法为 `limit` * `offset`<= 你得到的歌曲 <= `limit` * `offset + 1` 
 
 **接口地址 :** `/playlist/track/all`
 
-**调用例子 :** `/playlist/track/all?id=24381616&limit=10`
+**调用例子 :** `/playlist/track/all?id=24381616&limit=10&offset=1`
+
+> 注：关于`offset`，你可以这样理解，假设你当前的歌单有100首歌
+> 
+> 你传入limit=10&offset=0等价于limit=10，你会得到第1-10首歌曲
+> 
+> 你传入limit=10&offset=1，你会得到第11-20首歌曲
+> 
+> 如果你设置limit=10&offset=2，你就会得到第21-30首歌曲
+> 
+> 如果你offset超出了最大偏移量，即超出了`歌曲数量`/`limit`，则offset重置为最大偏移量
 
 ### 歌单详情动态
 
@@ -3663,7 +3675,7 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 
 ### 最近播放-专辑
 
-说明 : 调用此接口 , 可获得最近播放-歌曲
+说明 : 调用此接口 , 可获得最近播放-专辑
 
 **可选参数 :** `limit` : 返回数量 , 默认为 100
 
@@ -3673,7 +3685,7 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 
 ### 最近播放-播客
 
-说明 : 调用此接口 , 可获得最近播放-歌曲
+说明 : 调用此接口 , 可获得最近播放-播客
 
 **可选参数 :** `limit` : 返回数量 , 默认为 100
 
