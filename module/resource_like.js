@@ -1,7 +1,7 @@
 // 点赞与取消点赞资源
 
 module.exports = (query, request) => {
-  query.cookie.os = 'pc'
+  query.cookie.os = 'android'
   query.t = query.t == 1 ? 'like' : 'unlike'
   query.type = {
     1: 'R_MV_5_', //  MV
