@@ -1,0 +1,18 @@
+component: http
+stage: prod
+name: NeteaseCloudMusicApi
+inputs:
+  region: ap-shanghai
+  src:
+    src: ./
+    exclude:
+      - .env
+  faas:
+    runtime: Nodejs12.16
+    framework: express
+    name: '${name}'
+  apigw:
+    protocols:
+      - http
+      - https
+app: NeteaseCloudMusicApi
