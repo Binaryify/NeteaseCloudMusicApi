@@ -54,14 +54,20 @@ const VERSION_CHECK_RESULT = {
 /**
  * Get the module definitions dynamically.
  *
- * @param {string} modulePath The path to modules (JS).
+ * @param {string} modulesPath The path to modules (JS).
  * @param {Record<string, string>} [specificRoute] The specific route of specific modules.
+ * @param {boolean} [doRequire] If true, require() the module directly.
+ * Otherwise, print out the module path. Default to true.
  * @returns {Promise<ModuleDefinition[]>} The module definitions.
  *
  * @example getModuleDefinitions("./module", {"album_new.js": "/album/create"})
  */
-async function getModulesDefinitions(modulePath, specificRoute) {
-  const files = await fs.promises.readdir(path.join(__dirname, 'module'))
+async function getModulesDefinitions(
+  modulesPath,
+  specificRoute,
+  doRequire = true,
+) {
+  const files = await fs.promises.readdir(modulesPath)
   const parseRoute = (/** @type {string} */ fileName) =>
     specificRoute && fileName in specificRoute
       ? specificRoute[fileName]
@@ -73,7 +79,8 @@ async function getModulesDefinitions(modulePath, specificRoute) {
     .map((file) => {
       const identifier = file.split('.').shift()
       const route = parseRoute(file)
-      const module = require(path.join(modulePath, file))
+      const modulePath = path.join(modulesPath, file)
+      const module = doRequire ? require(modulePath) : modulePath
 
       return { identifier, route, module }
     })
