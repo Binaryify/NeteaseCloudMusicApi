@@ -56,6 +56,8 @@
     "yargs": "^17.1.1"
   },
   "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/express-fileupload": "^1.2.2",
     "@types/node": "16.11.19",
     "@typescript-eslint/eslint-plugin": "5.0.0",
     "@typescript-eslint/parser": "5.0.0",
