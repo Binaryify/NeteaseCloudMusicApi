@@ -2,7 +2,6 @@
 const fs = require('fs')
 const path = require('path')
 const express = require('express')
-const bodyParser = require('body-parser')
 const request = require('./util/request')
 const packageJSON = require('./package.json')
 const exec = require('child_process').exec
@@ -125,8 +124,8 @@ async function consturctServer() {
   /**
    * Body Parser and File Upload
    */
-  app.use(bodyParser.json())
-  app.use(bodyParser.urlencoded({ extended: false }))
+  app.use(express.json())
+  app.use(express.urlencoded({ extended: false }))
 
   app.use(fileUpload())
 
