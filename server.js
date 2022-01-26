@@ -22,6 +22,7 @@ const VERSION_CHECK_RESULT = {
 
 /**
  * @typedef {{
+ *   identifier?: string,
  *   route: string,
  *   module: any
  * }} ModuleDefinition
@@ -70,10 +71,11 @@ async function getModulesDefinitions(modulePath, specificRoute) {
     .reverse()
     .filter((file) => file.endsWith('.js'))
     .map((file) => {
+      const identifier = file.split('.').shift()
       const route = parseRoute(file)
       const module = require(path.join(modulePath, file))
 
-      return { route, module }
+      return { identifier, route, module }
     })
 
   return modules
