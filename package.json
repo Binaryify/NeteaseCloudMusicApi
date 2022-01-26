@@ -22,7 +22,7 @@
     "音乐",
     "网易云音乐nodejs"
   ],
-  "main": "main.js",
+  "main": "server.js",
   "types": "./interface.d.ts",
   "engines": {
     "node": ">=12"

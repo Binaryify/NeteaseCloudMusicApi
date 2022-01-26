@@ -121,7 +121,7 @@ async function checkVersion() {
 /**
  * Construct the server of NCM API.
  *
- * @param {ModuleDefinition[]} moduleDefs Customized module definitions [advanced]
+ * @param {ModuleDefinition[]} [moduleDefs] Customized module definitions [advanced]
  * @returns {Promise<import("express").Express>} The server instance.
  */
 async function consturctServer(moduleDefs) {
