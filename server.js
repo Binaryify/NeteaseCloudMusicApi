@@ -22,9 +22,17 @@ const VERSION_CHECK_RESULT = {
 
 /**
  * @typedef {{
+ *   route: string,
+ *   module: any
+ * }} ModuleDefinition
+ */
+
+/**
+ * @typedef {{
  *   port?: number,
  *   host?: string,
  *   checkVersion?: boolean,
+ *   moduleDefs?: ModuleDefinition[]
  * }} NcmApiOptions
  */
 
@@ -43,6 +51,35 @@ const VERSION_CHECK_RESULT = {
  */
 
 /**
+ * Get the module definitions dynamically.
+ *
+ * @param {string} modulePath The path to modules (JS).
+ * @param {Record<string, string>} [specificRoute] The specific route of specific modules.
+ * @returns {Promise<ModuleDefinition[]>} The module definitions.
+ *
+ * @example getModuleDefinitions("./module", {"album_new.js": "/album/create"})
+ */
+async function getModulesDefinitions(modulePath, specificRoute) {
+  const files = await fs.promises.readdir(path.join(__dirname, 'module'))
+  const parseRoute = (/** @type {string} */ fileName) =>
+    specificRoute && fileName in specificRoute
+      ? specificRoute[fileName]
+      : `/${fileName.replace(/\.js$/i, '').replace(/_/g, '/')}`
+
+  const modules = files
+    .reverse()
+    .filter((file) => file.endsWith('.js'))
+    .map((file) => {
+      const route = parseRoute(file)
+      const module = require(path.join(modulePath, file))
+
+      return { route, module }
+    })
+
+  return modules
+}
+
+/**
  * Check if the version of this API is latest.
  *
  * @returns {Promise<VersionCheckResult>} If true, this API is up-to-date;
@@ -50,8 +87,8 @@ const VERSION_CHECK_RESULT = {
  * need to notify users to upgrade it manually.
  */
 async function checkVersion() {
-  return new Promise((resolve, reject) => {
-    exec('npm info NeteaseCloudMusicApi version', (err, stdout, stderr) => {
+  return new Promise((resolve) => {
+    exec('npm info NeteaseCloudMusicApi version', (err, stdout) => {
       if (!err) {
         let version = stdout.trim()
 
@@ -82,9 +119,10 @@ async function checkVersion() {
 /**
  * Construct the server of NCM API.
  *
+ * @param {ModuleDefinition[]} moduleDefs Customized module definitions [advanced]
  * @returns {Promise<import("express").Express>} The server instance.
  */
-async function consturctServer() {
+async function consturctServer(moduleDefs) {
   const app = express()
   app.set('trust proxy', true)
 
@@ -107,7 +145,7 @@ async function consturctServer() {
   /**
    * Cookie Parser
    */
-  app.use((req, res, next) => {
+  app.use((req, _, next) => {
     req.cookies = {}
     //;(req.headers.cookie || '').split(/\s*;\s*/).forEach((pair) => { //  Polynomial regular expression //
     ;(req.headers.cookie || '').split(/;\s+|(?<!\s)\s+$/g).forEach((pair) => {
@@ -150,24 +188,13 @@ async function consturctServer() {
   /**
    * Load every modules in this directory
    */
-  const modules = (
-    await fs.promises.readdir(path.join(__dirname, 'module'))
-  ).reverse()
-  for (const file of modules) {
-    // Check if the file is written in JS.
-    if (!file.endsWith('.js')) continue
+  const moduleDefinitions =
+    moduleDefs ||
+    (await getModulesDefinitions(path.join(__dirname, 'module'), special))
 
-    // Get the route path.
-    const route =
-      file in special
-        ? special[file]
-        : '/' + file.replace(/\.js$/i, '').replace(/_/g, '/')
-
-    // Get the module itself.
-    const module = require(path.join(__dirname, 'module', file))
-
+  for (const moduleDef of moduleDefinitions) {
     // Register the route.
-    app.use(route, async (req, res) => {
+    app.use(moduleDef.route, async (req, res) => {
       ;[req.query, req.body].forEach((item) => {
         if (typeof item.cookie === 'string') {
           item.cookie = cookieToJson(decode(item.cookie))
@@ -182,7 +209,7 @@ async function consturctServer() {
       )
 
       try {
-        const moduleResponse = await module(query, request)
+        const moduleResponse = await moduleDef.module(query, request)
         console.log('[OK]', decode(req.originalUrl))
 
         const cookies = moduleResponse.cookie
@@ -242,7 +269,7 @@ async function serveNcmApi(options) {
         )
       }
     })
-  const constructServerSubmission = consturctServer()
+  const constructServerSubmission = consturctServer(options.moduleDefs)
 
   const [_, app] = await Promise.all([
     checkVersionSubmission,
@@ -258,4 +285,7 @@ async function serveNcmApi(options) {
   return appExt
 }
 
-module.exports = serveNcmApi
+module.exports = {
+  serveNcmApi,
+  getModulesDefinitions,
+}
