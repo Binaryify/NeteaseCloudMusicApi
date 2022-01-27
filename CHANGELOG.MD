@@ -1,10 +1,21 @@
 # 更新日志
+
+### 5.0.0 | 2022.01.27
+
+- app.js 重构[#1453](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1453)
+
+Breaking changes:
+... 待整理
+
+- 修复 pkg 打包问题
+
 ### 4.3.0 | 2022.01.22
+
 - fix: 发送/删除评论、点赞失败 [#1446](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1446)
 
-- 增加二进制文件node标识 [#1440](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1440)
+- 增加二进制文件 node 标识 [#1440](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1440)
 
-- 获取歌单所有歌曲增加offset偏移量设置[#1435](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1435)
+- 获取歌单所有歌曲增加 offset 偏移量设置[#1435](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1435)
 
 ### 4.2.0 | 2021.11.23
 
