@@ -4,9 +4,6 @@
 
 - app.js 重构[#1453](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1453)
 
-Breaking changes:
-... 待整理
-
 - 修复 pkg 打包问题
 
 ### 4.3.0 | 2022.01.22
