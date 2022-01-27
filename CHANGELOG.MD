@@ -1,6 +1,6 @@
 # 更新日志
 
-### 5.0.0 | 2022.01.27
+### 4.5.0 | 2022.01.27
 
 - app.js 重构[#1453](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1453)
 
