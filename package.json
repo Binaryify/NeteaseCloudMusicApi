@@ -4,7 +4,7 @@
   "description": "网易云音乐 NodeJS 版 API",
   "scripts": {
     "start": "node app.js",
-    "test": "mocha -r intelli-espower-loader -t 20000 app.test.js --exit",
+    "test": "mocha -r intelli-espower-loader -t 20000 server.test.js --exit",
     "lint": "eslint \"**/*.{js,ts}\"",
     "lint-fix": "eslint --fix \"**/*.{js,ts}\"",
     "prepare": "husky install",
@@ -22,7 +22,7 @@
     "音乐",
     "网易云音乐nodejs"
   ],
-  "main": "main.js",
+  "main": "server.js",
   "types": "./interface.d.ts",
   "engines": {
     "node": ">=12"
@@ -56,6 +56,9 @@
     "yargs": "^17.1.1"
   },
   "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/express-fileupload": "^1.2.2",
+    "@types/mocha": "^9.1.0",
     "@types/node": "16.11.19",
     "@typescript-eslint/eslint-plugin": "5.0.0",
     "@typescript-eslint/parser": "5.0.0",
