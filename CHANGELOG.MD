@@ -1,4 +1,6 @@
 # 更新日志
+### 4.5.1 | 2022.01.28
+- 入口文件优化 [#1457](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1457)
 
 ### 4.5.0 | 2022.01.27
 
