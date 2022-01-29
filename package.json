@@ -45,7 +45,8 @@
     "plugins",
     "main.d.ts",
     "interface.d.ts",
-    "module_types"
+    "module_types",
+    "server.js"
   ],
   "dependencies": {
     "axios": "^0.24.0",
