@@ -3,7 +3,7 @@ const {
   user_cloud,
   album_sublist,
   song_url,
-} = require('../main')
+} = require('../server')
 async function test() {
   try {
     const result = await login_cellphone({

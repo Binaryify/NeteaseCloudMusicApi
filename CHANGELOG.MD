@@ -1,4 +1,21 @@
 # 更新日志
+### 4.5.2 | 2022.01.28
+- 入口文件优化 [#1457](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1457)
+
+### 4.5.0 | 2022.01.27
+
+- app.js 重构[#1453](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1453)
+
+- 修复 pkg 打包问题
+
+### 4.3.0 | 2022.01.22
+
+- fix: 发送/删除评论、点赞失败 [#1446](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1446)
+
+- 增加二进制文件 node 标识 [#1440](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1440)
+
+- 获取歌单所有歌曲增加 offset 偏移量设置[#1435](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1435)
+
 ### 4.2.0 | 2021.11.23
 
 - 合并相同接口(发送文本动态,使用`/share/resource`接口代替)；增加歌手视频接口；增加创建共享歌单的用法 [#1402](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1402)
