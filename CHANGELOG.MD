@@ -1,4 +1,7 @@
 # 更新日志
+### 4.5.3 | 2022.02.04
+- 增加签到进度接口 [#1462](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1462)
+
 ### 4.5.2 | 2022.01.28
 - 入口文件优化 [#1457](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1457)
 
