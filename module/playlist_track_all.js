@@ -15,7 +15,7 @@ module.exports = (query, request) => {
   let idsData = Object.create(null)
 
   return request('POST', `https://music.163.com/api/v6/playlist/detail`, data, {
-    crypto: 'api',
+    crypto: 'weapi',
     cookie: query.cookie,
     proxy: query.proxy,
     realIP: query.realIP,
