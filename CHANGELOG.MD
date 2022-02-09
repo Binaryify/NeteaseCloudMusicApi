@@ -1,4 +1,7 @@
 # 更新日志
+### 4.5.4 | 2022.02.09
+- 修复云盘上传无法获取到文件的问题
+
 ### 4.5.3 | 2022.02.04
 - 增加签到进度接口 [#1462](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1462)
 
