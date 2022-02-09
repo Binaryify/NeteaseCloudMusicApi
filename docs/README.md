@@ -600,6 +600,17 @@ v3.30.0 后支持手动传入 cookie,登录接口返回内容新增 `cookie` 字
 
 **调用例子 :** `/activate/init/profile?nickname=testUser2019`
 
+### 重复昵称检测
+
+说明 : 调用此接口 ,可检测昵称是否重复,并提供备用昵称
+**必选参数 :**
+`nickname` : 昵称
+
+**接口地址 :** `/nickname/check`
+
+**调用例子 :** `/nickname/check?nickname=binaryify`
+
+
 ### 更换绑定手机
 
 说明 : 调用此接口 ,可更换绑定手机(流程:先发送验证码到原手机号码,再发送验证码到新手机号码然后再调用此接口)
