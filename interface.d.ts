@@ -1595,3 +1595,9 @@ export function record_recent_dj(
     limit?: number | string
   } & RequestBaseConfig,
 ): Promise<Response>
+
+export function signin_progress(
+  params: {
+    moduleId?: string
+  } & RequestBaseConfig,
+): Promise<Response>
