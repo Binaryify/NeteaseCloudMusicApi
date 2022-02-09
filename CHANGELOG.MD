@@ -1,4 +1,7 @@
 # 更新日志
+### 4.5.6 | 2022.02.09
+- 新增重复昵称检测接口 [#1469](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1469)
+
 ### 4.5.5 | 2022.02.09
 - 搜索接口支持搜索声音
 
