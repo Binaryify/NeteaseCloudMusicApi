@@ -2036,7 +2036,7 @@ mp3url 不能直接用 , 可通过 `/song/url` 接口传入歌曲 id 获取具�
 
 **调用例子 :** `/song/detail?ids=347230`,`/song/detail?ids=347230,347231`
 
-返回字段说明:
+返回字段说明(感谢 [@tuxzz](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1121#issuecomment-774438040) 整理):
 ```
 name: String, 歌曲标题
 id: u64, 歌曲ID
