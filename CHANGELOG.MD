@@ -1,4 +1,7 @@
 # 更新日志
+### 4.5.6 | 2022.02.12
+- 歌单封面上传接口缺失参数时返回状态码修正
+
 ### 4.5.6 | 2022.02.09
 - 新增重复昵称检测接口 [#1469](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1469)
 
