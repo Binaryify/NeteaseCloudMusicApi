@@ -215,6 +215,7 @@ async function consturctServer(moduleDefs) {
         { cookie: req.cookies },
         req.query,
         req.body,
+        req.files,
       )
 
       try {
