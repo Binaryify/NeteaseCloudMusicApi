@@ -1607,3 +1607,5 @@ export function nickname_check(
     nickname: string
   } & RequestBaseConfig,
 ): Promise<Response>
+
+export function musician_tasks_new(params: RequestBaseConfig): Promise<Response>

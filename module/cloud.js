@@ -3,7 +3,7 @@ const uploadPlugin = require('../plugins/songUpload')
 const md5 = require('md5')
 module.exports = async (query, request) => {
   query.cookie.os = 'pc'
-  query.cookie.appver = '2.7.1.198277'
+  query.cookie.appver = '2.9.7'
   const bitrate = 999000
   if (!query.songFile) {
     return Promise.reject({
