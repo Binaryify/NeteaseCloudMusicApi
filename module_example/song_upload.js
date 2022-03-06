@@ -1,4 +1,4 @@
-const { cloud, login_cellphone } = require('../main')
+const { cloud, login_cellphone } = require('../server')
 const fs = require('fs')
 const path = require('path')
 

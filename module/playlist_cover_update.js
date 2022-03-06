@@ -1,5 +1,14 @@
 const uploadPlugin = require('../plugins/upload')
 module.exports = async (query, request) => {
+  if (!query.imgFile) {
+    return {
+      status: 400,
+      body: {
+        code: 400,
+        msg: 'imgFile is required',
+      },
+    }
+  }
   const uploadInfo = await uploadPlugin(query, request)
   const res = await request(
     'POST',
