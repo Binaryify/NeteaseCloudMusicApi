@@ -3,7 +3,7 @@
 // query.refresh 是否刷新数据
 module.exports = (query, request) => {
   query.cookie.os = 'ios'
-  query.cookie.appver = '8.1.20'
+  query.cookie.appver = '8.7.01'
   const data = { refresh: query.refresh || false, cursor: query.cursor }
   return request(
     'POST',

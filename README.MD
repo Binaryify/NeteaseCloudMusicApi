@@ -43,6 +43,7 @@ $ npm install
 ```
 
 ## 运行
+调用前务必阅读文档的`调用前须知`
 
 ```shell
 $ node app.js
@@ -357,7 +358,8 @@ banner({ type:0 }).then(res=>{
 235. 最近播放-播客
 236. 签到进度
 237. 重复昵称检测
-
+238. 歌手粉丝数量
+239. 音乐人任务(新)
 ## 更新日志
 
 [changelog](https://github.com/Binaryify/NeteaseCloudMusicApi/blob/master/CHANGELOG.MD)
