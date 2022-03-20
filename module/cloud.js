@@ -6,6 +6,10 @@ module.exports = async (query, request) => {
   if (query.songFile.name.indexOf('flac') > -1) {
     ext = 'flac'
   }
+  const filename = query.songFile.name
+    .replace('.' + ext, '')
+    .replaceAll(' ', '_')
+    .replaceAll('.', '_')
   query.cookie.os = 'pc'
   query.cookie.appver = '2.9.7'
   const bitrate = 999000
@@ -89,7 +93,7 @@ module.exports = async (query, request) => {
     {
       bucket: '',
       ext: ext,
-      filename: query.songFile.name.replace('.' + ext, ''),
+      filename: filename,
       local: false,
       nos_product: 3,
       type: 'audio',
@@ -110,7 +114,7 @@ module.exports = async (query, request) => {
       md5: query.songFile.md5,
       songid: res.body.songId,
       filename: query.songFile.name,
-      song: songName || query.songFile.name.replace('.mp3', ''),
+      song: songName || filename,
       album: album || '未知专辑',
       artist: artist || '未知艺术家',
       bitrate: String(bitrate),

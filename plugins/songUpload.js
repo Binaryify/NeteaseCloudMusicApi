@@ -4,6 +4,10 @@ module.exports = async (query, request) => {
   if (query.songFile.name.indexOf('flac') > -1) {
     ext = 'flac'
   }
+  const filename = query.songFile.name
+    .replace('.' + ext, '')
+    .replaceAll(' ', '_')
+    .replaceAll('.', '_')
   //   获取key和token
   const tokenRes = await request(
     'POST',
@@ -11,7 +15,7 @@ module.exports = async (query, request) => {
     {
       bucket: 'jd-musicrep-privatecloud-audio-public',
       ext: ext,
-      filename: query.songFile.name.replace('.' + ext, ''),
+      filename: filename,
       local: false,
       nos_product: 3,
       type: 'audio',
