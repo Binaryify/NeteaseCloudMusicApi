@@ -360,6 +360,8 @@ banner({ type:0 }).then(res=>{
 237. 重复昵称检测
 238. 歌手粉丝数量
 239. 音乐人任务(新)
+240. 内部版本接口
+
 ## 更新日志
 
 [changelog](https://github.com/Binaryify/NeteaseCloudMusicApi/blob/master/CHANGELOG.MD)
