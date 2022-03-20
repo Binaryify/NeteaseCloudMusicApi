@@ -2,6 +2,10 @@ const mm = require('music-metadata')
 const uploadPlugin = require('../plugins/songUpload')
 const md5 = require('md5')
 module.exports = async (query, request) => {
+  let ext = 'mp3'
+  if (query.songFile.name.indexOf('flac') > -1) {
+    ext = 'flac'
+  }
   query.cookie.os = 'pc'
   query.cookie.appver = '2.9.7'
   const bitrate = 999000
@@ -84,8 +88,8 @@ module.exports = async (query, request) => {
     `https://music.163.com/weapi/nos/token/alloc`,
     {
       bucket: '',
-      ext: 'mp3',
-      filename: query.songFile.name.replace('.mp3', ''),
+      ext: ext,
+      filename: query.songFile.name.replace('.' + ext, ''),
       local: false,
       nos_product: 3,
       type: 'audio',
