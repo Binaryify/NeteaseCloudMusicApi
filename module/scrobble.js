@@ -13,6 +13,7 @@ module.exports = (query, request) => {
           time: query.time,
           type: 'song',
           wifi: 0,
+          source: 'list',
         },
       },
     ]),

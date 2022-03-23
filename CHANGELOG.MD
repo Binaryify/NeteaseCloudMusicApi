@@ -1,4 +1,9 @@
 # 更新日志
+### 4.5.9 | 2022.03.20
+- 修复云盘上传接口部分文件名格式上传失败的问题
+
+- 新增 `/inner/version` 接口，用于获取当前版本号
+
 ### 4.5.8 | 2022.03.05
 - 新增歌手粉丝数量接口[#1485](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1485)
 

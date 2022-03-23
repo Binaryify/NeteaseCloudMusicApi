@@ -1,13 +1,21 @@
 const axios = require('axios')
 module.exports = async (query, request) => {
+  let ext = 'mp3'
+  if (query.songFile.name.indexOf('flac') > -1) {
+    ext = 'flac'
+  }
+  const filename = query.songFile.name
+    .replace('.' + ext, '')
+    .replaceAll(' ', '_')
+    .replaceAll('.', '_')
   //   获取key和token
   const tokenRes = await request(
     'POST',
     `https://music.163.com/weapi/nos/token/alloc`,
     {
       bucket: 'jd-musicrep-privatecloud-audio-public',
-      ext: 'mp3',
-      filename: query.songFile.name.replace('.mp3', ''),
+      ext: ext,
+      filename: filename,
       local: false,
       nos_product: 3,
       type: 'audio',

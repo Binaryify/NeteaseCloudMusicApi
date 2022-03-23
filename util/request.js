@@ -1,11 +1,10 @@
 const encrypt = require('./crypto')
 const axios = require('axios')
-const queryString = require('querystring')
 const PacProxyAgent = require('pac-proxy-agent')
 const http = require('http')
 const https = require('https')
 const tunnel = require('tunnel')
-const qs = require('url')
+const { URLSearchParams, URL } = require('url')
 // request.debug = true // 开启可看到更详细信息
 
 const chooseUserAgent = (ua = false) => {
@@ -115,7 +114,7 @@ const createRequest = (method, url, data, options) => {
       method: method,
       url: url,
       headers: headers,
-      data: queryString.stringify(data),
+      data: new URLSearchParams(data).toString(),
       httpAgent: new http.Agent({ keepAlive: true }),
       httpsAgent: new https.Agent({ keepAlive: true }),
     }
@@ -127,7 +126,7 @@ const createRequest = (method, url, data, options) => {
         settings.httpAgent = new PacProxyAgent(options.proxy)
         settings.httpsAgent = new PacProxyAgent(options.proxy)
       } else {
-        const purl = qs.parse(options.proxy)
+        const purl = new URL(options.proxy)
         if (purl.hostname) {
           const agent = tunnel.httpsOverHttp({
             proxy: {

@@ -255,6 +255,7 @@
 237. 重复昵称检测
 238. 歌手粉丝数量
 239. 音乐人任务(新)
+240. 内部版本接口
 
 
 ## 安装
@@ -3805,7 +3806,15 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 
 **接口地址 :** `/signin/progress`
 
-**调用例子 :** `/signin/progress`
+**调用例子 :** `/signin/progress?moduleId=1207signin-1207signin`
+
+### 内部版本接口
+
+说明 : 调用此接口 , 可获得内部版本号(从package.json读取)
+
+**接口地址 :** `/inner/version`
+
+**调用例子 :** `/inner/version`
 
 
 ## 离线访问此文档
