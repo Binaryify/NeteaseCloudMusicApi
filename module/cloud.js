@@ -8,8 +8,8 @@ module.exports = async (query, request) => {
   }
   const filename = query.songFile.name
     .replace('.' + ext, '')
-    .replaceAll(' ', '_')
-    .replaceAll('.', '_')
+    .replace(/\s/g, '')
+    .replace(/\./g, '_')
   query.cookie.os = 'pc'
   query.cookie.appver = '2.9.7'
   const bitrate = 999000
