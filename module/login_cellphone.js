@@ -4,6 +4,7 @@ const crypto = require('crypto')
 
 module.exports = async (query, request) => {
   query.cookie.os = 'pc'
+  query.cookie.appver = '2.9.7'
   const data = {
     phone: query.phone,
     countrycode: query.countrycode || '86',
@@ -16,7 +17,7 @@ module.exports = async (query, request) => {
   }
   let result = await request(
     'POST',
-    `https://music.163.com/weapi/login/cellphone`,
+    `https://music.163.com/api/login/cellphone`,
     data,
     {
       crypto: 'weapi',
