@@ -256,7 +256,7 @@
 238. 歌手粉丝数量
 239. 音乐人任务(新)
 240. 内部版本接口
-
+241. 歌单更新播放量
 
 ## 安装
 
@@ -1362,6 +1362,20 @@ tags: 歌单标签
 **接口地址 :** `/playlist/detail/dynamic`
 
 **调用例子 :** `/playlist/detail/dynamic?id=24381616`
+
+
+### 歌单更新播放量
+
+说明 : 调用后可更新歌单播放量
+
+**必选参数 :** `id` : 歌单 id
+
+**接口地址 :** `/playlist/update/playcount`
+
+**调用例子 :** `/playlist/update/playcount?id=24381616`
+
+
+
 
 ### 获取音乐 url
 
