@@ -1,13 +1,12 @@
+// 歌单打卡
+
 module.exports = (query, request) => {
-  query.cookie.os = 'ios'
-  query.cookie.appver = '8.7.01'
   const data = {
-    limit: query.limit || 20,
-    startTimestamp: query.before || Date.now(),
+    id: query.id,
   }
   return request(
     'POST',
-    `https://music.163.com/api/sub/artist/new/works/song/list`,
+    `https://music.163.com/api/playlist/update/playcount`,
     data,
     {
       crypto: 'weapi',

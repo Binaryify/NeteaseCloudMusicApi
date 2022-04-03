@@ -251,7 +251,12 @@
 233. 最近播放-歌单
 234. 最近播放-专辑
 235. 最近播放-播客
-
+236. 签到进度
+237. 重复昵称检测
+238. 歌手粉丝数量
+239. 音乐人任务(新)
+240. 内部版本接口
+241. 歌单更新播放量
 
 ## 安装
 
@@ -411,6 +416,8 @@ $ sudo docker run -d -p 3000:3000 netease-music-api
 存结果的接口 , 可在请求 url 后面加一个时间戳参数使 url 不同 , 例子 :
 `/simi/playlist?id=347230&timestamp=1503019930000` (之所以加入缓存机制是因为项目早期没有缓存机制，很多 issues 都是报 IP 高频，请按自己需求改造缓存中间件(app.js)，源码不复杂)
 
+!> 不要频繁调登录接口,不然可能会被风控,登录状态还存在就不要重复调登录接口
+
 !> 如果是跨域请求 , 请在所有请求带上 `xhrFields: { withCredentials: true }` (axios 为 `withCredentials: true`, Fetch API 为 `fetch(url, { credentials: 'include' })`), 或直接手动传入 cookie (参见 `登录`), 否则
 可能会因为没带上 cookie 导致 301, 具体例子可看 `public/test.html`, 访问`http://localhost:3000/test.html`(默认端口的话) 例子使用 jQuery 和 axios
 
@@ -433,6 +440,8 @@ $ sudo docker run -d -p 3000:3000 netease-music-api
 ### 登录
 
 说明 : 登录有三个接口,建议使用`encodeURIComponent`对密码编码或者使用`POST`请求,避免某些特殊字符无法解析,如`#`(`#`在 url 中会被识别为 hash,而不是 query)
+
+不要频繁调登录接口,不然可能会被风控,登录状态还存在就不要重复调登录接口
 
 #### 1. 手机登录
 
@@ -597,6 +606,17 @@ v3.30.0 后支持手动传入 cookie,登录接口返回内容新增 `cookie` 字
 **接口地址 :** `/activate/init/profile`
 
 **调用例子 :** `/activate/init/profile?nickname=testUser2019`
+
+### 重复昵称检测
+
+说明 : 调用此接口 ,可检测昵称是否重复,并提供备用昵称
+**必选参数 :**
+`nickname` : 昵称
+
+**接口地址 :** `/nickname/check`
+
+**调用例子 :** `/nickname/check?nickname=binaryify`
+
 
 ### 更换绑定手机
 
@@ -1316,11 +1336,22 @@ tags: 歌单标签
 
 **必选参数 :** `id` : 歌单 id
 
-**可选参数 :** `limit` : 限制获取歌曲的数量
+**可选参数 :** `limit` : 限制获取歌曲的数量，默认值为当前歌单的歌曲数量
+
+**可选参数 :** `offset` : 默认值为0
 
 **接口地址 :** `/playlist/track/all`
 
-**调用例子 :** `/playlist/track/all?id=24381616&limit=10`
+**调用例子 :** `/playlist/track/all?id=24381616&limit=10&offset=1`
+
+> 注：关于`offset`，你可以这样理解，假设你当前的歌单有100首歌
+> 
+> 你传入limit=10&offset=0等价于limit=10，你会得到第1-10首歌曲
+> 
+> 你传入limit=10&offset=1，你会得到第2-11首歌曲
+> 
+> 如果你设置limit=10&offset=2，你就会得到第3-12首歌曲
+
 
 ### 歌单详情动态
 
@@ -1331,6 +1362,20 @@ tags: 歌单标签
 **接口地址 :** `/playlist/detail/dynamic`
 
 **调用例子 :** `/playlist/detail/dynamic?id=24381616`
+
+
+### 歌单更新播放量
+
+说明 : 调用后可更新歌单播放量
+
+**必选参数 :** `id` : 歌单 id
+
+**接口地址 :** `/playlist/update/playcount`
+
+**调用例子 :** `/playlist/update/playcount?id=24381616`
+
+
+
 
 ### 获取音乐 url
 
@@ -1370,11 +1415,11 @@ mp3url 不能直接用 , 可通过 `/song/url` 接口传入歌曲 id 获取具�
 : 如 :( 页数 -1)\*30, 其中 30 为 limit 的值 , 默认为 0
 
 `type`: 搜索类型；默认为 1 即单曲 , 取值意义 : 1: 单曲, 10: 专辑, 100: 歌手, 1000:
-歌单, 1002: 用户, 1004: MV, 1006: 歌词, 1009: 电台, 1014: 视频, 1018:综合
+歌单, 1002: 用户, 1004: MV, 1006: 歌词, 1009: 电台, 1014: 视频, 1018:综合, 2000:声音(搜索声音返回字段格式会不一样)
 
 **接口地址 :** `/search` 或者 `/cloudsearch`(更全)
 
-**调用例子 :** `/search?keywords= 海阔天空` `/cloudsearch?keywords= 海阔天空`
+**调用例子 :** `/search?keywords=海阔天空` `/cloudsearch?keywords=海阔天空`
 
 ### 默认搜索关键词
 
@@ -1409,7 +1454,7 @@ mp3url 不能直接用 , 可通过 `/song/url` 接口传入歌曲 id 获取具�
 
 **接口地址 :** `/search/suggest`
 
-**调用例子 :** `/search/suggest?keywords= 海阔天空` `/search/suggest?keywords= 海阔天空&type=mobile`
+**调用例子 :** `/search/suggest?keywords=海阔天空` `/search/suggest?keywords=海阔天空&type=mobile`
 
 ### 搜索多重匹配
 
@@ -1419,7 +1464,7 @@ mp3url 不能直接用 , 可通过 `/song/url` 接口传入歌曲 id 获取具�
 
 **接口地址 :** `/search/multimatch`
 
-**调用例子 :** `/search/multimatch?keywords= 海阔天空`
+**调用例子 :** `/search/multimatch?keywords=海阔天空`
 
 ### 新建歌单
 
@@ -1980,7 +2025,7 @@ mp3url 不能直接用 , 可通过 `/song/url` 接口传入歌曲 id 获取具�
 ```
 
 
-`t`: 操作,1 为点赞,其他未取消点赞
+`t`: 操作,1 为点赞,其他为取消点赞
 
 `id`: 资源 id  
 
@@ -2003,13 +2048,84 @@ mp3url 不能直接用 , 可通过 `/song/url` 接口传入歌曲 id 获取具�
 
 ### 获取歌曲详情
 
-说明 : 调用此接口 , 传入音乐 id(支持多个 id, 用 `,` 隔开), 可获得歌曲详情
+说明 : 调用此接口 , 传入音乐 id(支持多个 id, 用 `,` 隔开), 可获得歌曲详情(dt为歌曲时长)
 
 **必选参数 :** `ids`: 音乐 id, 如 `ids=347230`
 
 **接口地址 :** `/song/detail`
 
 **调用例子 :** `/song/detail?ids=347230`,`/song/detail?ids=347230,347231`
+
+返回字段说明(感谢 [@tuxzz](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1121#issuecomment-774438040) 整理):
+```
+name: String, 歌曲标题
+id: u64, 歌曲ID
+pst: 0，功能未知
+t: enum,
+  0: 一般类型
+  1: 通过云盘上传的音乐，网易云不存在公开对应
+    如果没有权限将不可用，除了歌曲长度以外大部分信息都为null。
+    可以通过 `/api/v1/playlist/manipulate/tracks` 接口添加到播放列表。
+    如果添加到“我喜欢的音乐”，则仅自己可见，除了长度以外各种信息均为未知，且无法播放。
+    如果添加到一般播放列表，虽然返回code 200，但是并没有效果。
+    网页端打开会看到404画面。
+    属于这种歌曲的例子: https://music.163.com/song/1345937107
+  2: 通过云盘上传的音乐，网易云存在公开对应
+    如果没有权限则只能看到信息，但无法直接获取到文件。
+    可以通过 `/api/v1/playlist/manipulate/tracks` 接口添加到播放列表。
+    如果添加到“我喜欢的音乐”，则仅自己可见，且无法播放。
+    如果添加到一般播放列表，则自己会看到显示“云盘文件”，且云盘会多出其对应的网易云公开歌曲。其他人看到的是其对应的网易云公开歌曲。
+    网页端打开会看到404画面。
+    属于这种歌曲的例子: https://music.163.com/song/435005015
+ar: Vec<Artist>, 歌手列表
+alia: Vec<String>,
+  别名列表，第一个别名会被显示作副标题
+  例子: https://music.163.com/song/536623501
+pop: 小数，常取[0.0, 100.0]中离散的几个数值, 表示歌曲热度
+st: 0: 功能未知
+rt: Option<String>, None、空白字串、或者类似`600902000007902089`的字符串，功能未知
+fee: enum,
+  0: 免费或无版权
+  1: VIP 歌曲
+  4: 购买专辑
+  8: 非会员可免费播放低音质，会员可播放高音质及下载
+  fee 为 1 或 8 的歌曲均可单独购买 2 元单曲
+v: u64, 常为[1, ?]任意数字, 功能未知
+crbt: Option<String>, None或字符串表示的十六进制，功能未知
+cf: Option<String>, 空白字串或者None，功能未知
+al: Album, 专辑，如果是DJ节目(dj_type != 0)或者无专辑信息(single == 1)，则专辑id为0
+dt: u64, 歌曲时长
+h: Option<Quality>, 高质量文件信息
+m: Option<Quality>, 中质量文件信息
+l: Option<Quality>, 低质量文件信息
+a: Option<?>, 常为None, 功能未知
+cd: Option<String>, None或如"04", "1/2", "3", "null"的字符串，表示歌曲属于专辑中第几张CD，对应音频文件的Tag
+no: u32, 表示歌曲属于CD中第几曲，0表示没有这个字段，对应音频文件的Tag
+rtUrl: Option<String(?)>, 常为None, 功能未知
+rtUrls: Vec<String(?)>, 常为空列表, 功能未知
+dj_id: u64,
+  0: 不是DJ节目
+  其他：是DJ节目，表示DJ ID
+copyright: u32, 0, 1, 2: 功能未知
+s_id: u64, 对于t == 2的歌曲，表示匹配到的公开版本歌曲ID
+mark: u64, 功能未知
+originCoverType: enum
+  0: 未知
+  1: 原曲
+  2: 翻唱
+originSongSimpleData: Option<SongSimpleData>, 对于翻唱曲，可选提供原曲简单格式的信息
+single: enum,
+  0: 有专辑信息或者是DJ节目
+  1: 未知专辑
+noCopyrightRcmd: Option<NoCopyrightRcmd>, None表示可以播，非空表示无版权
+mv: u64, 非零表示有MV ID
+rtype: 常为0，功能未知
+rurl: Option<String(?)>, 常为None，功能未知
+mst: u32, 偶尔为0, 常为9，功能未知
+cp: u64, 功能未知
+publish_time: i64, 毫秒为单位的Unix时间戳
+pc: 云盘歌曲信息，如果不存在该字段，则为非云盘歌曲
+```
 
 ### 获取专辑内容
 
@@ -3479,6 +3595,17 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 ### 歌手粉丝
 
 说明 : 调用此接口 , 传入歌手 id, 可获取歌手粉丝
+**必选参数 :** `id` : 歌手 id
+
+
+**接口地址 :** `/artist/fans`
+
+**调用例子 :** `/artist/fans?id=2116&limit=10&offset=0`
+
+### 歌手粉丝数量
+
+说明 : 调用此接口 , 传入歌手 id, 可获取歌手粉丝数量
+
 
 **必选参数 :** `id` : 歌手 id
 
@@ -3486,9 +3613,9 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 
 `offset`: 偏移数量 , 用于分页 , 如 :( 评论页数 -1)\*10, 其中 10 为 limit 的值
 
-**接口地址 :** `/artist/fans`
+**接口地址 :** `/artist/follow/count`
 
-**调用例子 :** `/artist/fans?id=2116&limit=10&offset=0`
+**调用例子 :** `/artist/follow/count?id=2116`
 
 ### 数字专辑详情
 
@@ -3532,11 +3659,19 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 
 ### 音乐人任务
 
-说明 : 音乐人登录后调用此接口 , 可获取音乐人任务。返回的数据中`status`字段为任务状态，0 表示任务未开始，10 表示任务正在进行中，20 表示任务完成，但未领取云豆，100 表示任务完成，并且已经领取了相应的云豆
+说明 : 音乐人登录后调用此接口 , 可获取音乐人任务。返回的数据中`status`字段为任务状态，0 表示任务未开始，10 表示任务正在进行中，20 表示任务完成，但未领取云豆，100 表示任务完成，并且已经领取了相应的云豆(貌似只能获取到做过的任务了)
 
 **接口地址 :** `/musician/tasks`
 
 **调用例子 :** `/musician/tasks`
+
+### 音乐人任务(新)
+
+说明 : 音乐人登录后调用此接口 , 可获取音乐人任务。返回的数据中`status`字段为任务状态，0 表示任务未开始，10 表示任务正在进行中，20 表示任务完成，但未领取云豆，100 表示任务完成，并且已经领取了相应的云豆
+
+**接口地址 :** `/musician/tasks/new`
+
+**调用例子 :** `/musician/tasks/new`
 
 ### 账号云豆数
 
@@ -3681,6 +3816,23 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 
 **调用例子 :** `/record/recent/dj?limit=1`
 
+### 签到进度
+
+说明 : 调用此接口 , 可获得签到进度
+
+**可选参数 :** `moduleId` : 模块 id，默认为 '1207signin-1207signin'
+
+**接口地址 :** `/signin/progress`
+
+**调用例子 :** `/signin/progress?moduleId=1207signin-1207signin`
+
+### 内部版本接口
+
+说明 : 调用此接口 , 可获得内部版本号(从package.json读取)
+
+**接口地址 :** `/inner/version`
+
+**调用例子 :** `/inner/version`
 
 
 ## 离线访问此文档

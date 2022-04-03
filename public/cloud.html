@@ -8,9 +8,9 @@
 </head>
 
 <body>
-  <input id="file" type="file" multiple/>
+  <input id="file" type="file" multiple />
 
-  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.20.0-0/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.26.1/dist/axios.min.js"></script>
   <script>
     const phone = '' // 这里填手机号
     const password = '' // 这里填密码
@@ -50,7 +50,7 @@
       formData.append('songFile', file)
       axios({
         method: 'post',
-        url: `http://localhost:3000/cloud?time=${Date.now()}`,
+        url: `http://localhost:3000/cloud?time=${Date.now()}&cookie=${cookieToken}`,
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -68,7 +68,7 @@
         } else {
           console.error(`${file.name} 失败 ${fileUpdateTime[file.name]} 次`)
         }
-        await login()
+        // await login()
         upload(file, currentIndx)
       })
     }

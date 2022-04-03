@@ -1,15 +1,17 @@
 const fs = require('fs')
 const path = require('path')
+const { cookieToJson } = require('./util')
 const request = require('./util/request')
-const { cookieToJson } = require('./util/index')
 
+/** @type {Record<string, any>} */
 let obj = {}
 fs.readdirSync(path.join(__dirname, 'module'))
   .reverse()
   .forEach((file) => {
     if (!file.endsWith('.js')) return
     let fileModule = require(path.join(__dirname, 'module', file))
-    obj[file.split('.').shift()] = function (data) {
+    let fn = file.split('.').shift() || ''
+    obj[fn] = function (data) {
       if (typeof data.cookie === 'string') {
         data.cookie = cookieToJson(data.cookie)
       }
@@ -23,4 +25,10 @@ fs.readdirSync(path.join(__dirname, 'module'))
     }
   })
 
-module.exports = obj
+/**
+ * @type {Record<string, any> & import("./server")}
+ */
+module.exports = {
+  ...require('./server'),
+  ...obj,
+}
