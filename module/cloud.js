@@ -49,8 +49,12 @@ module.exports = async (query, request) => {
   let album = ''
   let songName = ''
   try {
-    const metadata = await mm.parseBuffer(query.songFile.data, 'audio/mpeg')
+    const metadata = await mm.parseBuffer(
+      query.songFile.data,
+      query.songFile.mimetype,
+    )
     const info = metadata.common
+
     if (info.title) {
       songName = info.title
     }
