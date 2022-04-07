@@ -2,8 +2,16 @@ const mm = require('music-metadata')
 const uploadPlugin = require('../plugins/songUpload')
 const md5 = require('md5')
 module.exports = async (query, request) => {
+  let ext = 'mp3'
+  if (query.songFile.name.indexOf('flac') > -1) {
+    ext = 'flac'
+  }
+  const filename = query.songFile.name
+    .replace('.' + ext, '')
+    .replace(/\s/g, '')
+    .replace(/\./g, '_')
   query.cookie.os = 'pc'
-  query.cookie.appver = '2.7.1.198277'
+  query.cookie.appver = '2.9.7'
   const bitrate = 999000
   if (!query.songFile) {
     return Promise.reject({
@@ -41,8 +49,12 @@ module.exports = async (query, request) => {
   let album = ''
   let songName = ''
   try {
-    const metadata = await mm.parseBuffer(query.songFile.data, 'audio/mpeg')
+    const metadata = await mm.parseBuffer(
+      query.songFile.data,
+      query.songFile.mimetype,
+    )
     const info = metadata.common
+
     if (info.title) {
       songName = info.title
     }
@@ -84,8 +96,8 @@ module.exports = async (query, request) => {
     `https://music.163.com/weapi/nos/token/alloc`,
     {
       bucket: '',
-      ext: 'mp3',
-      filename: query.songFile.name.replace('.mp3', ''),
+      ext: ext,
+      filename: filename,
       local: false,
       nos_product: 3,
       type: 'audio',
@@ -106,7 +118,7 @@ module.exports = async (query, request) => {
       md5: query.songFile.md5,
       songid: res.body.songId,
       filename: query.songFile.name,
-      song: songName || query.songFile.name.replace('.mp3', ''),
+      song: songName || filename,
       album: album || '未知专辑',
       artist: artist || '未知艺术家',
       bitrate: String(bitrate),

@@ -1,6 +1,6 @@
 module.exports = (query, request) => {
   query.cookie.os = 'ios'
-  query.cookie.appver = '8.1.20'
+  query.cookie.appver = '8.7.01'
   const data = {
     compose_reminder: 'true',
     compose_hot_comment: 'true',

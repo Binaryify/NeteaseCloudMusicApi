@@ -1,11 +1,10 @@
 const encrypt = require('./crypto')
 const axios = require('axios')
-const queryString = require('querystring')
 const PacProxyAgent = require('pac-proxy-agent')
 const http = require('http')
 const https = require('https')
 const tunnel = require('tunnel')
-const qs = require('url')
+const { URLSearchParams, URL } = require('url')
 // request.debug = true // 开启可看到更详细信息
 
 const chooseUserAgent = (ua = false) => {
@@ -85,7 +84,7 @@ const createRequest = (method, url, data, options) => {
       const header = {
         osver: cookie.osver, //系统版本
         deviceId: cookie.deviceId, //encrypt.base64.encode(imei + '\t02:00:00:00:00:00\t5106025eb79a5247\t70ffbaac7')
-        appver: cookie.appver || '8.0.0', // app版本
+        appver: cookie.appver || '8.7.01', // app版本
         versioncode: cookie.versioncode || '140', //版本号
         mobilename: cookie.mobilename, //设备model
         buildver: cookie.buildver || Date.now().toString().substr(0, 10),
@@ -115,7 +114,7 @@ const createRequest = (method, url, data, options) => {
       method: method,
       url: url,
       headers: headers,
-      data: queryString.stringify(data),
+      data: new URLSearchParams(data).toString(),
       httpAgent: new http.Agent({ keepAlive: true }),
       httpsAgent: new https.Agent({ keepAlive: true }),
     }
@@ -127,7 +126,7 @@ const createRequest = (method, url, data, options) => {
         settings.httpAgent = new PacProxyAgent(options.proxy)
         settings.httpsAgent = new PacProxyAgent(options.proxy)
       } else {
-        const purl = qs.parse(options.proxy)
+        const purl = new URL(options.proxy)
         if (purl.hostname) {
           const agent = tunnel.httpsOverHttp({
             proxy: {

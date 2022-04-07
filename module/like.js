@@ -2,7 +2,7 @@
 
 module.exports = (query, request) => {
   query.cookie.os = 'pc'
-  query.cookie.appver = '2.7.1.198277'
+  query.cookie.appver = '2.9.7'
   query.like = query.like == 'false' ? false : true
   const data = {
     alg: 'itembased',

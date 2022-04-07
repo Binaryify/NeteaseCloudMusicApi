@@ -2,7 +2,7 @@ const { resourceTypeMap } = require('../util/config.json')
 // 发送与删除评论
 
 module.exports = (query, request) => {
-  query.cookie.os = 'pc'
+  query.cookie.os = 'android'
   query.t = {
     1: 'add',
     0: 'delete',
