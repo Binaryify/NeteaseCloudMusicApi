@@ -1615,3 +1615,11 @@ export function playlist_update_playcount(
     id?: number | string
   } & RequestBaseConfig,
 ): Promise<Response>
+
+export function vip_timemachine(
+  params: {
+    startTime?: number | string
+    endTime?: number | string
+    limit?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
