@@ -257,6 +257,7 @@
 239. 音乐人任务(新)
 240. 内部版本接口
 241. 歌单更新播放量
+242. 黑胶时光机
 
 ## 安装
 
@@ -3833,6 +3834,18 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 **接口地址 :** `/inner/version`
 
 **调用例子 :** `/inner/version`
+
+### 黑胶时光机
+
+说明 : 调用此接口 , 可获得黑胶时光机数据
+
+**可选参数 :** `startTime` : 开始时间
+`endTime` : 结束时间
+`limit` : 返回数量 , 默认为 60
+
+**接口地址 :** `/vip/timemachine`
+
+**调用例子 :** `/vip/timemachine` `/vip/timemachine?startTime=1638288000000&endTime=1640966399999&limit=10`（2021年12月） `/vip/timemachine?startTime=1609430400&endTime=1640966399999&limit=60`(2021年)
 
 
 ## 离线访问此文档
