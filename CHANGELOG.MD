@@ -1,4 +1,7 @@
 # 更新日志
+### 4.5.12 | 2022.04.15
+- 新增`黑胶时光机`接口 [#1511](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1511)
+
 ### 4.5.11 | 2022.04.06
 - 修复云盘接口mimetype获取错误 [#1503](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1503)
 
