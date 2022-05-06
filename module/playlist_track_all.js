@@ -8,11 +8,8 @@ module.exports = (query, request) => {
     s: query.s || 8,
   }
   //不放在data里面避免请求带上无用的数据
-  let limit = query.limit
+  let limit = parseInt(query.limit) || Infinity
   let offset = parseInt(query.offset) || 0
-  let allOffset
-  let trackIds
-  let idsData = Object.create(null)
 
   return request('POST', `https://music.163.com/api/v6/playlist/detail`, data, {
     crypto: 'api',
@@ -20,23 +17,15 @@ module.exports = (query, request) => {
     proxy: query.proxy,
     realIP: query.realIP,
   }).then((res) => {
-    const ids = []
     let trackIds = res.body.playlist.trackIds
-    if (typeof limit === 'undefined') {
-      limit = trackIds.length
-    }
-    // 若offset超出最大偏移量则重置为最大偏移量
-    allOffset = trackIds.length / limit - 1
-    if (offset > allOffset) {
-      offset = allOffset
-    }
-    trackIds.forEach((item, index) => {
-      if (index >= limit * offset && index < limit * (offset + 1)) {
-        ids.push(item.id)
-      }
-    })
-    idsData = {
-      c: '[' + ids.map((id) => '{"id":' + id + '}').join(',') + ']',
+    let idsData = {
+      c:
+        '[' +
+        trackIds
+          .slice(offset, offset + limit)
+          .map((item) => '{"id":' + item.id + '}')
+          .join(',') +
+        ']',
     }
 
     return request(
