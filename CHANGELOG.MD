@@ -1,4 +1,7 @@
 # 更新日志
+### 4.5.13 | 2022.05.06
+- 修复获取歌单所有歌曲接口分页问题 [#1524](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1524)
+
 ### 4.5.12 | 2022.04.15
 - 新增`黑胶时光机`接口 [#1511](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1511)
 
