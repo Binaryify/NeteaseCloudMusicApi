@@ -5,10 +5,10 @@ module.exports = (query, request) => {
 
   const data = {
     id: query.id,
-    tv: '5',
-    lv: '4',
-    rv: '4',
-    kv: '4',
+    tv: -1,
+    lv: -1,
+    rv: -1,
+    kv: -1,
   }
   return request(
     'POST',
