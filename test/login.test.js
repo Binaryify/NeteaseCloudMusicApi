@@ -1,5 +1,5 @@
 const assert = require('assert')
-const axios = require('axios')
+const got = require('got')
 const host = global.host || 'http://localhost:3000'
 
 console.log('注意: 测试登录需在 test/login.test.js 中填写账号密码!!!')
@@ -15,14 +15,15 @@ describe('测试登录是否正常', () => {
       password: process.env.NCM_API_TEST_LOGIN_PASSWORD || password || '',
     }
 
-    axios
+    got
       .get(`${host}/login/cellphone`, {
-        params: qs,
+        responseType: 'json',
+        searchParams: qs,
       })
-      .then(({ status, data }) => {
-        if (status == 200) {
-          console.log('昵称:' + data.profile.nickname)
-          assert(data.code === 200)
+      .then(({ statusCode, body }) => {
+        if (statusCode == 200) {
+          console.log('昵称:' + body.profile.nickname)
+          assert(body.code === 200)
           done()
         } else {
           done('登录错误')

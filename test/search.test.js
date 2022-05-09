@@ -1,5 +1,5 @@
 const assert = require('assert')
-const axios = require('axios')
+const got = require('got')
 const host = global.host || 'http://localhost:3000'
 
 describe('测试搜索是否正常', () => {
@@ -8,9 +8,10 @@ describe('测试搜索是否正常', () => {
       keywords: '海阔天空',
       type: 1,
     }
-    axios
+    got
       .get(`${host}/search`, {
-        params: qs,
+        responseType: 'json',
+        searchParams: qs,
       })
       .then(({ status, data }) => {
         if (status == 200) {

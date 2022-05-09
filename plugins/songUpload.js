@@ -1,4 +1,4 @@
-const axios = require('axios')
+const got = require('got')
 module.exports = async (query, request) => {
   let ext = 'mp3'
   if (query.songFile.name.indexOf('flac') > -1) {
@@ -27,7 +27,7 @@ module.exports = async (query, request) => {
   // 上传
   const objectKey = tokenRes.body.result.objectKey.replace('/', '%2F')
   try {
-    await axios({
+    await got({
       method: 'post',
       url: `http://45.127.129.8/jd-musicrep-privatecloud-audio-public/${objectKey}?offset=0&complete=true&version=1.0`,
       headers: {
@@ -36,9 +36,7 @@ module.exports = async (query, request) => {
         'Content-Type': 'audio/mpeg',
         'Content-Length': String(query.songFile.size),
       },
-      data: query.songFile.data,
-      maxContentLength: Infinity,
-      maxBodyLength: Infinity,
+      body: query.songFile.data,
     })
   } catch (error) {
     console.log('error', error.response)

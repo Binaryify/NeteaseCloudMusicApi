@@ -1,11 +1,22 @@
 const encrypt = require('./crypto')
-const axios = require('axios')
+const got = require('got')
 const PacProxyAgent = require('pac-proxy-agent')
 const http = require('http')
 const https = require('https')
 const tunnel = require('tunnel')
 const { URLSearchParams, URL } = require('url')
 // request.debug = true // 开启可看到更详细信息
+
+const agentOptions = {
+  keepAlive: true,
+  maxSockets: 50,
+}
+const httpAgent = new http.Agent(agentOptions)
+const httpsAgent = new https.Agent(agentOptions)
+
+// https://github.com/sindresorhus/got/blob/7ed87983477decafed6a115391a6fbafd33693fd/source/core/options.ts#L2439-L2444
+const [major, minor] = process.versions.node.split('.').map((v) => Number(v))
+const supportHttp2 = major > 15 || (major === 15 && minor >= 10)
 
 const chooseUserAgent = (ua = false) => {
   const userAgentList = {
@@ -114,17 +125,16 @@ const createRequest = (method, url, data, options) => {
       method: method,
       url: url,
       headers: headers,
-      data: new URLSearchParams(data).toString(),
-      httpAgent: new http.Agent({ keepAlive: true }),
-      httpsAgent: new https.Agent({ keepAlive: true }),
+      form: data,
+      responseType: options.crypto === 'eapi' ? 'buffer' : 'json',
     }
-
-    if (options.crypto === 'eapi') settings.encoding = null
 
     if (options.proxy) {
       if (options.proxy.indexOf('pac') > -1) {
-        settings.httpAgent = new PacProxyAgent(options.proxy)
-        settings.httpsAgent = new PacProxyAgent(options.proxy)
+        settings.agent = {
+          http: new PacProxyAgent(options.proxy),
+          https: new PacProxyAgent(options.proxy),
+        }
       } else {
         const purl = new URL(options.proxy)
         if (purl.hostname) {
@@ -134,25 +144,24 @@ const createRequest = (method, url, data, options) => {
               port: purl.port || 80,
             },
           })
-          settings.httpsAgent = agent
-          settings.httpAgent = agent
-          settings.proxy = false
+          settings.agent = {
+            http: agent,
+            https: agent,
+          }
         } else {
           console.error('代理配置无效,不使用代理')
         }
       }
     } else {
-      settings.proxy = false
-    }
-    if (options.crypto === 'eapi') {
-      settings = {
-        ...settings,
-        responseType: 'arraybuffer',
+      settings.agent = {
+        http: httpAgent,
+        https: httpsAgent,
       }
+      settings.http2 = supportHttp2 // 启用HTTP2
     }
-    axios(settings)
+    got(settings)
       .then((res) => {
-        const body = res.data
+        const { body } = res
         answer.cookie = (res.headers['set-cookie'] || []).map((x) =>
           x.replace(/\s*Domain=[^(;|$)]+;*/, ''),
         )
@@ -163,7 +172,7 @@ const createRequest = (method, url, data, options) => {
             answer.body = body
           }
 
-          answer.status = answer.body.code || res.status
+          answer.status = answer.body.code || res.statusCode
           if (
             [201, 302, 400, 502, 800, 801, 802, 803].indexOf(answer.body.code) >
             -1
@@ -180,7 +189,7 @@ const createRequest = (method, url, data, options) => {
             // can't decrypt and can't parse directly
             answer.body = body
           }
-          answer.status = res.status
+          answer.status = res.statusCode
         }
 
         answer.status =

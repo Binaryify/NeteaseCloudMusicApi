@@ -1,4 +1,4 @@
-const axios = require('axios')
+const got = require('got')
 module.exports = async (query, request) => {
   const data = {
     bucket: 'yyimgs',
@@ -17,14 +17,14 @@ module.exports = async (query, request) => {
     { crypto: 'weapi', cookie: query.cookie, proxy: query.proxy },
   )
   //   上传图片
-  const res2 = await axios({
+  const res2 = await got({
     method: 'post',
     url: `https://nosup-hz1.127.net/yyimgs/${res.body.result.objectKey}?offset=0&complete=true&version=1.0`,
     headers: {
       'x-nos-token': res.body.result.token,
       'Content-Type': 'image/jpeg',
     },
-    data: query.imgFile.data,
+    body: query.imgFile.data,
   })
   //   获取裁剪后图片的id
   const imgSize = query.imgSize || 300

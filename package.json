@@ -49,9 +49,9 @@
     "server.js"
   ],
   "dependencies": {
-    "axios": "^0.24.0",
     "express": "^4.17.1",
     "express-fileupload": "^1.1.9",
+    "got": "^11.8.3",
     "md5": "^2.3.0",
     "music-metadata": "^7.5.3",
     "pac-proxy-agent": "^5.0.0",

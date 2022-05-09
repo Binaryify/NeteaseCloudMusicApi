@@ -1,5 +1,5 @@
 const assert = require('assert')
-const axios = require('axios')
+const got = require('got')
 const host = global.host || 'http://localhost:3000'
 
 describe('测试获取歌曲是否正常', () => {
@@ -10,13 +10,14 @@ describe('测试获取歌曲是否正常', () => {
       realIP: '116.25.146.177',
     }
 
-    axios
+    got
       .get(`${host}/song/url`, {
-        params: qs,
+        responseType: 'json',
+        searchParams: qs,
       })
-      .then(({ status, data }) => {
-        if (status == 200) {
-          assert(!!data.data[0].url)
+      .then(({ statusCode, body }) => {
+        if (statusCode == 200) {
+          assert(!!body.data[0].url)
         }
         done()
       })
