@@ -8,7 +8,7 @@ describe('测试获取评论是否正常', () => {
       id: 32311,
     }
 
-    body
+    got
       .get(`${host}/comment/album`, {
         responseType: 'json',
         searchParams: qs,
