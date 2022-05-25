@@ -1,4 +1,12 @@
 # 更新日志
+### 4.5.14 | 2022.05.06
+- 修复获取歌单所有歌曲接口分页问题 [#1524](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1524)
+
+- 增加支持罗马音歌词返回 [#1523](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1523)
+
+### 4.5.12 | 2022.04.15
+- 新增`黑胶时光机`接口 [#1511](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1511)
+
 ### 4.5.11 | 2022.04.06
 - 修复云盘接口mimetype获取错误 [#1503](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1503)
 
