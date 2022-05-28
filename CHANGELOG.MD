@@ -1,4 +1,7 @@
 # 更新日志
+### 4.6.0 | 2022.05.29
+- 修复请求接口提示需要验证的问题 [#1541](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1541) 
+
 ### 4.5.14 | 2022.05.06
 - 修复获取歌单所有歌曲接口分页问题 [#1524](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/1524)
 

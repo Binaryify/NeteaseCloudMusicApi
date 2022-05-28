@@ -5,6 +5,7 @@ const http = require('http')
 const https = require('https')
 const tunnel = require('tunnel')
 const { URLSearchParams, URL } = require('url')
+const config = require('../util/config.json')
 // request.debug = true // 开启可看到更详细信息
 
 const chooseUserAgent = (ua = false) => {
@@ -50,7 +51,11 @@ const createRequest = (method, url, data, options) => {
       headers['Referer'] = 'https://music.163.com'
     if (options.realIP) headers['X-Real-IP'] = options.realIP
     // headers['X-Real-IP'] = '118.88.88.88'
-    if (typeof options.cookie === 'object')
+    if (typeof options.cookie === 'object') {
+      if (!options.cookie.MUSIC_U) {
+        // 匿名
+        options.cookie.MUSIC_A = config.anonymous_token
+      }
       headers['Cookie'] = Object.keys(options.cookie)
         .map(
           (key) =>
@@ -59,11 +64,10 @@ const createRequest = (method, url, data, options) => {
             encodeURIComponent(options.cookie[key]),
         )
         .join('; ')
-    else if (options.cookie) headers['Cookie'] = options.cookie
-
-    if (!headers['Cookie']) {
-      headers['Cookie'] = options.token || ''
+    } else if (options.cookie) {
+      headers['Cookie'] = options.cookie
     }
+    console.log(options.cookie, headers['Cookie'])
     if (options.crypto === 'weapi') {
       let csrfToken = (headers['Cookie'] || '').match(/_csrf=([^(;|$)]+)/)
       data.csrf_token = csrfToken ? csrfToken[1] : ''
