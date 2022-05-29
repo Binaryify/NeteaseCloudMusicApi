@@ -5,6 +5,7 @@ const crypto = require('crypto')
 module.exports = async (query, request) => {
   query.cookie.os = 'iOS'
   const data = {
+    /* A base64 encoded string. */
     username:
       'MzEwMjcwYmY0Y2Y0ODcwMzU0ZDFkZmIxMmMzMGYyMTkgVlBaanMwNmtrb1BYMGxOVzVUMUJ3Zz09',
   }
