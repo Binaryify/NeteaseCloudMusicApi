@@ -1,4 +1,9 @@
 #!/usr/bin/env node
-require('./server').serveNcmApi({
-  checkVersion: true,
-})
+const generateConfig = require('./generateConfig')
+async function start() {
+  await generateConfig()
+  require('./server').serveNcmApi({
+    checkVersion: true,
+  })
+}
+start()

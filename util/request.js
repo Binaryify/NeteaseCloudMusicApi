@@ -43,7 +43,7 @@ const chooseUserAgent = (ua = false) => {
     ? realUserAgentList[Math.floor(Math.random() * realUserAgentList.length)]
     : ua
 }
-const createRequest = (method, url, data, options) => {
+const createRequest = (method, url, data = {}, options) => {
   return new Promise((resolve, reject) => {
     let headers = { 'User-Agent': chooseUserAgent(options.ua) }
     if (method.toUpperCase() === 'POST')
@@ -54,7 +54,7 @@ const createRequest = (method, url, data, options) => {
     // headers['X-Real-IP'] = '118.88.88.88'
     if (typeof options.cookie === 'object') {
       if (!options.cookie.MUSIC_U) {
-        // 匿名
+        // 游客
         if (!options.cookie.MUSIC_A) {
           options.cookie.MUSIC_A = config.anonymous_token
         }
