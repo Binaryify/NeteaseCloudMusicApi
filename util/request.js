@@ -6,6 +6,7 @@ const https = require('https')
 const tunnel = require('tunnel')
 const { URLSearchParams, URL } = require('url')
 const config = require('../util/config.json')
+const { getRandom } = require('../util')
 // request.debug = true // 开启可看到更详细信息
 
 const chooseUserAgent = (ua = false) => {
@@ -54,7 +55,7 @@ const createRequest = (method, url, data, options) => {
     if (typeof options.cookie === 'object') {
       if (!options.cookie.MUSIC_U) {
         // 匿名
-        options.cookie.MUSIC_A = config.anonymous_token
+        options.cookie.MUSIC_A = config.anonymous_token + getRandom(10)
       }
       headers['Cookie'] = Object.keys(options.cookie)
         .map(
@@ -112,7 +113,6 @@ const createRequest = (method, url, data, options) => {
       data = encrypt.eapi(options.url, data)
       url = url.replace(/\w*api/, 'eapi')
     }
-
     const answer = { status: 500, body: {}, cookie: [] }
     let settings = {
       method: method,
