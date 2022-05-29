@@ -55,7 +55,7 @@ const createRequest = (method, url, data, options) => {
     if (typeof options.cookie === 'object') {
       if (!options.cookie.MUSIC_U) {
         // 匿名
-        options.cookie.MUSIC_A = config.anonymous_token + getRandom(10)
+        options.cookie.MUSIC_A = config.anonymous_token
       }
       headers['Cookie'] = Object.keys(options.cookie)
         .map(
