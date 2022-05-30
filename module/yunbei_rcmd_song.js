@@ -6,6 +6,7 @@ module.exports = (query, request) => {
     reason: query.reason || '好歌献给你',
     scene: '',
     fromUserId: -1,
+    yunbeiNum: query.yunbeiNum || 10,
   }
   return request(
     'POST',

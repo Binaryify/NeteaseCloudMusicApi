@@ -3511,6 +3511,8 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 
 **可选参数 :** `reason` : 推歌理由
 
+`yunbeiNum`: 云贝数量,默认10
+
 **接口地址 :** `/yunbei/rcmd/song`
 
 **调用例子 :** `/yunbei/rcmd/song?id=65528` `/yunbei/rcmd/song?id=65528&reason=人间好声音推荐给你听`
