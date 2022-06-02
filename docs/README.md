@@ -2213,14 +2213,14 @@ pc: 云盘歌曲信息，如果不存在该字段，则为非云盘歌曲
 
 **必选参数 :** `id`: 歌手 id
 
-**可选参数 :** `limit`: 取出数量 , 默认为 50
+**可选参数 :** `limit`: 取出数量 , 默认为 30
 
-`offset`: 偏移数量 , 用于分页 , 如 :( 页数 -1)\*50, 其中 50 为 limit 的值 , 默认
+`offset`: 偏移数量 , 用于分页 , 如 :( 页数 -1)\*30, 其中 30 为 limit 的值 , 默认
 为 0
 
 **接口地址 :** `/artist/album`
 
-**调用例子 :** `/artist/album?id=6452&limit=30` ( 周杰伦 )
+**调用例子 :** `/artist/album?id=6452&limit=5` ( 周杰伦 )
 
 返回数据如下图 :
 ![获取专辑内容](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/artist_album.png)
