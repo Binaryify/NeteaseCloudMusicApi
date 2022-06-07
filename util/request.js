@@ -6,7 +6,6 @@ const https = require('https')
 const tunnel = require('tunnel')
 const { URLSearchParams, URL } = require('url')
 const config = require('../util/config.json')
-const { getRandom } = require('../util')
 // request.debug = true // 开启可看到更详细信息
 
 const chooseUserAgent = (ua = false) => {
@@ -50,7 +49,12 @@ const createRequest = (method, url, data = {}, options) => {
       headers['Content-Type'] = 'application/x-www-form-urlencoded'
     if (url.includes('music.163.com'))
       headers['Referer'] = 'https://music.163.com'
-    if (options.realIP) headers['X-Real-IP'] = options.realIP
+    let ip = options.realIP || options.ip || ''
+    // console.log(ip)
+    if (ip) {
+      headers['X-Real-IP'] = ip
+      headers['X-Forwarded-For'] = ip
+    }
     // headers['X-Real-IP'] = '118.88.88.88'
     if (typeof options.cookie === 'object') {
       if (!options.cookie.MUSIC_U) {

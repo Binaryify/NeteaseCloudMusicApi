@@ -219,7 +219,21 @@ async function consturctServer(moduleDefs) {
       )
 
       try {
-        const moduleResponse = await moduleDef.module(query, request)
+        const moduleResponse = await moduleDef.module(query, (...params) => {
+          // 参数注入客户端IP
+          const obj = [...params]
+          let ip = req.ip
+
+          if (ip.substr(0, 7) == '::ffff:') {
+            ip = ip.substr(7)
+          }
+          // console.log(ip)
+          obj[3] = {
+            ...obj[3],
+            ip,
+          }
+          return request(...obj)
+        })
         console.log('[OK]', decode(req.originalUrl))
 
         const cookies = moduleResponse.cookie
