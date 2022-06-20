@@ -297,6 +297,20 @@ windows 下使用 git-bash 或者 cmder 等终端执行以下命令 :
 $ set HOST=127.0.0.1 && node app.js
 ```
 
+### npx 方式运行
+支持 npx 方式运行,会自动安装依赖和运行
+```
+npx NeteaseCloudMusicApi
+```
+如果需要更新,可使用 `npx NeteaseCloudMusicApi@版本号` 方式运行
+
+或者运行
+```
+npx NeteaseCloudMusicApi@latest
+
+```
+此命令每次执行都会使用最新版
+
 ## Vercel 部署
 
 v4.0.8 加入了 Vercel 配置文件,可以直接在 Vercel 下部署了,不需要自己的服务器(访问 Vercel 部署的接口,需要额外加一个 realIP 参数,如 `/song/url?id=191254&realIP=116.25.146.177`)
