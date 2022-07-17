@@ -1,7 +1,7 @@
 // 收藏单曲到歌单 从歌单删除歌曲
 
 module.exports = async (query, request) => {
-  query.cookie.os = 'pc'
+  // query.cookie.os = 'pc'
   const tracks = query.tracks.split(',')
   const data = {
     op: query.op, // del,add
@@ -13,7 +13,7 @@ module.exports = async (query, request) => {
   try {
     const res = await request(
       'POST',
-      `https://music.163.com/api/playlist/manipulate/tracks`,
+      `https://music.163.com/weapi/playlist/manipulate/tracks`,
       data,
       {
         crypto: 'weapi',
@@ -46,7 +46,7 @@ module.exports = async (query, request) => {
           realIP: query.realIP,
         },
       )
-    } else if (error.body.code === 521) {
+    } else {
       return {
         status: 200,
         body: error.body,
