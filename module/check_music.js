@@ -26,9 +26,10 @@ module.exports = (query, request) => {
       response.body = { success: true, message: 'ok' }
       return response
     } else {
-      response.status = 404
+      // response.status = 404
       response.body = { success: false, message: '亲爱的,暂无版权' }
-      return Promise.reject(response)
+      return response
+      // return Promise.reject(response)
     }
   })
 }
