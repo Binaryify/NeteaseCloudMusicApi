@@ -263,7 +263,7 @@
 
 ```shell
 $ git clone git@github.com:Binaryify/NeteaseCloudMusicApi.git
-
+$ cd NeteaseCloudMusicApi
 $ npm install
 ```
 
