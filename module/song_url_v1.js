@@ -8,9 +8,8 @@ module.exports = (query, request) => {
   const data = {
     ids: '[' + query.id + ']',
     level: query.level,
-      encodeType: 'flac'
+    encodeType: 'flac'
   }
-  console.log(query)
   return request(
     'POST',
     `https://interface.music.163.com/eapi/song/enhance/player/url/v1`,
