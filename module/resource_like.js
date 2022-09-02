@@ -1,14 +1,9 @@
 // 点赞与取消点赞资源
-
+const { resourceTypeMap } = require('../util/config.json')
 module.exports = (query, request) => {
   query.cookie.os = 'android'
   query.t = query.t == 1 ? 'like' : 'unlike'
-  query.type = {
-    1: 'R_MV_5_', //  MV
-    4: 'A_DJ_1_', //  电台
-    5: 'R_VI_62_', //  视频
-    6: 'A_EV_2_',
-  }[query.type]
+  query.type = resourceTypeMap[query.type]
   const data = {
     threadId: query.type + query.id,
   }
