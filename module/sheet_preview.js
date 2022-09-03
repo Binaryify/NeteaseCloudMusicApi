@@ -13,7 +13,7 @@ module.exports = (query, request) => {
       cookie: query.cookie,
       proxy: query.proxy,
       realIP: query.realIP,
-      url: '/api//music/sheet/preview/info',// 我没写错! 他们就是这么请求的!
+      url: '/api//music/sheet/preview/info', // 我没写错! 他们就是这么请求的!
     },
   )
 }

@@ -8,7 +8,7 @@ module.exports = (query, request) => {
   const data = {
     ids: '[' + query.id + ']',
     level: query.level,
-    encodeType: 'flac'
+    encodeType: 'flac',
   }
   return request(
     'POST',

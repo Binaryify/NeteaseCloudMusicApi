@@ -2,7 +2,7 @@
 const crypto = require('crypto')
 module.exports = (query, request) => {
   const data = {
-    songId: query.id
+    songId: query.id,
   }
   return request(
     'POST',
