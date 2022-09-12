@@ -1,22 +1,19 @@
-// 云贝推歌
-
+// 音乐百科基础信息
+const crypto = require('crypto')
 module.exports = (query, request) => {
   const data = {
     songId: query.id,
-    reason: query.reason || '好歌献给你',
-    scene: '',
-    fromUserId: -1,
-    yunbeiNum: query.yunbeiNum || 10,
   }
   return request(
     'POST',
-    `https://music.163.com/weapi/yunbei/rcmd/song/submit`,
+    `https://interface3.music.163.com/eapi/music/wiki/home/song/get`,
     data,
     {
-      crypto: 'weapi',
+      crypto: 'eapi',
       cookie: query.cookie,
       proxy: query.proxy,
       realIP: query.realIP,
+      url: '/api/song/play/about/block/page',
     },
   )
 }

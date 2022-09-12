@@ -1,7 +1,7 @@
 const assert = require('assert')
 const axios = require('axios')
 const host = global.host || 'http://localhost:3000'
-
+const config = require('../util/config.json')
 describe('测试获取歌曲是否正常', () => {
   it('歌曲的 url 不应该为空', (done) => {
     const qs = {

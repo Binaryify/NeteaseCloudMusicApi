@@ -6,8 +6,8 @@ module.exports = async (query, request) => {
   }
   const filename = query.songFile.name
     .replace('.' + ext, '')
-    .replaceAll(' ', '_')
-    .replaceAll('.', '_')
+    .replace(/\s/g, '')
+    .replace(/\./g, '_')
   //   获取key和token
   const tokenRes = await request(
     'POST',
