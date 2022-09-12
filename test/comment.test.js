@@ -6,7 +6,7 @@ describe('测试获取评论是否正常', () => {
   it('数据的 code 应该为200', (done) => {
     const qs = {
       id: 32311,
-      cookie: config.anonymous_token,
+      cookie: '__remember_me=true; NMTID=xxx',
     }
 
     axios
