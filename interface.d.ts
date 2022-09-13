@@ -1395,6 +1395,13 @@ export function cloud(
   } & RequestBaseConfig,
 ): Promise<Response>
 
+export function cloudout(
+  params: {
+    songUrl: string
+    songName: string
+  } & RequestBaseConfig,
+): Promise<Response>
+
 export function topic_detail(
   params: {
     actid?: number | string

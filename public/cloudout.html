@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <style>
+        h2,
+        h3,
+        p {
+            display: inline-flexbox;
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        @keyframes remove {
+            from {
+                height: 56px;
+                opacity: 1;
+            }
+
+            to {
+                height: 0;
+                opacity: 0;
+            }
+        }
+
+        .toast-layout {
+            display: inline-flexbox;
+            position: fixed;
+            width: 100vw;
+            height: 0vh;
+            top: 20vh;
+            text-align: center;
+        }
+
+        .toast .content {
+            margin: auto;
+            margin-bottom: 16px;
+            width: max-content;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            background-color: black;
+            border-radius: 28px;
+        }
+
+        .hide-toast {
+            animation: remove .5s ease-out;
+        }
+
+        @keyframes load {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .loading {
+            width: 150px;
+            height: 15px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .loading span {
+            display: inline-block;
+            width: 15px;
+            height: 100%;
+            margin-right: 5px;
+            background: #066CAD;
+            animation: load 1.04s ease infinite;
+        }
+
+        .loading span:last-child {
+            margin-right: 0px;
+        }
+
+        .loading span:nth-child(1) {
+            animation-delay: 0.13s;
+        }
+
+        .loading span:nth-child(2) {
+            animation-delay: 0.26s;
+        }
+
+        .loading span:nth-child(3) {
+            animation-delay: 0.39s;
+        }
+
+        .loading span:nth-child(4) {
+            animation-delay: 0.52s;
+        }
+
+        .loading span:nth-child(5) {
+            animation-delay: 0.65s;
+        }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>云盘上传</title>
+</head>
+
+<body>
+    <p>
+    <h2>网易云音乐直链转存</h2>
+    <p>本工具用于使用直链将音频转存至网易云音乐网盘
+        <br>
+        输入账号密码即可登录 cookie用于自查有效性
+        <br>
+        已登录状态下请勿频繁重复登录 可能触发风控
+        <br>
+        重试将发生3次 将会自动执行 Just Relax
+        <br>
+        请发挥主观能动性 3次重传失败请尝试再次上传
+        <br>
+        多次频繁上传失败 尝试重新登录以更换cookie
+        <br>
+        仅支持mp3 flac 命名时切记不要落(là)下后缀名
+        <br>
+    <h3 id="state"></h3>
+    <br>
+    </p>
+
+    <p>
+        <span> cookie:
+            <input type="text" id="coki">
+            <br>
+            <br>
+        </span>
+        <span>账号:
+            <input type="text" id="ac">
+            <br>
+        </span>
+        <span>密码:
+            <input type="text" id="pwd">
+            <br>
+        </span>
+        <span>
+            <button id="btn" onclick="checkLogin()" type="button">登录</button>
+            <br>
+        </span>
+        <span>链接:
+            <input type="text" id="url">
+            <br>
+        </span>
+        <span>命名:
+            <input type="text" id="name">
+            <br>
+        </span>
+        <span>
+            <button id="btn" onclick="checkUpload()" type="button">上传</button>
+        </span>
+    </p>
+
+    <p style="visibility:hidden" class="loading" id="loading">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </p>
+
+    <p>Powered by <a href="https://github.com/yaleiyale/NeteaseCloudMusicApi/tree/outlink">NeteaseCloudMusicApi</a>
+        <br>
+        Made with ❤ by <a href="https://lestua.ml">yaleiyale</a>
+        <br>
+        <br>
+        <a href="https://lestua.ml/merger/">
+            <img src="https://res.cloudinary.com/dbbz8b3ce/image/upload/v1662123856/image_note/cedzxpfrow7ewrlkmq6d.png"
+                alt="BuyMeACoffee" width="180">
+        </a>
+    </p>
+
+    <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.26.1/dist/axios.min.js"></script>
+    <script>
+        let localStorage = null
+        let cookieToken
+        let fileUpdateTime = 0
+        let myip
+        try {
+            myip = returnCitySN["cip"]
+            showToast('当前ip<' + myip + '>初始化成功', 1000)
+        } catch (err) {
+            myip = '36.17.46.28'
+            showToast('使用测试ip<' + myip + '>初始化成功', 1000)
+        }
+
+        if (!window.localStorage) {
+            showToast("您的浏览器不支持localStorage!", 1000)
+        } else {
+            localStorage = window.localStorage
+        }
+        cookieToken = localStorage.getItem("ncmapi") != null ? localStorage.getItem("ncmapi") : ""
+        document.getElementById("coki").value = cookieToken
+        document.getElementById("state").innerHTML = cookieToken != "" ? "已登录" : "未登录"
+
+        function checkLogin() {
+            let phone = document.getElementById("ac").value
+            let password = document.getElementById("pwd").value
+            if (phone == "" || password == "")
+                showToast("what?自查账号密码输入情况", 1000)
+            else {
+                openLoading()
+                login(phone, password)
+            }
+        }
+
+        async function login(phone, password) {
+            await axios({
+                url: `/login/cellphone?phone=${phone}&password=${encodeURIComponent(password)}&realIP=${myip}`,
+                withCredentials: true,
+            }).then(res => {
+                cookieToken = res.data.cookie != undefined ? res.data.cookie : ""
+                localStorage.setItem("ncmapi", cookieToken)
+                document.getElementById("coki").value = cookieToken
+                document.getElementById("state").innerHTML = cookieToken != "" ? "已登录" : "未登录"
+                showToast(cookieToken != "" ? "登录成功" : "再次确认账号密码", 1000)
+            }).catch(async err => {
+                console.log(err)
+                showToast("再次确认账号密码", 1000)
+            })
+            closeLoading()
+        }
+
+        function checkUpload() {
+            let url = document.getElementById("url").value
+            let name = document.getElementById("name").value
+            if (cookieToken == "" || url == "" || name == "")
+                showToast("what?自查登录情况，链接与命名", 1000)
+            else {
+                openLoading()
+                upload(url, name)
+            }
+        }
+
+        function upload(url, name) {
+            axios({
+                method: 'post',
+                url: `/cloudout?time=${Date.now()}&cookie=${cookieToken}&realIP=${myip}`,
+                data: {
+                    songUrl: url,
+                    songName: name
+                },
+            }).then(res => {
+                showToast(`${name} 上传成功`, 1000)
+                closeLoading()
+            }).catch(async err => {
+                console.log(err)
+                fileUpdateTime++
+                if (fileUpdateTime >= 3) {
+                    fileUpdateTime = 0
+                    showToast(`丢，这首歌怎么都传不上：${name}`, 1000)
+                    closeLoading()
+                    return
+                } else {
+                    showToast(`${name} 失败 ${fileUpdateTime} 次`, 1000)
+                }
+                // await login()
+                upload(url, name)
+            })
+        }
+
+        function showToast(content, duration) {
+            var toast = document.getElementById("Toast")
+            if (toast == null) {
+                var toast = document.createElement("div")
+                toast.setAttribute("id", "Toast")
+                toast.setAttribute("class", "toast-layout")
+                document.body.appendChild(toast)
+                showToast(content, duration)
+                return
+            }
+            var toastItem = document.createElement("div")
+            toastItem.setAttribute("class", "toast")
+            toastItem.innerHTML = '<div class="content">' + content + '</div>'
+            setTimeout(function () {
+                toastItem.setAttribute('class', 'toast hide-toast')
+            }, duration)
+            toastItem.onanimationend = function () {
+                toastItem.remove()
+            }
+            toast.appendChild(toastItem)
+
+        }
+        function openLoading() {
+            document.getElementById('loading').style.visibility = 'visible';
+        }
+
+        function closeLoading() {
+            document.getElementById('loading').style.visibility = 'hidden';
+        }
+    </script>
+    </p>
+</body>
+
+</html>
