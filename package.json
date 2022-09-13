@@ -4,7 +4,7 @@
   "description": "网易云音乐 NodeJS 版 API",
   "scripts": {
     "start": "node app.js",
-    "test": "mocha -r intelli-espower-loader -t 30000 server.test.js main.test.js --exit",
+    "test": "mocha -r intelli-espower-loader -t 60000 server.test.js main.test.js --exit",
     "lint": "eslint \"**/*.{js,ts}\"",
     "lint-fix": "eslint --fix \"**/*.{js,ts}\"",
     "prepare": "husky install",

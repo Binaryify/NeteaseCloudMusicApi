@@ -1,4 +1,5 @@
 const encrypt = require('./crypto')
+const crypto = require('crypto')
 const axios = require('axios')
 const PacProxyAgent = require('pac-proxy-agent')
 const http = require('http')
@@ -60,7 +61,8 @@ const createRequest = (method, url, data = {}, options) => {
       options.cookie = {
         ...options.cookie,
         __remember_me: true,
-        NMTID: 'xxx',
+        NMTID: crypto.randomBytes(16).toString('hex'),
+        _ntes_nuid: crypto.randomBytes(16).toString('hex'),
       }
       if (!options.cookie.MUSIC_U) {
         // 游客
