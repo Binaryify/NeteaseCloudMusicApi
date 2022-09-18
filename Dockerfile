@@ -1,11 +1,16 @@
 FROM node:lts-alpine
 
-WORKDIR /app
-COPY . /app
+RUN apk add --no-cache tini
 
-RUN npm config set registry "https://registry.npmmirror.com/" \
-    && npm install -g npm husky \
-    && npm install --production
+ENV NODE_ENV production
+USER node
+
+WORKDIR /app
+
+COPY --chown=node:node . ./
+
+RUN npm i --omit=dev --ignore-scripts
 
 EXPOSE 3000
-CMD ["node", "app.js"]
+
+CMD [ "/sbin/tini", "--", "node", "app.js" ]
