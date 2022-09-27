@@ -6,7 +6,7 @@ describe('测试获取歌词是否正常', () => {
   it('数据应该有 lrc 字段', (done) => {
     const qs = {
       id: 347230,
-      cookie: config.anonymous_token,
+      realIP: '116.25.146.177',
     }
 
     axios

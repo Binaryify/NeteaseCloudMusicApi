@@ -1,24 +1,25 @@
-// 歌曲链接
+// 歌曲链接 - v1
+// 此版本不再采用 br 作为音质区分的标准
+// 而是采用 standard, exhigh, lossless, hires 进行音质判断
 
 const crypto = require('crypto')
 module.exports = (query, request) => {
-  // if (!('MUSIC_U' in query.cookie))
-  //   query.cookie._ntes_nuid = crypto.randomBytes(16).toString('hex')
   query.cookie.os = 'pc'
   const data = {
     ids: '[' + query.id + ']',
-    br: parseInt(query.br || 999000),
+    level: query.level,
+    encodeType: 'flac',
   }
   return request(
     'POST',
-    `https://interface3.music.163.com/eapi/song/enhance/player/url`,
+    `https://interface.music.163.com/eapi/song/enhance/player/url/v1`,
     data,
     {
       crypto: 'eapi',
       cookie: query.cookie,
       proxy: query.proxy,
       realIP: query.realIP,
-      url: '/api/song/enhance/player/url',
+      url: '/api/song/enhance/player/url/v1',
     },
   )
 }
