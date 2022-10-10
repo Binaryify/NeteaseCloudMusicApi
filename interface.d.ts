@@ -1653,3 +1653,47 @@ export function sheet_preview(
     id: number | string
   } & RequestBaseConfig,
 ): Promise<Response>
+
+export function style_list(params: RequestBaseConfig): Promise<Response>
+
+export function style_preference(params: RequestBaseConfig): Promise<Response>
+
+export function style_detail(
+  params: {
+    tagId: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function style_song(
+  params: {
+    tagId: number | string
+    size?: number | string
+    cursor?: number | string
+    sort?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function style_album(
+  params: {
+    tagId: number | string
+    size?: number | string
+    cursor?: number | string
+    sort?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function style_playlist(
+  params: {
+    tagId: number | string
+    size?: number | string
+    cursor?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
+
+export function style_artist(
+  params: {
+    tagId: number | string
+    size?: number | string
+    cursor?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
