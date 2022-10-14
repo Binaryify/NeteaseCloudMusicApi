@@ -22,6 +22,30 @@ function getAllMusicFiles(dir, arrayOfFiles) {
   return arrayOfFiles
 }
 
+async function uploadArrayOfFile(token, arrayOfFiles) {
+  let failedFiles = []
+  let failed = 0
+  const fileCount = arrayOfFiles.length
+  for (let k in arrayOfFiles) {
+    const file = arrayOfFiles[k]
+    try {
+      await cloud({
+        songFile: {
+          name: path.basename(file),
+          data: fs.readFileSync(file),
+        },
+        cookie: token.body.cookie,
+      })
+    } catch (error) {
+      console.log(error)
+      failed += 1
+      failedFiles.push(file)
+    }
+    console.log(`Uploaded ${k + 1}/${fileCount} songs`)
+  }
+  return { failedFiles, failed }
+}
+
 function getParsedArgs() {
   return yargs(process.argv.slice(2))
     .option('country_code', {
@@ -54,36 +78,28 @@ function getParsedArgs() {
 
 async function main() {
   const args = getParsedArgs()
-  const result = await login_cellphone({
+  const token = await login_cellphone({
     countrycode: args.country_code,
     phone: args.phone_number,
     password: args.password,
   })
-  const files = args.file
-    ? getAllMusicFiles(args.file)
-    : getAllMusicFiles(args.dir)
-  let processed = 0
-  let failed = 0
-  for (let k in files) {
-    const file = files[k]
-    try {
-      await cloud({
-        songFile: {
-          name: path.basename(file),
-          data: fs.readFileSync(file),
-        },
-        cookie: result.body.cookie,
-      })
-    } catch (error) {
-      console.log(error)
-      failed += 1
-    }
-    processed += 1
-    console.log(`Processed ${processed}/${files.length} songs...`)
-    if (failed) {
-      console.log(`Failed to upload ${failed} songs...`)
-    }
+  const files = args.file ? [args.file] : getAllMusicFiles(args.dir)
+  const fileCount = files.length
+
+  console.log(`Found ${fileCount} files, uploading...`)
+  let res = await uploadArrayOfFile(token, files)
+  if (res.failed) {
+    console.log(`Failed to upload ${res.failed} songs, retrying...`)
+    res = await uploadArrayOfFile(token, res.failedFiles)
   }
-  console.log('Finished!')
+
+  console.log(`Uploaded ${fileCount - res.failed} songs`)
+  console.log(
+    `Failed to upload ${res.failed} songs, you can reupload the files below`,
+  )
+  for (let k in res.failedFiles) {
+    console.log(res.failedFiles[k])
+  }
 }
 main()
+
