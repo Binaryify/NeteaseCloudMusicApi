@@ -2153,11 +2153,13 @@ fee: enum,
   4: 购买专辑
   8: 非会员可免费播放低音质，会员可播放高音质及下载
   fee 为 1 或 8 的歌曲均可单独购买 2 元单曲
-v: u64, 常为[1, ?]任意数字, 功能未知
+v: u64, 常为[1, ?]任意数字, 代表歌曲当前信息版本
+version: u64, 常为[1, ?]任意数字, 代表歌曲当前信息版本
 crbt: Option<String>, None或字符串表示的十六进制，功能未知
 cf: Option<String>, 空白字串或者None，功能未知
 al: Album, 专辑，如果是DJ节目(dj_type != 0)或者无专辑信息(single == 1)，则专辑id为0
 dt: u64, 歌曲时长
+sq: Option<Quality>, 无损质量文件信息
 h: Option<Quality>, 高质量文件信息
 m: Option<Quality>, 中质量文件信息
 l: Option<Quality>, 低质量文件信息
@@ -2166,7 +2168,7 @@ cd: Option<String>, None或如"04", "1/2", "3", "null"的字符串，表示歌�
 no: u32, 表示歌曲属于CD中第几曲，0表示没有这个字段，对应音频文件的Tag
 rtUrl: Option<String(?)>, 常为None, 功能未知
 rtUrls: Vec<String(?)>, 常为空列表, 功能未知
-dj_id: u64,
+djId: u64,
   0: 不是DJ节目
   其他：是DJ节目，表示DJ ID
 copyright: u32, 0, 1, 2: 功能未知
@@ -2186,7 +2188,7 @@ rtype: 常为0，功能未知
 rurl: Option<String(?)>, 常为None，功能未知
 mst: u32, 偶尔为0, 常为9，功能未知
 cp: u64, 功能未知
-publish_time: i64, 毫秒为单位的Unix时间戳
+publishTime: i64, 毫秒为单位的Unix时间戳
 pc: 云盘歌曲信息，如果不存在该字段，则为非云盘歌曲
 ```
 
