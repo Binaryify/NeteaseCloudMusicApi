@@ -3940,7 +3940,7 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 
 **必选参数:** `id`: **乐谱** ID
 
-**调用例子:** `/sheet/preview?id=245206`
+**调用例子:** `/sheet/preview?id=143190`
 
 ### 曲风列表
 
