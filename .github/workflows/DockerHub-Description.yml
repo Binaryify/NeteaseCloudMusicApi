@@ -20,4 +20,4 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: binaryify/netease_cloud_music_api
         short-description: ${{ github.event.repository.description }}
-        readme-filepath: ./README.md
+        readme-filepath: ./README.MD
