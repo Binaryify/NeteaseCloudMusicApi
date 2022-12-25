@@ -140,9 +140,12 @@ async function consturctServer(moduleDefs) {
    */
   app.use((req, res, next) => {
     if (req.path !== '/' && !req.path.includes('.')) {
+      if (["https://love.uyoahz.cn", "https://uyoahz.cn", "http://localhost:10086"].includes(req.headers.origin.toLowerCase())) {
+        //设置允许跨域的域名，*代表允许任意域名跨域
+        res.header("Access-Control-Allow-Origin", req.headers.origin);
+      }
       res.set({
         'Access-Control-Allow-Credentials': true,
-        'Access-Control-Allow-Origin': req.headers.origin || '*',
         'Access-Control-Allow-Headers': 'X-Requested-With,Content-Type',
         'Access-Control-Allow-Methods': 'PUT,POST,GET,DELETE,OPTIONS',
         'Content-Type': 'application/json; charset=utf-8',
@@ -156,14 +159,14 @@ async function consturctServer(moduleDefs) {
    */
   app.use((req, _, next) => {
     req.cookies = {}
-    //;(req.headers.cookie || '').split(/\s*;\s*/).forEach((pair) => { //  Polynomial regular expression //
-    ;(req.headers.cookie || '').split(/;\s+|(?<!\s)\s+$/g).forEach((pair) => {
-      let crack = pair.indexOf('=')
-      if (crack < 1 || crack == pair.length - 1) return
-      req.cookies[decode(pair.slice(0, crack)).trim()] = decode(
-        pair.slice(crack + 1),
-      ).trim()
-    })
+      //;(req.headers.cookie || '').split(/\s*;\s*/).forEach((pair) => { //  Polynomial regular expression //
+      ; (req.headers.cookie || '').split(/;\s+|(?<!\s)\s+$/g).forEach((pair) => {
+        let crack = pair.indexOf('=')
+        if (crack < 1 || crack == pair.length - 1) return
+        req.cookies[decode(pair.slice(0, crack)).trim()] = decode(
+          pair.slice(crack + 1),
+        ).trim()
+      })
     next()
   })
 
