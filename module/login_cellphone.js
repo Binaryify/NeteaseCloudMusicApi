@@ -17,7 +17,7 @@ module.exports = async (query, request) => {
   }
   let result = await request(
     'POST',
-    `https://music.163.com/eapi/w/login/cellphone`,
+    `https://music.163.com/weapi/login/cellphone`,
     data,
     {
       crypto: 'weapi',
