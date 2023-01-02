@@ -4,7 +4,7 @@ const crypto = require('crypto')
 
 module.exports = async (query, request) => {
   query.cookie.os = 'pc'
-  query.cookie.appver = '2.10.6'
+  query.cookie.appver = '2.10.5'
   const data = {
     phone: query.phone,
     countrycode: query.countrycode || '86',
