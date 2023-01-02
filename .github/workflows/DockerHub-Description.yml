@@ -1,0 +1,23 @@
+name: Update Docker Hub Description
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - README.MD
+      - .github/workflows/DockerHub-Description.yml
+jobs:
+  dockerHubDescription:
+    if: startsWith(github.repository, 'Binaryify/NeteaseCloudMusicApi')
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Docker Hub Description
+      uses: peter-evans/dockerhub-description@v3
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        repository: binaryify/netease_cloud_music_api
+        short-description: ${{ github.event.repository.description }}
+        readme-filepath: ./README.MD
