@@ -712,6 +712,10 @@ export function lyric(
   params: { id: string | number } & RequestBaseConfig,
 ): Promise<Response>
 
+export function lyric_new(
+  params: { id: string | number } & RequestBaseConfig,
+): Promise<Response>
+
 export function msg_comments(
   params: {
     uid: string | number
