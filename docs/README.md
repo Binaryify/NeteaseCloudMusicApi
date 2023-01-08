@@ -1625,6 +1625,21 @@ tags: 歌单标签
 返回数据如下图 :
 ![获取歌词](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%AD%8C%E8%AF%8D.png)
 
+### 获取逐字歌词
+
+说明 : 此接口的 `yrc` 字段即为逐字歌词 (可能有歌曲不包含逐字歌词)
+
+
+**必选参数 :** `id`: 音乐 id
+
+**接口地址 :** `/lyric_new`
+
+**调用例子 :** `/lyric_new?id=1824020871`
+
+
+相关讨论可见: [Issue](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1667)
+
+
 ### 新歌速递
 
 说明 : 调用此接口 , 可获取新歌速递
