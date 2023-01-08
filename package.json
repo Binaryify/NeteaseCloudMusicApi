@@ -51,7 +51,7 @@
     "public"
   ],
   "dependencies": {
-    "axios": "^1.0.0",
+    "axios": "^1.2.2",
     "express": "^4.17.1",
     "express-fileupload": "^1.1.9",
     "md5": "^2.3.0",
