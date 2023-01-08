@@ -8,10 +8,16 @@ module.exports = (query, request) => {
     offset: query.offset || 0,
     total: true,
   }
-  return request('POST', `https://music.163.com/api/cloudsearch/pc`, data, {
-    crypto: 'weapi',
-    cookie: query.cookie,
-    proxy: query.proxy,
-    realIP: query.realIP,
-  })
+  return request(
+    'POST',
+    `https://interface.music.163.com/eapi/cloudsearch/pc`,
+    data,
+    {
+      crypto: 'eapi',
+      cookie: query.cookie,
+      proxy: query.proxy,
+      url: '/api/cloudsearch/pc',
+      realIP: query.realIP,
+    },
+  )
 }
