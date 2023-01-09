@@ -1,4 +1,4 @@
-// 新版歌词 - 包含逐字歌词
+// 新版歌词 - 包含逐字歌词s
 module.exports = (query, request) => {
   const data = {
     id: query.id,
