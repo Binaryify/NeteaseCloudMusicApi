@@ -1632,9 +1632,9 @@ tags: 歌单标签
 
 **必选参数 :** `id`: 音乐 id
 
-**接口地址 :** `/lyric_new`
+**接口地址 :** `/lyric/new`
 
-**调用例子 :** `/lyric_new?id=1824020871`
+**调用例子 :** `/lyric/new?id=1824020871`
 
 
 相关讨论可见: [Issue](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1667)
