@@ -3557,13 +3557,9 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 
 **调用例子 :** `/artist/new/mv?limit=1` `/artist/new/mv?limit=1&before=1602777625000`
 
-### 一起听状态
+### 一起听相关
 
-说明 :登录后调用此接口可获取一起听状态
-
-**接口地址 :** `/listen/together/status`
-
-**调用例子 :** `/listen/together/status`
+一起听相关参见此 Issue: [#1676](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1676)
 
 ### batch 批量请求接口
 
