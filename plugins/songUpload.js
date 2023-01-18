@@ -1,4 +1,4 @@
-const axios = require('axios')
+const { default: axios } = require('axios')
 module.exports = async (query, request) => {
   let ext = 'mp3'
   if (query.songFile.name.indexOf('flac') > -1) {
