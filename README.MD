@@ -78,7 +78,7 @@ v4.0.8 加入了 Vercel 配置文件,可以直接在 Vercel 下部署了,不需�
 因 `Vercel` 在国内访问太慢,在此提供腾讯云 serverless 部署方法
 ### 操作方法
 1. fork 此项目
-2. 在腾讯云serverless应用管理页面(https://console.cloud.tencent.com/sls),点击`新建应用`
+2. 在腾讯云serverless应用管理页面( https://console.cloud.tencent.com/sls ),点击`新建应用`
 3. 顶部`创建方式`选择 `Web 应用`
 4. 选择 `Express框架`,点击底部`下一步按钮`
 5. 输入`应用名`,上传方式选择`代码仓库`,进行GitHub授权(如已授权可跳过这一步),代码仓库选择刚刚fork的项目
