@@ -1,0 +1,32 @@
+html,
+body {
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    background: #ffffff;
+    text-align: center;
+    margin: 30px 0 0;
+    overflow: hidden;
+}
+
+* {
+    color: rgb(100, 100, 100);
+}
+
+a {
+    color: #42b983;
+}
+
+ul,
+li {
+    margin: 0;
+}
+
+ul {
+    margin-left: -40px;
+    line-height: 30px;
+}
+
+li {
+    list-style: none;
+}
