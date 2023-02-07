@@ -51,7 +51,7 @@
         const imgSize = await getImgSize(file)
         const res = await axios({
           method: 'post',
-          url: `http://localhost:3000/avatar/upload?cookie=${cookieToken}&imgSize=${
+          url: `/avatar/upload?cookie=${cookieToken}&imgSize=${
             imgSize.width
           }&imgX=0&imgY=0&timestamp=${Date.now()}`,
           headers: {

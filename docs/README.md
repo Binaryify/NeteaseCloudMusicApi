@@ -486,7 +486,7 @@ $ sudo docker run -d -p 3000:3000 netease-music-api
 
 因网易增加了网易云盾验证,密码登录暂时不要使用,尽量使用短信验证码登录和二维码登录,否则调用某些接口会触发需要验证的错误
 
-#### 1. 手机登录
+#### 1. 手机登录(现在要求验证,暂时绕不过,请使用二维码登录)
 
 **必选参数 :**  
 `phone`: 手机号码
@@ -504,7 +504,7 @@ $ sudo docker run -d -p 3000:3000 netease-music-api
 
 **调用例子 :** `/login/cellphone?phone=xxx&password=yyy` `/login/cellphone?phone=xxx&md5_password=yyy` `/login/cellphone?phone=xxx&captcha=1234`
 
-#### 2. 邮箱登录
+#### 2. 邮箱登录(现在要求验证,暂时绕不过,请使用二维码登录)
 
 **必选参数 :**
 

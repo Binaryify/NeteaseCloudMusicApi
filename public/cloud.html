@@ -50,7 +50,7 @@
       formData.append('songFile', file)
       axios({
         method: 'post',
-        url: `http://localhost:3000/cloud?time=${Date.now()}&cookie=${cookieToken}`,
+        url: `/cloud?time=${Date.now()}&cookie=${cookieToken}`,
         headers: {
           'Content-Type': 'multipart/form-data',
         },
