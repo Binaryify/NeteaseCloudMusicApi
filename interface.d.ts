@@ -1561,6 +1561,8 @@ export function playlist_track_all(
   params: {
     id: number | string
     s?: number | string
+    limit?: number
+    offset?: number
   } & RequestBaseConfig,
 ): Promise<Response>
 
