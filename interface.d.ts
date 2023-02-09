@@ -1311,17 +1311,11 @@ export function yunbei_info(params: RequestBaseConfig): Promise<Response>
 export function yunbei_sign(params: RequestBaseConfig): Promise<Response>
 
 export function yunbei_receipt(
-  params: {
-    limit?: number | string
-    offset?: number | string
-  } & RequestBaseConfig,
+  params: MultiPageConfig & RequestBaseConfig,
 ): Promise<Response>
 
 export function yunbei_expense(
-  params: {
-    limit?: number | string
-    offset?: number | string
-  } & RequestBaseConfig,
+  params: MultiPageConfig & RequestBaseConfig,
 ): Promise<Response>
 
 export function yunbei_tasks(params: RequestBaseConfig): Promise<Response>
@@ -1357,17 +1351,11 @@ export function comment_hug_list(
 ): Promise<Response>
 
 export function topic_sublist(
-  params: {
-    limit?: number | string
-    offset?: number | string
-  } & RequestBaseConfig,
+  params: MultiPageConfig & RequestBaseConfig,
 ): Promise<Response>
 
 export function topic_sublist(
-  params: {
-    limit?: number | string
-    offset?: number | string
-  } & RequestBaseConfig,
+  params: MultiPageConfig & RequestBaseConfig,
 ): Promise<Response>
 
 export function artist_new_mv(
@@ -1505,11 +1493,7 @@ export function vip_growthpoint_get(
 ): Promise<Response>
 
 export function artist_fans(
-  params: {
-    id: number | string
-    limit?: number | string
-    offset?: number | string
-  } & RequestBaseConfig,
+  params: { id: number | string } & MultiPageConfig & RequestBaseConfig,
 ): Promise<Response>
 
 export function digitalAlbum_detail(
@@ -1561,9 +1545,8 @@ export function playlist_track_all(
   params: {
     id: number | string
     s?: number | string
-    limit?: number
-    offset?: number
-  } & RequestBaseConfig,
+  } & MultiPageConfig &
+    RequestBaseConfig,
 ): Promise<Response>
 
 export function artist_video(
