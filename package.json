@@ -8,16 +8,28 @@
     "lint": "eslint \"**/*.{js,ts}\"",
     "lint-fix": "eslint --fix \"**/*.{js,ts}\"",
     "prepare": "husky install",
-    "pkgwin": "pkg . -t node14-win-x64 -o app",
-    "pkglinux": "pkg . -t node14-linux-x64 -o app",
-    "pkgmacos": "pkg . -t node14-macos-x64 -o app"
+    "pkgwin": "node_modules/.bin/pkg . -t node14-win-x64 -C GZip -o bin/app --no-bytecode",
+    "pkglinux": "node_modules/.bin/pkg . -t node14-linux-x64 -C GZip -o bin/app --no-bytecode",
+    "pkgmacos": "node_modules/.bin/pkg . -t node14-macos-x64 -C GZip -o bin/sapp --no-bytecode"
   },
   "bin": "./app.js",
   "pkg": {
     "scripts": "module/*.js",
     "assets": [
-      "/node_modules/vm2/lib/contextify.js",
-      "/public"
+      "node_modules/axios",
+      "node_modules/express",
+      "node_modules/express-fileupload",
+      "node_modules/md5",
+      "node_modules/music-metadata",
+      "node_modules/pac-proxy-agent",
+      "node_modules/qrcode",
+      "node_modules/safe-decode-uri-component",
+      "node_modules/tunnel",
+      "node_modules/yargs",
+      "node_modules/tslib",
+      "node_modules/vm2",
+      "module",
+      "public"
     ]
   },
   "keywords": [
@@ -77,6 +89,7 @@
     "intelli-espower-loader": "1.1.0",
     "lint-staged": "12.1.7",
     "mocha": "10.0.0",
+    "pkg": "^5.8.0",
     "power-assert": "1.6.1",
     "prettier": "2.7.1",
     "typescript": "4.5.2"
