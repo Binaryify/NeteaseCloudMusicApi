@@ -141,15 +141,21 @@ async function consturctServer(moduleDefs) {
    */
   app.use((req, res, next) => {
     if (req.path !== '/' && !req.path.includes('.')) {
-      res.set({
-        'Access-Control-Allow-Credentials': true,
-        'Access-Control-Allow-Origin':
-          CORS_ALLOW_ORIGIN || req.headers.origin || '*',
-        'Access-Control-Allow-Headers': 'X-Requested-With,Content-Type',
-        'Access-Control-Allow-Methods': 'PUT,POST,GET,DELETE,OPTIONS',
-        'Content-Type': 'application/json; charset=utf-8',
-      })
+      if (req.headers.origin && req.headers.origin.includes('szhshp')) {
+        res.set({
+          'Access-Control-Allow-Credentials': true,
+          'Access-Control-Allow-Origin':
+            CORS_ALLOW_ORIGIN || req.headers.origin || '*',
+          'Access-Control-Allow-Headers': 'X-Requested-With,Content-Type',
+          'Access-Control-Allow-Methods': 'PUT,POST,GET,DELETE,OPTIONS',
+          'Content-Type': 'application/json; charset=utf-8',
+        })
+      } else {
+        res.status(403).send('Forbidden')
+        return
+      }
     }
+
     req.method === 'OPTIONS' ? res.status(204).end() : next()
   })
 
