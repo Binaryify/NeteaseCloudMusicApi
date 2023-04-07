@@ -668,8 +668,7 @@ function ApiCache() {
       req.apicacheTimer = new Date()
 
       // In Express 4.x the url is ambigious based on where a router is mounted.  originalUrl will give the full Url
-      var key = req.originalUrl || req.url
-
+      var key = req.hostname + (req.originalUrl || req.url)
       // Remove querystring from key if jsonp option is enabled
       if (opt.jsonp) {
         key = url.parse(key).pathname
