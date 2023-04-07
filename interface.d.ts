@@ -1686,3 +1686,5 @@ export function style_artist(
     cursor?: number | string
   } & RequestBaseConfig,
 ): Promise<Response>
+
+export function pl_count(params: RequestBaseConfig): Promise<Response>
