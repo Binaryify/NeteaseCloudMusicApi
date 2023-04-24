@@ -1457,7 +1457,8 @@ tags: 歌单标签
 说明 : 使用注意事项同上
 
 **必选参数 :** `id` : 音乐 id
- `level`: 播放音质等级, 分为 `standard` => `标准`,`higher` => `较高`, `exhigh`=>`极高`, `lossless`=>`无损`, `hires`=>`Hi-Res`
+ `level`: 播放音质等级, 分为 `standard` => `标准`,`higher` => `较高`, `exhigh`=>`极高`, 
+`lossless`=>`无损`, `hires`=>`Hi-Res`, `jyeffect` => `鲸云臻音`, `jymaster` => `鲸云母带`
 
 **接口地址 :** `/song/url/v1`
 
