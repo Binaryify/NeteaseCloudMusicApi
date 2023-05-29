@@ -239,17 +239,19 @@ async function consturctServer(moduleDefs) {
         console.log('[OK]', decode(req.originalUrl))
 
         const cookies = moduleResponse.cookie
-        if (Array.isArray(cookies) && cookies.length > 0) {
-          if (req.protocol === 'https') {
-            // Try to fix CORS SameSite Problem
-            res.append(
-              'Set-Cookie',
-              cookies.map((cookie) => {
-                return cookie + '; SameSite=None; Secure'
-              }),
-            )
-          } else {
-            res.append('Set-Cookie', cookies)
+        if (!query.noCookie) {
+          if (Array.isArray(cookies) && cookies.length > 0) {
+            if (req.protocol === 'https') {
+              // Try to fix CORS SameSite Problem
+              res.append(
+                'Set-Cookie',
+                cookies.map((cookie) => {
+                  return cookie + '; SameSite=None; Secure'
+                }),
+              )
+            } else {
+              res.append('Set-Cookie', cookies)
+            }
           }
         }
         res.status(moduleResponse.status).send(moduleResponse.body)
@@ -268,7 +270,10 @@ async function consturctServer(moduleDefs) {
         }
         if (moduleResponse.body.code == '301')
           moduleResponse.body.msg = '需要登录'
-        res.append('Set-Cookie', moduleResponse.cookie)
+        if (!query.noCookie) {
+          res.append('Set-Cookie', moduleResponse.cookie)
+        }
+
         res.status(moduleResponse.status).send(moduleResponse.body)
       }
     })
