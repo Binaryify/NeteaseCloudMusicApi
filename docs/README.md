@@ -4108,6 +4108,11 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 
 **调用例子:** `/style/artist?tagId=1000`
 
+### 云村星评馆 - 简要评论
+
+说明: 调用此接口可以获取首页推荐的星评馆评论信息
+
+**接口地址:** `/starpick/comments/summary`
 
 ## 离线访问此文档
 
