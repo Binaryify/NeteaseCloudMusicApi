@@ -25,9 +25,9 @@ export interface APIBaseResponse {
   [index: string]: unknown
 }
 
-export interface Response {
+export interface Response<Body = APIBaseResponse> {
   status: number // The Http Response Code
-  body: APIBaseResponse // API Response body
+  body: Body // API Response body
   cookie: string[]
 }
 
@@ -1050,7 +1050,91 @@ export function simi_user(
 
 export function song_detail(
   params: { ids: string } & RequestBaseConfig,
-): Promise<Response>
+): Promise<
+  Response<{
+    songs: SongDetail[]
+    privileges: unknown[]
+    code: number
+  }>
+>
+
+type SongDetail = {
+  name: string
+  id: number
+  pst: number
+  t: number
+  ar: SongDetailArtist[]
+  alia: string[]
+  pop: number
+  st: number
+  rt: string | null
+  fee: SongDetailFee
+  v: number
+  crbt: string | null
+  cf: string
+  al: SongDetailAlbum
+  dt: number
+  h: SongDetailQuality | null
+  m: SongDetailQuality | null
+  l: SongDetailQuality | null
+  sq: SongDetailQuality | null
+  hr: unknown
+  a: unknown | null
+  cd: string
+  no: number
+  rtUrl: unknown | null
+  ftype: number
+  rtUrls: unknown[]
+  djId: number
+  copyright: SongDetailCopyright
+  s_id: number
+  mark: number
+  originCoverType: SongDetailOriginCoverType
+  originSongSimpleData: unknown | null
+  tagPicList: unknown | null
+  resourceState: boolean
+  version: number
+  songJumpInfo: unknown | null
+  entertainmentTags: unknown | null
+  awardTags: unknown | null
+  single: number
+  noCopyrightRcmd: unknown | null
+  mv: number
+  rtype: number
+  rurl: unknown | null
+  mst: number
+  cp: number
+  publishTime: number
+}
+
+type SongDetailArtist = {
+  id: number
+  name: string
+  tns: unknown[]
+  alias: unknown[]
+}
+
+type SongDetailFee = 0 | 1 | 4 | 8
+
+type SongDetailAlbum = {
+  id: number
+  name: string
+  picUrl: string
+  tns: unknown[]
+  pic: number
+}
+
+type SongDetailQuality = {
+  br: number
+  fid: number
+  size: number
+  vd: number
+  sr: number
+}
+
+type SongDetailCopyright = 0 | 1 | 2
+
+type SongDetailOriginCoverType = 0 | 1 | 2
 
 export function song_order_update(
   params: { pid: string | number; ids: string } & RequestBaseConfig,
