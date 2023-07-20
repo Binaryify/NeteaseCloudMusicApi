@@ -8,6 +8,8 @@
 
 - 更新 song_detail 返回值类型  #1772
 
+- NodeJS 环境要求提高至 v14
+
 ### 4.8.11 | 2023.05.29
 - 支持headers不携带cookie信息
 
