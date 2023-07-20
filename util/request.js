@@ -1,7 +1,7 @@
 const encrypt = require('./crypto')
 const crypto = require('crypto')
 const { default: axios } = require('axios')
-const PacProxyAgent = require('pac-proxy-agent')
+const { PacProxyAgent } = require('pac-proxy-agent')
 const http = require('http')
 const https = require('https')
 const tunnel = require('tunnel')
