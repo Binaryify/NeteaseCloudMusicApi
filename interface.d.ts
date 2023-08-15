@@ -1614,7 +1614,11 @@ export function musician_cloudbean_obtain(
   } & RequestBaseConfig,
 ): Promise<Response>
 
-export function vip_info(params: RequestBaseConfig): Promise<Response>
+export function vip_info(
+  params: {
+    uid?: number | string
+  } & RequestBaseConfig,
+): Promise<Response>
 
 export function musician_sign(params: RequestBaseConfig): Promise<Response>
 
