@@ -2196,6 +2196,7 @@ tags: 歌单标签
 **调用例子 :** `/song/detail?ids=347230`,`/song/detail?ids=347230,347231`
 
 返回字段说明(感谢 [@tuxzz](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/1121#issuecomment-774438040) 整理):
+
 ```
 name: String, 歌曲标题
 id: u64, 歌曲ID
@@ -2239,7 +2240,7 @@ sq: Option<Quality>, 无损质量文件信息
 h: Option<Quality>, 高质量文件信息
 m: Option<Quality>, 中质量文件信息
 l: Option<Quality>, 低质量文件信息
-a: Option<?>, 常为None, 功能未知
+a: Option<未知>, 常为None, 功能未知
 cd: Option<String>, None或如"04", "1/2", "3", "null"的字符串，表示歌曲属于专辑中第几张CD，对应音频文件的Tag
 no: u32, 表示歌曲属于CD中第几曲，0表示没有这个字段，对应音频文件的Tag
 rtUrl: Option<String(?)>, 常为None, 功能未知
@@ -3852,6 +3853,19 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 **接口地址 :** `/vip/info`
 
 **调用例子 :** `/vip/info`, `/vip/info?uid=32953014`
+
+
+### 获取 VIP 信息(app端)
+
+说明: 登录后调用此接口，可获取当前 VIP 信息。
+
+**可选参数 :** `uid` : 用户 id
+
+**接口地址 :** `/vip/info/v2`
+
+**调用例子 :** `/vip/info/v2`, `/vip/info/v2?uid=32953014`
+
+
 
 ### 音乐人签到
 
