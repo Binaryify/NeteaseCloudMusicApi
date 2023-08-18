@@ -4136,6 +4136,14 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 
 **接口地址:** `/starpick/comments/summary`
 
+### 私人 DJ
+
+说明: 调用此接口可以获取私人 DJ 的推荐内容 (包括 DJ 声音和推荐歌曲)
+
+**接口地址:** `/aidj/content/rcmd`
+
+**可选参数：** `longitude` `latitude` : 当前的经纬度
+
 ## 离线访问此文档
 
 此文档同时也是 Progressive Web Apps(PWA), 加入了 serviceWorker, 可离线访问
