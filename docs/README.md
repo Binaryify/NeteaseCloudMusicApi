@@ -2259,7 +2259,7 @@ originSongSimpleData: Option<SongSimpleData>, 对于翻唱曲，可选提供原�
 single: enum,
   0: 有专辑信息或者是DJ节目
   1: 未知专辑
-noCopyrightRcmd: Option<NoCopyrightRcmd>, None表示可以播，非空表示无版权
+noCopyrightRcmd: Option<NoCopyrightRcmd>, 不能判断出歌曲有无版权
 mv: u64, 非零表示有MV ID
 rtype: 常为0，功能未知
 rurl: Option<String(?)>, 常为None，功能未知
