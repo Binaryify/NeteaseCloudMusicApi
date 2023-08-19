@@ -6,20 +6,20 @@
 
 module.exports = (query, request) => {
   var extInfo = {}
-  if (query.latitude != undefined){
-      extInfo.lbsInfoList = [
-          {
-          lat: query.latitude,
-          lon: query.longitude,
-          time: Date.parse(new Date())/1000
-          }
-      ]
+  if (query.latitude != undefined) {
+    extInfo.lbsInfoList = [
+      {
+        lat: query.latitude,
+        lon: query.longitude,
+        time: Date.parse(new Date()) / 1000,
+      },
+    ]
   }
-  extInfo.noAidjToAidj = false;
+  extInfo.noAidjToAidj = false
   extInfo.lastRequestTimestamp = new Date().getTime()
   extInfo.listenedTs = false
   const data = {
-      extInfo: JSON.stringify(extInfo)
+    extInfo: JSON.stringify(extInfo),
   }
   console.log(data)
   return request(

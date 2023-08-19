@@ -4144,6 +4144,14 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 
 **可选参数：** `longitude` `latitude` : 当前的经纬度
 
+### 回忆坐标
+
+说明: 可以获取当前歌曲的回忆坐标信息 (见手机 APP 百科页的回忆坐标功能)
+
+**接口地址:** `/music/first/listen/info`
+
+**必选参数：** `id` : 歌曲 ID
+
 ## 离线访问此文档
 
 此文档同时也是 Progressive Web Apps(PWA), 加入了 serviceWorker, 可离线访问
