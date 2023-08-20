@@ -61,7 +61,7 @@ const createRequest = (method, url, data = {}, options) => {
       options.cookie = {
         ...options.cookie,
         __remember_me: true,
-        NMTID: crypto.randomBytes(16).toString('hex'),
+        // NMTID: crypto.randomBytes(16).toString('hex'),
         _ntes_nuid: crypto.randomBytes(16).toString('hex'),
       }
       if (!options.cookie.MUSIC_U) {
