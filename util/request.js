@@ -147,10 +147,11 @@ const createRequest = (method, url, data = {}, options) => {
       } else {
         const purl = new URL(options.proxy)
         if (purl.hostname) {
-          const agent = tunnel.httpsOverHttp({
+          const agent = tunnel[purl.protocol === 'https' ? 'httpsOverHttp' : 'httpOverHttp']({
             proxy: {
               host: purl.hostname,
               port: purl.port || 80,
+              proxyAuth: purl.username && purl.password ? (purl.username + ':' + purl.password) : ''
             },
           })
           settings.httpsAgent = agent
