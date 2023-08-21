@@ -6,4 +6,3 @@ node_modules
 .history
 examples/moddef.json
 bin
-util/config.json
