@@ -72,6 +72,7 @@
     "qrcode": "^1.4.4",
     "safe-decode-uri-component": "^1.2.1",
     "tunnel": "^0.0.6",
+    "xml2js": "^0.6.2",
     "yargs": "^17.1.1"
   },
   "devDependencies": {

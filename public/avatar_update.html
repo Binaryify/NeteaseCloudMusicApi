@@ -34,14 +34,14 @@
         )
         const res = await axios({
           url: `/user/detail?uid=32953014&timestamp=${Date.now()}`,
-          withCredentials: true, //关键
+          withCredentials: true, //跨域的话必须设置
         })
         document.querySelector('#avatar').src = res.data.profile.avatarUrl
       }
       async function login() {
         const res = await axios({
           url: `/login/cellphone?phone=${phone}&password=${password}`,
-          withCredentials: true, //关键
+          withCredentials: true, //跨域的话必须设置
         })
         cookieToken = res.data.cookie
       }
