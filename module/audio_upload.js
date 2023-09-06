@@ -10,8 +10,8 @@ module.exports = async (query, request) => {
     .replace('.' + ext, '')
     .replace(/\s/g, '')
     .replace(/\./g, '_')
-  query.cookie.os = 'pc'
-  query.cookie.appver = '2.9.7'
+  // query.cookie.os = 'pc'
+  // query.cookie.appver = '2.9.7'
   if (!query.songFile) {
     return Promise.reject({
       status: 500,
@@ -37,19 +37,21 @@ module.exports = async (query, request) => {
   )
 
   const objectKey = tokenRes.body.result.objectKey.replace('/', '%2F')
+  const docId = tokenRes.body.result.docId
   const res = await axios({
     method: 'post',
     url: `https://ymusic.nos-hz.163yun.com/${objectKey}?uploads`,
     headers: {
       'x-nos-token': tokenRes.body.result.token,
-      'Content-Type': 'audio/mpeg',
+      // 'Content-Type': 'audio/mpeg',
+      'X-Nos-Meta-Content-Type': 'audio/mpeg',
     },
     data: null,
   })
   // return xml
   const res2 = await parser.parseStringPromise(res.data)
 
-  await axios({
+  const res3 = await axios({
     method: 'put',
     url: `https://ymusic.nos-hz.163yun.com/${objectKey}?partNumber=1&uploadId=${res2.InitiateMultipartUploadResult.UploadId[0]}`,
     headers: {
@@ -57,12 +59,32 @@ module.exports = async (query, request) => {
     },
     data: query.songFile.data,
   })
+
   try {
+    // get etag
+    const etag = res3.headers.etag
+    console.log(etag, 'etag')
+    const res4 = await axios({
+      method: 'post',
+      url: `https://ymusic.nos-hz.163yun.com/${objectKey}?uploadId=${res2.InitiateMultipartUploadResult.UploadId[0]}`,
+      headers: {
+        'Content-Type': 'text/plain;charset=UTF-8',
+        'X-Nos-Meta-Content-Type': 'audio/mpeg',
+        'x-nos-token': tokenRes.body.result.token,
+      },
+      data: `<CompleteMultipartUpload>
+      <Part><PartNumber>1</PartNumber><ETag>${etag}</ETag></Part>
+      </CompleteMultipartUpload>`,
+    })
+    console.log(res4, 'res4')
+    const res5 = await parser.parseStringPromise(res4.data)
+    console.log(res5, 'res5')
     const rr = await axios({
       method: 'post',
       url: `https://interface.music.163.com/weapi/voice/workbench/voice/batch/upload/preCheck`,
       headers: {
         'x-nos-token': tokenRes.body.result.token,
+        'Content-Type': 'application/x-www-form-urlencoded',
       },
       data: {
         // dupkey: '0f50d114-199a-4b3e-8013-e980c78cfb8b',
@@ -71,10 +93,11 @@ module.exports = async (query, request) => {
             name: filename,
             autoPublish: true,
             autoPublishText: '',
-            description: '12\n',
+            description: 'test',
+            // 换成自己的
             voiceListId: 986001671,
             coverImgId: '109951168487511100',
-            dfsId: res2.InitiateMultipartUploadResult.UploadId[0],
+            dfsId: docId,
             categoryId: 2001,
             secondCategoryId: 6171,
             composedSongs: [],
@@ -89,9 +112,10 @@ module.exports = async (query, request) => {
     const rr2 = await axios({
       method: 'post',
       url: `https://interface.music.163.com/weapi/voice/workbench/voice/batch/upload/v2`,
-      // headers: {
-      //   'x-nos-token': tokenRes.body.result.token,
-      // },
+      headers: {
+        'x-nos-token': tokenRes.body.result.token,
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
       data: {
         // dupkey: '0f50d114-199a-4b3e-8013-e980c78cfb8b',
         voiceData: JSON.stringify([
@@ -99,10 +123,11 @@ module.exports = async (query, request) => {
             name: filename,
             autoPublish: true,
             autoPublishText: '',
-            description: '12\n',
+            description: 'test',
+            // 换成自己的
             voiceListId: 986001671,
             coverImgId: '109951168487511100',
-            dfsId: res2.InitiateMultipartUploadResult.UploadId[0],
+            dfsId: docId,
             categoryId: 2001,
             secondCategoryId: 6171,
             composedSongs: [],
