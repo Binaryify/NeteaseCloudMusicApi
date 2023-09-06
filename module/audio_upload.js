@@ -57,6 +57,66 @@ module.exports = async (query, request) => {
     },
     data: query.songFile.data,
   })
+  try {
+    const rr = await axios({
+      method: 'post',
+      url: `https://interface.music.163.com/weapi/voice/workbench/voice/batch/upload/preCheck`,
+      headers: {
+        'x-nos-token': tokenRes.body.result.token,
+      },
+      data: {
+        // dupkey: '0f50d114-199a-4b3e-8013-e980c78cfb8b',
+        voiceData: JSON.stringify([
+          {
+            name: filename,
+            autoPublish: true,
+            autoPublishText: '',
+            description: '12\n',
+            voiceListId: 986001671,
+            coverImgId: '109951168487511100',
+            dfsId: res2.InitiateMultipartUploadResult.UploadId[0],
+            categoryId: 2001,
+            secondCategoryId: 6171,
+            composedSongs: [],
+            privacy: true,
+            publishTime: 0,
+            orderNo: 1,
+          },
+        ]),
+      },
+    })
+    console.log(rr, 'rr')
+    const rr2 = await axios({
+      method: 'post',
+      url: `https://interface.music.163.com/weapi/voice/workbench/voice/batch/upload/v2`,
+      // headers: {
+      //   'x-nos-token': tokenRes.body.result.token,
+      // },
+      data: {
+        // dupkey: '0f50d114-199a-4b3e-8013-e980c78cfb8b',
+        voiceData: JSON.stringify([
+          {
+            name: filename,
+            autoPublish: true,
+            autoPublishText: '',
+            description: '12\n',
+            voiceListId: 986001671,
+            coverImgId: '109951168487511100',
+            dfsId: res2.InitiateMultipartUploadResult.UploadId[0],
+            categoryId: 2001,
+            secondCategoryId: 6171,
+            composedSongs: [],
+            privacy: true,
+            publishTime: 0,
+            orderNo: 1,
+          },
+        ]),
+      },
+    })
+    console.log(rr2, 'rr2')
+  } catch (error) {
+    console.log(error)
+  }
   return {
     status: 200,
     body: {
