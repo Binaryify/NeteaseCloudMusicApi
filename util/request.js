@@ -46,6 +46,11 @@ const chooseUserAgent = (ua = false) => {
 const createRequest = (method, url, data = {}, options) => {
   return new Promise((resolve, reject) => {
     let headers = { 'User-Agent': chooseUserAgent(options.ua) }
+    options.headers = options.headers || {}
+    headers = {
+      ...headers,
+      ...options.headers,
+    }
     if (method.toUpperCase() === 'POST')
       headers['Content-Type'] = 'application/x-www-form-urlencoded'
     if (url.includes('music.163.com'))
