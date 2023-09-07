@@ -19,9 +19,8 @@ module.exports = async (query, request) => {
   if (query.songFile.name.indexOf('flac') > -1) {
     ext = 'flac'
   }
-
   const filename =
-    query.filename ||
+    query.songName ||
     query.songFile.name
       .replace('.' + ext, '')
       .replace(/\s/g, '')
@@ -102,19 +101,20 @@ module.exports = async (query, request) => {
       voiceData: JSON.stringify([
         {
           name: filename,
-          autoPublish: true,
-          autoPublishText: '',
+          autoPublish: query.autoPublish == 1 ? true : false,
+          autoPublishText: query.autoPublishText || '',
           description: query.description,
-          // 换成自己的
           voiceListId: query.voiceListId,
           coverImgId: query.coverImgId,
           dfsId: docId,
           categoryId: query.categoryId,
           secondCategoryId: query.secondCategoryId,
-          composedSongs: [],
-          privacy: true,
-          publishTime: 0,
-          orderNo: 1,
+          composedSongs: query.composedSongs
+            ? query.composedSongs.split(',')
+            : [],
+          privacy: query.privacy == 1 ? true : false,
+          publishTime: query.publishTime || 0,
+          orderNo: query.orderNo || 1,
         },
       ]),
     },
@@ -135,19 +135,20 @@ module.exports = async (query, request) => {
       voiceData: JSON.stringify([
         {
           name: filename,
-          autoPublish: true,
-          autoPublishText: '',
+          autoPublish: query.autoPublish == 1 ? true : false,
+          autoPublishText: query.autoPublishText || '',
           description: query.description,
-          // 换成自己的
-          voiceListId: query.voiceListId || 994681645,
+          voiceListId: query.voiceListId,
           coverImgId: query.coverImgId,
           dfsId: docId,
           categoryId: query.categoryId,
-          secondCategoryId: query.secondCategoryId || 466050,
-          composedSongs: [],
-          privacy: true,
-          publishTime: 0,
-          orderNo: 1,
+          secondCategoryId: query.secondCategoryId,
+          composedSongs: query.composedSongs
+            ? query.composedSongs.split(',')
+            : [],
+          privacy: query.privacy == 1 ? true : false,
+          publishTime: query.publishTime || 0,
+          orderNo: query.orderNo || 1,
         },
       ]),
     },

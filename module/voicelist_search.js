@@ -1,8 +1,9 @@
 module.exports = (query, request) => {
   const data = {
     fee: '-1',
-    limit: '200',
-    podcastName: '',
+    limit: query.limit || '200',
+    offset: query.offset || '0',
+    podcastName: query.podcastName || '',
   }
   return request(
     'POST',
