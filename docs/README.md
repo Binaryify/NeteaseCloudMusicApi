@@ -4207,8 +4207,28 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 
 `composedSongs`: 包含歌曲(歌曲id),多个用逗号隔开
 
+### 验证接口-二维码生成
+说明: 进行某些操作,如关注用户,可能会触发验证,可调用这个接口生成二维码,使用app扫码后可解除验证
+**接口地址:** `/verify/getQr`
 
+**必选参数：** 
+`vid`: 触发验证后,接口返回的verifyId  
 
+`type`:触发验证后,接口返回的verifyType  
+
+`token`:触发验证后,接口返回的verifyToken  
+
+`evid`:触发验证后,接口返回的params的event_id  
+
+`sign`:触发验证后,接口返回的params的sign
+
+### 验证接口-二维码检测
+说明: 使用此接口,传入`/verify/getQr`接口返回的`qr`字符串,可检测二维码扫描状态
+
+**接口地址:** `/verify/qrcodestatus`
+
+**必选参数：** 
+`qr`: `/verify/getQr`接口返回的`qr`字符串
 ## 离线访问此文档
 
 此文档同时也是 Progressive Web Apps(PWA), 加入了 serviceWorker, 可离线访问
