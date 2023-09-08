@@ -11,17 +11,10 @@ function cloudmusic_dll_encode_id(some_id) {
   const digest = crypto.createHash('md5').update(xored).digest()
   return digest.toString('base64')
 }
-function createRandomDeviceId() {
-  const t = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
-  const e = 6
-  let n = ''
-  for (let i = 0; i < e; i++) n += t.charAt(Math.floor(Math.random() * e))
-  return n
-}
 
 module.exports = async (query, request) => {
   query.cookie.os = 'iOS'
-  const deviceId = createRandomDeviceId()
+  const deviceId = `NMUSIC`
   const encodedId = Buffer.from(
     `${deviceId} ${cloudmusic_dll_encode_id(deviceId)}`,
   )
@@ -41,7 +34,6 @@ module.exports = async (query, request) => {
       realIP: query.realIP,
     },
   )
-
   if (result.body.code === 200) {
     result = {
       status: 200,

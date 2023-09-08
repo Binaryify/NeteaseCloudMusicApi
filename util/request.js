@@ -5,8 +5,10 @@ const { PacProxyAgent } = require('pac-proxy-agent')
 const http = require('http')
 const https = require('https')
 const tunnel = require('tunnel')
+const fs = require('fs')
+const anonymous_token = fs.readFileSync('./anonymous_token', 'utf-8')
+console.log(anonymous_token)
 const { URLSearchParams, URL } = require('url')
-const config = require('../util/config.json')
 // request.debug = true // 开启可看到更详细信息
 
 const chooseUserAgent = (ua = false) => {
@@ -72,7 +74,7 @@ const createRequest = (method, url, data = {}, options) => {
       if (!options.cookie.MUSIC_U) {
         // 游客
         if (!options.cookie.MUSIC_A) {
-          options.cookie.MUSIC_A = config.anonymous_token
+          options.cookie.MUSIC_A = anonymous_token
         }
       }
       headers['Cookie'] = Object.keys(options.cookie)
