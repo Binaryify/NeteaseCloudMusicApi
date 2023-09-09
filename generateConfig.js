@@ -1,7 +1,9 @@
 const fs = require('fs')
+const path = require('path')
 const { register_anonimous } = require('./main')
 const { cookieToJson } = require('./util/index')
-const path = require('path')
+
+const tmpPath = require('os').tmpdir()
 async function generateConfig() {
   try {
     const res = await register_anonimous()
@@ -9,7 +11,7 @@ async function generateConfig() {
     if (cookie) {
       const cookieObj = cookieToJson(cookie)
       fs.writeFileSync(
-        path.resolve(__dirname, 'anonymous_token'),
+        path.resolve(tmpPath, 'anonymous_token'),
         cookieObj.MUSIC_A,
         'utf-8',
       )
