@@ -198,6 +198,9 @@ const createRequest = (method, url, data = {}, options) => {
           } else {
             answer.body = body
           }
+          if (answer.body.code) {
+            answer.body.code = Number(answer.body.code)
+          }
 
           answer.status = Number(answer.body.code || res.status)
           if (
