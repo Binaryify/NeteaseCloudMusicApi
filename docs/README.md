@@ -4235,6 +4235,16 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 
 `qr`: `/verify/getQr`接口返回的`qr`字符串
 
+返回结果说明:
+
+qrCodeStatus:0,detailReason:0 二维码生成成功
+
+qrCodeStatus:0,detailReason:303 账号不一致
+
+qrCodeStatus:10,detailReason:0  二维码已扫描,并且手机号相同
+
+qrCodeStatus:20,detailReason:0  验证成功qrCodeStatus:21,detailReason:0 二维码已失效
+
 ## 离线访问此文档
 
 此文档同时也是 Progressive Web Apps(PWA), 加入了 serviceWorker, 可离线访问
