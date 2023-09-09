@@ -5,7 +5,7 @@ const config = require('../util/config.json')
 describe('测试获取歌曲是否正常', () => {
   it('歌曲的 url 不应该为空', (done) => {
     const qs = {
-      id: 462791935,
+      id: 464315036,
       br: 999000,
       realIP: '116.25.146.177',
     }
