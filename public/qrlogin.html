@@ -33,7 +33,7 @@
       let timer
       let timestamp = Date.now()
       const cookie = localStorage.getItem('cookie')
-      this.getLoginStatus(cookie)
+      getLoginStatus(cookie)
       const res = await axios({
         url: `/login/qr/key?timestamp=${Date.now()}`,
       })
@@ -44,7 +44,7 @@
       document.querySelector('#qrImg').src = res2.data.data.qrimg
 
       timer = setInterval(async () => {
-        const statusRes = await this.checkStatus(key)
+        const statusRes = await checkStatus(key)
         if (statusRes.code === 800) {
           alert('二维码已过期,请重新获取')
           clearInterval(timer)
@@ -53,7 +53,7 @@
           // 这一步会返回cookie
           clearInterval(timer)
           alert('授权登录成功')
-          await this.getLoginStatus(statusRes.cookie)
+          await getLoginStatus(statusRes.cookie)
           localStorage.setItem('cookie', statusRes.cookie)
         }
       }, 3000)
