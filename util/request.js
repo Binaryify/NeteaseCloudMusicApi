@@ -12,7 +12,6 @@ const anonymous_token = fs.readFileSync(
   path.resolve(tmpPath, './anonymous_token'),
   'utf-8',
 )
-console.log(anonymous_token)
 const { URLSearchParams, URL } = require('url')
 // request.debug = true // 开启可看到更详细信息
 

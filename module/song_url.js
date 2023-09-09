@@ -1,15 +1,12 @@
 // 歌曲链接
-
-const crypto = require('crypto')
-module.exports = (query, request) => {
-  // if (!('MUSIC_U' in query.cookie))
-  //   query.cookie._ntes_nuid = crypto.randomBytes(16).toString('hex')
+module.exports = async (query, request) => {
   query.cookie.os = 'pc'
+  const ids = query.id.split(',')
   const data = {
-    ids: '[' + query.id + ']',
+    ids: JSON.stringify(ids),
     br: parseInt(query.br || 999000),
   }
-  return request(
+  const res = await request(
     'POST',
     `https://interface3.music.163.com/eapi/song/enhance/player/url`,
     data,
@@ -21,4 +18,16 @@ module.exports = (query, request) => {
       url: '/api/song/enhance/player/url',
     },
   )
+  // 根据id排序
+  const result = res.body.data
+  result.sort((a, b) => {
+    return ids.indexOf(String(a.id)) - ids.indexOf(String(b.id))
+  })
+  return {
+    status: 200,
+    body: {
+      code: 200,
+      data: result,
+    },
+  }
 }
