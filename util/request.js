@@ -75,6 +75,9 @@ const createRequest = (method, url, data = {}, options) => {
         // NMTID: crypto.randomBytes(16).toString('hex'),
         _ntes_nuid: crypto.randomBytes(16).toString('hex'),
       }
+      if (url.indexOf('login') === -1) {
+        options.cookie['NMTID'] = crypto.randomBytes(16).toString('hex')
+      }
       if (!options.cookie.MUSIC_U) {
         // 游客
         if (!options.cookie.MUSIC_A) {
