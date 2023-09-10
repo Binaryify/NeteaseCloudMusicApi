@@ -68,7 +68,7 @@
         logs.write(`[index] Generated FP ${FP}`)
         logs.write('[index] Now querying, please wait...')
         fetch(
-            'http://localhost:3000/audio/match?' +
+            '/audio/match?' +
             new URLSearchParams(Object.assign({
                 audioFP: FP,
                 duration: duration
