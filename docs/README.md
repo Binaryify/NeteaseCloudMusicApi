@@ -274,6 +274,7 @@
 256. 播客声音上传
 257. 验证接口-二维码生成
 258. 验证接口-二维码检测
+259. 听歌识曲
 
 ## 安装
 
@@ -4244,6 +4245,19 @@ qrCodeStatus:0,detailReason:303 账号不一致
 qrCodeStatus:10,detailReason:0  二维码已扫描,并且手机号相同
 
 qrCodeStatus:20,detailReason:0  验证成功qrCodeStatus:21,detailReason:0 二维码已失效
+
+### 听歌识曲
+说明: 使用此接口,上传音频文件或者麦克风采集声音可识别对应歌曲信息,具体调用例子参考 `/audio_match_demo/index.html` (项目文件: `public/audio_match_demo/index.html`)
+
+**接口地址:** `/audio/match`
+
+**必选参数：**     
+
+`duration`: 音频时长,单位秒
+
+`audioFP`: 音频指纹,参考项目调用例子获取
+
+
 
 ## 离线访问此文档
 

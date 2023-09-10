@@ -244,6 +244,13 @@ export function artists(
   params: { id: string | number } & RequestBaseConfig,
 ): Promise<Response>
 
+export function audio_match(
+  params: {
+    duration: string | number
+    audioFP: string | number
+  } & RequestBaseConfig,
+): Promise<Response>
+
 export function avatar_upload(
   params: ImageUploadConfig & RequestBaseConfig,
 ): Promise<Response>
