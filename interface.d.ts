@@ -1789,3 +1789,9 @@ export function style_artist(
 ): Promise<Response>
 
 export function pl_count(params: RequestBaseConfig): Promise<Response>
+
+export function get_userids(
+  params: {
+    nicknames: string
+  } & RequestBaseConfig,
+): Promise<Response>
