@@ -276,6 +276,7 @@
 258. 验证接口-二维码检测
 259. 听歌识曲
 260. 根据nickname获取userid接口
+261. 播客声音列表
 
 ## 安装
 
@@ -4178,6 +4179,20 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 `offset`: 偏移数量 , 用于分页 , 如 :( 评论页数 -1)\*200, 其中 200 为 limit 的值
 
 `podcastName`: 播客名称
+
+### 播客声音列表
+
+说明: 可以获取播客里的声音
+
+**接口地址:** `/voicelist/list`
+
+**必选参数：**
+`voiceListId`: 播客id
+
+**可选参数：**
+`limit`: 取出歌单数量 , 默认为 200
+
+`offset`: 偏移数量 , 用于分页 , 如 :( 评论页数 -1)\*200, 其中 200 为 limit 的值
 
 ### 播客上传声音
 说明: 可以上传声音到播客,例子在 `/public/voice_upload.html` 访问地址: <a href="/voice_upload.html" target="_blank">/voice_upload.html</a>
