@@ -4189,6 +4189,14 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 **必选参数：**
 `voiceListId`: 播客id
 
+返回结果的`displayStatus`参数对应:
+
+```
+AUDITING 审核中
+ONLY_SELF_SEE 仅自己可见
+ONLINE 已发布
+```
+
 **可选参数：**
 `limit`: 取出歌单数量 , 默认为 200
 
