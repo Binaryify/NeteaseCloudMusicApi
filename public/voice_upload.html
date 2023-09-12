@@ -92,7 +92,7 @@
           this.voicelist = res.data.data.list
           this.voicelist.map(async i => {
             const res2 = await axios({
-              url: `/voicelist/list?cookie=${this.cookieToken}&voiceListId=${i.voiceListId}&limit=5`,
+              url: `/voicelist/list?voiceListId=${i.voiceListId}&limit=5`,
             })
             i.voiceListData = res2.data.data.list
             console.log(res2);

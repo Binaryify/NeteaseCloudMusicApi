@@ -4202,6 +4202,21 @@ ONLINE 已发布
 
 `offset`: 偏移数量 , 用于分页 , 如 :( 评论页数 -1)\*200, 其中 200 为 limit 的值
 
+### 播客声音详情
+
+说明: 获取播客里的声音详情
+
+**接口地址:** `/voice/detail`
+
+**必选参数：**
+`id`: 播客声音id(voiceId)
+
+返回结果的`displayStatus`参数对应:
+
+```
+同上
+```
+
 ### 播客上传声音
 说明: 可以上传声音到播客,例子在 `/public/voice_upload.html` 访问地址: <a href="/voice_upload.html" target="_blank">/voice_upload.html</a>
 
