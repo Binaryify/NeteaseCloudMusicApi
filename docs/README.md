@@ -4280,7 +4280,7 @@ qrCodeStatus:20,detailReason:0  验证成功qrCodeStatus:21,detailReason:0 二�
 
 `nicknames`: 用户昵称,多个用分号(;)隔开
 
-**接口地址:** `/user/nickname`
+**接口地址:** `/get/userids`
 
 **调用例子:** `/get/userids?nicknames=binaryify` `/get/userids?nicknames=binaryify;binaryify2`
 
