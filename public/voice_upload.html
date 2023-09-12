@@ -13,6 +13,11 @@
       <li v-for="(item,index) in voicelist" @click="currentVoiceIndex=index"
         :class="{active:currentVoiceIndex===index}">
         <img :src="item.coverUrl" style="width:50px;width:50px;" />
+        <ul>
+          <li v-for="(item2,index) in item.voiceListData">
+            {{item2.voiceName}}
+          </li>
+        </ul>
         {{item.voiceListName}}
       </li>
     </ul>
@@ -85,6 +90,13 @@
 
           console.log(res.data.data)
           this.voicelist = res.data.data.list
+          this.voicelist.map(async i => {
+            const res2 = await axios({
+              url: `/voicelist/list?cookie=${this.cookieToken}&voiceListId=${i.voiceListId}&limit=5`,
+            })
+            i.voiceListData = res2.data.data.list
+            console.log(res2);
+          })
         },
         upload(file) {
           var formData = new FormData()
