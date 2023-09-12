@@ -4189,10 +4189,33 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 **必选参数：**
 `voiceListId`: 播客id
 
+返回结果的`displayStatus`参数对应:
+
+```
+AUDITING 审核中
+ONLY_SELF_SEE 仅自己可见
+ONLINE 已发布
+```
+
 **可选参数：**
 `limit`: 取出歌单数量 , 默认为 200
 
 `offset`: 偏移数量 , 用于分页 , 如 :( 评论页数 -1)\*200, 其中 200 为 limit 的值
+
+### 播客声音详情
+
+说明: 获取播客里的声音详情
+
+**接口地址:** `/voice/detail`
+
+**必选参数：**
+`id`: 播客声音id(voiceId)
+
+返回结果的`displayStatus`参数对应:
+
+```
+同上
+```
 
 ### 播客上传声音
 说明: 可以上传声音到播客,例子在 `/public/voice_upload.html` 访问地址: <a href="/voice_upload.html" target="_blank">/voice_upload.html</a>
