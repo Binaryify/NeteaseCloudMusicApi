@@ -8,9 +8,9 @@
     "lint": "eslint \"**/*.{js,ts}\"",
     "lint-fix": "eslint --fix \"**/*.{js,ts}\"",
     "prepare": "husky install",
-    "pkgwin": "pkg . -t node14-win-x64 -C GZip -o bin/app --no-bytecode",
-    "pkglinux": "pkg . -t node14-linux-x64 -C GZip -o bin/app --no-bytecode",
-    "pkgmacos": "pkg . -t node14-macos-x64 -C GZip -o bin/app --no-bytecode"
+    "pkgwin": "pkg . -t node16-win-x64 -C GZip -o bin/app --no-bytecode",
+    "pkglinux": "pkg . -t node16-linux-x64 -C GZip -o bin/app --no-bytecode",
+    "pkgmacos": "pkg . -t node16-macos-x64 -C GZip -o bin/app --no-bytecode"
   },
   "bin": "./app.js",
   "pkg": {
@@ -41,7 +41,7 @@
   "main": "main.js",
   "types": "./interface.d.ts",
   "engines": {
-    "node": ">=12"
+    "node": ">=16"
   },
   "lint-staged": {
     "*.js": [
@@ -64,6 +64,7 @@
   ],
   "dependencies": {
     "axios": "^1.2.2",
+    "bigint-mod-arith": "^3.3.1",
     "express": "^4.17.1",
     "express-fileupload": "^1.1.9",
     "md5": "^2.3.0",
