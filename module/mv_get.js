@@ -1,4 +1,4 @@
-// 歌手简要百科信息
+// mv简要百科信息
 const crypto = require('crypto')
 module.exports = (query, request) => {
   const data = {

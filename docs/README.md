@@ -4315,7 +4315,7 @@ qrCodeStatus:20,detailReason:0  验证成功qrCodeStatus:21,detailReason:0 二�
 **调用例子:** `/get/userids?nicknames=binaryify` `/get/userids?nicknames=binaryify;binaryify2`
 
 ### 专辑简要百科信息
-说明: 使用此接口,传入专辑id,可获取对应的专辑简要百科信息
+说明: 登录后调用此接口,使用此接口,传入专辑id,可获取对应的专辑简要百科信息
 
 **必选参数：**  
 
@@ -4326,7 +4326,7 @@ qrCodeStatus:20,detailReason:0  验证成功qrCodeStatus:21,detailReason:0 二�
 **调用例子:** `/album/get?id=168223858`
 
 ### 歌曲简要百科信息
-说明: 使用此接口,传入歌曲id,可获取对应的歌曲简要百科信息
+说明: 登录后调用此接口,使用此接口,传入歌曲id,可获取对应的歌曲简要百科信息
 
 **必选参数：**  
 
@@ -4337,7 +4337,7 @@ qrCodeStatus:20,detailReason:0  验证成功qrCodeStatus:21,detailReason:0 二�
 **调用例子:** `/song/get?id=2058263032`
 
 ### 歌手简要百科信息
-说明: 使用此接口,传入歌手id,可获取对应的歌手简要百科信息
+说明: 登录后调用此接口,使用此接口,传入歌手id,可获取对应的歌手简要百科信息
 
 **必选参数：**  
 
@@ -4348,7 +4348,7 @@ qrCodeStatus:20,detailReason:0  验证成功qrCodeStatus:21,detailReason:0 二�
 **调用例子:** `/artist/get?id=15396`
 
 ### mv简要百科信息
-说明: 使用此接口,传入mv id,可获取对应的mv简要百科信息
+说明: 登录后调用此接口,使用此接口,传入mv id,可获取对应的mv简要百科信息
 
 **必选参数：**  
 
@@ -4359,7 +4359,7 @@ qrCodeStatus:20,detailReason:0  验证成功qrCodeStatus:21,detailReason:0 二�
 **调用例子:** `/mv/get?id=14572641`
 
 ### 搜索歌手
-说明: 使用此接口,传入歌手名关键字或者歌手id,可获取搜索到的歌手信息
+说明: 登录后调用此接口,使用此接口,传入歌手名关键字或者歌手id,可获取搜索到的歌手信息
 
 **必选参数：**  
 
@@ -4374,7 +4374,7 @@ qrCodeStatus:20,detailReason:0  验证成功qrCodeStatus:21,detailReason:0 二�
 **调用例子:** `/artist/search?keyword=sasakure`
 
 ### 用户贡献内容
-说明: 使用此接口,可获取当前登录用户贡献内容
+说明: 登录后调用此接口,使用此接口,可获取当前登录用户贡献内容
 
 **必选参数：**  
 
@@ -4398,7 +4398,7 @@ qrCodeStatus:20,detailReason:0  验证成功qrCodeStatus:21,detailReason:0 二�
 **调用例子:** `/ugc/detail`
 
 ### 用户贡献条目、积分、云贝数量
-说明: 使用此接口,可获取当前登录用户贡献条目、积分、云贝数量
+说明: 登录后调用此接口,使用此接口,可获取当前登录用户贡献条目、积分、云贝数量
 
 **接口地址:** `/ugc/user/devote`
 
