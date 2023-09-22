@@ -1,4 +1,4 @@
-// 用户贡献条目数量及积分、云贝数量
+// 用户贡献条目、积分、云贝数量
 const crypto = require('crypto')
 module.exports = (query, request) => {
   const data = {}
