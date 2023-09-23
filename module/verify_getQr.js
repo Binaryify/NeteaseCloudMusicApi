@@ -1,3 +1,4 @@
+const QRCode = require('qrcode')
 module.exports = async (query, request) => {
   const data = {
     verifyConfigId: query.vid,
@@ -36,6 +37,7 @@ module.exports = async (query, request) => {
       data: {
         qrCode: res.body.data.qrCode,
         qrurl: result,
+        qrimg: await QRCode.toDataURL(result),
       },
     },
   }
