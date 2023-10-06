@@ -8,6 +8,7 @@ const cache = require('./util/apicache').middleware
 const { cookieToJson } = require('./util/index')
 const fileUpload = require('express-fileupload')
 const decode = require('safe-decode-uri-component')
+const axios = require('axios')
 
 /**
  * The version check result.
@@ -195,6 +196,31 @@ async function consturctServer(moduleDefs) {
     'fm_trash.js': '/fm_trash',
     'personal_fm.js': '/personal_fm',
   }
+
+  app.get('/chat', async (req, res) => {
+    try {
+      console.log('req=>>', req)
+      const response = await axios.post(
+        'https://api.chatanywhere.com.cn/v1/chat/completions',
+        {
+          model: 'gpt-3.5-turbo',
+          messages: [{ role: 'user', content: `${req.query.kw}` }],
+          temperature: 0.7,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization:
+              'Bearer sk-ADjDpi2dQxYS186eDyx0aiIRcpty65qWDvjaKqnmgd67hbsX',
+          },
+        },
+      )
+      res.json(response.data)
+    } catch (error) {
+      console.error(error)
+      res.status(500).send('Internal Server Error')
+    }
+  })
 
   /**
    * Load every modules in this directory
