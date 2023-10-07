@@ -26,4 +26,4 @@
 
 >如果不是提建议,提 issues 如果不照着模版来将不会优先处理或直接关闭
 
->460 cheating 的问题把 `utils/request.js` 里面的 `headers['X-Real-IP']` 的注释取消掉就好
+>460 cheating 的问题把 `util/request.js` 里面的 `headers['X-Real-IP']` 的注释取消掉就好
