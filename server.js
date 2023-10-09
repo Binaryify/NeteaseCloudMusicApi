@@ -203,7 +203,7 @@ async function consturctServer(moduleDefs) {
       const response = await axios.post(
         'https://api.chatanywhere.com.cn/v1/chat/completions',
         {
-          model: 'gpt-3.5-turbo',
+          model: 'gpt-3.5-turbo-0613',
           messages: [{ role: 'user', content: `${req.query.kw}` }],
           temperature: 0.7,
         },
