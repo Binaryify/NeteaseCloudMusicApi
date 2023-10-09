@@ -205,11 +205,29 @@ async function consturctServer(moduleDefs) {
         {
           model: 'gpt-3.5-turbo-0613',
           messages: [{ role: 'user', content: `${req.query.kw}` }],
-          temperature: 0.7,
         },
         {
           headers: {
             'Content-Type': 'application/json',
+            Authorization:
+              'Bearer sk-ADjDpi2dQxYS186eDyx0aiIRcpty65qWDvjaKqnmgd67hbsX',
+          },
+        },
+      )
+      res.json(response.data)
+    } catch (error) {
+      console.error(error)
+      res.status(500).send('Internal Server Error')
+    }
+  })
+  app.get('/models', async (req, res) => {
+    try {
+      console.log('req=>>', req)
+      const response = await axios.post(
+        'https://api.chatanywhere.com.cn/v1/models',
+        {},
+        {
+          headers: {
             Authorization:
               'Bearer sk-ADjDpi2dQxYS186eDyx0aiIRcpty65qWDvjaKqnmgd67hbsX',
           },
