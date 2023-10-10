@@ -199,11 +199,10 @@ async function consturctServer(moduleDefs) {
 
   app.get('/chat', async (req, res) => {
     try {
-      console.log('req=>>', req)
       const response = await axios.post(
         'https://api.chatanywhere.com.cn/v1/chat/completions',
         {
-          model: 'gpt-3.5-turbo-0613',
+          model: req.query.model || 'gpt-3.5-turbo-0613',
           messages: [{ role: 'user', content: `${req.query.kw}` }],
         },
         {
@@ -222,7 +221,6 @@ async function consturctServer(moduleDefs) {
   })
   app.get('/models', async (req, res) => {
     try {
-      console.log('req=>>', req)
       const response = await axios.post(
         'https://api.chatanywhere.com.cn/v1/models',
         {},
