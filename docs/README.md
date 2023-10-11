@@ -586,7 +586,11 @@ v3.30.0 后支持手动传入 cookie,登录接口返回内容新增 `cookie` 字
 
 **调用例子 :** `/login/qr/check?key=xxx`
 
-调用可参考项目文件例子`/public/qrlogin.html` (访问地址:http://localhost:3000/qrlogin.html)
+调用可参考项目文件例子
+
+`/public/qrlogin.html` (访问地址:http://localhost:3000/qrlogin.html)
+
+`/public/qrlogin-nocookie.html` (访问地址:http://localhost:3000/qrlogin-nocookie.html)
 
 
 #### 3. 游客登录
