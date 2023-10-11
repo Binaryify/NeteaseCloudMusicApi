@@ -1795,3 +1795,15 @@ export function get_userids(
     nicknames: string
   } & RequestBaseConfig,
 ): Promise<Response>
+
+export function voicelist_list_search(
+  params: {
+    limit?: string | number
+    offset?: string | number
+    name?: string
+    displayStatus?: string
+    type?: string
+    voiceFeeType?: string | number
+    radioId?: string
+  } & RequestBaseConfig,
+): Promise<Response>
