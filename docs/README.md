@@ -2479,6 +2479,30 @@ pc: 云盘歌曲信息，如果不存在该字段，则为非云盘歌曲
 返回数据如下图 :
 ![每日推荐歌曲](https://raw.githubusercontent.com/Binaryify/NeteaseCloudMusicApi/master/static/%E6%8E%A8%E8%8D%90%E6%AD%8C%E6%9B%B2.png)
 
+### 每日推荐歌曲-不感兴趣
+
+说明 : 日推歌曲标记为不感兴趣( 同时会返回一个新推荐歌曲, 需要登录 )
+
+**必选参数 :** `id`: 歌曲 id
+
+**接口地址 :** `/recommend/songs/dislike`
+
+**调用例子 :** `/recommend/songs/dislike?id=168091`
+
+返回数据 :
+```json
+{
+  "data":{
+    "name":"破碎太阳之心",
+    "id":2009592201,
+    "position":0,
+    "alias":[],
+    ...
+  },
+  "code":200
+}
+```
+
 ### 获取历史日推可用日期列表
 
 说明 : 调用此接口 , 可获得历史日推可用日期列表
