@@ -1156,6 +1156,9 @@ export const enum SoundQualityType {
   exhigh = 'exhigh',
   lossless = 'lossless',
   hires = 'hires',
+  jyeffect = 'jyeffect',
+  jymaster = 'jymaster',
+  sky = 'sky',
 }
 
 export function song_url_v1(
