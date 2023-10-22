@@ -1,7 +1,7 @@
 // 用户详情
 
-module.exports = (query, request) => {
-  return request(
+module.exports = async (query, request) => {
+  const res = await request(
     'POST',
     `https://music.163.com/weapi/v1/user/detail/${query.uid}`,
     {},
@@ -12,4 +12,9 @@ module.exports = (query, request) => {
       realIP: query.realIP,
     },
   )
+  const result = JSON.stringify(res).replace(
+    /avatarImgId_str/g,
+    'avatarImgIdStr',
+  )
+  return JSON.parse(result)
 }

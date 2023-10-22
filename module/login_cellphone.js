@@ -32,7 +32,12 @@ module.exports = async (query, request) => {
     result = {
       status: 200,
       body: {
-        ...result.body,
+        ...JSON.parse(
+          JSON.stringify(result.body).replace(
+            /avatarImgId_str/g,
+            'avatarImgIdStr',
+          ),
+        ),
         cookie: result.cookie.join(';'),
       },
       cookie: result.cookie,
