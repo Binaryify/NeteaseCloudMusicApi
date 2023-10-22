@@ -190,10 +190,10 @@
   resolved "https://registry.npmjs.org/@types/mocha/-/mocha-9.1.0.tgz"
   integrity sha512-QCWHkbMv4Y5U9oW10Uxbr45qMMSzl4OzijsozynUAgx3kEHUdXB00udx2dWDQ7f2TU2a2uuiFaRZjCe3unPpeg==
 
-"@types/node@*", "@types/node@16.11.19":
-  version "16.11.19"
-  resolved "https://registry.npmjs.org/@types/node/-/node-16.11.19.tgz"
-  integrity sha512-BPAcfDPoHlRQNKktbsbnpACGdypPFBuX4xQlsWDE7B8XXcfII+SpOLay3/qZmCLb39kV5S1RTYwXdkx2lwLYng==
+"@types/node@*", "@types/node@18.18.6":
+  version "18.18.6"
+  resolved "https://registry.npmjs.org/@types/node/-/node-18.18.6.tgz"
+  integrity sha512-wf3Vz+jCmOQ2HV1YUJuCWdL64adYxumkrxtc+H1VUQlnQI04+5HtH+qZCOE21lBE7gIrt+CwX2Wv8Acrw5Ak6w==
 
 "@types/qs@*":
   version "6.9.7"
