@@ -9,7 +9,7 @@ WORKDIR /app
 
 COPY --chown=node:node . ./
 
-RUN yarn
+RUN yarn --network-timeout=100000
 
 EXPOSE 3000
 
