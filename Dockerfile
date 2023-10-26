@@ -9,7 +9,7 @@ WORKDIR /app
 
 COPY --chown=node:node . ./
 
-RUN npm i --omit=dev --ignore-scripts
+RUN yarn
 
 EXPOSE 3000
 
