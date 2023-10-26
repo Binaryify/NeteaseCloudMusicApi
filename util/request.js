@@ -82,6 +82,8 @@ const createRequest = (method, url, data = {}, options) => {
         // 游客
         if (!options.cookie.MUSIC_A) {
           options.cookie.MUSIC_A = anonymous_token
+          options.cookie.os = options.cookie.os || 'ios'
+          options.cookie.appver = options.cookie.appver || '8.10.90'
         }
       }
       headers['Cookie'] = Object.keys(options.cookie)

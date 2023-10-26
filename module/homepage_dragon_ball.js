@@ -5,7 +5,7 @@
 module.exports = (query, request) => {
   const data = {}
   query.cookie.os = 'ios'
-  query.cookie.appver = '8.7.01'
+  query.cookie.appver = '8.10.90'
   return request(
     'POST',
     `https://music.163.com/eapi/homepage/dragon/ball/static`,
