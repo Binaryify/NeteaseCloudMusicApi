@@ -18,10 +18,8 @@ jobs:
             id: get_version
             if: startsWith(github.ref, 'refs/tags/') && startsWith(github.repository, 'Binaryify/NeteaseCloudMusicApi')
             run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
-          - name: Set Swap Space
-            uses: pierotofy/set-swap-space@master
-            with:
-              swap-size-gb: 10
+          - name: Set up Docker Buildx
+            uses: docker/setup-buildx-action@v2
           - name: Build and publish image
             uses: elgohr/Publish-Docker-Github-Action@v5
             if: startsWith(github.ref, 'refs/tags/') && startsWith(github.repository, 'Binaryify/NeteaseCloudMusicApi')
