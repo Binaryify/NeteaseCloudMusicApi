@@ -1085,7 +1085,7 @@ type SongDetail = {
   m: SongDetailQuality | null
   l: SongDetailQuality | null
   sq: SongDetailQuality | null
-  hr: unknown
+  hr: SongDetailQuality | null
   a: unknown | null
   cd: string
   no: number
