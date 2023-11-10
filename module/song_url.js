@@ -1,7 +1,7 @@
 // 歌曲链接
 module.exports = async (query, request) => {
   query.cookie.os = 'pc'
-  const ids = query.id.split(',')
+  const ids = String(query.id).split(',')
   const data = {
     ids: JSON.stringify(ids),
     br: parseInt(query.br || 999000),
