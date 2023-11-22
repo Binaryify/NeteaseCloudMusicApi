@@ -4310,6 +4310,16 @@ ONLINE 已发布
 
 `radioId`: 电台id, 可以通过 https://music.163.com/#/djradio?id=996517258 访问的djradioId, 不是voiceListId
 
+### 播客列表详情
+
+说明: 可以获取播客封面、分类、名称、简介等
+
+**接口地址:** `/voicelist/detail`
+
+**必选参数：** 
+
+`id`: 播客id，即voiceListId
+
 ### 播客上传声音
 说明: 可以上传声音到播客,例子在 `/public/voice_upload.html` 访问地址: <a href="/voice_upload.html" target="_blank">/voice_upload.html</a>
 
