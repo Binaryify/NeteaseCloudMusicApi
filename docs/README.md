@@ -286,6 +286,7 @@
 268. 用户贡献条目、积分、云贝数量
 269. 年度听歌报告
 270. 播客声音搜索
+271. 播客声音排序
 
 ## 安装
 
@@ -4294,6 +4295,20 @@ ONLINE 已发布
 ```
 同上
 ```
+
+### 播客声音排序
+
+说明: 调整声音在列表中的顺序
+
+**接口地址:** `/voicelist/trans`
+
+**必选参数：** 
+
+`position`: 位置, 最小为1, 最大为歌曲数量, 超过最大则为最底, 小于1报错
+
+`programId`: 播客声音id, 即voiceId
+
+`radioId`: 电台id, 可以通过 https://music.163.com/#/djradio?id=996517258 访问的djradioId, 不是voiceListId
 
 ### 播客上传声音
 说明: 可以上传声音到播客,例子在 `/public/voice_upload.html` 访问地址: <a href="/voice_upload.html" target="_blank">/voice_upload.html</a>
