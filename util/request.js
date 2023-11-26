@@ -201,7 +201,7 @@ const createRequest = (method, url, data = {}, options) => {
         )
         try {
           if (options.crypto === 'eapi') {
-            answer.body = JSON.parse(encrypt.decrypt(body).toString())
+            answer.body = JSON.parse(encrypt.decrypt(body))
           } else {
             answer.body = body
           }
