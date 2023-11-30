@@ -14,7 +14,6 @@ module.exports = (query, request) => {
   if (data.level == 'sky') {
     data.immerseType = 'c51'
   }
-  console.log(data)
   return request(
     'POST',
     `https://interface.music.163.com/eapi/song/enhance/player/url/v1`,
