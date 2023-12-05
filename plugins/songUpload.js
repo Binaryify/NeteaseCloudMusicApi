@@ -30,7 +30,7 @@ module.exports = async (query, request) => {
   try {
     const lbs = (await axios({
       method: 'get',
-      url: 'https://wanproxy.127.net/lbs?version=1.0&bucketname=jd-musicrep-privatecloud-audio-public',
+      url: `https://wanproxy.127.net/lbs?version=1.0&bucketname=${bucket}`,
     })).data;
     await axios({
       method: 'post',
