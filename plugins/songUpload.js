@@ -8,12 +8,13 @@ module.exports = async (query, request) => {
     .replace('.' + ext, '')
     .replace(/\s/g, '')
     .replace(/\./g, '_')
+  const bucket = 'jd-musicrep-privatecloud-audio-public'
   //   获取key和token
   const tokenRes = await request(
     'POST',
     `https://music.163.com/weapi/nos/token/alloc`,
     {
-      bucket: 'jd-musicrep-privatecloud-audio-public',
+      bucket: bucket,
       ext: ext,
       filename: filename,
       local: false,
@@ -27,9 +28,13 @@ module.exports = async (query, request) => {
   // 上传
   const objectKey = tokenRes.body.result.objectKey.replace('/', '%2F')
   try {
+    const lbs = (await axios({
+      method: 'get',
+      url: `https://wanproxy.127.net/lbs?version=1.0&bucketname=${bucket}`,
+    })).data;
     await axios({
       method: 'post',
-      url: `http://45.127.129.8/jd-musicrep-privatecloud-audio-public/${objectKey}?offset=0&complete=true&version=1.0`,
+      url: `http://${lbs.upload[0]}/${bucket}/${objectKey}?offset=0&complete=true&version=1.0`,
       headers: {
         'x-nos-token': tokenRes.body.result.token,
         'Content-MD5': query.songFile.md5,
