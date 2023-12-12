@@ -28,10 +28,12 @@ module.exports = async (query, request) => {
   // 上传
   const objectKey = tokenRes.body.result.objectKey.replace('/', '%2F')
   try {
-    const lbs = (await axios({
-      method: 'get',
-      url: `https://wanproxy.127.net/lbs?version=1.0&bucketname=${bucket}`,
-    })).data;
+    const lbs = (
+      await axios({
+        method: 'get',
+        url: `https://wanproxy.127.net/lbs?version=1.0&bucketname=${bucket}`,
+      })
+    ).data
     await axios({
       method: 'post',
       url: `http://${lbs.upload[0]}/${bucket}/${objectKey}?offset=0&complete=true&version=1.0`,
