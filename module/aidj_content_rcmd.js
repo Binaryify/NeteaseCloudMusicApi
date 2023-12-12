@@ -21,7 +21,7 @@ module.exports = (query, request) => {
   const data = {
     extInfo: JSON.stringify(extInfo),
   }
-  console.log(data)
+  // console.log(data)
   return request(
     'POST',
     `https://interface3.music.163.com/eapi/aidj/content/rcmd/info`,

@@ -83,7 +83,7 @@ const createRequest = (method, url, data = {}, options) => {
         if (!options.cookie.MUSIC_A) {
           options.cookie.MUSIC_A = anonymous_token
           options.cookie.os = options.cookie.os || 'ios'
-          options.cookie.appver = options.cookie.appver || '8.10.90'
+          options.cookie.appver = options.cookie.appver || '8.20.21'
         }
       }
       headers['Cookie'] = Object.keys(options.cookie)
@@ -120,7 +120,7 @@ const createRequest = (method, url, data = {}, options) => {
       const cookie = options.cookie || {}
       const csrfToken = cookie['__csrf'] || ''
       const header = {
-        osver: cookie.osver, //系统版本
+        osver: cookie.osver || '17,1,2', //系统版本
         deviceId: cookie.deviceId, //encrypt.base64.encode(imei + '\t02:00:00:00:00:00\t5106025eb79a5247\t70ffbaac7')
         appver: cookie.appver || '8.9.70', // app版本
         versioncode: cookie.versioncode || '140', //版本号
@@ -128,7 +128,7 @@ const createRequest = (method, url, data = {}, options) => {
         buildver: cookie.buildver || Date.now().toString().substr(0, 10),
         resolution: cookie.resolution || '1920x1080', //设备分辨率
         __csrf: csrfToken,
-        os: cookie.os || 'android',
+        os: cookie.os || 'ios',
         channel: cookie.channel,
         requestId: `${Date.now()}_${Math.floor(Math.random() * 1000)
           .toString()

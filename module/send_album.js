@@ -2,7 +2,7 @@
 
 module.exports = (query, request) => {
   query.cookie.os = 'ios'
-  query.cookie.appver = '8.10.90'
+  query.cookie.appver = '8.20.21'
   const data = {
     id: query.id,
     msg: query.msg || '',
