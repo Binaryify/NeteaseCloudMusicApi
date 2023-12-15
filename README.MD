@@ -422,10 +422,12 @@ $ npm test
 
 ## SDK
 
-| 语言 |                    作者                     |                             地址                             |  类型  |
-| :--: | :-----------------------------------------: | :----------------------------------------------------------: | :----: |
-| Java |    [JackuXL](https://github.com/JackuXL)    | [https://github.com/JackuXL/NeteaseCloudMusicApi-SDK](https://github.com/JackuXL/NeteaseCloudMusicApi-SDK) | 第三方 |
-| Java | [1015770492](https://github.com/1015770492) |       https://github.com/1015770492/yumbo-music-utils        | 第三方 |
+| 语言   |                    作者                     |                             地址                             |  类型  |
+| :--:   | :-----------------------------------------: | :----------------------------------------------------------: | :----: |
+| Java   |    [JackuXL](https://github.com/JackuXL)    | [https://github.com/JackuXL/NeteaseCloudMusicApi-SDK](https://github.com/JackuXL/NeteaseCloudMusicApi-SDK) | 第三方 |
+| Java   | [1015770492](https://github.com/1015770492) |       https://github.com/1015770492/yumbo-music-utils        | 第三方 |
+| Python |    [盧瞳](https://github.com/2061360308)    |  [NeteaseCloudMusic_PythonSDK](https://github.com/2061360308/NeteaseCloudMusic_PythonSDK)  | 第三方 |
+
 
 ## 贡献者
 
