@@ -84,7 +84,7 @@
     "@types/node": "16.11.19",
     "@typescript-eslint/eslint-plugin": "5.0.0",
     "@typescript-eslint/parser": "5.0.0",
-    "eslint": "8.7.0",
+    "eslint": "8.56.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-html": "7.1.0",
     "eslint-plugin-prettier": "4.0.0",
