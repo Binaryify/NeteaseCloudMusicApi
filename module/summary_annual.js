@@ -1,5 +1,4 @@
-// 年度听歌报告2017-2022
-const crypto = require('crypto')
+// 年度听歌报告2017-2023
 module.exports = (query, request) => {
   const data = {}
   const key =
