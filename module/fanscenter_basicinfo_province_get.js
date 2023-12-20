@@ -1,5 +1,4 @@
 // 粉丝省份比例
-const crypto = require('crypto')
 module.exports = (query, request) => {
   const data = {}
   return request(

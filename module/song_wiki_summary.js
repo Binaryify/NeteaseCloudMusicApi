@@ -1,5 +1,4 @@
 // 音乐百科基础信息
-const crypto = require('crypto')
 module.exports = (query, request) => {
   const data = {
     songId: query.id,

@@ -1,5 +1,4 @@
 // 获取达人达标信息
-const crypto = require('crypto')
 module.exports = (query, request) => {
   const data = {}
   return request(

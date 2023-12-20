@@ -1,5 +1,4 @@
 // 乐谱列表
-const crypto = require('crypto')
 module.exports = (query, request) => {
   const data = {
     id: query.id,

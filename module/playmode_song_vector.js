@@ -1,5 +1,4 @@
 // 云随机播放
-const crypto = require('crypto')
 module.exports = (query, request) => {
   const data = {
     ids: query.ids,

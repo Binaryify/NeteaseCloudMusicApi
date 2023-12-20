@@ -1,6 +1,5 @@
 // 搜索歌手
 // 可传关键字或者歌手id
-const crypto = require('crypto')
 module.exports = (query, request) => {
   const data = {
     keyword: query.keyword,

@@ -1,5 +1,4 @@
 // 粉丝来源
-const crypto = require('crypto')
 module.exports = (query, request) => {
   const data = {
     startTime: query.startTime || Date.now() - 7 * 24 * 3600 * 1000,
