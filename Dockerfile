@@ -9,7 +9,7 @@ WORKDIR /app
 
 COPY --chown=node:node . ./
 
-RUN yarn --network-timeout=100000
+RUN npm i --omit=dev --ignore-scripts
 
 EXPOSE 3000
 

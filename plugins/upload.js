@@ -1,4 +1,4 @@
-const { default: axios } = require('axios')
+const axios = require('axios')
 module.exports = async (query, request) => {
   const data = {
     bucket: 'yyimgs',

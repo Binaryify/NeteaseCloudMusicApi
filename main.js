@@ -1,13 +1,8 @@
 const fs = require('fs')
 const path = require('path')
-const tmpPath = require('os').tmpdir()
 const { cookieToJson } = require('./util')
+const request = require('./util/request')
 
-if (!fs.existsSync(path.resolve(tmpPath, 'anonymous_token'))) {
-  fs.writeFileSync(path.resolve(tmpPath, 'anonymous_token'), '', 'utf-8')
-}
-
-let firstRun = true
 /** @type {Record<string, any>} */
 let obj = {}
 fs.readdirSync(path.join(__dirname, 'module'))
@@ -25,17 +20,7 @@ fs.readdirSync(path.join(__dirname, 'module'))
           ...data,
           cookie: data.cookie ? data.cookie : {},
         },
-        async (...args) => {
-          if (firstRun) {
-            firstRun = false
-            const generateConfig = require('./generateConfig')
-            await generateConfig()
-          }
-          // 待优化
-          const request = require('./util/request')
-
-          return request(...args)
-        },
+        request,
       )
     }
   })

@@ -25,9 +25,9 @@ export interface APIBaseResponse {
   [index: string]: unknown
 }
 
-export interface Response<Body = APIBaseResponse> {
+export interface Response {
   status: number // The Http Response Code
-  body: Body // API Response body
+  body: APIBaseResponse // API Response body
   cookie: string[]
 }
 
@@ -242,13 +242,6 @@ export function artist_top_song(
 
 export function artists(
   params: { id: string | number } & RequestBaseConfig,
-): Promise<Response>
-
-export function audio_match(
-  params: {
-    duration: string | number
-    audioFP: string | number
-  } & RequestBaseConfig,
 ): Promise<Response>
 
 export function avatar_upload(
@@ -719,10 +712,6 @@ export function lyric(
   params: { id: string | number } & RequestBaseConfig,
 ): Promise<Response>
 
-export function lyric_new(
-  params: { id: string | number } & RequestBaseConfig,
-): Promise<Response>
-
 export function msg_comments(
   params: {
     uid: string | number
@@ -1057,91 +1046,7 @@ export function simi_user(
 
 export function song_detail(
   params: { ids: string } & RequestBaseConfig,
-): Promise<
-  Response<{
-    songs: SongDetail[]
-    privileges: unknown[]
-    code: number
-  }>
->
-
-type SongDetail = {
-  name: string
-  id: number
-  pst: number
-  t: number
-  ar: SongDetailArtist[]
-  alia: string[]
-  pop: number
-  st: number
-  rt: string | null
-  fee: SongDetailFee
-  v: number
-  crbt: string | null
-  cf: string
-  al: SongDetailAlbum
-  dt: number
-  h: SongDetailQuality | null
-  m: SongDetailQuality | null
-  l: SongDetailQuality | null
-  sq: SongDetailQuality | null
-  hr: SongDetailQuality | null
-  a: unknown | null
-  cd: string
-  no: number
-  rtUrl: unknown | null
-  ftype: number
-  rtUrls: unknown[]
-  djId: number
-  copyright: SongDetailCopyright
-  s_id: number
-  mark: number
-  originCoverType: SongDetailOriginCoverType
-  originSongSimpleData: unknown | null
-  tagPicList: unknown | null
-  resourceState: boolean
-  version: number
-  songJumpInfo: unknown | null
-  entertainmentTags: unknown | null
-  awardTags: unknown | null
-  single: number
-  noCopyrightRcmd: unknown | null
-  mv: number
-  rtype: number
-  rurl: unknown | null
-  mst: number
-  cp: number
-  publishTime: number
-}
-
-type SongDetailArtist = {
-  id: number
-  name: string
-  tns: unknown[]
-  alias: unknown[]
-}
-
-type SongDetailFee = 0 | 1 | 4 | 8
-
-type SongDetailAlbum = {
-  id: number
-  name: string
-  picUrl: string
-  tns: unknown[]
-  pic: number
-}
-
-type SongDetailQuality = {
-  br: number
-  fid: number
-  size: number
-  vd: number
-  sr: number
-}
-
-type SongDetailCopyright = 0 | 1 | 2
-
-type SongDetailOriginCoverType = 0 | 1 | 2
+): Promise<Response>
 
 export function song_order_update(
   params: { pid: string | number; ids: string } & RequestBaseConfig,
@@ -1156,9 +1061,6 @@ export const enum SoundQualityType {
   exhigh = 'exhigh',
   lossless = 'lossless',
   hires = 'hires',
-  jyeffect = 'jyeffect',
-  jymaster = 'jymaster',
-  sky = 'sky',
 }
 
 export function song_url_v1(
@@ -1405,11 +1307,17 @@ export function yunbei_info(params: RequestBaseConfig): Promise<Response>
 export function yunbei_sign(params: RequestBaseConfig): Promise<Response>
 
 export function yunbei_receipt(
-  params: MultiPageConfig & RequestBaseConfig,
+  params: {
+    limit?: number | string
+    offset?: number | string
+  } & RequestBaseConfig,
 ): Promise<Response>
 
 export function yunbei_expense(
-  params: MultiPageConfig & RequestBaseConfig,
+  params: {
+    limit?: number | string
+    offset?: number | string
+  } & RequestBaseConfig,
 ): Promise<Response>
 
 export function yunbei_tasks(params: RequestBaseConfig): Promise<Response>
@@ -1445,11 +1353,17 @@ export function comment_hug_list(
 ): Promise<Response>
 
 export function topic_sublist(
-  params: MultiPageConfig & RequestBaseConfig,
+  params: {
+    limit?: number | string
+    offset?: number | string
+  } & RequestBaseConfig,
 ): Promise<Response>
 
 export function topic_sublist(
-  params: MultiPageConfig & RequestBaseConfig,
+  params: {
+    limit?: number | string
+    offset?: number | string
+  } & RequestBaseConfig,
 ): Promise<Response>
 
 export function artist_new_mv(
@@ -1587,7 +1501,11 @@ export function vip_growthpoint_get(
 ): Promise<Response>
 
 export function artist_fans(
-  params: { id: number | string } & MultiPageConfig & RequestBaseConfig,
+  params: {
+    id: number | string
+    limit?: number | string
+    offset?: number | string
+  } & RequestBaseConfig,
 ): Promise<Response>
 
 export function digitalAlbum_detail(
@@ -1624,17 +1542,7 @@ export function musician_cloudbean_obtain(
   } & RequestBaseConfig,
 ): Promise<Response>
 
-export function vip_info(
-  params: {
-    uid?: number | string
-  } & RequestBaseConfig,
-): Promise<Response>
-
-export function vip_info_v2(
-  params: {
-    uid?: number | string
-  } & RequestBaseConfig,
-): Promise<Response>
+export function vip_info(params: RequestBaseConfig): Promise<Response>
 
 export function musician_sign(params: RequestBaseConfig): Promise<Response>
 
@@ -1649,8 +1557,7 @@ export function playlist_track_all(
   params: {
     id: number | string
     s?: number | string
-  } & MultiPageConfig &
-    RequestBaseConfig,
+  } & RequestBaseConfig,
 ): Promise<Response>
 
 export function artist_video(
@@ -1788,25 +1695,5 @@ export function style_artist(
     tagId: number | string
     size?: number | string
     cursor?: number | string
-  } & RequestBaseConfig,
-): Promise<Response>
-
-export function pl_count(params: RequestBaseConfig): Promise<Response>
-
-export function get_userids(
-  params: {
-    nicknames: string
-  } & RequestBaseConfig,
-): Promise<Response>
-
-export function voicelist_list_search(
-  params: {
-    limit?: string | number
-    offset?: string | number
-    name?: string
-    displayStatus?: string
-    type?: string
-    voiceFeeType?: string | number
-    radioId?: string
   } & RequestBaseConfig,
 ): Promise<Response>

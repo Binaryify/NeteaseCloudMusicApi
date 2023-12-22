@@ -27,7 +27,7 @@
     async function login() {
       const res = await axios({
         url: `/login/cellphone?phone=${phone}&password=${encodeURIComponent(password)}`,
-        withCredentials: true, //跨域的话必须设置
+        withCredentials: true, //关键
       })
       cookieToken = res.data.cookie
     }
@@ -50,7 +50,7 @@
       formData.append('songFile', file)
       axios({
         method: 'post',
-        url: `/cloud?time=${Date.now()}&cookie=${cookieToken}`,
+        url: `http://localhost:3000/cloud?time=${Date.now()}&cookie=${cookieToken}`,
         headers: {
           'Content-Type': 'multipart/form-data',
         },

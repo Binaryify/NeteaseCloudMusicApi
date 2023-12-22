@@ -1,10 +1,8 @@
 // 编辑用户信息
 
 module.exports = (query, request) => {
-  query.cookie.os = 'ios'
-  query.cookie.appver = '8.20.21'
   const data = {
-    // avatarImgId: '0',
+    avatarImgId: '0',
     birthday: query.birthday,
     city: query.city,
     gender: query.gender,
@@ -14,7 +12,7 @@ module.exports = (query, request) => {
   }
   return request(
     'POST',
-    `https://music.163.com/api/user/profile/update`,
+    `https://music.163.com/weapi/user/profile/update`,
     data,
     {
       crypto: 'weapi',
