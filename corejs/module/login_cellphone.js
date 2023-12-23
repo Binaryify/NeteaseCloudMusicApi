@@ -1,7 +1,7 @@
 // 手机登录
 
 // import CryptoJS from 'crypto-js'
-const CryptoJS = require("crypto-js");
+const CryptoJS = require('crypto-js')
 
 module.exports = (query, request) => {
   query.cookie.os = 'ios'
@@ -17,16 +17,11 @@ module.exports = (query, request) => {
         CryptoJS.MD5(query.password).toString(),
     rememberLogin: 'true',
   }
-  return request(
-    'POST',
-    `https://music.163.com/weapi/login/cellphone`,
-    data,
-    {
-      crypto: 'weapi',
-      ua: 'pc',
-      cookie: query.cookie,
-      proxy: query.proxy,
-      realIP: query.realIP,
-    },
-  )
+  return request('POST', `https://music.163.com/weapi/login/cellphone`, data, {
+    crypto: 'weapi',
+    ua: 'pc',
+    cookie: query.cookie,
+    proxy: query.proxy,
+    realIP: query.realIP,
+  })
 }

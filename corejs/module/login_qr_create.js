@@ -1,5 +1,5 @@
 // Todo
-const QRCode = ""
+const QRCode = ''
 
 module.exports = (query, request) => {
   return new Promise(async (resolve) => {

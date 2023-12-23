@@ -1,9 +1,9 @@
 module.exports = (response) => {
-  response = JSON.parse(response);
+  response = JSON.parse(response)
   if (response.body.code === 200) {
-    let cookie = response.cookie;
+    let cookie = response.cookie
     if (Array.isArray(cookie)) {
-      cookie = cookie.join(';');
+      cookie = cookie.join(';')
     }
 
     response = {
@@ -12,13 +12,13 @@ module.exports = (response) => {
         ...JSON.parse(
           JSON.stringify(response.body).replace(
             /avatarImgId_str/g,
-            "avatarImgIdStr"
-          )
+            'avatarImgIdStr',
+          ),
         ),
         cookie: cookie,
       },
       cookie: cookie,
-    };
+    }
   }
-  return response;
-};
+  return response
+}

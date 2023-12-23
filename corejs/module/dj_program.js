@@ -1,6 +1,6 @@
 // 电台节目列表
 // import { toBoolean } from '../util/index.js'
-const toBoolean = require('../util/index.js').toBoolean;
+const toBoolean = require('../util/index.js').toBoolean
 module.exports = (query, request) => {
   const data = {
     radioId: query.rid,

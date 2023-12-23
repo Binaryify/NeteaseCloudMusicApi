@@ -6,7 +6,7 @@ let app
 if (!fs.existsSync(path.resolve(tmpPath, 'anonymous_token'))) {
   fs.writeFileSync(path.resolve(tmpPath, 'anonymous_token'), '', 'utf-8')
 }
-const serverMod = require('./server')
+const serverMod = require('./sdk/nodeServer/server')
 before(async () => {
   app = await serverMod.serveNcmApi({})
 
