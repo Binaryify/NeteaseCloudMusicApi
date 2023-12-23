@@ -19,12 +19,15 @@ if (typeof window === 'undefined') {
 
     if (typeof queryString === 'string') {
       queryString.split('&').forEach(function (param) {
-        var parts = param.split('=')
-        params[parts[0]] = parts[1]
+        var index = param.indexOf('=')
+        var key = param.slice(0, index)
+        var value = param.slice(index + 1)
+        params[key] = encodeURIComponent(value)
+        console.log('params', params[key])
       })
     } else if (typeof queryString === 'object') {
       Object.entries(queryString).forEach(function ([key, value]) {
-        params[key] = value
+        params[key] = encodeURIComponent(value)
       })
     } else {
       console.log('来了个解析不了的~~~', queryString)
@@ -44,6 +47,7 @@ if (typeof window === 'undefined') {
   }
 
   function encodeURIComponent(str) {
+    str = String(str)
     var result = ''
 
     if (str !== undefined && str !== null) {

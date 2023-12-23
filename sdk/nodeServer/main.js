@@ -37,21 +37,16 @@ files.forEach((file) => {
         const get_request_param = require('../../corejs/util/request_param.js')
         let request_param = get_request_param(...args)
         console.log(request_param)
-        // let data = {}
-        // request_param.data.split('&').forEach((item) => {
-        //   let equalIndex = item.indexOf('=')
-        //   let key = item.substring(0, equalIndex)
-        //   let value = item.substring(equalIndex + 1)
-        //   data[key] = encodeURIComponent(value)
-        // })
-        // request_param.data = data
         let response = await request(request_param)
+        console.log(response.data)
 
         let result = JSON.stringify({
           status: response.status,
           data: response.data,
           headers: response.headers,
         })
+
+        console.log(result)
 
         return api.afterRequest(
           result,

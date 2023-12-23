@@ -9,9 +9,9 @@ async function start() {
     fs.writeFileSync(path.resolve(tmpPath, 'anonymous_token'), '', 'utf-8')
   }
   // 启动时更新anonymous_token
-  const generateConfig = require('./generateConfig')
+  const generateConfig = require('./sdk/nodeServer/generateConfig')
   await generateConfig()
-  require('./server').serveNcmApi({
+  require('./sdk/nodeServer/server').serveNcmApi({
     checkVersion: true,
   })
 }
