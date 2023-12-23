@@ -1,5 +1,5 @@
 const assert = require('assert')
-const main = require('./main')
+const main = require('./sdk/pythonServer/main')
 
 describe('methods in server.js', () => {
   it('has serveNcmApi', () => {
