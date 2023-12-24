@@ -14,7 +14,7 @@ function hasApi(name) {
 
 function beforeRequest(name, query) {
   // 兼容query为JSON格式
-  if (typeof query === 'string'){
+  if (typeof query === 'string') {
     query = JSON.parse(query)
     USEJSON = true // 使用json格式的返回值
   }
