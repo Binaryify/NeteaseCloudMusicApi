@@ -1,13 +1,6 @@
 const encrypt = require('./crypto.js')
 const CryptoJS = require('crypto-js')
-const { encodeURIComponent, URLSearchParams } = require('./global_patch.js')
-const fs = require('fs')
-const path = require('path')
-const tmpPath = require('os').tmpdir()
-const anonymous_token = fs.readFileSync(
-  path.resolve(tmpPath, './anonymous_token'),
-  'utf-8',
-)
+const { encodeURIComponent, URLSearchParams } = require('./index.js')
 
 const chooseUserAgent = (ua = false) => {
   const userAgentList = {
@@ -75,14 +68,7 @@ const createRequestParam = (method, url, data = {}, options) => {
         CryptoJS.enc.Hex,
       )
     }
-    if (!options.cookie.MUSIC_U) {
-      // 游客
-      if (!options.cookie.MUSIC_A) {
-        options.cookie.MUSIC_A = anonymous_token
-        options.cookie.os = options.cookie.os || 'ios'
-        options.cookie.appver = options.cookie.appver || '8.10.90'
-      }
-    }
+    // 移出游客登录到beforeRequest，在上一步就将游客登录cookie处理好
     headers['Cookie'] = Object.keys(options.cookie)
       .map(
         (key) =>
@@ -150,8 +136,7 @@ const createRequestParam = (method, url, data = {}, options) => {
     method: method,
     url: url,
     headers: headers,
-    data: new URLSearchParams(data).toString(),
-    // keepAlive: true, // 长连接
+    data: data, // 这里直接返回一个对象，剩下的交由SDK自己处理
   }
 
   if (options.crypto === 'eapi') requestParams.encoding = null

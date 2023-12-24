@@ -10,7 +10,6 @@ const yunbei_info = require('../module/yunbei_info.js')
 const yunbei_expense = require('../module/yunbei_expense.js')
 const yunbei = require('../module/yunbei.js')
 const weblog = require('../module/weblog.js')
-const voice_upload = require('../module/voice_upload.js')
 const voice_detail = require('../module/voice_detail.js')
 const voicelist_trans = require('../module/voicelist_trans.js')
 const voicelist_search = require('../module/voicelist_search.js')
@@ -120,7 +119,6 @@ const resource_like = require('../module/resource_like.js')
 const related_playlist = require('../module/related_playlist.js')
 const related_allvideo = require('../module/related_allvideo.js')
 const register_cellphone = require('../module/register_cellphone.js')
-const register_anonimous = require('../module/register_anonimous.js')
 const record_recent_voice = require('../module/record_recent_voice.js')
 const record_recent_video = require('../module/record_recent_video.js')
 const record_recent_song = require('../module/record_recent_song.js')
@@ -275,7 +273,6 @@ const comment_album = require('../module/comment_album.js')
 const comment = require('../module/comment.js')
 const cloud_match = require('../module/cloud_match.js')
 const cloudsearch = require('../module/cloudsearch.js')
-const cloud = require('../module/cloud.js')
 const check_music = require('../module/check_music.js')
 const cellphone_existence_check = require('../module/cellphone_existence_check.js')
 const captcha_verify = require('../module/captcha_verify.js')
@@ -325,7 +322,6 @@ module.exports = {
   yunbei_expense: yunbei_expense,
   yunbei: yunbei,
   weblog: weblog,
-  voice_upload: voice_upload,
   voice_detail: voice_detail,
   voicelist_trans: voicelist_trans,
   voicelist_search: voicelist_search,
@@ -435,7 +431,6 @@ module.exports = {
   related_playlist: related_playlist,
   related_allvideo: related_allvideo,
   register_cellphone: register_cellphone,
-  register_anonimous: register_anonimous,
   record_recent_voice: record_recent_voice,
   record_recent_video: record_recent_video,
   record_recent_song: record_recent_song,
@@ -590,7 +585,6 @@ module.exports = {
   comment: comment,
   cloud_match: cloud_match,
   cloudsearch: cloudsearch,
-  cloud: cloud,
   check_music: check_music,
   cellphone_existence_check: cellphone_existence_check,
   captcha_verify: captcha_verify,

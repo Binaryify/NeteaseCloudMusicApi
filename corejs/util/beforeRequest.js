@@ -6,14 +6,32 @@ const api = require('./api.js')
 const cookieToJson = require('./index.js').cookieToJson
 const request_param = require('./request_param.js')
 
+const USEJSON = false // 是否使用json格式的返回值
+
 function hasApi(name) {
   return Object.keys(api).includes(name)
 }
 
 function beforeRequest(name, query) {
+  // 兼容query为JSON格式
+  if (typeof query === 'string'){
+    query = JSON.parse(query)
+    USEJSON = true // 使用json格式的返回值
+  }
+
   // 处理字符串格式的 cookie
   if (typeof query.cookie === 'string') {
     query.cookie = cookieToJson(query.cookie)
+  }
+
+  // 处理游客登录
+  if (!query.cookie.MUSIC_U) {
+    // 游客
+    if (!query.cookie.MUSIC_A) {
+      options.cookie.MUSIC_A = query.anonymous_token | ''
+      options.cookie.os = options.cookie.os || 'ios'
+      options.cookie.appver = options.cookie.appver || '8.10.90'
+    }
   }
 
   // 处理接口名称
@@ -27,18 +45,16 @@ function beforeRequest(name, query) {
     query.ip = query.realIP
   }
 
-  // console.log("query:", query);
+  let result
 
   if (hasApi(name)) {
-    return api[name](query, (...params) => {
+    result = api[name](query, (...params) => {
       // 参数注入客户端IP
       const obj = [...params]
 
-      // console.log("query:",query,"obj:",obj,"params",params);
       let ip = query.ip
 
       //处理IPv6地址的问题
-
       if (ip.substr(0, 7) == '::ffff:') {
         ip = ip.substr(7)
       }
@@ -49,15 +65,18 @@ function beforeRequest(name, query) {
         apiName: name,
       }
 
-      // let a = request_param(...obj);
-      // console.log("a:", a);
-      // return a;
-
       return request_param(...obj)
     })
   } else {
     return { error: `api (${name}) not found` }
   }
+
+  // 处理返回值
+  if (USEJSON) {
+    result = JSON.stringify(result)
+  }
+
+  return result
 }
 
 module.exports = beforeRequest

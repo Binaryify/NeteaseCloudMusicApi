@@ -1,0 +1,10 @@
+def test_{{apiName}}(extra):
+    """
+     {{explain}}
+    """
+
+    example = {{example}}
+    for query in example:
+        response = netease_cloud_music_api.request("{{apiName}}", query)
+        extra.append(extras.json(response, name="response"))
+        assert (response["code"] == 200 or response["data"]["code"] == 200)

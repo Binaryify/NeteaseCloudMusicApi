@@ -22,19 +22,26 @@ const encrypt = require('./crypto.js')
 const afterRequestApi = require('./afterRequestApi.js')
 const cookieToJson = require('./index.js').cookieToJson
 
+const USEJSON = false
+
 function hasApi(name) {
   return Object.keys(afterRequestApi).includes(name)
 }
 
-const afterRequest = (result, crypto, apiName) => {
-  result = JSON.parse(result)
+const afterRequest = (responseResult, crypto, apiName) => {
+  // 兼容result为JSON格式
+  if (typeof responseResult === 'string') {
+    responseResult = JSON.parse(responseResult)
+    USEJSON = true
+  }
+
   const answer = { status: 500, body: {}, cookie: [] }
-  const body = result.data
+  const body = responseResult.data
   let cookie
 
-  for (let key in result.headers) {
+  for (let key in responseResult.headers) {
     if (key.toLowerCase() === 'set-cookie') {
-      cookie = result.headers[key]
+      cookie = responseResult.headers[key]
       break
     }
   }
@@ -78,7 +85,7 @@ const afterRequest = (result, crypto, apiName) => {
       // can't decrypt and can't parse directly
       answer.body = body
     }
-    answer.status = result.status
+    answer.status = responseResult.status
   }
 
   answer.status =
@@ -87,7 +94,7 @@ const afterRequest = (result, crypto, apiName) => {
   // 处理特殊接口后续操作
 
   if (hasApi(apiName)) {
-    let result = afterRequestApi[apiName](JSON.stringify(answer))
+    let result = afterRequestApi[apiName](answer)
     if (result.status) {
       answer.status = result.status
     }
@@ -99,9 +106,11 @@ const afterRequest = (result, crypto, apiName) => {
     }
   }
 
+  let result
+
   // 返回数据
   if (answer.status !== 200 || !answer.body) {
-    return {
+    result = {
       code: answer.status,
       data: answer.body,
       msg: answer.body.msg || '请求遇到问题',
@@ -113,7 +122,7 @@ const afterRequest = (result, crypto, apiName) => {
   }
 
   if (answer.body.code == '301') {
-    return {
+    result = {
       code: 301,
       data: null,
       msg: '需要登录',
@@ -121,19 +130,25 @@ const afterRequest = (result, crypto, apiName) => {
   }
 
   if (answer.cookie) {
-    return {
+    result = {
       code: answer.body.code,
       data: answer.body,
       msg: answer.body.msg,
       cookie: cookieToJson(answer.cookie),
     }
   } else {
-    return {
+    result = {
       code: answer.body.code,
       data: answer.body,
       msg: answer.body.msg,
     }
   }
+
+  if (USEJSON) {
+    result = JSON.stringify(result)
+  }
+
+  return result
 }
 
 module.exports = afterRequest

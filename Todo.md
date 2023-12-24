@@ -1,6 +1,6 @@
 # Todo List
 
-- [ ] 排查某些接口不能使用好像都是weapi
+- [x] 排查某些接口不能使用好像都是weapi
 ```
 这个问题在我编写python的时候就出现了，具体情况表现为：
     Python调用webpack在UMD模式下打包后的ESM库       可用

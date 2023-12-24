@@ -1,4 +1,12 @@
 const mm = require('music-metadata')
+// let mm
+// if (typeof window !== 'undefined') {
+//   // 浏览器环境
+//   mm = require('music-metadata-browser')
+// } else {
+//   // Node.js 环境
+//   mm = require('music-metadata')
+// }
 const uploadPlugin = require('../plugins/songUpload')
 const md5 = require('md5')
 module.exports = async (query, request) => {
@@ -53,7 +61,6 @@ module.exports = async (query, request) => {
       query.songFile.data,
       query.songFile.mimetype,
     )
-    const info = metadata.common
 
     if (info.title) {
       songName = info.title

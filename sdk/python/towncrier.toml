@@ -1,0 +1,4 @@
+[tool.towncrier]
+version = "0.1.10"
+filename = "CHANGELOG.md"
+directory = "newsfragments"

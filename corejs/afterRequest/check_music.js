@@ -1,7 +1,6 @@
 // 歌曲可用性
 
 module.exports = (response) => {
-  response = JSON.parse(response)
   let playable = false
   if (response.body.code == 200) {
     if (response.body.data[0].code == 200) {

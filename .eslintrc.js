@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  ignorePatterns: ['public/'],
+  ignorePatterns: ['sdk/nodeServer/public/', 'sdk/python/'],
   parserOptions: {
     parser: 'babel-eslint',
     ecmaVersion: 2018,

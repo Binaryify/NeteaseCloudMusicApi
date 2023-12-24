@@ -11,6 +11,17 @@ const decode = require('safe-decode-uri-component')
 const apiIndex = require('../../corejs/util/api.js')
 const api = require('../../corejs/index.js')
 const request = require('./request.js')
+const {
+  encodeURIComponent,
+  URLSearchParams,
+} = require('../../corejs/util/index.js')
+
+// anonymous_token获取
+const tmpPath = require('os').tmpdir()
+const anonymous_token = fs.readFileSync(
+  path.resolve(tmpPath, './anonymous_token'),
+  'utf-8',
+)
 
 /**
  * The version check result.
@@ -212,22 +223,29 @@ async function consturctServer(moduleDefs) {
         req.query,
         req.body,
         req.files,
+        { anonymous_token: anonymous_token },
         { ip: req.ip },
       )
 
       let request_param = api.beforeRequest(moduleDef.identifier, query)
 
       try {
+        // 处理data的编码
+        if (request_param.data) {
+          request_param.data = new URLSearchParams(
+            request_param.data,
+          ).toString()
+        }
         let response = await request(request_param)
 
-        let result = JSON.stringify({
+        let response_result = {
           status: response.status,
           data: response.data,
           headers: response.headers,
-        })
+        }
 
         moduleResponse = api.afterRequest(
-          result,
+          response_result,
           request_param.crypto,
           request_param.apiName,
         )

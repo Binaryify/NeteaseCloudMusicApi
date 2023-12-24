@@ -4,7 +4,7 @@ const tmpPath = require('os').tmpdir()
 const { cookieToJson } = require('../../corejs/util/index.js')
 const apiIndex = require('../../corejs/util/api.js')
 const api = require('../../corejs/index.js')
-const { encodeURIComponent } = require('../../corejs/util/global_patch.js')
+const { encodeURIComponent } = require('../../corejs/util/index.js')
 
 if (!fs.existsSync(path.resolve(tmpPath, 'anonymous_token'))) {
   fs.writeFileSync(path.resolve(tmpPath, 'anonymous_token'), '', 'utf-8')

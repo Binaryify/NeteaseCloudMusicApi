@@ -1,5 +1,4 @@
 module.exports = (response) => {
-  response = JSON.parse(response)
   if (response.body.code === 200) {
     let cookie = response.cookie
     if (Array.isArray(cookie)) {

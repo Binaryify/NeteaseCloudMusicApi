@@ -1,5 +1,4 @@
 module.exports = (response) => {
-  response = JSON.parse(response)
   // 根据id排序
   const result = response.body.data
   result.sort((a, b) => {
