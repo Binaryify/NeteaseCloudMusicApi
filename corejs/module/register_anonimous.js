@@ -19,10 +19,16 @@ function cloudmusic_dll_encode_id(some_id) {
 module.exports = (query, request) => {
   query.cookie.os = 'iOS'
   const deviceId = `NMUSIC`
-  const encodedId = Buffer.from(
-    `${deviceId} ${cloudmusic_dll_encode_id(deviceId)}`,
-  )
-  const username = encodedId.toString('base64')
+  const encoder = new TextEncoder()
+  // const encodedId = encoder.encode(`${deviceId} ${cloudmusic_dll_encode_id(deviceId)}`)
+  // const encodedId = Buffer.from(
+  //   `${deviceId} ${cloudmusic_dll_encode_id(deviceId)}`,
+  // )
+  // const username = encodedId.toString('base64')
+  const encodedId = `${deviceId} ${cloudmusic_dll_encode_id(deviceId)}`
+  const wordArray = CryptoJS.enc.Utf8.parse(encodedId)
+  const username = CryptoJS.enc.Base64.stringify(wordArray)
+
   const data = {
     /* A base64 encoded string. */
     username: username,

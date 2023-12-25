@@ -6,6 +6,7 @@ const { cookieToJson } = require('../../corejs/util/index')
 const tmpPath = require('os').tmpdir()
 async function generateConfig() {
   try {
+    console.log(register_anonimous)
     const res = await register_anonimous()
     const cookie = res.body.cookie
     if (cookie) {
