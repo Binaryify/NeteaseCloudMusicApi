@@ -22,7 +22,7 @@ const encrypt = require('./crypto.js')
 const afterRequestApi = require('./afterRequestApi.js')
 const cookieToJson = require('./index.js').cookieToJson
 
-const USEJSON = false
+let USEJSON = false
 
 function hasApi(name) {
   return Object.keys(afterRequestApi).includes(name)
@@ -31,8 +31,11 @@ function hasApi(name) {
 const afterRequest = (responseResult, crypto, apiName) => {
   // 兼容result为JSON格式
   if (typeof responseResult === 'string') {
+    console.log('responseResult is string')
     responseResult = JSON.parse(responseResult)
     USEJSON = true
+  } else {
+    USEJSON = false // 由于程序一直在运行，上次的状态会被保留，所以每次都需要重置
   }
 
   const answer = { status: 500, body: {}, cookie: [] }

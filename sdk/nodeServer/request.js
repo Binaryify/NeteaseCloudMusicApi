@@ -6,7 +6,6 @@ const createRequest = (request_param) => {
     url: request_param.url,
     data: request_param.data,
     headers: request_param.headers,
-    keepAlive: true, // 长连接
   }
 
   return new Promise((resolve, reject) => {

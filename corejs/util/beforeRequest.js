@@ -6,7 +6,7 @@ const api = require('./api.js')
 const cookieToJson = require('./index.js').cookieToJson
 const request_param = require('./request_param.js')
 
-const USEJSON = false // 是否使用json格式的返回值
+let USEJSON = false // 是否使用json格式的返回值
 
 function hasApi(name) {
   return Object.keys(api).includes(name)
@@ -17,6 +17,8 @@ function beforeRequest(name, query) {
   if (typeof query === 'string') {
     query = JSON.parse(query)
     USEJSON = true // 使用json格式的返回值
+  } else {
+    USEJSON = false
   }
 
   // 处理字符串格式的 cookie

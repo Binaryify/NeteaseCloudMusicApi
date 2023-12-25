@@ -119,6 +119,7 @@ const resource_like = require('../module/resource_like.js')
 const related_playlist = require('../module/related_playlist.js')
 const related_allvideo = require('../module/related_allvideo.js')
 const register_cellphone = require('../module/register_cellphone.js')
+const register_anonimous = require('../module/register_anonimous.js')
 const record_recent_voice = require('../module/record_recent_voice.js')
 const record_recent_video = require('../module/record_recent_video.js')
 const record_recent_song = require('../module/record_recent_song.js')
@@ -431,6 +432,7 @@ module.exports = {
   related_playlist: related_playlist,
   related_allvideo: related_allvideo,
   register_cellphone: register_cellphone,
+  register_anonimous: register_anonimous,
   record_recent_voice: record_recent_voice,
   record_recent_video: record_recent_video,
   record_recent_song: record_recent_song,

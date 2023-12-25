@@ -4,7 +4,7 @@ const webpack = require('webpack')
 const config = require('../webpack.config.js') // 引入你的 webpack 配置文件
 
 // 暂时不支持的接口
-const exclude = ['cloud', 'voice_upload', 'register_anonimous']
+const exclude = ['cloud', 'voice_upload']
 
 // 各个SDK下NeteaseCloudMusicApi.js所在的目录
 const SDK_PATH = {

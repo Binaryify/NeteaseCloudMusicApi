@@ -36,17 +36,14 @@ files.forEach((file) => {
         const request = require('./request.js')
         const get_request_param = require('../../corejs/util/request_param.js')
         let request_param = get_request_param(...args)
-        console.log(request_param)
+        request_param.apiName = 'register_anonimous'
         let response = await request(request_param)
-        console.log(response.data)
 
-        let result = JSON.stringify({
+        let result = {
           status: response.status,
           data: response.data,
           headers: response.headers,
-        })
-
-        console.log(result)
+        }
 
         return api.afterRequest(
           result,

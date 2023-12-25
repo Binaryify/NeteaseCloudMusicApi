@@ -4,7 +4,7 @@ module.exports = (response) => {
       status: 200,
       body: {
         ...response.body,
-        cookie: response.cookie.join(';'),
+        cookie: response.cookie,
       },
       cookie: response.cookie,
     }

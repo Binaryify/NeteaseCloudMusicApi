@@ -229,6 +229,8 @@ async function consturctServer(moduleDefs) {
 
       let request_param = api.beforeRequest(moduleDef.identifier, query)
 
+      // console.log(JSON.stringify(request_param, null, 2))
+
       try {
         // 处理data的编码
         if (request_param.data) {
@@ -236,7 +238,11 @@ async function consturctServer(moduleDefs) {
             request_param.data,
           ).toString()
         }
+        // console.log('编码', request_param.data)
+        // console.log('请求参数', JSON.stringify(request_param, null, 2))
         let response = await request(request_param)
+
+        // console.log('响应参数', JSON.stringify(response.data, null, 2))
 
         let response_result = {
           status: response.status,
@@ -249,29 +255,31 @@ async function consturctServer(moduleDefs) {
           request_param.crypto,
           request_param.apiName,
         )
+        // moduleResponse.pop(data)
 
         console.log('[OK]', decode(req.originalUrl))
 
         // Todo 严重怀疑我这儿写cookie的这段有问题
-        const cookies = moduleResponse.cookie
-        if (!query.noCookie) {
-          if (Array.isArray(cookies) && cookies.length > 0) {
-            if (req.protocol === 'https') {
-              // Try to fix CORS SameSite Problem
-              res.append(
-                'Set-Cookie',
-                cookies.map((cookie) => {
-                  return cookie + '; SameSite=None; Secure'
-                }),
-              )
-            } else {
-              res.append('Set-Cookie', cookies)
-            }
-          }
-        }
+        // const cookies = moduleResponse.cookie
+        // if (!query.noCookie) {
+        //   if (Array.isArray(cookies) && cookies.length > 0) {
+        //     if (req.protocol === 'https') {
+        //       // Try to fix CORS SameSite Problem
+        //       res.append(
+        //         'Set-Cookie',
+        //         cookies.map((cookie) => {
+        //           return cookie + '; SameSite=None; Secure'
+        //         }),
+        //       )
+        //     } else {
+        //       res.append('Set-Cookie', cookies)
+        //     }
+        //   }
+        // }
 
         res.status(moduleResponse.code).send(moduleResponse.data)
       } catch (/** @type {*} */ moduleResponse) {
+        console.log('错误', moduleResponse)
         console.log('[ERR]', decode(req.originalUrl), {
           status: moduleResponse.status,
           body: moduleResponse.data,
@@ -290,7 +298,7 @@ async function consturctServer(moduleDefs) {
           res.append('Set-Cookie', moduleResponse.data.cookie)
         }
 
-        res.status(moduleResponse.status).send(moduleResponse.data)
+        res.status(moduleResponse.code).send(moduleResponse.data)
       }
     })
   }
