@@ -4,7 +4,15 @@ const webpack = require('webpack')
 const config = require('../webpack.config.js') // 引入你的 webpack 配置文件
 
 // 暂时不支持的接口
-const exclude = ['cloud', 'voice_upload']
+const exclude = [
+  'cloud',
+  'voice_upload',
+  'avatar_upload',
+  'playlist_cover_update',
+  'voice_upload',
+  'songUpload',
+  'upload',
+]
 
 // 各个SDK下NeteaseCloudMusicApi.js所在的目录
 const SDK_PATH = {
@@ -92,14 +100,14 @@ async function build() {
     // })
     console.log('拷贝文件到各个SDK指定目录')
     // 拷贝文件到各个SDK指定目录
-    Object.entries(SDK_PATH).forEach(([sdk_name, sdk_path]) => {
-      sdk_path = path.join(__dirname, '../sdk', sdk_name, sdk_path)
-      console.log(`   ${sdk_name}:`, sdk_path)
-      fs.copyFileSync(
-        path.join(__dirname, '../dist/NeteaseCloudMusicApi.js'),
-        sdk_path,
-      )
-    })
+    // Object.entries(SDK_PATH).forEach(([sdk_name, sdk_path]) => {
+    //   sdk_path = path.join(__dirname, '../sdk', sdk_name, sdk_path)
+    //   console.log(`   ${sdk_name}:`, sdk_path)
+    //   fs.copyFileSync(
+    //     path.join(__dirname, '../dist/NeteaseCloudMusicApi.js'),
+    //     sdk_path,
+    //   )
+    // })
   } catch (err) {
     console.error(err)
   }

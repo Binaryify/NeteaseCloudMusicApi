@@ -155,7 +155,6 @@ const playlist_detail = require('../module/playlist_detail.js')
 const playlist_desc_update = require('../module/playlist_desc_update.js')
 const playlist_delete = require('../module/playlist_delete.js')
 const playlist_create = require('../module/playlist_create.js')
-const playlist_cover_update = require('../module/playlist_cover_update.js')
 const playlist_catlist = require('../module/playlist_catlist.js')
 const personal_fm = require('../module/personal_fm.js')
 const personalized_privatecontent_list = require('../module/personalized_privatecontent_list.js')
@@ -281,7 +280,6 @@ const captcha_sent = require('../module/captcha_sent.js')
 const calendar = require('../module/calendar.js')
 const batch = require('../module/batch.js')
 const banner = require('../module/banner.js')
-const avatar_upload = require('../module/avatar_upload.js')
 const audio_match = require('../module/audio_match.js')
 const artist_video = require('../module/artist_video.js')
 const artist_top_song = require('../module/artist_top_song.js')
@@ -468,7 +466,6 @@ module.exports = {
   playlist_desc_update: playlist_desc_update,
   playlist_delete: playlist_delete,
   playlist_create: playlist_create,
-  playlist_cover_update: playlist_cover_update,
   playlist_catlist: playlist_catlist,
   personal_fm: personal_fm,
   personalized_privatecontent_list: personalized_privatecontent_list,
@@ -594,7 +591,6 @@ module.exports = {
   calendar: calendar,
   batch: batch,
   banner: banner,
-  avatar_upload: avatar_upload,
   audio_match: audio_match,
   artist_video: artist_video,
   artist_top_song: artist_top_song,

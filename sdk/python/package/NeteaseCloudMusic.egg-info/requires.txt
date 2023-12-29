@@ -1,3 +1,0 @@
-py_mini_racer
-requests
-diskcache
