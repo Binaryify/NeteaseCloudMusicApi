@@ -30,9 +30,9 @@ function beforeRequest(name, query) {
   if (!query.cookie.MUSIC_U) {
     // 游客
     if (!query.cookie.MUSIC_A) {
-      options.cookie.MUSIC_A = query.anonymous_token | ''
-      options.cookie.os = options.cookie.os || 'ios'
-      options.cookie.appver = options.cookie.appver || '8.10.90'
+      query.cookie.MUSIC_A = query.anonymous_token | ''
+      query.cookie.os = query.cookie.os || 'ios'
+      query.cookie.appver = query.cookie.appver || '8.10.90'
     }
   }
 
