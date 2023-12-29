@@ -11,39 +11,39 @@
 </p>
 
 
-### 目录
+- 目录
 
-​		[灵感来自](#灵感来自)
+	* [灵感来自](#灵感来自)
 
-​		[NeteaseCloudMusicApi.js](#NeteaseCloudMusicApi.js)
+	* [NeteaseCloudMusicApi.js](#neteasecloudmusicapijs)
 
-​		[环境要求](#环境要求)
+	* [环境要求](#环境要求)
 
-​		[安装](#安装)
+	* [安装](#安装)
 
-​		[运行](#运行)
+	* [运行](#运行)
 
-​		[Vercel 部署](#Vercel 部署)
+	* [Vercel 部署](#vercel-部署)
 
-​		[腾讯云 serverless 部署](#腾讯云 serverless 部署)
+	* [腾讯云 serverless 部署](#腾讯云-serverless-部署)
 
-​		[可以在Node.js调用](#可以在Node.js调用)
+	* [可以在Node.js调用](#可以在Node.js调用)
 
-​		[支持 TypeScript](#支持 TypeScript)
+	* [支持 TypeScript](#支持-typeScript)
 
-​		[使用文档](#使用文档)
+	* [使用文档](#使用文档)
 
-​		[功能特性](#功能特性)
+	* [功能特性](#功能特性)
 
-​		[更新日志](#更新日志)
+	* [更新日志](#更新日志)
 
-​		[单元测试](#单元测试)
+	* [单元测试](#单元测试)
 
-​		[SDK](#SDK)
+	* [SDK](#sdk)
 
-​		[贡献者](#贡献者)
+	* [贡献者](#贡献者)
 
-​		[License](#License)
+	* [License](#license)
 
 ## 灵感来自
 
