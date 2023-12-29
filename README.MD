@@ -15,7 +15,7 @@
 
 	* [灵感来自](#灵感来自)
 
-	* [NeteaseCloudMusicApi.js](#neteasecloudmusicapijs)
+	* [NeteaseCloudMusicApi.js](#ECMAScript资源-和-其他语言调用)
 
 	* [环境要求](#环境要求)
 
@@ -27,7 +27,7 @@
 
 	* [腾讯云 serverless 部署](#腾讯云-serverless-部署)
 
-	* [可以在Node.js调用](#可以在Node.js调用)
+	* [可以在Node.js调用](#可以在nodejs调用)
 
 	* [支持 TypeScript](#支持-typeScript)
 
@@ -55,9 +55,11 @@
 
 [greats3an/pyncm](https://github.com/greats3an/pyncm)
 
-##  `NeteaseCloudMusicApi.js `
+##  ECMAScript资源 和 其他语言调用
 
 `NeteaseCloudMusicApi.js`是项目核心js代码通过WebPack UMD打包的资源，完全支持ECMAScript。
+
+资源地址在[`./dist/NeteaseCloudMusicApi.js`](./dist/)
 
 `NeteaseCloudMusicApi.js`使用, 详见[SDK开发指南](./sdk.md)
 
