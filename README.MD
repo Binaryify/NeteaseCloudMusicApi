@@ -14,21 +14,21 @@
 - 目录
 
 	* [灵感来自](#灵感来自)
-* [环境要求](#环境要求)
+	* [环境要求](#环境要求)
 	* [安装](#安装)
-* [运行](#运行)
+	* [运行](#运行)
 	* [ECMAScript资源 和 其他语言调用](#ECMAScript资源-和-其他语言调用)
-* [Vercel 部署](#vercel-部署)
+	* [Vercel 部署](#vercel-部署)
 	* [腾讯云 serverless 部署](#腾讯云-serverless-部署)
-* [可以在Node.js调用](#可以在nodejs调用)
+	* [可以在Node.js调用](#可以在nodejs调用)
 	* [支持 TypeScript](#支持-typeScript)
-* [使用文档](#使用文档)
+	* [使用文档](#使用文档)
 	* [功能特性](#功能特性)
-* [更新日志](#更新日志)
+	* [更新日志](#更新日志)
 	* [单元测试](#单元测试)
-* [SDK](#sdk)
+	* [SDK](#sdk)
 	* [贡献者](#贡献者)
-* [License](#license)
+	* [License](#license)
 
 ## 灵感来自
 
