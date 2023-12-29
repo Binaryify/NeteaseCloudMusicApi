@@ -11,6 +11,40 @@
 </p>
 
 
+### 目录
+
+​		[灵感来自](#灵感来自)
+
+​		[NeteaseCloudMusicApi.js](#NeteaseCloudMusicApi.js)
+
+​		[环境要求](#环境要求)
+
+​		[安装](#安装)
+
+​		[运行](#运行)
+
+​		[Vercel 部署](#Vercel 部署)
+
+​		[腾讯云 serverless 部署](#腾讯云 serverless 部署)
+
+​		[可以在Node.js调用](#可以在Node.js调用)
+
+​		[支持 TypeScript](#支持 TypeScript)
+
+​		[使用文档](#使用文档)
+
+​		[功能特性](#功能特性)
+
+​		[更新日志](#更新日志)
+
+​		[单元测试](#单元测试)
+
+​		[SDK](#SDK)
+
+​		[贡献者](#贡献者)
+
+​		[License](#License)
+
 ## 灵感来自
 
 [disoul/electron-cloud-music](https://github.com/disoul/electron-cloud-music)
@@ -20,6 +54,14 @@
 [sqaiyan/netmusic-node](https://github.com/sqaiyan/netmusic-node)
 
 [greats3an/pyncm](https://github.com/greats3an/pyncm)
+
+##  `NeteaseCloudMusicApi.js `
+
+`NeteaseCloudMusicApi.js`是项目核心js代码通过WebPack UMD打包的资源，完全支持ECMAScript。
+
+`NeteaseCloudMusicApi.js`使用, 详见[SDK开发指南](./sdk.md)
+
+其他语言调用[SDK](#SDK)
 
 
 ## 环境要求
@@ -87,7 +129,7 @@ v4.0.8 加入了 Vercel 配置文件,可以直接在 Vercel 下部署了,不需�
 #!/bin/bash
 export PORT=9000
 /var/lang/node16/bin/node app.js
-``` 
+```
 7. 点击`完成`,等待部署完成,点击`资源列表`的 `API网关` 里的 `URL`,正常情况会打开文档地址,点击文档`例子`可查看接口调用效果
 
 ## 可以在Node.js调用
@@ -124,7 +166,6 @@ banner({ type:0 }).then(res=>{
   console.log(res)
 })
 ```
-
 
 ## 使用文档
 
@@ -422,12 +463,13 @@ $ npm test
 
 ## SDK
 
-| 语言   |                    作者                     |                             地址                             |  类型  |
-| :--:   | :-----------------------------------------: | :----------------------------------------------------------: | :----: |
-| Java   |    [JackuXL](https://github.com/JackuXL)    | [https://github.com/JackuXL/NeteaseCloudMusicApi-SDK](https://github.com/JackuXL/NeteaseCloudMusicApi-SDK) | 第三方 |
-| Java   | [1015770492](https://github.com/1015770492) |       https://github.com/1015770492/yumbo-music-utils        | 第三方 |
-| Python |    [盧瞳](https://github.com/2061360308)    |  [NeteaseCloudMusic_PythonSDK](https://github.com/2061360308/NeteaseCloudMusic_PythonSDK)  | 第三方 |
+|  语言  |                    作者                     |                             地址                             |  类型  | node后端 | 维护中 |
+| :----: | :-----------------------------------------: | :----------------------------------------------------------: | :----: | :------: | :----: |
+|  Java  |    [JackuXL](https://github.com/JackuXL)    | [NeteaseCloudMusicApi-SDK](https://github.com/JackuXL/NeteaseCloudMusicApi-SDK) | 第三方 |   需要   |   否   |
+|  Java  | [1015770492](https://github.com/1015770492) | [yumbo-music-utils](https://github.com/1015770492/yumbo-music-utils) | 第三方 |   需要   |   是   |
+| Python |    [盧瞳](https://github.com/2061360308)    | [NeteaseCloudMusic_PythonSDK](https://github.com/2061360308/NeteaseCloudMusic_PythonSDK) | 第三方 |  不需要  |   是   |
 
+> 如果没有需要的SDK，请见[SDK开发指南](./sdk.md)。欢迎开发新的SDK，也欢迎大家的提交
 
 ## 贡献者
 
