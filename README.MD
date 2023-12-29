@@ -14,36 +14,21 @@
 - 目录
 
 	* [灵感来自](#灵感来自)
-
-	* [NeteaseCloudMusicApi.js](#ECMAScript资源-和-其他语言调用)
-
-	* [环境要求](#环境要求)
-
+* [环境要求](#环境要求)
 	* [安装](#安装)
-
-	* [运行](#运行)
-
-	* [Vercel 部署](#vercel-部署)
-
+* [运行](#运行)
+	* [ECMAScript资源 和 其他语言调用](#ECMAScript资源-和-其他语言调用)
+* [Vercel 部署](#vercel-部署)
 	* [腾讯云 serverless 部署](#腾讯云-serverless-部署)
-
-	* [可以在Node.js调用](#可以在nodejs调用)
-
+* [可以在Node.js调用](#可以在nodejs调用)
 	* [支持 TypeScript](#支持-typeScript)
-
-	* [使用文档](#使用文档)
-
+* [使用文档](#使用文档)
 	* [功能特性](#功能特性)
-
-	* [更新日志](#更新日志)
-
+* [更新日志](#更新日志)
 	* [单元测试](#单元测试)
-
-	* [SDK](#sdk)
-
+* [SDK](#sdk)
 	* [贡献者](#贡献者)
-
-	* [License](#license)
+* [License](#license)
 
 ## 灵感来自
 
@@ -54,16 +39,6 @@
 [sqaiyan/netmusic-node](https://github.com/sqaiyan/netmusic-node)
 
 [greats3an/pyncm](https://github.com/greats3an/pyncm)
-
-##  ECMAScript资源 和 其他语言调用
-
-`NeteaseCloudMusicApi.js`是项目核心js代码通过WebPack UMD打包的资源，完全支持ECMAScript。
-
-资源地址在[`./dist/NeteaseCloudMusicApi.js`](./dist/)
-
-`NeteaseCloudMusicApi.js`使用, 详见[SDK开发指南](./sdk.md)
-
-其他语言调用[SDK](#SDK)
 
 
 ## 环境要求
@@ -104,6 +79,16 @@ windows 下使用 git-bash 或者 cmder 等终端执行以下命令:
 ```shell
 $ set PORT=4000 && node app.js
 ```
+
+##  ECMAScript资源 和 其他语言调用
+
+`NeteaseCloudMusicApi.js`是项目核心js代码通过WebPack UMD打包的资源，完全支持ECMAScript。
+
+资源地址在[`./dist/NeteaseCloudMusicApi.js`](./dist/)
+
+`NeteaseCloudMusicApi.js`使用, 详见[SDK开发指南](./sdk.md)
+
+其他语言调用[SDK](#SDK)
 
 ## Vercel 部署
 
