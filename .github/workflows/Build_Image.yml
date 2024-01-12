@@ -17,7 +17,7 @@ jobs:
           - name: Get version
             id: get_version
             if: startsWith(github.ref, 'refs/tags/') && startsWith(github.repository, 'Binaryify/NeteaseCloudMusicApi')
-            run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+            run: echo "VERSION=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_OUTPUT
           - name: Set up Docker Buildx
             uses: docker/setup-buildx-action@v2
           - name: Build and publish image
