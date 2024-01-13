@@ -1,6 +1,6 @@
 const QRCode = require('qrcode')
 // Todo 处理QrCode
-module.exports = async (query, request) => {
+module.exports = (query, request) => {
   const data = {
     verifyConfigId: query.vid,
     verifyType: query.type,
@@ -12,7 +12,7 @@ module.exports = async (query, request) => {
     size: 150,
   }
 
-  const res = await request(
+  return request(
     'POST',
     `https://music.163.com/weapi/frontrisk/verify/getqrcode`,
     data,
@@ -23,23 +23,4 @@ module.exports = async (query, request) => {
       realIP: query.realIP,
     },
   )
-  const result = `https://st.music.163.com/encrypt-pages?qrCode=${
-    res.body.data.qrCode
-  }&verifyToken=${query.token}&verifyId=${query.vid}&verifyType=${
-    query.type
-  }&params=${JSON.stringify({
-    event_id: query.evid,
-    sign: query.sign,
-  })}`
-  return {
-    status: 200,
-    body: {
-      code: 200,
-      data: {
-        qrCode: res.body.data.qrCode,
-        qrurl: result,
-        qrimg: await QRCode.toDataURL(result),
-      },
-    },
-  }
 }

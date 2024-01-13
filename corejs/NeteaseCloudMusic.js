@@ -3,6 +3,7 @@ const axios = require('axios')
 const mm = require('music-metadata')
 const md5 = require('md5')
 const xml2js = require('xml2js')
+const QRCode = require('qrcode')
 
 class NeteseCloudMusicApi {
   constructor() {
@@ -59,7 +60,10 @@ class NeteseCloudMusicApi {
     })
   }
 
-  async call_api(apiName, params) {
+  async call_api(apiName, params, afterRequest = true) {
+    /**
+     * afterRequest 是否使用afterRequest函数处理请求结果，默认为true。*/
+
     // 请求接口
     let request_param = this.beforeRequest(apiName, params)
 
@@ -77,11 +81,16 @@ class NeteseCloudMusicApi {
       headers: response.headers,
     }
 
-    let result = this.afterRequest(
-      response_result,
-      request_param.crypto,
-      request_param.apiName,
-    )
+    let result
+    if (afterRequest) {
+      result = this.afterRequest(
+        response_result,
+        request_param.crypto,
+        request_param.apiName,
+      )
+    } else {
+      result = response
+    }
 
     return result
   }
@@ -302,11 +311,39 @@ class NeteseCloudMusicApi {
     return result
   }
 
+  async verify_getQr(query) {
+    // 获取二维码
+
+    // 这里注意需要原始返回内容，不需要afterRequest处理
+    const res = this.call_api('verify_getQr', query, false)
+
+    const result = `https://st.music.163.com/encrypt-pages?qrCode=${
+      res.body.data.qrCode
+    }&verifyToken=${query.token}&verifyId=${query.vid}&verifyType=${
+      query.type
+    }&params=${JSON.stringify({
+      event_id: query.evid,
+      sign: query.sign,
+    })}`
+    return {
+      status: 200,
+      body: {
+        code: 200,
+        data: {
+          qrCode: res.body.data.qrCode,
+          qrurl: result,
+          qrimg: await QRCode.toDataURL(result),
+        },
+      },
+    }
+  }
+
   async upload(query) {
     // 上传图片
 
     //   获取key和token
-    const res = this.call_api('get_upload_image', query)
+    // 需要原始请求数据，不需要afterRequest处理
+    const res = this.call_api('get_upload_image', query, false)
     console.log('res:::', res)
     //   上传图片
     const res2 = await axios({
