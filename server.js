@@ -9,10 +9,11 @@ const { cookieToJson } = require('./corejs/util')
 const fileUpload = require('express-fileupload')
 const decode = require('safe-decode-uri-component')
 const apiIndex = require('./corejs/util/api.js')
-const api = require('./corejs')
+
 const request = require('./request.js')
 const { encodeURIComponent, URLSearchParams } = require('./corejs/util')
-
+const { NeteseCloudMusicApi } = require('./corejs/NeteaseCloudMusic.js')
+const netease_cloud_music_api = new NeteseCloudMusicApi()
 // anonymous_token获取
 const tmpPath = require('os').tmpdir()
 const anonymous_token = fs.readFileSync(
@@ -224,55 +225,36 @@ async function consturctServer(moduleDefs) {
         { ip: req.ip },
       )
 
-      let request_param = api.beforeRequest(moduleDef.identifier, query)
-
-      // console.log(JSON.stringify(request_param, null, 2))
-
       try {
-        // 处理data的编码
-        if (request_param.data) {
-          request_param.data = new URLSearchParams(
-            request_param.data,
-          ).toString()
-        }
-        // console.log('编码', request_param.data)
-        // console.log('请求参数', JSON.stringify(request_param, null, 2))
-        let response = await request(request_param)
-
-        // console.log('响应参数', JSON.stringify(response.data, null, 2))
-
-        let response_result = {
-          status: response.status,
-          data: response.data,
-          headers: response.headers,
-        }
-
-        moduleResponse = api.afterRequest(
-          response_result,
-          request_param.crypto,
-          request_param.apiName,
+        let moduleResponse = await netease_cloud_music_api.request(
+          moduleDef.identifier,
+          query,
         )
-        // moduleResponse.pop(data)
 
         console.log('[OK]', decode(req.originalUrl))
 
-        // Todo 严重怀疑我这儿写cookie的这段有问题
-        // const cookies = moduleResponse.cookie
-        // if (!query.noCookie) {
-        //   if (Array.isArray(cookies) && cookies.length > 0) {
-        //     if (req.protocol === 'https') {
-        //       // Try to fix CORS SameSite Problem
-        //       res.append(
-        //         'Set-Cookie',
-        //         cookies.map((cookie) => {
-        //           return cookie + '; SameSite=None; Secure'
-        //         }),
-        //       )
-        //     } else {
-        //       res.append('Set-Cookie', cookies)
-        //     }
-        //   }
-        // }
+        /**
+         * 拿到请求结果的 cookie,
+         * 如果是 https 就加上SameSite=None; Secure属性,
+         * 如果query 有noCookie参数,返回结果的 header 就不带 cookie
+         * 因为扫码登录后网易返回的 cookie 特别大,容易报错
+         */
+        const cookies = moduleResponse.cookie
+        if (!query.noCookie) {
+          if (Array.isArray(cookies) && cookies.length > 0) {
+            if (req.protocol === 'https') {
+              // Try to fix CORS SameSite Problem
+              res.append(
+                'Set-Cookie',
+                cookies.map((cookie) => {
+                  return cookie + '; SameSite=None; Secure'
+                }),
+              )
+            } else {
+              res.append('Set-Cookie', cookies)
+            }
+          }
+        }
 
         res.status(moduleResponse.code).send(moduleResponse.data)
       } catch (/** @type {*} */ moduleResponse) {

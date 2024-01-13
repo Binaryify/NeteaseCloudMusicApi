@@ -3,17 +3,6 @@ const path = require('path')
 const webpack = require('webpack')
 const config = require('../webpack.config.js') // 引入你的 webpack 配置文件
 
-// 暂时不支持的接口
-const exclude = [
-  'cloud',
-  'voice_upload',
-  'avatar_upload',
-  'playlist_cover_update',
-  'voice_upload',
-  'songUpload',
-  'upload',
-]
-
 // 各个SDK下NeteaseCloudMusicApi.js所在的目录
 // const SDK_PATH = {
 //   python: 'package/NeteaseCloudMusic/NeteaseCloudMusicApi.js',
@@ -41,13 +30,11 @@ async function genderIndex() {
   )
 
   api_name_list.forEach((name) => {
-    if (exclude.includes(name)) return
     api_content += `const ${name} = require('../module/${name}.js')\n`
   })
 
   api_content += 'module.exports = {\n'
   api_name_list.forEach((name) => {
-    if (exclude.includes(name)) return
     api_content += `  ${name}: ${name},\n`
   })
   api_content += '}\n'

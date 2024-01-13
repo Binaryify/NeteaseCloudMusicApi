@@ -10,7 +10,9 @@ const yunbei_info = require('../module/yunbei_info.js')
 const yunbei_expense = require('../module/yunbei_expense.js')
 const yunbei = require('../module/yunbei.js')
 const weblog = require('../module/weblog.js')
+const voice_upload = require('../module/voice_upload.js')
 const voice_detail = require('../module/voice_detail.js')
+const voice_batch_upload_check = require('../module/voice_batch_upload_check.js')
 const voicelist_trans = require('../module/voicelist_trans.js')
 const voicelist_search = require('../module/voicelist_search.js')
 const voicelist_list_search = require('../module/voicelist_list_search.js')
@@ -155,6 +157,7 @@ const playlist_detail = require('../module/playlist_detail.js')
 const playlist_desc_update = require('../module/playlist_desc_update.js')
 const playlist_delete = require('../module/playlist_delete.js')
 const playlist_create = require('../module/playlist_create.js')
+const playlist_cover_update = require('../module/playlist_cover_update.js')
 const playlist_catlist = require('../module/playlist_catlist.js')
 const personal_fm = require('../module/personal_fm.js')
 const personalized_privatecontent_list = require('../module/personalized_privatecontent_list.js')
@@ -217,6 +220,9 @@ const homepage_block_page = require('../module/homepage_block_page.js')
 const history_recommend_songs_detail = require('../module/history_recommend_songs_detail.js')
 const history_recommend_songs = require('../module/history_recommend_songs.js')
 const get_userids = require('../module/get_userids.js')
+const get_upload_song = require('../module/get_upload_song.js')
+const get_upload_image = require('../module/get_upload_image.js')
+const get_upload_cropped_image = require('../module/get_upload_cropped_image.js')
 const follow = require('../module/follow.js')
 const fm_trash = require('../module/fm_trash.js')
 const fanscenter_trend_list = require('../module/fanscenter_trend_list.js')
@@ -271,8 +277,11 @@ const comment_event = require('../module/comment_event.js')
 const comment_dj = require('../module/comment_dj.js')
 const comment_album = require('../module/comment_album.js')
 const comment = require('../module/comment.js')
+const cloud_upload_info_v2 = require('../module/cloud_upload_info_v2.js')
+const cloud_upload_check = require('../module/cloud_upload_check.js')
 const cloud_match = require('../module/cloud_match.js')
 const cloudsearch = require('../module/cloudsearch.js')
+const cloud = require('../module/cloud.js')
 const check_music = require('../module/check_music.js')
 const cellphone_existence_check = require('../module/cellphone_existence_check.js')
 const captcha_verify = require('../module/captcha_verify.js')
@@ -280,6 +289,7 @@ const captcha_sent = require('../module/captcha_sent.js')
 const calendar = require('../module/calendar.js')
 const batch = require('../module/batch.js')
 const banner = require('../module/banner.js')
+const avatar_upload = require('../module/avatar_upload.js')
 const audio_match = require('../module/audio_match.js')
 const artist_video = require('../module/artist_video.js')
 const artist_top_song = require('../module/artist_top_song.js')
@@ -321,7 +331,9 @@ module.exports = {
   yunbei_expense: yunbei_expense,
   yunbei: yunbei,
   weblog: weblog,
+  voice_upload: voice_upload,
   voice_detail: voice_detail,
+  voice_batch_upload_check: voice_batch_upload_check,
   voicelist_trans: voicelist_trans,
   voicelist_search: voicelist_search,
   voicelist_list_search: voicelist_list_search,
@@ -466,6 +478,7 @@ module.exports = {
   playlist_desc_update: playlist_desc_update,
   playlist_delete: playlist_delete,
   playlist_create: playlist_create,
+  playlist_cover_update: playlist_cover_update,
   playlist_catlist: playlist_catlist,
   personal_fm: personal_fm,
   personalized_privatecontent_list: personalized_privatecontent_list,
@@ -528,6 +541,9 @@ module.exports = {
   history_recommend_songs_detail: history_recommend_songs_detail,
   history_recommend_songs: history_recommend_songs,
   get_userids: get_userids,
+  get_upload_song: get_upload_song,
+  get_upload_image: get_upload_image,
+  get_upload_cropped_image: get_upload_cropped_image,
   follow: follow,
   fm_trash: fm_trash,
   fanscenter_trend_list: fanscenter_trend_list,
@@ -582,8 +598,11 @@ module.exports = {
   comment_dj: comment_dj,
   comment_album: comment_album,
   comment: comment,
+  cloud_upload_info_v2: cloud_upload_info_v2,
+  cloud_upload_check: cloud_upload_check,
   cloud_match: cloud_match,
   cloudsearch: cloudsearch,
+  cloud: cloud,
   check_music: check_music,
   cellphone_existence_check: cellphone_existence_check,
   captcha_verify: captcha_verify,
@@ -591,6 +610,7 @@ module.exports = {
   calendar: calendar,
   batch: batch,
   banner: banner,
+  avatar_upload: avatar_upload,
   audio_match: audio_match,
   artist_video: artist_video,
   artist_top_song: artist_top_song,

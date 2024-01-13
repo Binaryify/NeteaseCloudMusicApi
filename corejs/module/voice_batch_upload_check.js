@@ -1,7 +1,3 @@
-// const { default: axios } = require('axios')
-// var xml2js = require('xml2js')
-
-// var parser = new xml2js.Parser(/* options */)
 function createDupkey() {
   // 格式:3b443c7c-a87f-468d-ba38-46d407aaf23a
   var s = []
@@ -14,10 +10,11 @@ function createDupkey() {
   s[8] = s[13] = s[18] = s[23] = '-'
   return s.join('')
 }
-module.exports = async (query, request) => {
+
+module.exports = (query, request) => {
   return request(
     'post',
-    `https://interface.music.163.com/weapi/voice/workbench/voice/batch/upload/v2`,
+    `https://interface.music.163.com/weapi/voice/workbench/voice/batch/upload/preCheck`,
     {
       dupkey: createDupkey(),
       voiceData: JSON.stringify([
@@ -45,7 +42,7 @@ module.exports = async (query, request) => {
       cookie: query.cookie,
       proxy: query.proxy,
       headers: {
-        'x-nos-token': query.token,
+        'x-nos-token': tokenRes.body.result.token,
       },
     },
   )

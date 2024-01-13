@@ -10,10 +10,9 @@ module.exports = (query, request) => {
 
   // 拿到playlist/detail的返回的接口数据
   if (query.trackIds) {
-    trackIds = JSON.parse(query.trackIds)
+    trackIds = query.trackIds
   } else {
     let response = query.detail_result
-    response = JSON.parse(response)
     trackIds = response.data.playlist.trackIds
   }
 

@@ -1,4 +1,4 @@
-const uploadPlugin = require('../plugins/upload')
+// const uploadPlugin = require('../plugins/upload')
 module.exports = async (query, request) => {
   if (!query.imgFile) {
     return {
@@ -9,8 +9,9 @@ module.exports = async (query, request) => {
       },
     }
   }
-  const uploadInfo = await uploadPlugin(query, request)
-  const res = await request(
+  // const uploadInfo = await uploadPlugin(query, request)
+  const uploadInfo = query.uploadInfo
+  return request(
     'POST',
     `https://music.163.com/weapi/playlist/cover/update`,
     {
@@ -24,14 +25,14 @@ module.exports = async (query, request) => {
       realIP: query.realIP,
     },
   )
-  return {
-    status: 200,
-    body: {
-      code: 200,
-      data: {
-        ...uploadInfo,
-        ...res.body,
-      },
-    },
-  }
+  // return {
+  //   status: 200,
+  //   body: {
+  //     code: 200,
+  //     data: {
+  //       ...uploadInfo,
+  //       ...res.body,
+  //     },
+  //   },
+  // }
 }
