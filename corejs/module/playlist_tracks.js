@@ -1,5 +1,5 @@
 // 收藏单曲到歌单 从歌单删除歌曲
-
+// Todo 这个错误捕捉的逻辑之后补到SDK吧
 module.exports = async (query, request) => {
   // query.cookie.os = 'pc'
   const tracks = query.tracks.split(',')

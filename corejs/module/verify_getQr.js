@@ -1,4 +1,5 @@
 const QRCode = require('qrcode')
+// Todo 处理QrCode
 module.exports = async (query, request) => {
   const data = {
     verifyConfigId: query.vid,

@@ -14,7 +14,7 @@ function createDupkey() {
   s[8] = s[13] = s[18] = s[23] = '-'
   return s.join('')
 }
-module.exports = async (query, request) => {
+module.exports = (query, request) => {
   return request(
     'post',
     `https://interface.music.163.com/weapi/voice/workbench/voice/batch/upload/v2`,

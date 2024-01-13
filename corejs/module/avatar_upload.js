@@ -1,4 +1,4 @@
-module.exports = async (query, request) => {
+module.exports = (query, request) => {
   // const uploadInfo = await uploadPlugin(query, request)
   const uploadInfo = query.uploadInfo
   return request(

@@ -1,8 +1,8 @@
-module.exports = async (query, request) => {
+module.exports = (query, request) => {
   const data = {
     qrCode: query.qr,
   }
-  const res = await request(
+  return request(
     'POST',
     `https://music.163.com/weapi/frontrisk/verify/qrcodestatus`,
     data,
@@ -13,5 +13,4 @@ module.exports = async (query, request) => {
       realIP: query.realIP,
     },
   )
-  return res
 }

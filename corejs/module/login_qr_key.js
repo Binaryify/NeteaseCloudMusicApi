@@ -1,8 +1,8 @@
-module.exports = async (query, request) => {
+module.exports = (query, request) => {
   const data = {
     type: 1,
   }
-  const result = await request(
+  return request(
     'POST',
     `https://music.163.com/weapi/login/qrcode/unikey`,
     data,
@@ -13,12 +13,4 @@ module.exports = async (query, request) => {
       realIP: query.realIP,
     },
   )
-  return {
-    status: 200,
-    body: {
-      data: result.body,
-      code: 200,
-    },
-    cookie: result.cookie,
-  }
 }

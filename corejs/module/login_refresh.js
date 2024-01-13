@@ -1,7 +1,7 @@
 // 登录刷新
 
-module.exports = async (query, request) => {
-  let result = await request(
+module.exports = (query, request) => {
+  return request(
     'POST',
     `https://music.163.com/weapi/login/token/refresh`,
     {},
@@ -13,15 +13,4 @@ module.exports = async (query, request) => {
       realIP: query.realIP,
     },
   )
-  if (result.body.code === 200) {
-    result = {
-      status: 200,
-      body: {
-        ...result.body,
-        cookie: result.cookie.join(';'),
-      },
-      cookie: result.cookie,
-    }
-  }
-  return result
 }
