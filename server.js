@@ -256,6 +256,8 @@ async function consturctServer(moduleDefs) {
           }
         }
 
+        console.log('返回结果', moduleResponse)
+
         res.status(moduleResponse.code).send(moduleResponse.data)
       } catch (/** @type {*} */ moduleResponse) {
         console.log('错误', moduleResponse)

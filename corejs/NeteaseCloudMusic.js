@@ -180,15 +180,15 @@ class NeteseCloudMusicApi {
       query.songFile.md5 = md5(query.songFile.data)
       query.songFile.size = query.songFile.data.byteLength
     }
-    let res = await this.call_api('cloud_upload_check', query)
-    query.songId = res.songId
-    if (res.needUpload) {
+    let res = await this.call_api('cloud_upload_check', query, false)
+    query.songId = res.data.songId
+    if (res.data.needUpload) {
       let uploadInfo = await this.song_upload(query)
     }
-    query.needUpload = needUpload
+    query.needUpload = res.data.needUpload
 
     let tokenRes = await this.call_api('get_upload_song', query)
-    query.resourceId = tokenRes.result.resourceId
+    query.resourceId = tokenRes.data.result.resourceId
     // 获取歌曲元信息
     let artist = ''
     let album = ''
@@ -218,12 +218,12 @@ class NeteseCloudMusicApi {
       console.log(error)
     }
     let res2 = await this.call_api('cloud_upload_info_v2', query)
-    query.songId = res2.songId
+    query.songId = res2.data.songId
 
     let result = await this.call_api('cloud', query)
     result.data = {
       ...result.data,
-      ...res,
+      ...res.data,
     }
     result.cookie = res.cookie
     return result
@@ -255,17 +255,17 @@ class NeteseCloudMusicApi {
         },
       })
     }
-    let tokenRes = await this.call_api('get_upload_song', query)
-    query.resourceId = tokenRes.result.resourceId
-    query.objectKey = tokenRes.result.objectKey.replace('/', '%2F')
-    query.docId = tokenRes.result.docId
-    query.token = tokenRes.result.token
+    let tokenRes = await this.call_api('get_upload_song', query, false)
+    query.resourceId = tokenRes.data.result.resourceId
+    query.objectKey = tokenRes.data.result.objectKey.replace('/', '%2F')
+    query.docId = tokenRes.data.result.docId
+    query.token = tokenRes.data.result.token
 
     const res = await axios({
       method: 'post',
       url: `https://ymusic.nos-hz.163yun.com/${query.objectKey}?uploads`,
       headers: {
-        'x-nos-token': tokenRes.result.token,
+        'x-nos-token': tokenRes.data.result.token,
         'X-Nos-Meta-Content-Type': 'audio/mpeg',
       },
       data: null,
@@ -293,7 +293,7 @@ class NeteseCloudMusicApi {
       headers: {
         'Content-Type': 'text/plain;charset=UTF-8',
         'X-Nos-Meta-Content-Type': 'audio/mpeg',
-        'x-nos-token': tokenRes.body.result.token,
+        'x-nos-token': tokenRes.data.result.token,
       },
       data: `<CompleteMultipartUpload>
      <Part><PartNumber>1</PartNumber><ETag>${etag}</ETag></Part>
