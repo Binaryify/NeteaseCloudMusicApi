@@ -1,5 +1,3 @@
-const QRCode = require('qrcode')
-// Todo 处理QrCode
 module.exports = (query, request) => {
   const data = {
     verifyConfigId: query.vid,

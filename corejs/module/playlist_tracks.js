@@ -3,18 +3,17 @@
 module.exports = async (query, request) => {
   // query.cookie.os = 'pc'
   const tracks = query.tracks.split(',')
-  const data = {
-    op: query.op, // del,add
-    pid: query.pid, // 歌单id
-    trackIds: JSON.stringify(tracks), // 歌曲id
-    imme: 'true',
-  }
 
   try {
     const res = await request(
       'POST',
       `https://music.163.com/weapi/playlist/manipulate/tracks`,
-      data,
+      {
+        op: query.op, // del,add
+        pid: query.pid, // 歌单id
+        trackIds: JSON.stringify(tracks), // 歌曲id
+        imme: 'true',
+      },
       {
         crypto: 'weapi',
         cookie: query.cookie,
