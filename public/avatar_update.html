@@ -39,16 +39,22 @@
         document.querySelector('#avatar').src = res.data.profile.avatarUrl
       }
       async function login() {
-        const res = await axios({
-          url: `/login/cellphone?phone=${phone}&password=${password}`,
-          withCredentials: true, //跨域的话必须设置
-        })
-        cookieToken = res.data.cookie
+        cookieToken = localStorage.getItem('cookieToken')
+        if (!cookieToken) {
+          const res = await axios({
+            url: `/login/cellphone?phone=${phone}&password=${password}`,
+            withCredentials: true, //跨域的话必须设置
+          })
+          cookieToken = res.data.cookie
+          localStorage.setItem('cookieToken', cookieToken)
+        }
+        console.log('cookieToken::', cookieToken)
       }
       async function upload(file) {
         var formData = new FormData()
         formData.append('imgFile', file)
         const imgSize = await getImgSize(file)
+        console.log('这里是传入的cookieToken::', cookieToken)
         const res = await axios({
           method: 'post',
           url: `/avatar/upload?cookie=${cookieToken}&imgSize=${

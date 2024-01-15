@@ -75,14 +75,15 @@ class NeteseCloudMusicApi {
     // 发送请求
     let response = await this.axios_request(request_param)
 
-    let response_result = {
-      status: response.status,
-      data: response.data,
-      headers: response.headers,
-    }
+    console.log('response', response)
 
     let result
     if (afterRequest) {
+      let response_result = {
+        status: response.status,
+        data: response.data,
+        headers: response.headers,
+      }
       result = this.afterRequest(
         response_result,
         request_param.crypto,
@@ -315,7 +316,7 @@ class NeteseCloudMusicApi {
     // 获取二维码
 
     // 这里注意需要原始返回内容，不需要afterRequest处理
-    const res = this.call_api('verify_getQr', query, false)
+    const res = await this.call_api('verify_getQr', query, false)
 
     const result = `https://st.music.163.com/encrypt-pages?qrCode=${
       res.body.data.qrCode
@@ -343,31 +344,35 @@ class NeteseCloudMusicApi {
 
     //   获取key和token
     // 需要原始请求数据，不需要afterRequest处理
-    const res = this.call_api('get_upload_image', query, false)
-    console.log('res:::', res)
+    const res = await this.call_api('get_upload_image', query, false)
+
     //   上传图片
     const res2 = await axios({
       method: 'post',
-      url: `https://nosup-hz1.127.net/yyimgs/${res.result.objectKey}?offset=0&complete=true&version=1.0`,
+      url: `https://nosup-hz1.127.net/yyimgs/${res.data.result.objectKey}?offset=0&complete=true&version=1.0`,
       headers: {
-        'x-nos-token': res.result.token,
+        'x-nos-token': res.data.result.token,
         'Content-Type': 'image/jpeg',
       },
       data: query.imgFile.data,
     })
     //   获取裁剪后图片的id
-    const res3 = this.call_api('get_upload_cropped_image', {
-      ...query,
-      docId: res.result.docId,
-    })
+    const res3 = await this.call_api(
+      'get_upload_cropped_image',
+      {
+        ...query,
+        docId: res.data.result.docId,
+      },
+      false,
+    )
 
     return {
       // ...res.body.result,
       // ...res2.data,
       // ...res3.body,
-      url_pre: 'https://p1.music.126.net/' + res.result.objectKey,
-      url: res3.url,
-      imgId: res3.id,
+      url_pre: 'https://p1.music.126.net/' + res.data.result.objectKey,
+      url: res3.data.url,
+      imgId: res3.data.id,
     }
   }
 
