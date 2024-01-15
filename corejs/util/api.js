@@ -220,6 +220,7 @@ const homepage_block_page = require('../module/homepage_block_page.js')
 const history_recommend_songs_detail = require('../module/history_recommend_songs_detail.js')
 const history_recommend_songs = require('../module/history_recommend_songs.js')
 const get_userids = require('../module/get_userids.js')
+const get_upload_voice = require('../module/get_upload_voice.js')
 const get_upload_song = require('../module/get_upload_song.js')
 const get_upload_image = require('../module/get_upload_image.js')
 const get_upload_cropped_image = require('../module/get_upload_cropped_image.js')
@@ -541,6 +542,7 @@ module.exports = {
   history_recommend_songs_detail: history_recommend_songs_detail,
   history_recommend_songs: history_recommend_songs,
   get_userids: get_userids,
+  get_upload_voice: get_upload_voice,
   get_upload_song: get_upload_song,
   get_upload_image: get_upload_image,
   get_upload_cropped_image: get_upload_cropped_image,

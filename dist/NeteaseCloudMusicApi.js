@@ -39093,11 +39093,9 @@ login_status_module.exports = function (response) {
   if (response.body.code === 200) {
     response = {
       status: 200,
-      body: {
-        data: login_status_objectSpread(login_status_objectSpread({}, response.body), {}, {
-          cookie: response.cookie
-        })
-      }
+      body: login_status_objectSpread(login_status_objectSpread({}, response.body), {}, {
+        cookie: response.cookie
+      })
     };
   }
   return response;
@@ -39417,8 +39415,6 @@ var afterRequest = function afterRequest(responseResult, crypto, apiName) {
     try {
       answer.body = JSON.parse(body.toString());
     } catch (err) {
-      // console.log(err)
-      // can't decrypt and can't parse directly
       answer.body = body;
     }
     answer.status = responseResult.status;
@@ -41763,11 +41759,6 @@ var get_upload_song_exports = get_upload_song_module.exports;
 // 获取歌曲上传需要的key和token
 
 get_upload_song_module.exports = function (query, request) {
-  var ext = 'mp3';
-  if (query.songFile.name.indexOf('flac') > -1) {
-    ext = 'flac';
-  }
-  var filename = query.songFile.name.replace('.' + ext, '').replace(/\s/g, '').replace(/\./g, '_');
   //   获取key和token
   return request('POST', "https://music.163.com/weapi/nos/token/alloc", {
     bucket: '',
@@ -41784,6 +41775,29 @@ get_upload_song_module.exports = function (query, request) {
   });
 };
 /* harmony default export */ const get_upload_song = (get_upload_song_module.exports);
+;// CONCATENATED MODULE: ./corejs/module/get_upload_voice.js
+var get_upload_voice_module = {
+  exports: {}
+};
+var get_upload_voice_exports = get_upload_voice_module.exports;
+// 获取歌曲上传需要的key和token
+
+get_upload_voice_module.exports = function (query, request) {
+  //   获取key和token
+  return request('POST', "https://music.163.com/weapi/nos/token/alloc", {
+    bucket: 'ymusic',
+    ext: query.ext,
+    filename: query.filename,
+    local: false,
+    nos_product: 0,
+    type: 'other'
+  }, {
+    crypto: 'weapi',
+    cookie: query.cookie,
+    proxy: query.proxy
+  });
+};
+/* harmony default export */ const get_upload_voice = (get_upload_voice_module.exports);
 ;// CONCATENATED MODULE: ./corejs/module/get_userids.js
 var get_userids_module = {
   exports: {}
@@ -46825,6 +46839,7 @@ yunbei_today_module.exports = function (query, request) {
 
 
 
+
 var api_module = {
   exports: {}
 };
@@ -47051,6 +47066,7 @@ var api_homepage_block_page = homepage_block_page;
 var api_history_recommend_songs_detail = history_recommend_songs_detail;
 var api_history_recommend_songs = history_recommend_songs;
 var api_get_userids = get_userids;
+var api_get_upload_voice = get_upload_voice;
 var api_get_upload_song = get_upload_song;
 var api_get_upload_image = get_upload_image;
 var api_get_upload_cropped_image = get_upload_cropped_image;
@@ -47372,6 +47388,7 @@ api_module.exports = {
   history_recommend_songs_detail: api_history_recommend_songs_detail,
   history_recommend_songs: api_history_recommend_songs,
   get_userids: api_get_userids,
+  get_upload_voice: api_get_upload_voice,
   get_upload_song: api_get_upload_song,
   get_upload_image: api_get_upload_image,
   get_upload_cropped_image: api_get_upload_cropped_image,

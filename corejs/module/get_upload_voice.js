@@ -6,13 +6,12 @@ module.exports = (query, request) => {
     'POST',
     `https://music.163.com/weapi/nos/token/alloc`,
     {
-      bucket: '',
+      bucket: 'ymusic',
       ext: query.ext,
       filename: query.filename,
       local: false,
-      nos_product: 3,
-      type: 'audio',
-      md5: query.songFile.md5,
+      nos_product: 0,
+      type: 'other',
     },
     { crypto: 'weapi', cookie: query.cookie, proxy: query.proxy },
   )

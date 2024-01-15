@@ -42,7 +42,7 @@ module.exports = (query, request) => {
       cookie: query.cookie,
       proxy: query.proxy,
       headers: {
-        'x-nos-token': tokenRes.body.result.token,
+        'x-nos-token': query.token,
       },
     },
   )

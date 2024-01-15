@@ -255,7 +255,7 @@ class NeteseCloudMusicApi {
         },
       })
     }
-    let tokenRes = await this.call_api('get_upload_song', query, false)
+    let tokenRes = await this.call_api('get_upload_voice', query, false)
     query.resourceId = tokenRes.data.result.resourceId
     query.objectKey = tokenRes.data.result.objectKey.replace('/', '%2F')
     query.docId = tokenRes.data.result.docId
@@ -277,7 +277,7 @@ class NeteseCloudMusicApi {
       method: 'put',
       url: `https://ymusic.nos-hz.163yun.com/${query.objectKey}?partNumber=1&uploadId=${res2.InitiateMultipartUploadResult.UploadId[0]}`,
       headers: {
-        'x-nos-token': tokenRes.result.token,
+        'x-nos-token': tokenRes.data.result.token,
         'Content-Type': 'audio/mpeg',
       },
       data: query.songFile.data,
