@@ -23,7 +23,6 @@ class NeteseCloudMusicApi {
   }
 
   async request(name, query) {
-    console.log('request', name, query)
     let result
     // 特殊api处理
     if (Object.keys(this.special_api).includes(name)) {
@@ -31,8 +30,6 @@ class NeteseCloudMusicApi {
     } else {
       result = await this.call_api(name, query)
     }
-
-    console.log(result)
 
     return result
   }
@@ -74,8 +71,6 @@ class NeteseCloudMusicApi {
 
     // 发送请求
     let response = await this.axios_request(request_param)
-
-    console.log('response', response)
 
     let result
     if (afterRequest) {
@@ -140,7 +135,7 @@ class NeteseCloudMusicApi {
     return result
   }
 
-  async playlist_cover_update() {
+  async playlist_cover_update(query) {
     let uploadInfo = await this.upload(query)
 
     query.uploadInfo = uploadInfo

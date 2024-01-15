@@ -18,10 +18,13 @@
       const password = ''
       const playlist_id = ''
       let cookieToken = ''
-      if (!phone || !password) {
-        const msg = '请设置你的手机号码和密码'
-        alert(msg)
-        throw new Error(msg)
+      cookieToken = localStorage.getItem('cookieToken')
+      if (!cookieToken) {
+        if (!phone || !password) {
+          const msg = '请设置你的手机号码和密码'
+          alert(msg)
+          throw new Error(msg)
+        }
       }
       if (!playlist_id) {
         const msg = '请设置你的歌单id'
@@ -46,11 +49,16 @@
         document.querySelector('#playlist_cover').src = res.data.playlist.coverImgUrl
       }
       async function login() {
-        const res = await axios({
-          url: `/login/cellphone?phone=${phone}&password=${password}`,
-          withCredentials: true, //跨域的话必须设置
-        })
-        cookieToken = res.data.cookie
+        cookieToken = localStorage.getItem('cookieToken')
+        if (!cookieToken) {
+          const res = await axios({
+            url: `/login/cellphone?phone=${phone}&password=${password}`,
+            withCredentials: true, //跨域的话必须设置
+          })
+          cookieToken = res.data.cookie
+          localStorage.setItem('cookieToken', cookieToken)
+        }
+        console.log('cookieToken::', cookieToken)
       }
       async function upload(file) {
         var formData = new FormData()

@@ -15,10 +15,13 @@
       const phone = ''
       const password = ''
       let cookieToken = ''
-      if (!phone || !password) {
-        const msg = '请设置你的手机号码和密码'
-        alert(msg)
-        throw new Error(msg)
+      cookieToken = localStorage.getItem('cookieToken')
+      if (!cookieToken) {
+        if (!phone || !password) {
+          const msg = '请设置你的手机号码和密码'
+          alert(msg)
+          throw new Error(msg)
+        }
       }
 
       main()

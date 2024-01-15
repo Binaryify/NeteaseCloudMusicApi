@@ -84,8 +84,6 @@ const afterRequest = (responseResult, crypto, apiName) => {
     try {
       answer.body = JSON.parse(body.toString())
     } catch (err) {
-      // console.log(err)
-      // can't decrypt and can't parse directly
       answer.body = body
     }
     answer.status = responseResult.status

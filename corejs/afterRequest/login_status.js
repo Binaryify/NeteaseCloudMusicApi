@@ -3,10 +3,8 @@ module.exports = (response) => {
     response = {
       status: 200,
       body: {
-        data: {
-          ...response.body,
-          cookie: response.cookie,
-        },
+        ...response.body,
+        cookie: response.cookie,
       },
     }
   }
