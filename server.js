@@ -76,10 +76,13 @@ const VERSION_CHECK_RESULT = {
  */
 function getModulesDefinitions(specificRoute) {
   const files = Object.keys(apiIndex)
-  const parseRoute = (/** @type {string} */ fileName) =>
-    specificRoute && fileName in specificRoute
-      ? specificRoute[fileName]
-      : `/${fileName.replace(/_/g, '/')}`
+  let parseRoute = (/** @type {string} */ fileName) => {
+    let result =
+      specificRoute && fileName in specificRoute
+        ? specificRoute[fileName]
+        : `/${fileName.replace(/_/g, '/')}`
+    return result
+  }
 
   // apiIndex写入的时候已经排好序了，这里不要继续翻转
   const modules = files.map((file) => {
@@ -196,9 +199,9 @@ async function consturctServer(moduleDefs) {
    * Special Routers
    */
   const special = {
-    'daily_signin.js': '/daily_signin',
-    'fm_trash.js': '/fm_trash',
-    'personal_fm.js': '/personal_fm',
+    daily_signin: '/daily_signin',
+    fm_trash: '/fm_trash',
+    personal_fm: '/personal_fm',
   }
 
   /**

@@ -4,6 +4,7 @@ const mm = require('music-metadata')
 const md5 = require('md5')
 const xml2js = require('xml2js')
 const QRCode = require('qrcode')
+const pkg = require('../package.json')
 
 class NeteseCloudMusicApi {
   constructor() {
@@ -17,6 +18,7 @@ class NeteseCloudMusicApi {
       cloud: this.cloud.bind(this),
       voice_upload: this.voice_upload.bind(this),
       login_qr_create: this.login_qr_create.bind(this),
+      inner_version: this.inner_version.bind(this),
     }
 
     this.beforeRequest = api.beforeRequest
@@ -37,7 +39,7 @@ class NeteseCloudMusicApi {
 
   async axios_request(request_param) {
     // 使用axios发送请求
-    settings = {
+    let settings = {
       method: request_param.method,
       url: request_param.url,
       data: request_param.data,
@@ -47,13 +49,16 @@ class NeteseCloudMusicApi {
       const answer = { status: 500, body: {}, cookie: [] }
       axios(settings)
         .then((res) => {
+          console.log(res)
           resolve(res)
           return
         })
         .catch((err) => {
-          answer.status = 502
-          answer.body = { code: 502, msg: err }
-          reject(answer)
+          resolve({
+            status: err.response.status,
+            data: { code: err.response.status, msg: err },
+            headers: err.response.headers,
+          })
         })
     })
   }
@@ -345,6 +350,18 @@ class NeteseCloudMusicApi {
         data: {
           qrurl: url,
           qrimg: query.qrimg ? await QRCode.toDataURL(url) : '',
+        },
+      },
+    }
+  }
+
+  async inner_version(query) {
+    return {
+      code: 200,
+      data: {
+        code: 200,
+        data: {
+          version: pkg.version,
         },
       },
     }

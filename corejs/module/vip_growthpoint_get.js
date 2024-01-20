@@ -1,6 +1,7 @@
 // 领取会员成长值
 
 module.exports = (query, request) => {
+  console.log(query)
   const data = {
     taskIds: query.ids,
   }

@@ -96,9 +96,9 @@ const afterRequest = (responseResult, crypto, apiName) => {
 
   if (hasApi(apiName)) {
     let result = afterRequestApi[apiName](answer)
-    if (result.status) {
-      answer.status = result.status
-    }
+    // if (result.status) {
+    //   answer.status = result.status
+    // }
     if (result.body) {
       answer.body = result.body
     }
@@ -132,14 +132,14 @@ const afterRequest = (responseResult, crypto, apiName) => {
 
   if (answer.cookie) {
     result = {
-      code: answer.body.code,
+      code: answer.status,
       data: answer.body,
       msg: answer.body.msg,
       cookie: cookieToJson(answer.cookie),
     }
   } else {
     result = {
-      code: answer.body.code,
+      code: answer.status,
       data: answer.body,
       msg: answer.body.msg,
     }

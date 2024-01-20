@@ -198,7 +198,6 @@ const logout = require('../module/logout.js')
 const login_status = require('../module/login_status.js')
 const login_refresh = require('../module/login_refresh.js')
 const login_qr_key = require('../module/login_qr_key.js')
-const login_qr_create = require('../module/login_qr_create.js')
 const login_qr_check = require('../module/login_qr_check.js')
 const login_cellphone = require('../module/login_cellphone.js')
 const login = require('../module/login.js')
@@ -520,7 +519,6 @@ module.exports = {
   login_status: login_status,
   login_refresh: login_refresh,
   login_qr_key: login_qr_key,
-  login_qr_create: login_qr_create,
   login_qr_check: login_qr_check,
   login_cellphone: login_cellphone,
   login: login,
