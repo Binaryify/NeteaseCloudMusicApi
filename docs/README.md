@@ -4567,6 +4567,22 @@ qrCodeStatus:20,detailReason:0  验证成功qrCodeStatus:21,detailReason:0 二�
 
 **调用例子:** `/song/red/count?id=186016`
 
+### 私人 FM 模式选择
+
+说明: 调用此接口返回私人 FM 内容, 并可以选择模式
+
+**必选参数：**     
+
+`mode`: 模式 (aidj, DEFAULT, FAMILIAR, EXPLORE, SCENE_RCMD)
+
+**可选参数：**  
+
+`submode`: 当 mode 为 SCENE_RCMD 是可为 ( EXERCISE, FOCUS, NIGHT_EMO )
+
+**接口地址:** `/personal/fm/mode`
+
+
+
 ## 离线访问此文档
 
 此文档同时也是 Progressive Web Apps(PWA), 加入了 serviceWorker, 可离线访问
